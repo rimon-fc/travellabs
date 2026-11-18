@@ -1,0 +1,170 @@
+[
+  {
+    "id": "keel",
+    "name": "Keel Cloud",
+    "role": "For software teams",
+    "category": "Hosted AI tools",
+    "stage": "Proposed cloud service",
+    "url": "startup-sites/keel-github.html",
+    "color": "#536633",
+    "tint": "#edf3da",
+    "title": "Give AI useful tools. Let us look after the hosting.",
+    "what": "A proposed hosted service for the keel toolkit. It connects AI apps to business tools, applies permission rules and keeps those tools running for the team.",
+    "why": "Building tools is only part of the job. Businesses also need hosting, updates, access controls and records of what happened.",
+    "outcome": "Less infrastructure to manage, reusable tools and more control over what AI assistants can do.",
+    "example": "A business connects its booking system and help desk. The AI can look up a trip, but must ask a person before changing it.",
+    "steps": [
+      "Describe the tools",
+      "Add the rules",
+      "Connect an AI app"
+    ],
+    "note": "Keel Cloud is a proposed paid service built on the open-source keel toolkit. Cloud pricing is indicative."
+  },
+  {
+    "id": "atfgraph",
+    "name": "ATFGraph Cloud",
+    "role": "For teams running AI agents",
+    "category": "Hosted AI operations",
+    "stage": "Proposed cloud service",
+    "url": "startup-sites/atfgraph-github.html",
+    "color": "#3d5e8c",
+    "tint": "#e5edf4",
+    "title": "Run AI agents without running the servers.",
+    "what": "A proposed hosted service that runs and monitors AI agents, saves their progress and lets them wait for an update or approval before continuing.",
+    "why": "Business tasks can last days. Teams need reliable hosting, a record of progress and a way to restart work after an interruption.",
+    "outcome": "Less server management, more reliable work over time and a clear view of running, waiting and completed jobs.",
+    "example": "An agent checks a request on Monday, waits for a manager’s approval and continues on Thursday with its progress saved.",
+    "steps": [
+      "Work + save",
+      "Wait for approval",
+      "Continue the job"
+    ],
+    "note": "ATFGraph Cloud is the proposed managed service for the open-source ATFGraph engine. Cloud pricing is indicative."
+  },
+  {
+    "id": "ctx",
+    "name": "ctx.travel",
+    "role": "For travellers",
+    "category": "Personal travel",
+    "stage": "Consumer concept",
+    "url": "startup-sites/ctx-travel/index.html",
+    "color": "#ae493b",
+    "tint": "#f8e5dc",
+    "title": "A travel helper that remembers you—and looks for savings.",
+    "what": "An app that turns saved videos, places and booking emails into a trip. It finds member prices, books with approval and watches for eligible price drops.",
+    "why": "Planning means juggling apps, emails and tabs. Most booking sites stop helping once the purchase is done.",
+    "outcome": "Less effort to plan, choices that fit the traveller and possible savings before and after booking.",
+    "example": "Save a Tokyo food video. ctx adds the place to your plan, finds a nearby hotel and keeps checking its price.",
+    "steps": [
+      "Save your ideas",
+      "Plan + approve",
+      "Watch for savings"
+    ],
+    "note": "Savings depend on availability and booking rules; a stated share of price-drop savings goes to ctx."
+  },
+  {
+    "id": "mcpx",
+    "name": "mcpx.travel",
+    "role": "For AI app builders + travel sellers",
+    "category": "Booking tools",
+    "stage": "Platform concept",
+    "url": "startup-sites/mcpx-travel/index.html",
+    "color": "#2a3bca",
+    "tint": "#e6eaff",
+    "title": "Turn an AI travel conversation into a real booking.",
+    "what": "One software connection gives AI apps tools to find flights, stays and activities, hold an offer, book it and manage later changes.",
+    "why": "An app can recommend a trip without being able to book it. Connecting suppliers, payments and aftercare is a large job.",
+    "outcome": "A faster route to launching travel products and earning from bookings, with less connection work.",
+    "example": "A travel chat app uses mcpx to show flights, hold the chosen fare and confirm the trip after the customer approves.",
+    "steps": [
+      "Your AI app",
+      "One connection",
+      "A booked trip"
+    ],
+    "note": "mcpx provides booking tools. ADN proposes the shared market where buyers and sellers make deals."
+  },
+  {
+    "id": "agentic-tms",
+    "name": "Agentic TMS-CRM",
+    "role": "For travel advisors",
+    "category": "Customers + trips",
+    "stage": "Product vision",
+    "url": "startup-sites/agentic-tms/index.html",
+    "color": "#b34b39",
+    "tint": "#f7e9df",
+    "title": "An assistant for every advisor. Care for every trip.",
+    "what": "Customer records and trip management in one place. A personal AI agent remembers each client, prepares their trip, books with approval and keeps watching for changes.",
+    "why": "Enquiries, notes and bookings sit in different places. Advisors lose time copying details and chasing the next task.",
+    "outcome": "Less admin, more time with customers and a clearer view of every trip from first enquiry to home again.",
+    "example": "Maya asks for a quiet beach break. Her agent remembers what she likes, prepares a trip and asks the advisor to approve it.",
+    "steps": [
+      "Remember the client",
+      "Prepare the trip",
+      "Ask, then book"
+    ],
+    "note": "The agent works within the advisor’s rules and asks before booking or payment."
+  },
+  {
+    "id": "portal",
+    "name": "Portal",
+    "role": "For agencies + small operators",
+    "category": "Supplier access",
+    "stage": "Startup concept",
+    "url": "startup-sites/portal-booking/index.html",
+    "color": "#78611a",
+    "tint": "#f5edc8",
+    "title": "Reach the suppliers that still book by website or message.",
+    "what": "A booking helper that uses supplier websites with permission. For operators without a system, it can arrange a booking by message or phone and keep a tidy record.",
+    "why": "Staff often type the same names again, chase a reply and copy a confirmation into another system.",
+    "outcome": "Less repeated work and more local suppliers available to sell, without asking each operator to buy new software.",
+    "example": "A boat operator takes bookings on WhatsApp. The helper asks for two seats and records the operator’s confirmation.",
+    "steps": [
+      "Website or message",
+      "Check with supplier",
+      "Save one booking"
+    ],
+    "note": "Supplier permission comes first. A person approves spending."
+  },
+  {
+    "id": "visa",
+    "name": "Visa clearance",
+    "role": "For travel teams",
+    "category": "Travel paperwork",
+    "stage": "Early-access concept",
+    "url": "startup-sites/visa-clearance/index.html",
+    "color": "#2c6855",
+    "tint": "#e7efe7",
+    "title": "Get the paperwork ready before the traveller leaves.",
+    "what": "An AI helper checks which visas and entry papers a trip needs, prepares forms and tracks the application. A trained person reviews it before it is sent.",
+    "why": "A booked flight does not mean a traveller has permission to enter. Finding missing papers late can put the whole trip at risk.",
+    "outcome": "Less form-filling for teams, clearer next steps for travellers and fewer last-minute paperwork surprises.",
+    "example": "A photo is missing from an application. The helper flags it early, so the traveller can supply it before the review.",
+    "steps": [
+      "Check the route",
+      "Prepare + review",
+      "Track the answer"
+    ],
+    "note": "Governments decide on visas and entry. Approval cannot be guaranteed."
+  },
+  {
+    "id": "adn",
+    "name": "ADN + Exchange",
+    "role": "For suppliers + AI travel businesses",
+    "category": "Travel marketplace",
+    "stage": "Proposal",
+    "url": "startup-sites/adn-exchange/index.html",
+    "color": "#615095",
+    "tint": "#ebe7f3",
+    "title": "Ask once. Let trusted travel suppliers compete for the trip.",
+    "what": "A proposed market where AI buyers request travel and suppliers reply with private offers. Shared rules cover who can trade, payments and problems.",
+    "why": "Every buyer currently needs separate supplier connections and agreements. Suppliers need to know who is asking and what they can buy.",
+    "outcome": "Less setup for buyers and sellers, more choice and a clear record of what each side agreed.",
+    "example": "An agent asks for a Tokyo hotel. Hotels offer rooms privately, and one agrees to include breakfast within the traveller’s budget.",
+    "steps": [
+      "One travel request",
+      "Private offers",
+      "Agree + book"
+    ],
+    "note": "This is a proposal; members, payment arrangements and fees are still to be agreed."
+  }
+]

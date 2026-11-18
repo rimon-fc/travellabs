@@ -1,0 +1,662 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Agentic Distribution Network and Exchange | Ask once. Trusted suppliers answer.</title>
+<meta name="description" content="One shared place where AI agents buy travel and suppliers sell it on their own terms. The Network checks members, sets the rules, moves the money and keeps the record. The Exchange is where agents ask once and negotiate. A proposal.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23343a72'/%3E%3Ccircle cx='21' cy='15' r='5' fill='%23f3b768'/%3E%3Ccircle cx='9' cy='19' r='2' fill='%23f3b768' opacity='.7'/%3E%3Ccircle cx='13' cy='12' r='1.6' fill='%23f3b768' opacity='.6'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --page: #f6f3ec; --page-2: #efeae0; --card: #fbf9f4; --ink: #1d1f2e; --ink-2: #444659; --muted: #77788a; --line: #ddd8cc;
+  --dusk: #343a72; --violet: #5b4f94; --amber: #e9a24e; --amber-2: #f7d9ae; --mist: #e7e6f0;
+  --serif: "Newsreader", Georgia, serif; --sans: "Inter", system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--page); color: var(--ink); font: 400 17px/1.65 var(--sans); overflow-x: hidden; }
+a { color: inherit; }
+h1, h2, h3 { font-family: var(--serif); font-weight: 400; letter-spacing: -.015em; line-height: 1.08; margin: 0; }
+p { margin: 0; }
+.wrap { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+.kick { font: 500 12.5px/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--violet); }
+.lead { font-size: 19px; line-height: 1.65; color: var(--ink-2); max-width: 580px; }
+.btn { display: inline-flex; align-items: center; gap: 10px; height: 50px; padding: 0 22px; border-radius: 999px; background: var(--ink); color: var(--page); font: 500 15.5px/1 var(--sans); text-decoration: none; border: 1.5px solid var(--ink); transition: background .2s, transform .2s; }
+.btn:hover { background: var(--dusk); border-color: var(--dusk); transform: translateY(-1px); }
+.btn.ghost { background: transparent; color: var(--ink); }
+.btn.ghost:hover { background: var(--mist); }
+.btns { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.tlink { font-weight: 500; text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--amber); text-decoration-thickness: 2px; }
+.sec { padding: 120px 0; scroll-margin-top: 64px; }
+.ph { background: var(--amber-2); color: #6b4416; padding: 1px 7px; border-radius: 4px; font: 500 .82em/1.5 var(--sans); white-space: normal; }
+
+/* painted panels with soft, brushed edges */
+.paint { position: relative; overflow: hidden; border-radius: 6px; -webkit-mask-image: linear-gradient(to right, transparent 0, #000 7%, #000 93%, transparent 100%), linear-gradient(to bottom, transparent 0, #000 7%, #000 93%, transparent 100%); -webkit-mask-composite: source-in; mask-image: linear-gradient(to right, transparent 0, #000 7%, #000 93%, transparent 100%), linear-gradient(to bottom, transparent 0, #000 7%, #000 93%, transparent 100%); mask-composite: intersect; }
+.who .paint { -webkit-mask-image: linear-gradient(#000 80%, transparent); mask-image: linear-gradient(#000 80%, transparent); }
+.paint canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.cap { font: italic 400 15px/1.4 var(--serif); color: var(--muted); margin-top: 12px; }
+
+/* endorsement + nav */
+.endorse { border-bottom: 1px solid var(--line); }
+.endorse .wrap { display: flex; align-items: center; gap: 12px; height: 44px; font-size: 12.5px; color: var(--muted); }
+.endorse img { height: 17px; width: auto; display: block; } .endorse img.tlogo { height: 20px; }
+.endorse .sep { width: 1px; height: 18px; background: var(--line); }
+.endorse .tag { margin-left: auto; font: italic 400 14px/1 var(--serif); color: var(--ink-2); }
+nav.top { position: sticky; top: 0; z-index: 30; background: color-mix(in srgb, var(--page) 90%, transparent); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid transparent; }
+nav.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 20px; height: 72px; }
+.logo { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; }
+.logo .mk { width: 34px; height: 34px; border-radius: 10px; background: radial-gradient(circle at 68% 46%, var(--amber) 0 16%, transparent 17%), radial-gradient(circle at 28% 60%, rgba(243,183,104,.75) 0 6%, transparent 7%), radial-gradient(circle at 42% 34%, rgba(243,183,104,.6) 0 5%, transparent 6%), linear-gradient(160deg, var(--violet), var(--dusk)); }
+.logo b { display: block; font: 500 17px/1.1 var(--serif); }
+.logo small { display: block; font-size: 11.5px; color: var(--muted); letter-spacing: .02em; }
+.links { display: flex; gap: 4px; }
+.links a { text-decoration: none; padding: 8px 12px; border-radius: 999px; font-size: 14.5px; font-weight: 500; white-space: nowrap; }
+.links a:hover { background: var(--mist); }
+
+/* hero */
+.hero { padding: 56px 0 40px; }
+.hero-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 48px; align-items: center; }
+.hero-c { display: grid; gap: 24px; }
+.hero h1 { font-size: clamp(48px, 6.4vw, 92px); }
+.hero h1 em { color: var(--violet); }
+.hero .paint { height: min(620px, 72vh); min-height: 420px; }
+.plain { margin-top: 64px; display: grid; grid-template-columns: 180px 1fr; gap: 28px; align-items: start; padding-top: 28px; border-top: 1px solid var(--line); }
+.plain span { font: italic 400 20px/1.3 var(--serif); color: var(--violet); }
+.plain p { font: 400 clamp(21px, 2.2vw, 28px)/1.45 var(--serif); color: var(--ink); max-width: 860px; }
+
+/* problem */
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.split.rev .paint-col { order: 2; }
+.copy { display: grid; gap: 22px; }
+.copy h2 { font-size: clamp(36px, 4.4vw, 58px); }
+.split .paint { height: 480px; }
+.num { display: grid; gap: 6px; padding: 18px 20px; border-left: 3px solid var(--amber); background: var(--card); }
+.num b { font: 500 13px/1.3 var(--sans); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.cost { display: grid; gap: 8px; margin-top: 4px; }
+.cost div { display: grid; grid-template-columns: 1fr auto; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 15.5px; }
+.cost div span:last-child { color: var(--muted); }
+
+/* steps */
+.part-h { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: end; margin-bottom: 44px; }
+.part-h h2 { font-size: clamp(36px, 4.4vw, 58px); }
+.part-h .kick { display: block; margin-bottom: 16px; }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; counter-reset: s; }
+.steps li { counter-increment: s; display: grid; grid-template-columns: 54px 1fr; gap: 6px 16px; padding: 22px 0; border-top: 1px solid var(--line); transition: background .4s; }
+.steps li::before { content: counter(s); grid-row: 1 / span 2; width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; font: 500 17px/1 var(--serif); border: 1.5px solid var(--ink); }
+.steps li.on::before { background: var(--ink); color: var(--page); }
+.steps li b { font: 500 21px/1.3 var(--serif); }
+.steps li span { color: var(--ink-2); font-size: 16px; }
+.mini { display: flex; gap: 10px; margin-top: 22px; flex-wrap: wrap; }
+.mini div { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border: 1px solid var(--line); border-radius: 999px; background: var(--card); font-size: 14px; }
+.mini svg { width: 20px; height: 20px; fill: none; stroke: var(--ink); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ask once: request and private replies */
+.ask { margin-top: 30px; display: grid; grid-template-columns: 1fr 1.15fr; gap: 20px; align-items: start; }
+.req { background: var(--ink); color: #eceaf5; border-radius: 16px; padding: 22px; display: grid; gap: 12px; }
+.req .lbl { font: 500 11.5px/1 var(--sans); letter-spacing: .12em; text-transform: uppercase; color: #a9a6c8; }
+.req p { font: 400 21px/1.45 var(--serif); min-height: 92px; }
+.req p::after { content: ""; display: inline-block; width: 2px; height: 18px; background: var(--amber); margin-left: 3px; vertical-align: -2px; animation: blink 1s steps(2) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.req .badge { justify-self: start; display: inline-flex; gap: 8px; align-items: center; font-size: 12.5px; padding: 7px 10px; border-radius: 999px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18); }
+.req .badge i { width: 8px; height: 8px; border-radius: 50%; background: #8fd3b6; }
+.offers { display: grid; gap: 10px; }
+.offer { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; padding: 14px 16px; border-radius: 14px; background: var(--card); border: 1px solid var(--line); opacity: 0; transform: translateX(14px); transition: opacity .45s, transform .5s, border-color .3s, box-shadow .3s; }
+.offer.in { opacity: 1; transform: none; }
+.offer b { font: 500 17px/1.3 var(--serif); }
+.offer small { grid-column: 1; font-size: 13px; color: var(--muted); }
+.offer .p { grid-row: 1 / span 2; grid-column: 2; align-self: center; text-align: right; font-size: 13px; color: var(--muted); }
+.offer .p em { display: block; font-style: normal; font: 500 15px/1.3 var(--sans); color: var(--ink); }
+.offer.pick { border-color: var(--ink); box-shadow: 0 10px 24px -18px rgba(29,31,46,.6); }
+.offer .only { grid-column: 1 / -1; font-size: 12px; color: var(--violet); }
+.offers .note { font-size: 13px; color: var(--muted); padding: 4px 2px; }
+
+/* who */
+.who { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.who article { background: var(--card); border-radius: 18px; padding: 0 0 26px; overflow: hidden; display: grid; gap: 12px; border: 1px solid var(--line); }
+.who .paint { height: 200px; border-radius: 0; }
+.who article > :not(.paint) { margin: 0 24px; }
+.who h3 { font-size: 24px; margin-top: 8px; }
+.who p { color: var(--ink-2); font-size: 16px; }
+
+/* limits */
+.limits { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-top: 1.5px solid var(--ink); }
+.limits > div { padding: 26px 28px 28px 0; border-bottom: 1px solid var(--line); display: grid; gap: 8px; }
+.limits > div:nth-child(odd) { border-right: 1px solid var(--line); }
+.limits > div:nth-child(even) { padding-left: 28px; }
+.limits b { font: 500 13px/1 var(--sans); letter-spacing: .1em; text-transform: uppercase; color: var(--violet); }
+.limits p { font: 400 21px/1.45 var(--serif); }
+
+/* closing */
+.close { position: relative; min-height: 560px; display: grid; align-items: center; }
+.close .paint { position: absolute; inset: 0; border-radius: 0; -webkit-mask-image: linear-gradient(transparent, #000 18%, #000 82%, transparent); mask-image: linear-gradient(transparent, #000 18%, #000 82%, transparent); }
+.close-c { position: relative; z-index: 2; background: color-mix(in srgb, var(--page) 94%, transparent); border-radius: 22px; padding: 44px; max-width: 620px; display: grid; gap: 20px; box-shadow: 0 30px 60px -40px rgba(29,31,46,.6); }
+.close-c h2 { font-size: clamp(40px, 5vw, 66px); }
+.form { display: flex; gap: 10px; flex-wrap: wrap; }
+.form input, .form select { height: 50px; border-radius: 999px; border: 1.5px solid var(--ink); background: var(--card); padding: 0 18px; font: 400 15.5px/1 var(--sans); color: var(--ink); min-width: 0; }
+.form input { flex: 1 1 220px; }
+.form select { flex: 1 1 200px; }
+.done { display: none; font: italic 400 22px/1.4 var(--serif); color: var(--violet); }
+.close-c.sent .form { display: none; } .close-c.sent .done { display: block; }
+
+footer { padding: 56px 0 34px; border-top: 1px solid var(--line); }
+.f-g { display: flex; justify-content: space-between; gap: 28px; flex-wrap: wrap; align-items: center; padding-bottom: 30px; border-bottom: 1px solid var(--line); }
+.f-g p { max-width: 560px; color: var(--ink-2); font-size: 16px; } .f-g p b { color: var(--ink); font-weight: 600; }
+.f-logos { display: flex; align-items: center; gap: 22px; } .f-logos img { width: auto; display: block; } .f-logos img:first-child { height: 28px; } .f-logos img:last-child { height: 32px; } .f-logos .sep { width: 1px; height: 30px; background: var(--line); }
+.f-b { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: 20px; font-size: 13.5px; color: var(--muted); }
+
+[data-in] { opacity: 0; transform: translateY(16px); transition: opacity .8s, transform .8s; }
+[data-in].in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } [data-in] { opacity: 1; transform: none; } }
+@media (max-width: 980px) {
+  .links { display: none; }
+  .hero-grid, .split, .part-h, .ask, .limits { grid-template-columns: 1fr; gap: 32px; }
+  .split.rev .paint-col { order: 0; }
+  .who { grid-template-columns: 1fr; }
+  .plain { grid-template-columns: 1fr; gap: 10px; }
+  .limits > div, .limits > div:nth-child(even) { padding: 22px 0; border-right: 0 !important; }
+  .sec { padding: 84px 0; }
+  .hero .paint { height: 420px; min-height: 0; }
+  .split .paint { height: 340px; }
+}
+@media (max-width: 600px) {
+  .wrap { padding: 0 18px; }
+  .endorse .txt, .endorse .tag { display: none; }
+  .endorse img { height: 14px; } .endorse img.tlogo { height: 17px; }
+  nav.top .wrap { height: 64px; }
+  .logo small { display: none; }
+  .nav-btn { display: none; }
+  .hero .paint { height: 340px; }
+  .close-c { padding: 28px 22px; margin: 0 4px; }
+}
+
+/* network + exchange definitions */
+.two { margin-top: 56px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.two > div { padding: 26px 28px; border-radius: 18px; background: var(--card); border: 1px solid var(--line); display: grid; gap: 8px; }
+.two > div:last-child { border-color: var(--amber); box-shadow: inset 0 0 0 1px var(--amber-2); }
+.two-k { font: 500 12px/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--violet); }
+.two h3 { font-size: 32px; }
+.two p { color: var(--ink-2); font-size: 17px; }
+.hero .plain { margin-top: 44px; }
+
+/* the idea in one picture */
+.map { display: grid; grid-template-columns: 1fr 92px 1.25fr 92px 1fr; align-items: center; }
+.map h4 { font: 500 12px/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--violet); margin: 0 0 12px; }
+.side { display: grid; gap: 8px; }
+.side .it { padding: 12px 14px; border-radius: 12px; background: var(--card); border: 1px solid var(--line); display: grid; gap: 2px; }
+.side .it b { font: 500 17px/1.25 var(--serif); }
+.side .it span { font-size: 13.5px; color: var(--muted); }
+.wire { position: relative; height: 150px; display: grid; align-content: center; gap: 22px; }
+.wl { position: absolute; left: 0; right: 0; text-align: center; font: italic 400 13.5px/1.2 var(--serif); color: var(--muted); }
+.wl.t { top: 26px; } .wl.b { bottom: 26px; }
+.trk { position: relative; height: 2px; background: repeating-linear-gradient(90deg, var(--line) 0 6px, transparent 6px 11px); margin: 0 6px; }
+.trk i { position: absolute; top: -4px; width: 10px; height: 10px; border-radius: 50%; background: var(--amber); box-shadow: 0 0 10px 2px rgba(243,183,104,.7); animation: run 3.2s linear infinite; }
+.trk.go i { background: var(--dusk); box-shadow: 0 0 8px 1px rgba(52,58,114,.4); }
+.trk.back i { animation-name: runb; }
+.trk.back i:nth-child(2) { animation-delay: -.6s; } .trk.back i:nth-child(3) { animation-delay: -1.2s; }
+@keyframes run { 0% { left: 0; opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { left: calc(100% - 10px); opacity: 0; } }
+@keyframes runb { 0% { left: calc(100% - 10px); opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; } 100% { left: 0; opacity: 0; } }
+.net { border: 1.5px solid var(--ink); border-radius: 22px; padding: 22px; background: var(--card); display: grid; gap: 16px; box-shadow: 0 24px 48px -36px rgba(29,31,46,.55); }
+.net > h4 { font: 400 26px/1 var(--serif); letter-spacing: -.01em; text-transform: none; color: var(--ink); margin: 0; }
+.jobs-mini { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.jobs-mini div { display: flex; align-items: center; gap: 9px; padding: 9px 11px; border-radius: 10px; background: var(--mist); font-size: 14px; font-weight: 500; }
+.jobs-mini svg, .jobs-mini + * svg { width: 19px; height: 19px; flex: none; fill: none; stroke: var(--dusk); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.xch { border: 1.5px solid var(--amber); border-radius: 16px; padding: 16px; background: #fdf6ea; display: grid; gap: 12px; }
+.xch h4 { font: 400 22px/1 var(--serif); letter-spacing: -.01em; text-transform: none; color: var(--ink); margin: 0; }
+.xch-r { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.xch-r span { font-size: 13.5px; padding: 6px 10px; border-radius: 999px; background: var(--card); border: 1px solid var(--amber-2); }
+.xch-r span + span::before { content: "→ "; color: var(--amber); }
+.later { margin-top: 30px; max-width: 820px; font: 400 19px/1.55 var(--serif); color: var(--ink-2); padding-left: 18px; border-left: 3px solid var(--violet); }
+.later b { font-weight: 500; color: var(--violet); }
+
+/* problem, two sides */
+.pains { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.pains b { display: block; font: 500 12.5px/1 var(--sans); letter-spacing: .12em; text-transform: uppercase; color: var(--violet); margin-bottom: 10px; }
+.pains ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.pains li { position: relative; padding-left: 18px; font-size: 15.5px; color: var(--ink-2); line-height: 1.5; }
+.pains li::before { content: ""; position: absolute; left: 0; top: .6em; width: 7px; height: 7px; border-radius: 50%; background: var(--amber); }
+
+/* the network's four jobs */
+.jobs { display: grid; gap: 0; }
+.jobs article { display: grid; grid-template-columns: 50px 1fr; gap: 16px; padding: 22px 0; border-top: 1px solid var(--line); transition: background .4s; }
+.jobs article i { width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center; font: normal 500 17px/1 var(--serif); border: 1.5px solid var(--ink); transition: background .3s, color .3s; }
+.jobs article.on i { background: var(--ink); color: var(--page); }
+.jobs b { display: block; font: 500 21px/1.3 var(--serif); margin-bottom: 4px; }
+.jobs p { color: var(--ink-2); font-size: 16px; }
+
+/* exchange demo */
+.ex { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 18px; align-items: start; }
+.col { display: grid; gap: 12px; opacity: .55; transition: opacity .5s; }
+.col.on { opacity: 1; }
+.col-h { display: flex; align-items: center; gap: 10px; font: 500 21px/1.2 var(--serif); }
+.col-h i { width: 32px; height: 32px; border-radius: 50%; display: grid; place-items: center; font: normal 500 15px/1 var(--serif); border: 1.5px solid var(--ink); }
+.col.on .col-h i { background: var(--ink); color: var(--page); }
+.col-n { font-size: 13.5px; color: var(--muted); line-height: 1.5; }
+.ex .req p { min-height: 124px; font-size: 19px; }
+.lims { display: grid; gap: 6px; }
+.lims div { padding: 10px 12px; border-radius: 10px; background: var(--mist); display: grid; gap: 2px; }
+.lims small { font-size: 12px; color: var(--muted); }
+.lims b { font: 500 15px/1.3 var(--sans); }
+.neg { display: grid; gap: 8px; min-height: 196px; align-content: start; }
+.m { max-width: 88%; padding: 9px 13px; border-radius: 14px; font-size: 14.5px; line-height: 1.45; opacity: 0; transform: translateY(8px); transition: opacity .4s, transform .4s; }
+.m.in { opacity: 1; transform: none; }
+.m.a { justify-self: start; background: var(--ink); color: #eceaf5; border-bottom-left-radius: 4px; }
+.m.h { justify-self: end; background: var(--card); border: 1px solid var(--line); border-bottom-right-radius: 4px; }
+.m::before { display: block; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; opacity: .65; margin-bottom: 2px; }
+.m.a::before { content: "Agent"; } .m.h::before { content: "Hotel B"; }
+.donebar { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 10px; }
+.donebar span { display: inline-flex; align-items: center; gap: 9px; padding: 11px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); font-size: 14.5px; font-weight: 500; opacity: .35; transition: opacity .4s, border-color .4s; }
+.donebar span.in { opacity: 1; border-color: var(--ink); }
+.donebar i { width: 9px; height: 9px; border-radius: 50%; background: #8fd3b6; }
+.exnote { margin-top: 12px; font-size: 13px; color: var(--muted); }
+
+/* who: two paths */
+.paths { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.paths article { background: var(--card); border-radius: 20px; border: 1px solid var(--line); overflow: hidden; display: grid; gap: 14px; padding-bottom: 28px; align-content: start; scroll-margin-top: 90px; }
+.paths .paint { height: 190px; border-radius: 0; -webkit-mask-image: linear-gradient(#000 78%, transparent); mask-image: linear-gradient(#000 78%, transparent); }
+.paths article > :not(.paint) { margin: 0 28px; }
+.paths h3 { font-size: 26px; }
+.paths ul { padding: 0; list-style: none; display: grid; gap: 10px; }
+.paths li { position: relative; padding-left: 24px; color: var(--ink-2); font-size: 16px; line-height: 1.5; }
+.paths li::before { content: ""; position: absolute; left: 2px; top: .42em; width: 10px; height: 6px; border-left: 2px solid var(--violet); border-bottom: 2px solid var(--violet); transform: rotate(-45deg); }
+.ctl { font-size: 15px; color: var(--ink-2); padding: 12px 14px; background: var(--mist); border-radius: 12px; }
+.ctl b { color: var(--ink); font-weight: 600; }
+.paths .btn { justify-self: start; }
+.limits > div:nth-child(n+5) p { font-size: 18px; }
+
+@media (max-width: 980px) {
+  .two, .pains, .paths, .ex { grid-template-columns: 1fr; }
+  .map { grid-template-columns: 1fr; gap: 0; }
+  .wire { height: 78px; transform: none; }
+  .wire .trk { display: none; }
+  .wire::before { content: ""; position: absolute; left: 50%; top: 10px; bottom: 10px; width: 2px; background: repeating-linear-gradient(180deg, var(--line) 0 6px, transparent 6px 11px); }
+  .wire::after { content: ""; position: absolute; left: calc(50% - 5px); top: 10px; width: 10px; height: 10px; border-radius: 50%; background: var(--amber); box-shadow: 0 0 10px 2px rgba(243,183,104,.7); animation: rund 2.2s linear infinite; }
+  .wl { left: auto; right: calc(50% + 16px); text-align: right; width: 40%; }
+  .wl.b { right: auto; left: calc(50% + 16px); text-align: left; }
+  .wl.t, .wl.b { top: 30px; bottom: auto; }
+  .col { opacity: 1; }
+  .neg { min-height: 0; }
+}
+@keyframes rund { 0% { top: 10px; opacity: 0; } 15% { opacity: 1; } 85% { opacity: 1; } 100% { top: calc(100% - 20px); opacity: 0; } }
+@media (max-width: 600px) { .two > div { padding: 22px; } .paths article > :not(.paint) { margin: 0 20px; } .net { padding: 18px; } .jobs-mini { grid-template-columns: 1fr; } }
+</style>
+<link rel="stylesheet" href="../shared/creator.css"><script defer src="../shared/preview.js"></script></head>
+<body><div class="startup-credit"><span>Built by Rimon R for Travellabs</span><a href="../../businesses.html">All businesses ↗</a></div>
+
+
+<nav class="top" aria-label="Main"><div class="wrap">
+  <a class="logo" href="#top"><span class="mk" aria-hidden="true"></span><span><b>Agentic Distribution Network</b><small>and Exchange · a proposal</small></span></a>
+  <div class="links"><a href="#idea">The idea</a><a href="#network">The Network</a><a href="#exchange">The Exchange</a><a href="#who">Who it's for</a><a href="#limits">Limits</a></div>
+  <a class="btn nav-btn" href="#join" style="height:42px">Join the first group</a>
+</div></nav>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div class="hero-c" data-in>
+        <span class="kick">A Travellabs startup proposal</span>
+        <h1>Ask once. <em>Trusted</em> suppliers answer.</h1>
+        <p class="lead">One shared place where AI agents buy travel, and airlines, hotels and tour companies sell it on their own terms. Everyone is checked, everyone follows the same rules, the money moves safely and every promise is written down.</p>
+        <div class="btns"><a class="btn" href="#sell">I sell travel</a><a class="btn ghost" href="#build">I build AI agents</a></div>
+      </div>
+      <div data-in><div class="paint"><canvas data-paint="hero" aria-label="Painting of a harbour at dusk, many small warm lights drifting across the water toward one brighter light" role="img"></canvas></div></div>
+    </div>
+
+    <div class="two" data-in>
+      <div><span class="two-k">Part one</span><h3>The Network</h3><p>The rules of the room. Who is allowed in, the one way business is done, how the money moves, and what happens when something goes wrong.</p></div>
+      <div><span class="two-k">Part two</span><h3>The Exchange</h3><p>Where deals happen. An agent sends one request to every matching supplier. Suppliers answer with private offers, and the two sides can negotiate.</p></div>
+    </div>
+
+    <div class="plain" data-in><span>In plain words</span><p>Think of a big market. A guard at the door checks everyone's name tag. Inside, everyone follows the same rules, a cashier holds the money until the deal is done, and a notekeeper writes down every promise. You call out what you want once. The stalls quietly tell you their best price, and you can haggle. Here, the shoppers are AI agents and the stalls are airlines and hotels.</p></div>
+  </div>
+</section>
+
+<section class="sec" id="idea" style="padding-top:40px">
+  <div class="wrap">
+    <div class="part-h" data-in><div><span class="kick">The idea in one picture</span><h2>Agents on one side. Suppliers on the other. One set of rules in the middle.</h2></div><p class="lead">Today each AI agent has to strike a separate deal with each supplier. Here, both sides join once and can then do business with every other member.</p></div>
+    <div class="map" data-in>
+      <div class="side">
+        <h4>Who asks</h4>
+        <div class="it"><b>AI assistants</b><span>the ones people use every day</span></div>
+        <div class="it"><b>Travel agencies</b><span>their agents, booking for customers</span></div>
+        <div class="it"><b>Business travel teams</b><span>booking for employees</span></div>
+        <div class="it"><b>Online travel sites and startups</b><span>building their own agents</span></div>
+      </div>
+      <div class="wire" aria-hidden="true"><span class="wl t">one request</span><div class="trk go"><i></i></div><div class="trk back"><i></i><i></i><i></i></div><span class="wl b">private offers</span></div>
+      <div class="net">
+        <h4>The Network</h4>
+        <div class="jobs-mini">
+          <div><svg viewBox="0 0 24 24"><rect x="4" y="6" width="16" height="13" rx="2"/><path d="M9 6V4h6v2M8 11h8M8 15h5"/></svg>Checks who you are</div>
+          <div><svg viewBox="0 0 24 24"><path d="M6 4h9l3 3v13H6zM9 10h6M9 14h6"/></svg>One set of rules</div>
+          <div><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="11" rx="2"/><circle cx="12" cy="12.5" r="2.4"/></svg>Moves the money</div>
+          <div><svg viewBox="0 0 24 24"><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3zM9 9h6M9 13h4"/></svg>Keeps the record</div>
+        </div>
+        <div class="xch"><h4>The Exchange</h4><div class="xch-r"><span>Ask once</span><span>Private offers</span><span>Negotiate</span><span>Book</span></div></div>
+      </div>
+      <div class="wire" aria-hidden="true"><span class="wl t">passed on</span><div class="trk go"><i></i></div><div class="trk back"><i></i><i></i><i></i></div><span class="wl b">answers</span></div>
+      <div class="side">
+        <h4>Who answers</h4>
+        <div class="it"><b>Airlines</b><span>flights, seats, bags</span></div>
+        <div class="it"><b>Hotels and hotel groups</b><span>rooms and extras</span></div>
+        <div class="it"><b>Wholesalers</b><span>stock bought in bulk</span></div>
+        <div class="it"><b>Tour and activity companies</b><span>things to do</span></div>
+      </div>
+    </div>
+    <p class="later" data-in><b>Later:</b> the two sides blur. Any member's agent will be able to ask or answer, so a hotel's own agent could make an offer to a traveller's agent. Same rules, same record.</p>
+  </div>
+</section>
+
+<section class="sec" id="problem" style="padding-top:40px">
+  <div class="wrap split">
+    <div class="paint-col" data-in><div class="paint"><canvas data-paint="crowd" aria-label="The same harbour, crowded with hundreds of small lights going in every direction" role="img"></canvas></div><p class="cap">Today: everyone asking everyone, with no rules.</p></div>
+    <div class="copy" data-in>
+      <span class="kick">The problem</span>
+      <h2>AI agents are starting to shop for people. There is no shared way for them to buy.</h2>
+      <div class="pains">
+        <div><b>If you sell travel</b><ul><li>Agents ask thousands of questions and most never book.</li><li>You can't tell a real buyer from a time-waster, so you block both.</li><li>Every agent wants its own link, its own contract and its own way to pay.</li></ul></div>
+        <div><b>If you build AI agents</b><ul><li>You sign and build one supplier at a time.</li><li>You get blocked because nobody knows who you are.</li><li>When a booking goes wrong, there is no agreed way to fix it.</li></ul></div>
+      </div>
+      <div class="num"><b>How many questions for each booking</b><div class="cost"><div><span>Today</span><span class="ph">[searches per booking: check source before publishing]</span></div><div><span>With AI agents</span><span class="ph">[expected searches per booking: check source before publishing]</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="network" style="padding-top:20px">
+  <div class="wrap">
+    <div class="part-h" data-in><div><span class="kick">How it works · part one</span><h2>The Network does four jobs</h2></div><p class="lead">These are the jobs nobody does today. Each one is done once, by the Network, for every member.</p></div>
+    <div class="split rev">
+      <div class="paint-col" data-in><div class="paint"><canvas data-paint="trust" aria-label="A few lights holding steady along the shore, standing for checked members" role="img"></canvas></div><p class="cap">A few lights hold steady: members everyone can check.</p></div>
+      <div class="jobs" data-in id="jobs">
+        <article><i>1</i><div><b>Checks who you are</b><p>Every agent and supplier is checked before joining. An agent carries an ID that says who it works for and what it may do: look, hold or book.</p></div></article>
+        <article><i>2</i><div><b>Sets one way of doing business</b><p>The same steps for everyone: ask, offer, negotiate, hold, book, change, cancel. Build it once and you can deal with every member.</p></div></article>
+        <article><i>3</i><div><b>Moves the money</b><p>The Network takes payment from the buyer and pays the supplier. Suppliers know they will be paid. Buyers only pay for what was confirmed.</p></div></article>
+        <article><i>4</i><div><b>Keeps the record and settles problems</b><p>Every request, offer and agreement is written down. If something goes wrong, both sides look at the same record, and there is one agreed way to sort it out.</p></div></article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="exchange" style="padding-top:20px">
+  <div class="wrap">
+    <div class="part-h" data-in><div><span class="kick">How it works · part two</span><h2>The Exchange: ask once, then negotiate</h2></div><p class="lead">This is where a deal is made. One request reaches every supplier that wants it. Each answers privately. The agent can take an offer as it is, or negotiate inside limits each side set beforehand.</p></div>
+
+    <div class="ex" id="ex" data-in>
+      <div class="col" data-step="0">
+        <span class="col-h"><i>1</i>Ask once</span>
+        <div class="req"><span class="lbl">One request</span><p id="reqT"></p><span class="badge"><i></i>ID checked · books for a travel agency's customers</span></div>
+        <p class="col-n">Sent to every hotel in the Network that sells rooms in Shinjuku.</p>
+      </div>
+      <div class="col" data-step="1">
+        <span class="col-h"><i>2</i>Private offers</span>
+        <div class="offers" id="offers">
+          <div class="offer"><b>Hotel A, Shinjuku</b><small>Four-star · free to cancel</small><span class="p">3 nights<em>$1,180</em></span><span class="only">Only this agent sees this offer</span></div>
+          <div class="offer"><b>Hotel B, Nishi-Shinjuku</b><small>Four-star · free to cancel</small><span class="p">3 nights<em>$1,120</em></span><span class="only">Only this agent sees this offer</span></div>
+          <div class="offer"><b>Hotel C, Shinjuku-gyoen</b><small>Four-star · free to cancel</small><span class="p">3 nights<em>$1,160</em></span><span class="only">Only this agent sees this offer</span></div>
+        </div>
+        <p class="col-n">Hotels can't see each other's offers. Each chose whether to answer at all.</p>
+      </div>
+      <div class="col" data-step="2">
+        <span class="col-h"><i>3</i>Negotiate</span>
+        <div class="lims"><div><small>Agent's limit, set by the traveller</small><b>$1,200 · free to cancel</b></div><div><small>Hotel B's lowest price, set by the hotel</small><b>kept private</b></div></div>
+        <div class="neg" id="neg">
+          <p class="m a">Can you do $990 for the three nights?</p>
+          <p class="m h">$1,080, and we'll add breakfast.</p>
+          <p class="m a">$1,040 with breakfast and late check-out?</p>
+          <p class="m h">Agreed. Held for you for 20 minutes.</p>
+        </div>
+      </div>
+    </div>
+    <div class="donebar" id="donebar"><span><i></i>Booked at $1,040</span><span><i></i>Paid through the Network</span><span><i></i>Written to the shared record</span></div>
+    <p class="exnote">Made-up example. Hotel names and prices are placeholders.</p>
+  </div>
+</section>
+
+<section class="sec" id="who" style="padding-top:20px">
+  <div class="wrap">
+    <div class="part-h" data-in><div><span class="kick">Who it is for</span><h2>Two kinds of members. Both get something on day one.</h2></div><p class="lead">The Network only works when both sides join. So it has to be worth it for each of them.</p></div>
+    <div class="paths" data-in>
+      <article id="sell">
+        <div class="paint"><canvas data-paint="w1" aria-hidden="true"></canvas></div>
+        <span class="kick">If you sell travel</span>
+        <h3>Airlines, hotels, wholesalers, tour and activity companies</h3>
+        <ul>
+          <li>Requests only from checked agents, and you can see who they book for.</li>
+          <li>Answer with a private offer, or negotiate inside the limits you set.</li>
+          <li>Get paid through the Network for every confirmed booking.</li>
+          <li>One set of rules, instead of a separate deal with every agent.</li>
+        </ul>
+        <p class="ctl"><b>You stay in charge of</b> which agents you answer, what price each one sees and your lowest price.</p>
+        <a class="btn" href="#join" data-role="0">Join as a supplier</a>
+      </article>
+      <article id="build">
+        <div class="paint"><canvas data-paint="w3" aria-hidden="true"></canvas></div>
+        <span class="kick">If you build AI agents</span>
+        <h3>AI assistants, travel agencies, business travel teams, online travel sites</h3>
+        <ul>
+          <li>One way in to many suppliers, instead of one deal at a time.</li>
+          <li>An ID that suppliers recognise, so you don't get blocked.</li>
+          <li>Private offers and prices you can negotiate for your traveller.</li>
+          <li>Payment and problems handled by the Network.</li>
+        </ul>
+        <p class="ctl"><b>You stay in charge of</b> your traveller's budget, the rules your agent follows and when a person must approve.</p>
+        <a class="btn" href="#join" data-role="1">Join as an agent builder</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="limits" style="padding-top:20px">
+  <div class="wrap">
+    <div class="part-h" data-in><div><span class="kick">Limits and commitments</span><h2>What is true today</h2></div><p class="lead">This only works if other companies join. So here is exactly where things stand.</p></div>
+    <div class="limits" data-in>
+      <div><b>Stage</b><p>This is a proposal. Nothing here is running for real yet.</p></div>
+      <div><b>Who has joined</b><p>Nobody yet. We will name the first members only after they agree in writing.</p></div>
+      <div><b>Suppliers stay in charge</b><p>Each one decides which agents it answers, what they see and how low it will go.</p></div>
+      <div><b>Open rules</b><p>The rules will be public, so anyone can check how the Network works.</p></div>
+      <div><b>Money</b><p><span class="ph">[which licensed payment partner holds and moves the money: to confirm]</span></p></div>
+      <div><b>Fees and problems</b><p><span class="ph">[what the Network charges, and who decides disputes: to confirm]</span></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="close" id="join">
+  <div class="paint"><canvas data-paint="close" aria-hidden="true"></canvas></div>
+  <div class="wrap">
+    <div class="close-c" data-in id="closeC">
+      <span class="kick">The first group</span>
+      <h2>Help write the rules.</h2>
+      <p class="lead">We are looking for a small group of suppliers and agent builders to try the Network on real requests, and to shape its rules before they are fixed.</p>
+      <form class="form" id="form"><input type="email" required placeholder="Work email" aria-label="Work email" autocomplete="email"><select aria-label="I am" id="role"><option>I sell travel</option><option>I build AI agents</option><option>I run a travel agency or travel site</option></select><button class="btn" type="submit">Join the first group</button></form>
+      <p class="done">Thank you. We will be in touch about the first group.</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-g"><p><b>Built by Rimon R for Travellabs.</b> A proposal for a shared travel marketplace.</p></div>
+    <div class="f-b"><span>Built by Rimon R for Travellabs. Draft for discussion.</span><span>Paintings are generated in your browser.</span></div>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const REDUCE = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
+  $$('[data-in]').forEach(el => io.observe(el));
+
+  /* ---------- painting kit: brush strokes sampled from a colour field ---------- */
+  const RND = (seed) => { let s = (seed >>> 0) || 1; return () => { s ^= s << 13; s ^= s >>> 17; s ^= s << 5; return ((s >>> 0) % 1000003) / 1000003; }; };
+  const h2 = (x, y) => { const s = Math.sin(x * 127.1 + y * 311.7) * 43758.5453; return s - Math.floor(s); };
+  const vn = (x, y) => { const xi = Math.floor(x), yi = Math.floor(y), xf = x - xi, yf = y - yi, sx = xf * xf * (3 - 2 * xf), sy = yf * yf * (3 - 2 * yf); const a = h2(xi, yi), b = h2(xi + 1, yi), c = h2(xi, yi + 1), d = h2(xi + 1, yi + 1); return a + (b - a) * sx + (c - a) * sy + (a - b - c + d) * sx * sy; };
+  const fbm = (x, y) => .5 * vn(x, y) + .3 * vn(x * 2.1 + 5.2, y * 2.1 + 1.3) + .2 * vn(x * 4.3 + 9.1, y * 4.3 + 7.7);
+  const HX = (h) => [1, 3, 5].map(i => parseInt(h.slice(i, i + 2), 16));
+  const L = (a, b, t) => { t = Math.max(0, Math.min(1, t)); return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t]; };
+  const sm = (e0, e1, x) => { const t = Math.max(0, Math.min(1, (x - e0) / (e1 - e0))); return t * t * (3 - 2 * t); };
+  const cl = (n) => (n < 0 ? 0 : n > 255 ? 255 : n | 0);
+  const P = { top: HX('#2b2a5e'), mid: HX('#4a4f99'), low: HX('#8a76b2'), glow: HX('#e8b8a2'), shore: HX('#2c2d5c'), shore2: HX('#3a3871'), water: HX('#2a3170'), deep: HX('#1c2152'), amber: HX('#f3b768'), mist: HX('#b9b3d8') };
+
+  // The harbour: dusk sky, a low far shore with a few windows, still water.
+  const harbour = (opt = {}) => (u, v, t) => {
+    const hz = opt.hz || .5;
+    const shoreTop = hz - .045 - .03 * fbm(u * 4 + (opt.seed || 0), 1) - .025 * Math.max(0, Math.sin(u * 7 + 1));
+    if (v < hz && v > shoreTop) {
+      if (h2(Math.floor(u * 150), Math.floor(v * 90)) > .975) return [P.amber, 0, 0];
+      return [L(P.shore, P.shore2, fbm(u * 18, v * 18)), (fbm(u * 6, v) - .5) * .6, 0];
+    }
+    if (v < hz) {
+      let c = v < hz * .5 ? L(P.top, P.mid, v / (hz * .5)) : L(P.mid, P.low, (v - hz * .5) / (hz * .5));
+      c = L(c, P.glow, sm(.55, 1, v / hz) * .55 * (1 - Math.abs(u - .62)));
+      const cl2 = fbm(u * 2.4 + t * .01, v * 7);
+      if (cl2 > .6) c = L(c, P.mist, (cl2 - .6) * 1.6);
+      return [c, -.18 + (fbm(u * 2, v * 5) - .5) * .5, 0];
+    }
+    const k = (v - hz) / (1 - hz);
+    const mv = hz - (v - hz) * .9;
+    let c = mv < hz * .5 ? L(P.top, P.mid, mv / (hz * .5)) : L(P.mid, P.low, (mv - hz * .5) / (hz * .5));
+    c = L(L(c, P.water, .45 + k * .3), P.deep, k * .6);
+    if (fbm(u * 30, v * 90 + t * .4) > .72) c = L(c, P.mist, .35);
+    return [c, (fbm(u * 3, v * 20) - .5) * .18, 1];
+  };
+
+  // Light behaviour for each painting.
+  const glow = (ctx, x, y, r, a, water, H, hz) => {
+    const g = ctx.createRadialGradient(x, y, 0, x, y, r * 4);
+    g.addColorStop(0, `rgba(255,214,150,${a})`); g.addColorStop(.25, `rgba(243,183,104,${a * .55})`); g.addColorStop(1, 'rgba(243,183,104,0)');
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(x, y, r * 4, 0, 7); ctx.fill();
+    ctx.fillStyle = `rgba(255,226,178,${Math.min(1, a * 1.2)})`; ctx.beginPath(); ctx.ellipse(x, y, r * .9, r * .7, .3, 0, 7); ctx.fill();
+    if (water && y > hz * H) { for (let i = 1; i < 6; i++) { ctx.fillStyle = `rgba(243,183,104,${a * (.5 - i * .08)})`; ctx.fillRect(x - r * (1.6 - i * .15) + Math.sin(i * 2.3) * r * .5, y + i * r * 1.1, r * (3.2 - i * .3), Math.max(1, r * .35)); } }
+  };
+  const LIGHTS = {
+    hero(ctx, W, H, t, k) {
+      const hz = .5, tx = W * .68, ty = H * .62;
+      for (let i = 0; i < 30; i++) {
+        const sp = .045 + h2(i, 3) * .04, p = ((t * sp) + h2(i, 9)) % 1;
+        const sx = W * (h2(i, 1) < .5 ? -.05 + h2(i, 5) * .3 : .2 + h2(i, 6) * .8), sy = H * (.54 + h2(i, 2) * .44);
+        const e = 1 - Math.pow(1 - p, 2), cx = (sx + tx) / 2 + (h2(i, 7) - .5) * W * .25, cy = (sy + ty) / 2 + (h2(i, 8) - .5) * H * .2;
+        const x = (1 - e) * (1 - e) * sx + 2 * (1 - e) * e * cx + e * e * tx, y = (1 - e) * (1 - e) * sy + 2 * (1 - e) * e * cy + e * e * ty;
+        const a = Math.min(1, p * 6) * (1 - sm(.8, 1, p)) * .85;
+        glow(ctx, x, y, (1.6 + h2(i, 4) * 1.4) * k, a, true, H, hz);
+      }
+      glow(ctx, tx, ty, (5 + Math.sin(t * 1.6) * .6) * k, .95, true, H, hz);
+    },
+    crowd(ctx, W, H, t, k) {
+      for (let i = 0; i < 240; i++) {
+        const x = W * (.5 + .52 * Math.sin(t * (.12 + h2(i, 1) * .5) + h2(i, 2) * 40)), y = H * (.52 + .46 * Math.abs(Math.sin(t * (.1 + h2(i, 3) * .45) + h2(i, 4) * 40)));
+        glow(ctx, x, y, (.9 + h2(i, 5) * 1.3) * k, .45 + .4 * h2(i, 6), h2(i, 7) > .6, H, .5);
+      }
+    },
+    trust(ctx, W, H, t, k) {
+      const pts = [[.14, .47], [.31, .46], [.47, .48], [.63, .455], [.8, .47]];
+      pts.forEach(([u, v], i) => glow(ctx, W * u, H * v, (3.2 + Math.sin(t * 1.2 + i) * .35) * k, .9, true, H, .44));
+      const p = (t * .06) % 1; glow(ctx, W * (-.05 + p * 1.1), H * (.78 - Math.sin(p * Math.PI) * .12), 1.8 * k, .6 * Math.sin(p * Math.PI), true, H, .44);
+    },
+    once(ctx, W, H, t, k) {
+      const pts = [[.6, .455], [.72, .47], [.84, .45], [.93, .465]];
+      pts.forEach(([u, v], i) => glow(ctx, W * u, H * v, 3 * k, .85, true, H, .44));
+      const T = 8, q = (t % T) / T, sx = W * .08, sy = H * .76, cx = W * .4, cy = H * .62;
+      if (q < .35) { const e = q / .35; glow(ctx, sx + (cx - sx) * e, sy + (cy - sy) * e, 2.6 * k, .9, true, H, .44); }
+      else if (q < .45) { const e = (q - .35) / .1; glow(ctx, cx, cy, 2.6 * k * (1 + e), .9 * (1 - e), true, H, .44); }
+      else { const e = Math.min(1, (q - .45) / .4); pts.forEach(([u, v], i) => { if (i === 2) return; const ee = Math.min(1, Math.max(0, e - i * .06)); const x = W * u + (cx - W * u) * ee, y = H * v + (cy - H * v) * ee; glow(ctx, x, y, 2 * k, .85 * (1 - sm(.85, 1, ee) * .7), true, H, .44); }); }
+    },
+    quiet(ctx, W, H, t, k) { for (let i = 0; i < 7; i++) glow(ctx, W * (.12 + i * .13), H * (.47 + Math.sin(i * 2.1) * .02), (2 + Math.sin(t + i) * .3) * k, .75, true, H, .44); }
+  };
+
+  const SCENES = {
+    hero: { field: harbour({ hz: .5 }), lights: LIGHTS.hero },
+    crowd: { field: harbour({ hz: .5, seed: 3 }), lights: LIGHTS.crowd },
+    trust: { field: harbour({ hz: .44, seed: 5 }), lights: LIGHTS.trust },
+    once: { field: harbour({ hz: .44, seed: 7 }), lights: LIGHTS.once },
+    w1: { field: harbour({ hz: .44, seed: 9 }), lights: (c, W, H, t, k) => [[.3, .46], [.55, .45], [.78, .47]].forEach(([u, v], i) => glow(c, W * u, H * v, (3 + Math.sin(t + i) * .4) * k, .9, true, H, .44)) },
+    w2: { field: harbour({ hz: .44, seed: 11 }), lights: (c, W, H, t, k) => { for (let i = 0; i < 9; i++) { const p = ((t * .05) + i / 9) % 1; glow(c, W * (.1 + p * .8), H * (.6 + Math.sin(i * 1.7) * .15), 1.6 * k, .7 * Math.sin(p * Math.PI), true, H, .44); } } },
+    w3: { field: harbour({ hz: .44, seed: 13 }), lights: (c, W, H, t, k) => { const p = (t * .08) % 1; glow(c, W * (.1 + p * .7), H * .7, 2.4 * k, .9, true, H, .44); glow(c, W * .78, H * .46, 3 * k, .9, true, H, .44); } },
+    close: { field: harbour({ hz: .55, seed: 15 }), lights: LIGHTS.quiet }
+  };
+
+  function mountPaint(cv) {
+    const sc = SCENES[cv.dataset.paint]; if (!sc) return;
+    const ctx = cv.getContext('2d'), base = document.createElement('canvas'), b = base.getContext('2d');
+    let W = 0, H = 0, dpr = 1, k = 1, strokes = [], live = [], shown = 0, built = false, vis = false, raf = 0, last = 0;
+    const t0 = performance.now() - Math.random() * 20000;
+    const draw = (s, c) => { b.strokeStyle = `rgb(${cl(c[0] + s.j[0])},${cl(c[1] + s.j[1])},${cl(c[2] + s.j[2])})`; b.lineWidth = s.w; const dx = Math.cos(s.a) * s.l / 2, dy = Math.sin(s.a) * s.l / 2; b.beginPath(); b.moveTo(s.x - dx, s.y - dy); b.lineTo(s.x + dx, s.y + dy); b.stroke(); };
+    const build = () => {
+      const r = cv.getBoundingClientRect(); if (r.width < 4 || r.height < 4) return false;
+      W = r.width; H = r.height; dpr = Math.min(1.5, devicePixelRatio || 1);
+      cv.width = base.width = Math.round(W * dpr); cv.height = base.height = Math.round(H * dpr);
+      b.setTransform(dpr, 0, 0, dpr, 0, 0); b.lineCap = 'round';
+      k = Math.max(.5, Math.min(1.4, Math.sqrt(W * H) / 650));
+      const rnd = RND(Math.round(W * 13 + H * 7) ^ cv.dataset.paint.length * 99991);
+      const cell = Math.max(4, Math.round(7 * k));
+      for (let y = 0; y < H; y += cell) for (let x = 0; x < W; x += cell) { const [c] = sc.field((x + cell / 2) / W, (y + cell / 2) / H, 0); b.fillStyle = `rgb(${c[0] | 0},${c[1] | 0},${c[2] | 0})`; b.fillRect(x, y, cell + 1, cell + 1); }
+      strokes = []; live = [];
+      const n = Math.round(W * H / (k < .8 ? 18 : 24));
+      for (let i = 0; i < n; i++) {
+        const big = i < n * .5, x = rnd() * W, y = rnd() * H, [c, a, lv] = sc.field(x / W, y / H, 0);
+        const s = { x, y, l: (big ? 10 + rnd() * 16 : 4 + rnd() * 8) * k, w: (big ? 4 + rnd() * 4 : 1.8 + rnd() * 2.4) * k, a: a + (rnd() - .5) * .5, j: [(rnd() - .5) * 22, (rnd() - .5) * 16, (rnd() - .5) * 22], c };
+        strokes.push(s); if (lv) live.push(s);
+      }
+      shown = REDUCE ? n : 0; if (REDUCE) strokes.forEach(s => draw(s, s.c));
+      built = true; return true;
+    };
+    const frame = (now) => {
+      raf = 0; if (!vis) return;
+      if (!built && !build()) { raf = requestAnimationFrame(frame); return; }
+      const t = (now - t0) / 1000;
+      if (shown < strokes.length) { const end = Math.min(strokes.length, shown + Math.ceil(strokes.length / 50)); for (let i = shown; i < end; i++) draw(strokes[i], strokes[i].c); shown = end; }
+      else if (now - last > 80 && live.length) { last = now; for (let i = 0; i < Math.max(10, live.length * .02); i++) { const s = live[(Math.random() * live.length) | 0], [c] = sc.field(s.x / W, s.y / H, t); draw(s, c); } }
+      ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.drawImage(base, 0, 0);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.globalCompositeOperation = 'lighter';
+      if (shown >= strokes.length * .6) sc.lights(ctx, W, H, REDUCE ? 14 : t, k);
+      ctx.globalCompositeOperation = 'source-over';
+      if (!REDUCE) raf = requestAnimationFrame(frame);
+    };
+    new IntersectionObserver(([e]) => { vis = e.isIntersecting; if (vis && !raf) raf = requestAnimationFrame(frame); }, { rootMargin: '100px' }).observe(cv);
+    let rt = 0, cw = 0, chh = 0;
+    new ResizeObserver(() => { const r = cv.getBoundingClientRect(); if (built && Math.abs(r.width - cw) < 2 && Math.abs(r.height - chh) < 2) return; cw = r.width; chh = r.height; clearTimeout(rt); rt = setTimeout(() => { built = false; if (vis && !raf) raf = requestAnimationFrame(frame); }, built ? 150 : 0); }).observe(cv);
+  }
+  $$('canvas[data-paint]').forEach(mountPaint);
+
+  /* ---------- the network's four jobs light up in turn ---------- */
+  (() => {
+    const lis = $$('#jobs article'); let i = 0;
+    const tick = () => { lis.forEach((li, j) => li.classList.toggle('on', j === i % lis.length)); i++; };
+    tick(); if (!REDUCE) setInterval(tick, 2800);
+  })();
+
+  /* ---------- exchange: ask once, private offers, negotiate, done ---------- */
+  const REQ = 'Two adults, Tokyo, 10 to 13 April, four-star hotel near Shinjuku, under $1,200, free to cancel.';
+  const offers = $$('#offers .offer'), msgs = $$('#neg .m'), cols = $$('#ex .col'), done = $$('#donebar span');
+  let tok = 0;
+  const wait = (ms, my) => new Promise((res, rej) => setTimeout(() => (my === tok ? res() : rej('stop')), REDUCE ? 0 : ms));
+  const step = (n) => cols.forEach((c, j) => c.classList.toggle('on', j === n));
+  async function play(my) {
+    while (my === tok) {
+      [...offers, ...msgs, ...done].forEach(o => o.classList.remove('in', 'pick')); $('#reqT').textContent = '';
+      step(0);
+      for (let i = 1; i <= REQ.length; i++) { $('#reqT').textContent = REQ.slice(0, i); await wait(20, my); }
+      await wait(700, my); step(1);
+      for (const o of offers) { o.classList.add('in'); await wait(600, my); }
+      await wait(800, my); offers[1].classList.add('pick');
+      await wait(900, my); step(2);
+      for (const m of msgs) { m.classList.add('in'); await wait(1300, my); }
+      for (const d of done) { d.classList.add('in'); await wait(500, my); }
+      cols.forEach(c => c.classList.add('on'));
+      await wait(4500, my);
+      if (REDUCE) break;
+    }
+  }
+  let started = false;
+  new IntersectionObserver(([e]) => { if (e.isIntersecting && !started) { started = true; play(++tok).catch(x => { if (x !== 'stop') throw x; }); } }, { threshold: .25 }).observe($('#ex'));
+
+  /* path buttons preselect the role in the form */
+  $$('[data-role]').forEach(a => a.addEventListener('click', () => { $('#role').selectedIndex = +a.dataset.role; }));
+
+  /* ---------- join (no backend yet: confirms on screen only) ---------- */
+  $('#form').addEventListener('submit', (e) => { e.preventDefault(); $('#closeC').classList.add('sent'); });
+})();
+</script>
+</body>
+</html>

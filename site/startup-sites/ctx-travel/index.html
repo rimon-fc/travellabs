@@ -1,0 +1,923 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ctx.travel | Your travel agent, with members-only prices</title>
+<meta name="description" content="A members-only AI travel agent. It finds private flight and hotel rates, books only when you say yes, and keeps watching your hotel price after you book.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23fbf8f1'/%3E%3Cpath d='M7 20c3-9 8-11 10-6s6 3 8-4' fill='none' stroke='%2322201c' stroke-width='3' stroke-linecap='round'/%3E%3Ccircle cx='24' cy='9' r='3' fill='%23f26b4f'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Inter:wght@400;500;600&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #fbf8f1; --paper-2: #f4efe3; --card: #fffdf8; --ink: #22201c; --ink-2: #4a463e; --muted: #7d776b;
+  --rule: #dfe6f0; --margin: #f3b7ae; --blue: #2f5bd3; --coral: #f26b4f; --mint: #8fd3b6; --hl: #ffe066; --hl-2: #fff3b0; --lilac: #c8b8f2;
+  --hand: "Caveat", "Comic Sans MS", cursive; --serif: "Fraunces", Georgia, serif; --sans: "Inter", system-ui, sans-serif;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 17px/1.6 var(--sans); overflow-x: hidden; }
+a { color: inherit; }
+button { font: inherit; color: inherit; cursor: pointer; }
+h1, h2, h3 { font-family: var(--serif); font-weight: 400; letter-spacing: -.02em; line-height: 1.05; margin: 0; }
+p { margin: 0; }
+.wrap { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+.hand { font-family: var(--hand); }
+.kick { font: 700 24px/1 var(--hand); color: var(--coral); }
+.hl { background: linear-gradient(transparent 55%, var(--hl) 55%, var(--hl) 90%, transparent 90%); padding: 0 .1em; }
+.lead { font-size: 19px; line-height: 1.6; color: var(--ink-2); max-width: 560px; }
+.btn { display: inline-flex; align-items: center; gap: 10px; height: 52px; padding: 0 22px; border: 2px solid var(--ink); border-radius: 14px 18px 12px 16px / 16px 12px 18px 14px; background: var(--ink); color: var(--paper); font: 600 16px/1 var(--sans); text-decoration: none; box-shadow: 3px 4px 0 var(--coral); transition: transform .15s, box-shadow .15s; }
+.btn:hover { transform: translate(-2px, -2px) rotate(-.5deg); box-shadow: 5px 6px 0 var(--coral); }
+.btn.ghost { background: var(--card); color: var(--ink); box-shadow: 3px 4px 0 var(--ink); }
+canvas.sk { display: block; width: 100%; height: 100%; }
+section { position: relative; }
+.sec { padding: 110px 0; }
+
+/* ruled notebook paper */
+.ruled { background-color: var(--card); background-image: linear-gradient(90deg, transparent 54px, var(--margin) 54px, var(--margin) 56px, transparent 56px), repeating-linear-gradient(transparent 0 31px, var(--rule) 31px 32px); }
+
+/* endorsement + nav */
+.endorse { border-bottom: 1px dashed #d8d0bf; }
+.endorse .wrap { display: flex; align-items: center; gap: 12px; height: 44px; font: 500 12.5px/1 var(--sans); color: var(--muted); }
+.endorse img { height: 18px; width: auto; display: block; }
+.endorse img.tlogo { height: 21px; }
+.endorse .sep { width: 1px; height: 18px; background: #d8d0bf; }
+.endorse .tag { margin-left: auto; font: 700 18px/1 var(--hand); color: var(--ink-2); }
+nav.top { position: sticky; top: 0; z-index: 40; background: color-mix(in srgb, var(--paper) 90%, transparent); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+nav.top .wrap { display: flex; align-items: center; justify-content: space-between; height: 74px; gap: 20px; }
+.logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font: 600 22px/1 var(--serif); letter-spacing: -.02em; }
+.logo svg { width: 34px; height: 34px; }
+.logo em { font-style: italic; font-weight: 400; color: var(--coral); }
+.links { display: flex; gap: 6px; }
+.links a { white-space: nowrap; text-decoration: none; padding: 8px 12px; font-weight: 500; font-size: 15px; border-radius: 10px; }
+.links a:hover { background: var(--hl-2); }
+.nav-cta { height: 44px; font-size: 15px; }
+
+/* hero */
+.hero { padding: 64px 0 90px; }
+.hero-grid { display: grid; grid-template-columns: 1fr 1.05fr; gap: 56px; align-items: center; }
+.hero h1 { font-size: clamp(46px, 6vw, 84px); }
+.hero h1 .scrib { position: relative; white-space: nowrap; }
+.hero h1 .scrib svg { position: absolute; left: -4%; bottom: -14%; width: 108%; height: 40%; overflow: visible; }
+.hero h1 .scrib path { fill: none; stroke: var(--coral); stroke-width: 5; stroke-linecap: round; stroke-dasharray: 600; stroke-dashoffset: 600; animation: draw 1.4s .4s ease-out forwards; }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+.hero-c { display: grid; gap: 26px; }
+.hero-notes { display: flex; gap: 28px; flex-wrap: wrap; font: 700 22px/1.2 var(--hand); color: var(--ink-2); }
+.hero-notes span { display: inline-flex; gap: 8px; align-items: center; }
+.hero-notes span::before { content: "✓"; color: var(--blue); }
+.btns { display: flex; gap: 14px; flex-wrap: wrap; }
+
+/* notepad conversation */
+.pad { position: relative; border-radius: 6px; box-shadow: 0 1px 0 #e9e1cf, 0 26px 50px -30px rgba(34, 32, 28, .5); transform: rotate(.6deg); }
+.pad::before { content: ""; position: absolute; left: 50%; top: -14px; width: 120px; height: 30px; transform: translateX(-50%) rotate(-2deg); background: rgba(255, 224, 102, .75); box-shadow: 0 1px 2px rgba(0,0,0,.08); }
+.pad-in { padding: 34px 28px 22px 76px; min-height: 520px; display: flex; flex-direction: column; justify-content: flex-end; gap: 12px; overflow: hidden; }
+.pad-h { position: absolute; left: 76px; top: 26px; right: 28px; display: flex; justify-content: space-between; font: 700 20px/1 var(--hand); color: var(--muted); }
+.pad-h b { color: var(--coral); font-weight: 700; }
+.msg { max-width: 92%; animation: in .4s cubic-bezier(.2, 1.3, .4, 1) both; }
+@keyframes in { from { opacity: 0; transform: translateY(8px) rotate(-1deg); } }
+.msg.you { align-self: flex-end; font: 700 25px/1.25 var(--hand); color: var(--blue); text-align: right; }
+.msg.agent { align-self: flex-start; font-size: 15.5px; line-height: 1.5; background: var(--card); border: 1.5px solid var(--ink); border-radius: 4px 14px 12px 10px; padding: 10px 14px; box-shadow: 2px 3px 0 var(--ink); }
+.msg.agent b { font-weight: 600; }
+.opt { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; align-items: baseline; padding: 8px 0; border-bottom: 1px dashed #d8d0bf; }
+.opt:last-child { border-bottom: 0; }
+.opt small { grid-column: 1; font-size: 13px; color: var(--muted); }
+.opt .p { grid-row: 1 / span 2; grid-column: 2; text-align: right; font-size: 14px; }
+.opt .p s { color: var(--muted); display: block; font-size: 13px; }
+.opt .p b { font: 700 26px/1 var(--hand); color: var(--coral); position: relative; }
+.opt.pick .p b::after { content: ""; position: absolute; inset: -6px -10px; border: 2px solid var(--coral); border-radius: 50% 45% 55% 48% / 52% 58% 44% 50%; transform: rotate(-4deg); }
+.ok { display: inline-flex; gap: 8px; margin-top: 8px; }
+.ok span { font: 600 13px/1 var(--sans); padding: 8px 10px; border: 1.5px solid var(--ink); border-radius: 10px; }
+.ok span.y { background: var(--mint); }
+.ok span.y.press { transform: translate(2px, 2px); }
+.typing { display: inline-flex; gap: 5px; padding: 12px 14px; }
+.typing i { width: 7px; height: 7px; border-radius: 50%; background: var(--muted); animation: dot 1s infinite; }
+.typing i:nth-child(2) { animation-delay: .15s; } .typing i:nth-child(3) { animation-delay: .3s; }
+@keyframes dot { 50% { opacity: .25; transform: translateY(-3px); } }
+.pad-in .ink { align-self: flex-end; font: 700 25px/1.25 var(--hand); color: var(--blue); min-height: 32px; }
+.pad-in .ink::after { content: "|"; color: var(--coral); animation: dot 1s steps(2) infinite; margin-left: 2px; }
+.pad-doodle { position: absolute; right: -38px; bottom: -40px; width: 160px; height: 140px; pointer-events: none; }
+
+/* whiteboard steps */
+.board { background: var(--card); border: 2px solid var(--ink); border-radius: 20px 26px 18px 24px / 24px 18px 26px 20px; padding: 46px 40px 40px; position: relative; box-shadow: 6px 8px 0 var(--ink); }
+.board-h { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: end; margin-bottom: 36px; }
+.board h2, .sec h2 { font-size: clamp(36px, 4.4vw, 60px); }
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+.step { display: grid; gap: 10px; align-content: start; }
+.step .art { height: 170px; border-bottom: 1.5px dashed #cfc6b2; }
+.step .n { font: 700 30px/1 var(--hand); color: var(--coral); }
+.step h3 { font-size: 24px; }
+.step p { font-size: 15px; color: var(--ink-2); }
+
+/* member prices */
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.why { display: grid; gap: 22px; }
+.notes { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.notes li { padding-left: 34px; position: relative; font-size: 16.5px; }
+.notes li::before { content: ""; position: absolute; left: 0; top: 4px; width: 20px; height: 20px; border: 2px solid var(--ink); border-radius: 46% 54% 50% 50% / 50% 46% 54% 50%; }
+.notes li::after { content: "✓"; position: absolute; left: 4px; top: -4px; font: 700 26px/1 var(--hand); color: var(--blue); }
+.ledger { padding: 28px 28px 22px 80px; border-radius: 6px; box-shadow: 0 24px 50px -32px rgba(34, 32, 28, .55); transform: rotate(-.8deg); }
+.ledger-h { display: grid; grid-template-columns: 1.4fr .8fr .8fr; gap: 10px; font: 700 21px/1 var(--hand); color: var(--muted); padding-bottom: 10px; }
+.lrow { display: grid; grid-template-columns: 1.4fr .8fr .8fr; gap: 10px; align-items: center; min-height: 64px; border-top: 1px dashed #d8d0bf; }
+.lrow b { display: block; font-weight: 600; font-size: 15.5px; }
+.lrow small { font-size: 13px; color: var(--muted); }
+.lrow .pub { font: 700 24px/1 var(--hand); color: var(--muted); position: relative; justify-self: start; }
+.lrow .pub::after { content: ""; position: absolute; left: -4px; right: -4px; top: 50%; height: 2.5px; background: var(--ink); transform: rotate(-8deg) scaleX(0); transform-origin: left; transition: transform .5s; }
+.lrow.on .pub::after { transform: rotate(-8deg) scaleX(1); }
+.lrow .mem { font: 700 30px/1 var(--hand); color: var(--coral); opacity: 0; transform: translateY(6px); transition: opacity .4s .3s, transform .4s .3s; }
+.lrow .mem small { display: block; font: 600 12.5px/1.2 var(--sans); color: var(--blue); }
+.lrow.on .mem { opacity: 1; transform: none; }
+.fine { font-size: 13px; color: var(--muted); }
+
+/* booked elsewhere tray + refunds */
+.tray-sec { background: var(--paper-2); border-top: 2px dashed #d8d0bf; border-bottom: 2px dashed #d8d0bf; }
+.tray { border: 2.5px dashed var(--ink); border-radius: 22px 30px 24px 28px / 28px 22px 30px 24px; background: var(--card); padding: 30px; display: grid; gap: 18px; text-align: center; justify-items: center; cursor: pointer; transition: background .2s, transform .2s; }
+.tray:hover, .tray.over { background: var(--hl-2); transform: rotate(-.4deg); }
+.tray .tray-ic { width: 120px; height: 100px; }
+.tray b { font: 600 22px/1.2 var(--serif); }
+.tray span { font-size: 14.5px; color: var(--muted); }
+.read { width: 100%; text-align: left; display: grid; gap: 8px; }
+.read div { display: flex; justify-content: space-between; gap: 12px; padding: 8px 12px; border: 1.5px solid var(--ink); border-radius: 10px; background: var(--paper); font-size: 14.5px; opacity: 0; transform: translateY(6px); transition: opacity .35s, transform .35s; }
+.read div.on { opacity: 1; transform: none; }
+.read div em { font: 700 20px/1 var(--hand); font-style: normal; color: var(--blue); }
+.tl { margin-top: 40px; height: 300px; background: var(--card); border: 2px solid var(--ink); border-radius: 18px 24px 16px 22px / 22px 16px 24px 18px; overflow: hidden; }
+.share { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 22px; }
+.share > div { background: var(--card); border: 1.5px solid var(--ink); border-radius: 12px 16px 10px 14px; padding: 16px 18px; }
+.share span { font: 700 20px/1 var(--hand); color: var(--muted); }
+.share b { display: block; font: 600 28px/1.2 var(--serif); margin-top: 6px; }
+.share .you b { color: var(--blue); }
+
+/* promises */
+.promise { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.promise > div { padding: 26px 24px; border-radius: 4px; background: var(--hl-2); box-shadow: 0 16px 30px -24px rgba(34, 32, 28, .6); transform: rotate(-1deg); display: grid; gap: 10px; align-content: start; }
+.promise > div:nth-child(2) { background: #e3f4ec; transform: rotate(.8deg); }
+.promise > div:nth-child(3) { background: #ece6fb; transform: rotate(-.4deg); }
+.promise .art { height: 110px; }
+.promise h3 { font-size: 24px; }
+.promise p { font-size: 15.5px; color: var(--ink-2); }
+
+/* journal trips */
+.journal { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.page { padding: 26px 22px 22px 66px; border-radius: 4px; box-shadow: 0 18px 36px -28px rgba(34, 32, 28, .6); display: grid; gap: 10px; align-content: start; min-height: 330px; position: relative; }
+.page:nth-child(2) { transform: rotate(1deg); } .page:nth-child(1) { transform: rotate(-1deg); }
+.page .d { font: 700 20px/1 var(--hand); color: var(--muted); }
+.page h3 { font: 700 34px/1 var(--hand); letter-spacing: 0; color: var(--ink); }
+.page p { font: 600 22px/1.32 var(--hand); color: var(--blue); }
+.page .saved { margin-top: auto; justify-self: start; font: 700 24px/1 var(--hand); color: var(--coral); border: 2px solid var(--coral); border-radius: 50% 46% 52% 48% / 55% 50% 50% 45%; padding: 10px 14px; transform: rotate(-3deg); }
+.page .ex { position: absolute; right: 16px; top: 14px; font: 600 11px/1 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+
+/* questions */
+.qs { max-width: 860px; }
+details { border-bottom: 1.5px dashed #cfc6b2; }
+summary { list-style: none; cursor: pointer; padding: 22px 40px 22px 0; display: block; position: relative; font: 600 22px/1.3 var(--serif); }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; position: absolute; right: 4px; top: 24px; font: 700 34px/.8 var(--hand); color: var(--coral); transition: transform .3s; }
+details[open] summary::after { transform: rotate(45deg); }
+details p { padding: 0 0 22px; font-size: 16.5px; color: var(--ink-2); max-width: 720px; }
+
+/* join */
+.join { text-align: center; display: grid; justify-items: center; gap: 22px; }
+.join h2 { font-size: clamp(42px, 5.6vw, 76px); }
+.form { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; margin-top: 6px; }
+.form input { height: 52px; min-width: min(340px, 100%); padding: 0 16px; border: 2px solid var(--ink); border-radius: 12px 16px 10px 14px; background: var(--card); font: 400 16px/1 var(--sans); outline: none; }
+.form input:focus { background: #fff; box-shadow: 3px 4px 0 var(--blue); }
+.joined { display: none; font: 700 30px/1.2 var(--hand); color: var(--blue); }
+.join.done .form { display: none; }
+.join.done .joined { display: block; }
+.join-art { width: 260px; height: 150px; }
+
+/* footer */
+footer { border-top: 2px dashed #d8d0bf; padding: 60px 0 34px; }
+.f-g { display: flex; justify-content: space-between; gap: 28px; flex-wrap: wrap; align-items: center; padding-bottom: 34px; border-bottom: 1px dashed #d8d0bf; }
+.f-g p { max-width: 560px; font-size: 16px; color: var(--ink-2); }
+.f-g p b { font-weight: 600; color: var(--ink); }
+.f-logos { display: flex; align-items: center; gap: 22px; }
+.f-logos img { width: auto; display: block; }
+.f-logos img:first-child { height: 28px; } .f-logos img:last-child { height: 32px; }
+.f-logos .sep { width: 1px; height: 30px; background: #d8d0bf; }
+.f-b { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; padding-top: 22px; font-size: 13.5px; color: var(--muted); }
+.f-b nav { display: flex; gap: 18px; flex-wrap: wrap; }
+.f-b a { text-decoration: none; }
+
+
+
+/* app stage */
+.app-stage { position: relative; display: grid; justify-items: center; gap: 18px; padding: 10px 0 0; }
+.ann { position: absolute; left: -10px; top: 70px; z-index: 3; width: 190px; display: grid; gap: 2px; pointer-events: none; }
+.ann span { font: 700 28px/1.05 var(--hand); color: var(--coral); transform: rotate(-4deg); transition: opacity .3s; }
+.ann svg { width: 120px; height: 70px; margin-left: 60px; overflow: visible; }
+.ann path { fill: none; stroke: var(--ink); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 200; stroke-dashoffset: 200; }
+.ann.draw path { animation: draw .8s ease-out forwards; }
+.ann.swap span { opacity: 0; }
+.phone { position: relative; width: 300px; height: 620px; border-radius: 46px; background: #fff; border: 10px solid var(--ink); box-shadow: 10px 12px 0 var(--coral), 0 40px 60px -40px rgba(34,32,28,.6); overflow: hidden; transform: rotate(1.5deg); font-family: var(--sans); }
+.sb { position: absolute; inset: 0 0 auto; height: 34px; display: flex; justify-content: space-between; align-items: center; padding: 0 22px; font: 600 12px/1 var(--sans); z-index: 6; }
+.notch { width: 86px; height: 22px; border-radius: 14px; background: var(--ink); }
+.ah { position: absolute; top: 34px; left: 0; right: 0; height: 46px; display: flex; align-items: center; gap: 10px; padding: 0 16px; border-bottom: 1px solid #eee8db; background: #fffdf8; z-index: 5; }
+.am { font: 600 19px/1 var(--serif); } .am em { color: var(--coral); font-style: normal; }
+.at { font-size: 12.5px; font-weight: 600; color: var(--muted); background: var(--paper-2); border-radius: 999px; padding: 5px 9px; }
+.av { margin-left: auto; width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; font: 600 12px/1 var(--sans); background: var(--hl); border: 1.5px solid var(--ink); }
+.scr { position: absolute; inset: 80px 0 0; padding: 14px; opacity: 0; transform: translateX(24px); transition: opacity .45s, transform .45s; pointer-events: none; }
+.scr.on { opacity: 1; transform: none; }
+/* reel */
+.reel { border-radius: 16px; overflow: hidden; transition: transform .5s, height .5s; }
+.reel-img { height: 230px; background: linear-gradient(160deg, #f9c79a 0%, #f26b4f 45%, #7b3e5a 100%); position: relative; color: #fff; display: grid; place-items: center; }
+.reel-img::after { content: ""; position: absolute; left: 50%; top: 52%; width: 120px; height: 46px; transform: translate(-50%, -50%); border-radius: 0 0 60px 60px; background: #fff3e0; box-shadow: inset 0 -10px 0 rgba(0,0,0,.08); }
+.reel-img::before { content: ""; position: absolute; left: 50%; top: 40%; width: 96px; height: 18px; transform: translate(-50%, 0); border-radius: 50%; background: #e9b26b; z-index: 1; }
+.play { position: relative; z-index: 2; width: 46px; height: 46px; border-radius: 50%; background: rgba(0,0,0,.35); display: grid; place-items: center; font-size: 16px; margin-top: -120px; }
+.rh { position: absolute; left: 12px; bottom: 34px; font: 600 12px/1 var(--sans); z-index: 2; }
+.rc { position: absolute; left: 12px; right: 12px; bottom: 12px; font-size: 12px; z-index: 2; }
+.sharebar { margin-top: 10px; display: flex; justify-content: space-between; align-items: center; padding: 10px 12px; border-radius: 12px; background: var(--paper-2); font-size: 13px; color: var(--muted); transition: background .3s; }
+.sharebar b { background: var(--ink); color: #fff; padding: 6px 10px; border-radius: 9px; font-size: 12.5px; }
+.s-reel.p2 .sharebar { background: var(--hl-2); }
+.scan { margin-top: 10px; display: flex; align-items: center; gap: 10px; font-size: 12.5px; color: var(--muted); opacity: 0; transition: opacity .3s; }
+.scan i { width: 70px; height: 4px; border-radius: 4px; background: linear-gradient(90deg, var(--blue) 0 40%, #e5e1d6 40%); background-size: 200% 100%; animation: scanb 1s linear infinite; }
+@keyframes scanb { to { background-position: -100% 0; } }
+.s-reel.p2 .scan { opacity: 1; }
+.s-reel.p3 .scan { opacity: 0; }
+.place { position: absolute; left: 14px; right: 14px; bottom: 16px; background: #fff; border: 1.5px solid var(--ink); border-radius: 16px; padding: 14px; display: grid; gap: 7px; box-shadow: 0 16px 30px -18px rgba(0,0,0,.45); transform: translateY(120%); transition: transform .55s cubic-bezier(.2, 1.2, .4, 1); }
+.s-reel.p3 .place { transform: none; }
+.s-reel.p3 .reel { transform: scale(.82) translateY(-18px); }
+.pl-t { display: flex; justify-content: space-between; align-items: baseline; } .pl-t b { font: 600 19px/1.1 var(--serif); }
+.lvl { font-weight: 600; color: var(--muted); font-size: 13px; }
+.pl-r { display: flex; align-items: center; gap: 6px; font-size: 12.5px; color: var(--muted); } .pl-r b { color: var(--ink); }
+.stars { color: #f2a531; letter-spacing: 1px; font-size: 13px; }
+.pl-m { display: flex; flex-wrap: wrap; gap: 6px; font-size: 11.5px; } .pl-m span { background: var(--paper-2); border-radius: 999px; padding: 4px 8px; } .pl-m .open { background: #e3f4ec; }
+.pl-b { display: flex; gap: 8px; margin-top: 2px; } .pl-b span { flex: 1; text-align: center; font-weight: 600; font-size: 12.5px; padding: 9px; border-radius: 10px; border: 1.5px solid var(--ink); }
+.pl-b .saved { background: var(--coral); color: #fff; border-color: var(--coral); }
+/* inbox */
+.conn { display: flex; justify-content: space-between; align-items: center; padding: 12px; border-radius: 12px; background: var(--paper-2); font-weight: 600; font-size: 13.5px; }
+.tg { width: 40px; height: 24px; border-radius: 999px; background: #d8d3c6; position: relative; transition: background .3s; }
+.tg b { position: absolute; top: 3px; left: 3px; width: 18px; height: 18px; border-radius: 50%; background: #fff; transition: transform .3s; }
+.s-inbox.p1 .tg { background: var(--blue); } .s-inbox.p1 .tg b { transform: translateX(16px); }
+.mails { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 4px; transition: opacity .4s; }
+.mails li { padding: 8px 10px; border-radius: 10px; font-size: 12px; display: grid; gap: 1px; border: 1px solid transparent; transition: opacity .4s, background .4s, border-color .4s; }
+.mails li b { font-size: 12.5px; } .mails li span { color: var(--muted); }
+.s-inbox.p2 .mails li { opacity: .25; } .s-inbox.p2 .mails li[data-t] { opacity: 1; background: var(--hl-2); border-color: #eadb94; }
+.s-inbox.p3 .mails { opacity: 0; }
+.trip { position: absolute; left: 14px; right: 14px; top: 76px; display: grid; gap: 8px; }
+.ti { display: grid; grid-template-columns: 44px 1fr; gap: 2px 10px; padding: 11px 12px; border-radius: 14px; background: #fff; border: 1.5px solid var(--ink); font-size: 13px; opacity: 0; transform: translateY(16px); transition: opacity .4s, transform .45s; }
+.ti .d { grid-row: 1 / span 2; font: 700 18px/1.05 var(--hand); color: var(--coral); }
+.ti em { font-style: normal; font-size: 11px; font-weight: 600; justify-self: start; padding: 3px 7px; border-radius: 999px; }
+.ti .bk { background: #e3f4ec; } .ti .wt { background: #e8edff; color: var(--blue); }
+.s-inbox.p3 .ti { opacity: 1; transform: none; } .s-inbox.p3 .ti:nth-child(2) { transition-delay: .15s; } .s-inbox.p3 .ti:nth-child(3) { transition-delay: .3s; }
+/* map */
+.s-map { padding: 0; }
+.map { position: absolute; inset: 0; width: 100%; height: 100%; }
+.map text { font: 700 8.5px var(--sans); fill: #fff; }
+.iso { transform-origin: 150px 312px; transform: scale(0); opacity: 0; transition: transform .9s cubic-bezier(.2, 1.1, .4, 1), opacity .3s; }
+.s-map.p2 .iso { transform: scale(1); opacity: 1; }
+.pin { opacity: 0; transform: translateY(-10px); transition: opacity .3s, transform .4s cubic-bezier(.2, 1.6, .4, 1); transition-delay: var(--d); }
+.s-map.p3 .pin { opacity: 1; transform: none; }
+.ask { position: absolute; left: 12px; right: 12px; top: 12px; display: flex; align-items: center; gap: 8px; padding: 10px 12px; border-radius: 14px; background: #fff; border: 1.5px solid var(--ink); font-size: 12.5px; box-shadow: 0 10px 20px -14px rgba(0,0,0,.5); min-height: 44px; }
+.mic { width: 22px; height: 22px; border-radius: 50%; background: var(--coral); flex: none; box-shadow: 0 0 0 0 rgba(242,107,79,.5); animation: ring 1.4s infinite; }
+@keyframes ring { 70% { box-shadow: 0 0 0 10px rgba(242,107,79,0); } 100% { box-shadow: 0 0 0 0 rgba(242,107,79,0); } }
+.wave { margin-left: auto; display: flex; gap: 2px; align-items: center; height: 16px; }
+.wave i { width: 3px; background: var(--blue); border-radius: 2px; animation: wv .8s ease-in-out infinite; }
+.wave i:nth-child(2) { animation-delay: .1s; } .wave i:nth-child(3) { animation-delay: .2s; } .wave i:nth-child(4) { animation-delay: .3s; } .wave i:nth-child(5) { animation-delay: .4s; }
+@keyframes wv { 0%, 100% { height: 4px; } 50% { height: 16px; } }
+.s-map.p2 .wave { opacity: 0; }
+.sheet { position: absolute; left: 0; right: 0; bottom: 0; background: #fff; border-radius: 20px 20px 0 0; border-top: 1.5px solid var(--ink); padding: 8px 14px 16px; display: grid; gap: 8px; transform: translateY(105%); transition: transform .55s cubic-bezier(.2, 1.1, .4, 1); }
+.s-map.p4 .sheet { transform: none; }
+.grab { justify-self: center; width: 40px; height: 4px; border-radius: 4px; background: #d8d3c6; }
+.sr { display: grid; grid-template-columns: 1fr auto; gap: 2px 8px; font-size: 11.5px; padding: 6px 0; border-bottom: 1px solid #f0ebe0; }
+.sr:last-child { border-bottom: 0; }
+.sr b { font-size: 13.5px; } .sr .st { color: #d68a12; font-weight: 600; } .sr span:last-child { grid-column: 1 / -1; color: var(--muted); }
+/* wishlist */
+.wl-h { display: flex; justify-content: space-between; align-items: baseline; } .wl-h b { font: 600 19px/1 var(--serif); } .wl-h span { font-size: 12px; color: var(--muted); }
+.wl { margin-top: 10px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; transition: opacity .4s, transform .4s; }
+.wl i { aspect-ratio: .78; border-radius: 12px; background: linear-gradient(160deg, var(--c1), var(--c2)); position: relative; font-style: normal; opacity: 0; transform: scale(.85); transition: opacity .35s, transform .4s cubic-bezier(.2, 1.5, .4, 1); }
+.wl i span { position: absolute; left: 6px; right: 6px; bottom: 6px; font: 600 10.5px/1.2 var(--sans); color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,.3); }
+.s-wish.p1 .wl i { opacity: 1; transform: none; }
+.s-wish.p1 .wl i:nth-child(2) { transition-delay: .08s; } .s-wish.p1 .wl i:nth-child(3) { transition-delay: .16s; } .s-wish.p1 .wl i:nth-child(4) { transition-delay: .24s; } .s-wish.p1 .wl i:nth-child(5) { transition-delay: .32s; } .s-wish.p1 .wl i:nth-child(6) { transition-delay: .4s; }
+.mk { margin-top: 12px; text-align: center; font-weight: 600; font-size: 13.5px; padding: 11px; border-radius: 12px; background: var(--ink); color: #fff; transition: transform .15s, opacity .3s; }
+.s-wish.p2 .mk { transform: scale(.96); background: var(--coral); }
+.s-wish.p3 .wl, .s-wish.p3 .mk { opacity: 0; transform: translateY(-20px); }
+.plan { position: absolute; left: 14px; right: 14px; top: 46px; display: grid; gap: 8px; }
+.pd, .stay { padding: 11px 12px; border-radius: 14px; border: 1.5px solid var(--ink); background: #fff; display: grid; gap: 2px; font-size: 12.5px; opacity: 0; transform: translateY(16px); transition: opacity .4s, transform .45s; }
+.pd b { font-size: 13.5px; } .pd span { color: var(--muted); }
+.stay { background: var(--hl-2); } .stay span { font-weight: 600; } .stay b { font: 700 26px/1 var(--hand); color: var(--coral); } .stay s { font: 400 13px var(--sans); color: var(--muted); } .stay em { font-style: normal; font-size: 11px; color: var(--blue); font-weight: 600; }
+.s-wish.p3 .pd, .s-wish.p3 .stay { opacity: 1; transform: none; }
+.s-wish.p3 .pd:nth-child(2) { transition-delay: .12s; } .s-wish.p3 .pd:nth-child(3) { transition-delay: .24s; } .s-wish.p3 .stay { transition-delay: .5s; }
+/* lock screen */
+.s-lock { inset: 34px 0 0; padding: 30px 12px; background: linear-gradient(170deg, #2b3d6e 0%, #6a4f86 55%, #f2a07f 100%); display: grid; align-content: start; gap: 10px; }
+.lk-t { color: #fff; text-align: center; display: grid; gap: 4px; margin-bottom: 16px; } .lk-t b { font: 300 58px/1 var(--sans); } .lk-t span { font-size: 13px; opacity: .85; }
+.nt { display: grid; grid-template-columns: 34px 1fr; gap: 10px; padding: 11px 12px; border-radius: 16px; background: rgba(255,255,255,.88); font-size: 12px; opacity: 0; transform: translateY(-16px) scale(.96); transition: opacity .4s, transform .5s cubic-bezier(.2, 1.3, .4, 1); }
+.ni { width: 34px; height: 34px; border-radius: 9px; background: var(--paper); border: 1.5px solid var(--ink); display: grid; place-items: center; font: 600 11px/1 var(--serif); }
+.nt b { display: block; font-size: 13px; } .nt span { color: #4a463e; }
+.s-lock.p1 .n1, .s-lock.p2 .n2 { opacity: 1; transform: none; }
+.s-lock.on ~ .ah, .phone.lock .ah { opacity: 0; }
+.phone.lock .sb { color: #fff; }
+.app-rail { list-style: none; margin: 0; padding: 0; display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; }
+.app-rail li { font: 600 12.5px/1 var(--sans); padding: 8px 11px; border-radius: 999px; border: 1.5px solid var(--ink); background: var(--card); cursor: pointer; transition: background .3s, color .3s; }
+.app-rail li.on { background: var(--ink); color: var(--paper); }
+/* capabilities */
+.capx { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.capx article { display: grid; gap: 10px; align-content: start; padding: 20px 22px 24px; border: 2px solid var(--ink); border-radius: 18px 24px 16px 22px / 22px 16px 24px 18px; background: var(--card); }
+.capx article:nth-child(3n+2) { background: var(--hl-2); } .capx article:nth-child(3n+3) { background: #eef3ff; }
+.capx .art { height: 150px; border-bottom: 1.5px dashed #cfc6b2; }
+.capx h3 { font-size: 24px; }
+.capx p { font-size: 15.5px; color: var(--ink-2); }
+@media (max-width: 980px) { .capx { grid-template-columns: 1fr 1fr; } .ann { left: auto; right: calc(50% + 150px); } }
+@media (max-width: 760px) { .ann { display: none; } }
+@media (max-width: 600px) { .capx { grid-template-columns: 1fr; } .phone { width: 282px; height: 590px; transform: none; box-shadow: 6px 8px 0 var(--coral); } }
+
+
+/* what ctx means */
+.mean { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: center; }
+.mean-l { display: grid; gap: 20px; }
+.mean h2 { font-size: clamp(40px, 5vw, 68px); }
+.mean-art { height: 360px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips span { font: 700 21px/1 var(--hand); color: var(--ink); padding: 8px 12px; border: 1.5px solid var(--ink); border-radius: 14px 18px 12px 16px; background: var(--card); }
+.chips span:nth-child(2n) { background: var(--hl-2); } .chips span:nth-child(3n) { background: #e8edff; }
+.vs { margin-top: 44px; display: grid; grid-template-columns: 1fr 60px 1fr; gap: 12px; align-items: stretch; }
+.vs-c { padding: 22px 24px; border: 2px dashed #b9b2a2; border-radius: 16px 22px 14px 20px; display: grid; gap: 10px; align-content: start; color: var(--muted); background: var(--paper-2); }
+.vs-c.on { border: 2px solid var(--ink); background: var(--card); color: var(--ink); box-shadow: 5px 6px 0 var(--coral); }
+.vs-k { font: 700 22px/1 var(--hand); color: var(--coral); }
+.vs-c:not(.on) .vs-k { color: var(--muted); }
+.vs-q { font: 600 22px/1.2 var(--serif); }
+.vs-a b { display: block; font: 600 30px/1.1 var(--serif); }
+.vs-c:not(.on) .vs-a b { text-decoration: line-through; text-decoration-thickness: 2px; }
+.vs-a span { font-size: 15.5px; }
+.vs-arrow { display: grid; place-items: center; font: 700 44px/1 var(--hand); color: var(--coral); }
+.eli { margin-top: 22px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.eli > div { padding: 20px 24px; border-radius: 4px; background: var(--hl-2); box-shadow: 0 14px 28px -22px rgba(34,32,28,.6); display: grid; gap: 8px; transform: rotate(-.6deg); }
+.eli > div:nth-child(2) { background: #e8edff; transform: rotate(.5deg); }
+.eli-k { font: 700 24px/1 var(--hand); color: var(--blue); }
+.eli p { font-size: 16.5px; color: var(--ink-2); }
+@media (max-width: 980px) { .mean, .eli { grid-template-columns: 1fr; gap: 24px; } .mean-art { height: 280px; } .vs { grid-template-columns: 1fr; } .vs-arrow { transform: rotate(90deg); height: 40px; } }
+
+/* book a stay: sentence form */
+.book { border-radius: 6px; padding: 40px 40px 30px 92px; box-shadow: 0 26px 50px -32px rgba(34, 32, 28, .55); display: grid; gap: 22px; }
+.book-h { display: grid; gap: 12px; }
+.book h2 { font-size: clamp(34px, 4vw, 54px); }
+.madlib p { font: 400 clamp(22px, 2.6vw, 32px)/2.1 var(--serif); }
+.madlib select, .madlib input { font: 700 1.15em/1 var(--hand); color: var(--blue); background: transparent; border: 0; border-bottom: 2.5px solid var(--ink); padding: 0 4px; margin: 0 2px; border-radius: 0; outline: none; appearance: none; -webkit-appearance: none; cursor: pointer; }
+.madlib select:focus, .madlib input:focus { background: var(--hl-2); }
+.madlib .btn { margin-top: 10px; }
+.res { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.res:empty { display: none; }
+.rc { background: var(--card); border: 1.5px solid var(--ink); border-radius: 12px 16px 10px 14px; padding: 16px; display: grid; gap: 8px; box-shadow: 3px 4px 0 var(--ink); animation: in .45s both; }
+.rc .a { height: 110px; border-radius: 8px; overflow: hidden; background: var(--paper-2); }
+.rc b { font: 600 18px/1.25 var(--serif); }
+.rc small { font-size: 13px; color: var(--muted); }
+.rc .pp { display: flex; align-items: baseline; gap: 10px; }
+.rc .pp s { color: var(--muted); font-size: 14px; }
+.rc .pp em { font: 700 30px/1 var(--hand); font-style: normal; color: var(--coral); }
+.rc .pp span { font-size: 12.5px; color: var(--muted); }
+.rc .prot { justify-self: start; font: 600 12px/1 var(--sans); background: #e3f4ec; border: 1.5px solid var(--ink); border-radius: 999px; padding: 6px 9px; }
+.rc .pick { justify-self: start; font: 600 13px/1 var(--sans); border: 1.5px solid var(--ink); border-radius: 10px; padding: 8px 10px; background: var(--ink); color: var(--paper); }
+/* after you book */
+.after-h { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: end; margin-bottom: 40px; }
+.after { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.after article { background: var(--card); border: 2px solid var(--ink); border-radius: 18px 24px 16px 22px / 22px 16px 24px 18px; padding: 20px 22px 24px; display: grid; gap: 10px; align-content: start; box-shadow: 4px 5px 0 var(--ink); }
+.after article:nth-child(2) { box-shadow: 4px 5px 0 var(--blue); }
+.after article:nth-child(3) { box-shadow: 4px 5px 0 var(--coral); }
+.after .art { height: 170px; border-bottom: 1.5px dashed #cfc6b2; }
+.after h3 { font-size: 25px; }
+.after p { font-size: 15.5px; color: var(--ink-2); }
+.tagx { justify-self: start; font: 700 20px/1 var(--hand); color: var(--blue); }
+.assist { margin-top: 28px; display: grid; grid-template-columns: 150px 1fr; gap: 20px; align-items: center; padding: 16px 22px; border: 2px dashed var(--ink); border-radius: 16px 22px 14px 20px; background: var(--hl-2); }
+.assist canvas { height: 100px; }
+.assist p { font-size: 16.5px; color: var(--ink-2); }
+.assist b { color: var(--ink); font-weight: 600; }
+@media (max-width: 980px) { .res, .after { grid-template-columns: 1fr; } .after-h { grid-template-columns: 1fr; gap: 18px; } }
+@media (max-width: 600px) { .book { padding: 26px 18px 22px 50px; } .assist { grid-template-columns: 1fr; } .assist canvas { height: 90px; max-width: 200px; } }
+
+[data-in] { opacity: 0; transform: translateY(16px); transition: opacity .7s, transform .7s; }
+[data-in].in { opacity: 1; transform: none; }
+.pad[data-in].in { transform: rotate(.6deg); }
+.ledger[data-in].in { transform: rotate(-.8deg); }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } [data-in] { opacity: 1; transform: none; } .hero h1 .scrib path { stroke-dashoffset: 0; } }
+
+@media (max-width: 980px) {
+  .links { display: none; }
+  .hero-grid, .split, .board-h { grid-template-columns: 1fr; gap: 36px; }
+  .steps { grid-template-columns: 1fr 1fr; }
+  .promise, .journal, .share { grid-template-columns: 1fr; }
+  .pad-doodle { display: none; }
+  .sec { padding: 80px 0; }
+}
+@media (max-width: 600px) {
+  .wrap { padding: 0 18px; }
+  summary { font-size: 19px; }
+  .endorse .tag, .endorse .txt { display: none; }
+  .endorse img { height: 14px; } .endorse img.tlogo { height: 17px; }
+  nav.top .wrap { height: 64px; }
+  .nav-cta { padding: 0 14px; }
+  .pad-in { padding: 30px 16px 18px 50px; min-height: 480px; }
+  .ruled { background-image: linear-gradient(90deg, transparent 34px, var(--margin) 34px, var(--margin) 36px, transparent 36px), repeating-linear-gradient(transparent 0 31px, var(--rule) 31px 32px); }
+  .pad-h { left: 50px; right: 16px; }
+  .board { padding: 30px 20px; }
+  .steps { grid-template-columns: 1fr; }
+  .ledger { padding: 22px 16px 18px 50px; }
+  .ledger-h, .lrow { grid-template-columns: 1.3fr .8fr .9fr; }
+  .page { padding-left: 50px; }
+  .tl { height: 240px; }
+}
+</style>
+<link rel="stylesheet" href="../shared/creator.css"><script defer src="../shared/preview.js"></script></head>
+<body><div class="startup-credit"><span>Built by Rimon R for Travellabs</span><a href="../../businesses.html">All businesses ↗</a></div>
+
+
+<nav class="top" aria-label="Main"><div class="wrap">
+  <a class="logo" href="#top" aria-label="ctx.travel home"><svg viewBox="0 0 34 34" aria-hidden="true"><path d="M5 23c4-12 10-14 12-7s7 4 10-6" fill="none" stroke="#22201c" stroke-width="3" stroke-linecap="round"/><circle cx="27" cy="9" r="3.4" fill="#f26b4f"/><path d="M4 28h24" stroke="#22201c" stroke-width="1.6" stroke-dasharray="2 4" stroke-linecap="round"/></svg><span>ctx<em>.travel</em></span></a>
+  <div class="links"><a href="#meaning">What ctx means</a><a href="#app">The app</a><a href="#how">How it works</a><a href="#after">After you book</a><a href="#questions">Questions</a></div>
+  <a class="btn nav-cta" href="#join">Become a member</a>
+</div></nav>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-c" data-in>
+      <span class="kick">ctx = context for travel ✎</span>
+      <h1>Members pay <span class="scrib">less<svg viewBox="0 0 200 40" preserveAspectRatio="none" aria-hidden="true"><path d="M4 26c40-14 90-16 140-8 18 3 34 2 52-6"/></svg></span>. Then we keep checking.</h1>
+      <p class="lead">ctx is an AI travel helper that remembers what matters to you. Send it a video, your booking emails or a question. It plans the trip, finds <span class="hl">secret member prices</span>, asks before it buys, and gets you money back if the price drops later.</p>
+      <div class="btns"><a class="btn" href="#book">Find a member price</a><a class="btn ghost" href="#refunds">Track a booking I made</a></div>
+      <div class="hero-notes"><span>reels become plans</span><span>maps you can talk to</span><span>price drops come back to you</span></div>
+    </div>
+    <div class="app-stage">
+      <div class="ann" id="ann" aria-hidden="true"><span id="annT">share any reel</span><svg viewBox="0 0 120 70"><path d="M6 10 C 40 0, 90 10, 108 52" /><path d="M96 46 L108 54 L112 40"/></svg></div>
+      <div class="phone" id="phone" aria-label="The ctx app, animated walkthrough">
+        <div class="sb"><span>9:41</span><span class="notch"></span><span>●●● ▮</span></div>
+        <div class="ah"><span class="am">ctx<em>.</em></span><span class="at" id="appTitle">Japan · Oct</span><span class="av">M</span></div>
+
+        <section class="scr s-reel">
+          <div class="reel"><div class="reel-img"><span class="play">▶</span><span class="rh">@wanderwithmia · reel</span><span class="rc">"the ramen that ruined all other ramen"</span></div></div>
+          <div class="sharebar"><span>Share to</span><b>ctx</b></div>
+          <div class="scan"><i></i><span>Reading the reel…</span></div>
+          <div class="place">
+            <div class="pl-t"><b>Tsuta Ramen</b><span class="lvl">$$</span></div>
+            <div class="pl-r"><span class="stars">★★★★★</span><b>4.6</b><span>2,318 reviews</span></div>
+            <div class="pl-m"><span>Ramen · Shinjuku</span><span>8 min from your hotel</span><span class="open">Open till 11pm</span></div>
+            <div class="pl-b"><span class="saved">♥ Saved to Japan</span><span>Book a table</span></div>
+          </div>
+        </section>
+
+        <section class="scr s-inbox">
+          <div class="conn"><span>Connect your inbox</span><i class="tg"><b></b></i></div>
+          <ul class="mails">
+            <li data-t="1"><b>Airline</b><span>SYD → HND · Fri 16 Oct confirmed</span></li>
+            <li><b>Newsletter</b><span>10 slow mornings, good bread</span></li>
+            <li data-t="1"><b>Hotel</b><span>Shinjuku garden hotel · 16–21 Oct</span></li>
+            <li><b>Book club</b><span>Moved to Wednesday</span></li>
+            <li data-t="1"><b>Restaurant</b><span>Table for 2 · Sun 18 Oct, 7pm</span></li>
+            <li><b>Store</b><span>Spring sale ends tonight</span></li>
+          </ul>
+          <div class="trip">
+            <div class="ti"><span class="d">Fri 16</span><b>SYD → HND</b><em class="bk">booked</em></div>
+            <div class="ti"><span class="d">Fri 16</span><b>Shinjuku garden hotel</b><em class="wt">watching price</em></div>
+            <div class="ti"><span class="d">Sun 18</span><b>Dinner for 2, 7pm</b><em class="bk">booked</em></div>
+          </div>
+        </section>
+
+        <section class="scr s-map">
+          <svg class="map" viewBox="0 0 300 560" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <rect width="300" height="560" fill="#eef0e6"/>
+  <path d="M-10 120 C 60 150, 90 210, 70 280 S 110 400, 60 470 S 40 560, 20 600 L -10 600 Z" fill="#bfd8ec"/>
+  <path d="M190 60 q40 -10 70 20 q20 40 -10 70 q-40 20 -70 -10 q-20 -40 10 -80z" fill="#cfe5c3"/>
+  <path d="M200 430 q50 -20 90 10 l10 80 q-60 20 -110 -10z" fill="#cfe5c3"/>
+  <g fill="#e2e4d8"><rect x="95" y="160" width="26" height="40" rx="3"/><rect x="129" y="160" width="26" height="40" rx="3"/><rect x="163" y="160" width="26" height="40" rx="3"/><rect x="197" y="160" width="26" height="40" rx="3"/><rect x="231" y="160" width="26" height="40" rx="3"/><rect x="265" y="160" width="26" height="40" rx="3"/><rect x="95" y="212" width="26" height="40" rx="3"/><rect x="129" y="212" width="26" height="40" rx="3"/><rect x="163" y="212" width="26" height="40" rx="3"/><rect x="197" y="212" width="26" height="40" rx="3"/><rect x="231" y="212" width="26" height="40" rx="3"/><rect x="265" y="212" width="26" height="40" rx="3"/><rect x="95" y="264" width="26" height="40" rx="3"/><rect x="129" y="264" width="26" height="40" rx="3"/><rect x="163" y="264" width="26" height="40" rx="3"/><rect x="197" y="264" width="26" height="40" rx="3"/><rect x="231" y="264" width="26" height="40" rx="3"/><rect x="265" y="264" width="26" height="40" rx="3"/><rect x="95" y="316" width="26" height="40" rx="3"/><rect x="129" y="316" width="26" height="40" rx="3"/><rect x="163" y="316" width="26" height="40" rx="3"/><rect x="197" y="316" width="26" height="40" rx="3"/><rect x="231" y="316" width="26" height="40" rx="3"/><rect x="265" y="316" width="26" height="40" rx="3"/><rect x="95" y="368" width="26" height="40" rx="3"/><rect x="129" y="368" width="26" height="40" rx="3"/><rect x="163" y="368" width="26" height="40" rx="3"/><rect x="197" y="368" width="26" height="40" rx="3"/><rect x="231" y="368" width="26" height="40" rx="3"/><rect x="265" y="368" width="26" height="40" rx="3"/></g>
+  <g stroke="#fff" stroke-width="7" fill="none" stroke-linecap="round"><path d="M0 330 H300"/><path d="M150 0 V560"/><path d="M40 60 L300 250"/><path d="M90 560 L300 380"/></g>
+  <g stroke="#d6d8cc" stroke-width="1" fill="none"><path d="M0 326 H300 M0 334 H300"/></g>
+  <path class="iso" d="M150 228 C 196 232, 226 268, 222 316 C 236 360, 200 404, 156 398 C 112 410, 82 372, 86 330 C 70 288, 100 236, 150 228 Z" fill="rgba(47,91,211,.12)" stroke="#2f5bd3" stroke-width="2" stroke-dasharray="6 5"/>
+  <g class="hotel"><circle cx="150" cy="312" r="13" fill="#22201c"/><path d="M144 316v-7l6-4 6 4v7z" fill="#fffdf8"/></g>
+  <g class="pins">
+    <g class="pin" style="--d:0s"><circle cx="196" cy="282" r="11" fill="#f26b4f"/><text x="196" y="286" text-anchor="middle">4.6</text></g>
+    <g class="pin" style="--d:.15s"><circle cx="118" cy="268" r="11" fill="#f26b4f"/><text x="118" y="272" text-anchor="middle">4.4</text></g>
+    <g class="pin" style="--d:.3s"><circle cx="176" cy="366" r="11" fill="#f26b4f"/><text x="176" y="370" text-anchor="middle">4.7</text></g>
+    <g class="pin" style="--d:.45s"><circle cx="112" cy="352" r="11" fill="#f26b4f"/><text x="112" y="356" text-anchor="middle">4.3</text></g>
+  </g>
+</svg>
+          <div class="ask"><i class="mic"></i><span id="askT"></span><span class="wave"><i></i><i></i><i></i><i></i><i></i></span></div>
+          <div class="sheet">
+            <span class="grab"></span>
+            <div class="sr"><b>Tsuta Ramen</b><span class="st">★ 4.6 · 2,318</span><span>$$ · 6 min walk · open till 11pm</span></div>
+            <div class="sr"><b>Fuunji</b><span class="st">★ 4.7 · 5,104</span><span>$ · 9 min walk · open till 9pm</span></div>
+            <div class="sr"><b>Menya Kaiji</b><span class="st">★ 4.4 · 980</span><span>$ · 4 min walk · open till 1am</span></div>
+          </div>
+        </section>
+
+        <section class="scr s-wish">
+          <div class="wl-h"><b>Japan wishlist</b><span>6 saves</span></div>
+          <div class="wl">
+            <i style="--c1:#f6b7a6;--c2:#f26b4f"><span>Tsuta Ramen</span></i><i style="--c1:#c8b8f2;--c2:#7b62d9"><span>teamLab</span></i><i style="--c1:#ffe8a0;--c2:#f2b531"><span>Golden Gai</span></i>
+            <i style="--c1:#b8e3d0;--c2:#3f8f6f"><span>Arashiyama</span></i><i style="--c1:#f9c6d8;--c2:#d9719c"><span>Fushimi Inari</span></i><i style="--c1:#bcd4f5;--c2:#2f5bd3"><span>Onsen ryokan</span></i>
+          </div>
+          <div class="mk">Turn it into a trip</div>
+          <div class="plan">
+            <div class="pd"><b>Day 1 · Shinjuku</b><span>Tsuta Ramen · Golden Gai</span></div>
+            <div class="pd"><b>Day 2 · Odaiba</b><span>teamLab · evening by the bay</span></div>
+            <div class="pd"><b>Day 4 · Kyoto</b><span>Fushimi Inari · Arashiyama</span></div>
+            <div class="stay"><span>Stay near 4 of your saves</span><b>$187 <s>$238</s></b><em>member price · refund on</em></div>
+          </div>
+        </section>
+
+        <section class="scr s-lock">
+          <div class="lk-t"><b>9:41</b><span>Tuesday 6 October</span></div>
+          <div class="nt n1"><span class="ni">ctx</span><div><b>Same room got cheaper</b><span>Shinjuku garden hotel. $104 is on its way back to your card.</span></div></div>
+          <div class="nt n2"><span class="ni">ctx</span><div><b>Fare dropped</b><span>SYD → HND. $80 airline credit claimed. Same seats.</span></div></div>
+        </section>
+      </div>
+      <ol class="app-rail" id="appRail"><li>Reels</li><li>Inbox</li><li>Map</li><li>Wishlist</li><li>Money back</li></ol>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="sec" id="meaning" style="padding-top:10px">
+  <div class="wrap">
+    <div class="mean" data-in>
+      <div class="mean-l">
+        <span class="kick">what ctx means</span>
+        <h2>ctx is short for <span class="hl">context</span>.</h2>
+        <p class="lead">Context is everything that makes a trip yours: who's going, what you can spend, what you've saved, what you've already booked, and where you'll be each day. Most travel apps forget all of it the moment you close them. ctx keeps it, so every answer fits you.</p>
+        <div class="chips"><span>who's going</span><span>your budget</span><span>places you saved</span><span>trips you booked</span><span>where you'll be each day</span><span>what you like</span></div>
+      </div>
+      <div class="mean-art"><canvas class="sk" data-sk="ctxbag" aria-hidden="true"></canvas></div>
+    </div>
+
+    <div class="vs" data-in>
+      <div class="vs-c"><span class="vs-k">without context</span><p class="vs-q">"Hotels in Tokyo"</p><div class="vs-a"><b>1,630 results</b><span>sorted by who paid to be on top</span></div></div>
+      <div class="vs-arrow" aria-hidden="true">→</div>
+      <div class="vs-c on"><span class="vs-k">with ctx</span><p class="vs-q">"Hotels in Tokyo"</p><div class="vs-a"><b>3 quiet hotels</b><span>near your Tuesday meeting, under your budget, at member prices</span></div></div>
+    </div>
+
+    <div class="eli" data-in>
+      <div><span class="eli-k">If you're 11</span><p>Tell ctx where you want to go and what you like. It finds the trip, asks before it buys anything, and if the price goes down later, you get money back.</p></div>
+      <div><span class="eli-k">If you run a business</span><p>ctx turns scattered travel signals (inboxes, saves, maps) into one living record of each trip. With that context, an AI agent can book at member prices with the traveller's approval, then keep their trust after checkout by returning price drops.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="app" style="padding-top:10px">
+  <div class="wrap">
+    <div class="after-h" data-in><div style="display:grid;gap:14px"><span class="kick">the ctx app</span><h2>Not another chatbot</h2></div><p class="lead">Travel ideas live in reels, screenshots and booking emails. ctx starts there, and thinks in places and distances, not text boxes.</p></div>
+    <div class="capx" data-in>
+      <article><div class="art"><canvas class="sk" data-sk="c-reel" aria-hidden="true"></canvas></div><h3>Share a reel or post</h3><p>Send ctx a reel, a post or a screenshot. It works out the place, the price level and where it sits on your trip.</p></article>
+      <article><div class="art"><canvas class="sk" data-sk="c-inbox" aria-hidden="true"></canvas></div><h3>Connect your inbox</h3><p>Booking emails become one tidy trip. ctx reads travel confirmations only and ignores everything else.</p></article>
+      <article><div class="art"><canvas class="sk" data-sk="c-heart" aria-hidden="true"></canvas></div><h3>Wishlists that become trips</h3><p>Save places as you find them. When you're ready, ctx turns the list into days, routes and a stay near most of them.</p></article>
+      <article><div class="art"><canvas class="sk" data-sk="c-map" aria-hidden="true"></canvas></div><h3>Talk to the map</h3><p>"Ramen within ten minutes' walk." "A quiet bar between my hotel and the station." The map answers with real walking times.</p></article>
+      <article><div class="art"><canvas class="sk" data-sk="c-stars" aria-hidden="true"></canvas></div><h3>Ratings that matter</h3><p>Stars, review counts, price level and opening hours in one card, gathered from across the web.</p></article>
+      <article><div class="art"><canvas class="sk" data-sk="c-near" aria-hidden="true"></canvas></div><h3>Near you, not near a pin</h3><p>Every suggestion is measured from where you'll actually be that day: your hotel, your meeting, your next stop.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="how" style="padding-top:20px">
+  <div class="wrap">
+    <div class="board" data-in>
+      <div class="board-h"><div style="display:grid;gap:14px"><span class="kick">how it works</span><h2>Four steps. That's it.</h2></div><p class="lead">No search forms and no forty open tabs. Just your ideas, a short list and your yes.</p></div>
+      <div class="steps">
+        <div class="step"><div class="art"><canvas class="sk" data-sk="ask" aria-hidden="true"></canvas></div><span class="n">1.</span><h3>Share it, forward it, say it</h3><p>A reel, a booking email or "somewhere warm in July for two". Any of them is enough to start.</p></div>
+        <div class="step"><div class="art"><canvas class="sk" data-sk="tags" aria-hidden="true"></canvas></div><span class="n">2.</span><h3>See member prices</h3><p>ctx shows a short list, with the public price next to the price you pay as a member.</p></div>
+        <div class="step"><div class="art"><canvas class="sk" data-sk="yes" aria-hidden="true"></canvas></div><span class="n">3.</span><h3>Say yes, it books</h3><p>Nothing is booked or charged until you approve the exact flight, room and price.</p></div>
+        <div class="step"><div class="art"><canvas class="sk" data-sk="watch" aria-hidden="true"></canvas></div><span class="n">4.</span><h3>It keeps watching</h3><p>If the same room gets cheaper before free cancellation ends, ctx rebooks it and the difference comes back to you.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="sec" id="book" style="padding-top:20px">
+  <div class="wrap">
+    <div class="book ruled" data-in>
+      <div class="book-h"><span class="kick">book a stay on ctx</span><h2>Fill in the blanks. We'll do the hunting.</h2></div>
+      <form class="madlib" id="madlib">
+        <p>I'd like a
+          <select id="mType" aria-label="Kind of stay"><option>quiet hotel</option><option>villa with a pool</option><option>apartment</option><option>boutique hotel</option></select>
+          in <select id="mCity" aria-label="City"><option>Lisbon</option><option>Bali</option><option>Tokyo</option><option>Queenstown</option></select>
+          from <input id="mIn" type="text" value="12 May" aria-label="Check in" size="7"> to <input id="mOut" type="text" value="16 May" aria-label="Check out" size="7">
+          for <select id="mGuests" aria-label="Guests"><option>2 guests</option><option>1 guest</option><option>3 guests</option><option>4 guests</option></select>.
+        </p>
+        <button class="btn" type="submit">Find member prices</button>
+      </form>
+      <div class="res" id="res"></div>
+      <p class="fine">Example only. Results here are a demo. Every stay booked on ctx has price-drop refunds switched on from day one.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="rates" style="padding-top:20px">
+  <div class="wrap split">
+    <div class="why" data-in>
+      <span class="kick">member prices, explained</span>
+      <h2>The prices you never see on public sites</h2>
+      <p class="lead">Some airlines and hotels keep their best prices secret. They only share them with members, through travel companies they have a deal with. Flight Centre Travel Group has those deals. Join ctx for free and you're a member.</p>
+      <ul class="notes"><li>Membership is free. It's simply how private prices are allowed to reach you.</li><li>You always see the public price beside your member price, so you know what you're saving.</li><li>Same airline, same hotel, same room. Just a better price.</li></ul>
+    </div>
+    <div data-in>
+      <div class="ledger ruled" id="ledger">
+        <div class="ledger-h"><span>the trip</span><span>public</span><span>member</span></div>
+        <div class="lrow"><span><b>Lisbon, 4 nights</b><small>Guesthouse in Alfama</small></span><span class="pub">$812</span><span class="mem">$668<small>save $144</small></span></div>
+        <div class="lrow"><span><b>Sydney → Bali</b><small>Return, 2 adults</small></span><span class="pub">$1,540</span><span class="mem">$1,312<small>save $228</small></span></div>
+        <div class="lrow"><span><b>Tokyo, 5 nights</b><small>Hotel near Shinjuku</small></span><span class="pub">$1,190</span><span class="mem">$936<small>save $254</small></span></div>
+        <div class="lrow"><span><b>Queenstown, 3 nights</b><small>Lake-view apartment</small></span><span class="pub">$720</span><span class="mem">$604<small>save $116</small></span></div>
+      </div>
+      <p class="fine" style="margin-top:14px">Example only. Prices are illustrative. Member prices depend on dates, availability and each supplier's terms.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec tray-sec" id="refunds">
+  <div class="wrap">
+    <div class="split" style="align-items:start">
+      <div class="why" data-in>
+        <span class="kick">price-drop refunds</span>
+        <h2>Booked already? Hand it over.</h2>
+        <p class="lead">Drop in the booking email from wherever you booked. ctx reads the hotel, dates and room, then checks the price every day until the last day you can cancel for free. If the <span class="hl">exact same room</span> gets cheaper, it books the new rate, cancels the old one, and sends you the difference.</p>
+        <ul class="notes"><li>Works on ctx bookings automatically, and on bookings made anywhere else once you upload them.</li><li>Same hotel, same room, same dates, or we leave your booking alone.</li><li>We keep a small, stated share of each saving. The rest is yours.</li></ul>
+      </div>
+      <div data-in style="display:grid;gap:16px">
+        <div class="tray" id="tray" role="button" tabindex="0" aria-label="Drop a booking confirmation (demo)">
+          <canvas class="sk tray-ic" data-sk="envelope" aria-hidden="true"></canvas>
+          <b>Drop your confirmation here</b>
+          <span>PDF, screenshot or forwarded email. This demo reads a sample booking.</span>
+          <div class="read" id="read"></div>
+        </div>
+      </div>
+    </div>
+    <div class="tl" data-in><canvas class="sk" data-sk="timeline" aria-hidden="true"></canvas></div>
+    <div class="share" data-in>
+      <div><span>you paid</span><b>$1,060</b></div>
+      <div><span>same room, a week later</span><b>$938</b></div>
+      <div class="you"><span>back to your card</span><b>$104</b></div>
+    </div>
+    <p class="fine" style="margin-top:12px">Example only. A $122 drop, with ctx keeping a 15% share ($18). Your share and timing are always shown before anything changes.</p>
+  </div>
+</section>
+
+
+<section class="sec" id="after">
+  <div class="wrap">
+    <div class="after-h" data-in><div style="display:grid;gap:14px"><span class="kick">after you book</span><h2>Booking is where ctx gets busy</h2></div><p class="lead">Most travel sites stop at checkout. ctx keeps an eye on every trip until you leave, and comes back with money or a better room.</p></div>
+    <div class="after" data-in>
+      <article><div class="art"><canvas class="sk" data-sk="refund" aria-hidden="true"></canvas></div><span class="tagx">hotels</span><h3>Cheaper later? Money back.</h3><p>If the same room drops before free cancellation ends, ctx rebooks it and refunds the difference to your card.</p></article>
+      <article><div class="art"><canvas class="sk" data-sk="credit" aria-hidden="true"></canvas></div><span class="tagx">flights</span><h3>Fare dropped? Credit back.</h3><p>When an airline's rules allow it, ctx claims the lower fare as credit. Same flight, same seats, same booking reference.</p></article>
+      <article><div class="art"><canvas class="sk" data-sk="upgrade" aria-hidden="true"></canvas></div><span class="tagx">stays</span><h3>A better room nearby?</h3><p>If a higher-rated stay close by costs the same or less, ctx tells you. You choose, or ignore it.</p></article>
+    </div>
+    <div class="assist" data-in><canvas class="sk" data-sk="chat2" aria-hidden="true"></canvas><p><b>Already use an AI assistant?</b> Ask it to check ctx. Your assistant can search member prices and hand you the booking link, and ctx still asks you before anything is booked.</p></div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div style="display:grid;gap:14px;margin-bottom:40px" data-in><span class="kick">our promises</span><h2>Clever, but never sneaky</h2></div>
+    <div class="promise" data-in>
+      <div><div class="art"><canvas class="sk" data-sk="hand" aria-hidden="true"></canvas></div><h3>You say yes first</h3><p>ctx suggests, compares and explains. It only books, pays or changes anything after you approve.</p></div>
+      <div><div class="art"><canvas class="sk" data-sk="same" aria-hidden="true"></canvas></div><h3>Like for like, always</h3><p>A rebook only happens for the same hotel, room type and dates. If anything would change, nothing happens.</p></div>
+      <div><div class="art"><canvas class="sk" data-sk="lock" aria-hidden="true"></canvas></div><h3>Your files stay yours</h3><p>We read only what we need to track a booking. Delete any upload, or your whole account, whenever you like.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:0">
+  <div class="wrap">
+    <div style="display:grid;gap:14px;margin-bottom:40px" data-in><span class="kick">from the notebook</span><h2>How a few trips could go</h2></div>
+    <div class="journal" data-in>
+      <article class="page ruled"><span class="ex">example trip</span><span class="d">Mon · planning</span><h3>Lisbon in May</h3><p>asked for "quiet, near trams, under $200". got 3 options, picked the guesthouse. member price was $144 less.</p><span class="saved">−$144 at booking</span></article>
+      <article class="page ruled"><span class="ex">example trip</span><span class="d">Thu · after booking</span><h3>Bali for two</h3><p>booked the villa on another site. dropped the email into ctx. 9 days later the same villa got cheaper.</p><span class="saved">$96 back</span></article>
+      <article class="page ruled"><span class="ex">example trip</span><span class="d">Sat · last minute</span><h3>Tokyo work trip</h3><p>flights + hotel near the office. ctx asked before booking. hotel rate dropped twice before check-in.</p><span class="saved">−$254, then $61 back</span></article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="questions" style="padding-top:0">
+  <div class="wrap qs">
+    <div style="display:grid;gap:14px;margin-bottom:24px" data-in><span class="kick">questions</span><h2>Fair questions</h2></div>
+    <details open><summary>What does ctx stand for?</summary><p>Context. It means ctx remembers the things that make your trip yours, like who's going, your budget and your bookings, so its answers fit you instead of everyone.</p></details>
+    <details><summary>How can member prices be lower than public sites?</summary><p>Some airlines and hotels keep their best prices for members only, and share them through travel companies they have deals with. Flight Centre Travel Group has those deals. Joining ctx makes you a member. You always see the normal price next to yours.</p></details>
+    <details><summary>So how does ctx make money?</summary><p>Hotels and airlines pay ctx a small fee when you book, the same way they pay other travel companies. On price-drop refunds we keep a small share of the saving, and we always show that share before anything changes.</p></details>
+    <details><summary>Will ctx ever book without asking me?</summary><p>No. ctx searches and suggests on its own, but every booking, payment and change waits for your yes. Price-drop rebooks follow the rules you agreed to when you switched them on, and you're told every time one happens.</p></details>
+    <details><summary>Does the refund work on bookings I made somewhere else?</summary><p>Yes, for hotels. Upload the confirmation and ctx tracks that exact stay. If the hotel stops selling the room, or free cancellation has passed, there is nothing to act on, and we'll tell you so.</p></details>
+    <details><summary>What happens when a flight gets cheaper?</summary><p>If the airline allows it, ctx asks the airline to reprice your ticket and the difference comes back as airline credit. Your flight, seats and booking reference stay exactly the same.</p></details>
+    <details><summary>What is a stay upgrade?</summary><p>After you book, ctx keeps an eye on better-rated stays nearby. If one costs the same or less for your dates, it suggests the swap. Nothing changes unless you say yes.</p></details>
+    <details><summary>Why no coupons or promo codes?</summary><p>Coupons give a lower price to some people, some of the time. Members simply see the private price, every time, and ctx keeps working on it after you book.</p></details>
+    <details><summary>Will my room change when you rebook?</summary><p>Never. We only rebook when the same hotel, the same room type and the same dates are available for less. Otherwise your original booking stays exactly as it is.</p></details>
+    <details><summary>When does the money reach me?</summary><p>We start the refund as soon as the cheaper booking is confirmed. It usually reaches your card or account within a few working days, depending on your bank.</p></details>
+    <details><summary>What happens to the files I upload?</summary><p>We read the hotel, dates, room and price so we can track the stay, and nothing else. Files stay private to your account and you can delete them at any time.</p></details>
+  </div>
+</section>
+
+<section class="sec" id="join" style="padding-top:20px">
+  <div class="wrap join" data-in id="joinBox">
+    <canvas class="sk join-art" data-sk="suitcase" aria-hidden="true"></canvas>
+    <span class="kick">membership is free</span>
+    <h2>Join the club that pays less</h2>
+    <p class="lead" style="text-align:center">Members get private prices, a travel agent that asks before it books, and price-drop refunds on every hotel.</p>
+    <form class="form" id="form"><label class="hand" for="em" style="position:absolute;left:-9999px">Email</label><input id="em" type="email" required placeholder="your email" autocomplete="email"><button class="btn" type="submit">Get my invite</button></form>
+    <p class="joined">You're on the list. Check your inbox soon ✓</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="f-g"><p><b>Built by Rimon R for Travellabs.</b> ctx stands for context: travel that remembers you.</p></div>
+    <div class="f-b"><span>Built by Rimon R for Travellabs.</span><nav><a href="#how">How it works</a><a href="#refunds">Refunds</a><a href="#questions">Questions</a><a href="#join">Privacy</a><a href="#join">Terms</a></nav></div>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const REDUCE = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+
+  /* reveal on scroll */
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
+  $$('[data-in]').forEach(el => io.observe(el));
+
+  /* ---------- sketch kit: wobbly ink, offset fills, lines that "boil" ---------- */
+  const C = { ink: '#22201c', paper: '#fffdf8', blue: '#2f5bd3', coral: '#f26b4f', mint: '#8fd3b6', hl: '#ffe066', lilac: '#c8b8f2', muted: '#7d776b' };
+  const kit = (ctx, U) => {
+    let seed = 1;
+    const r = () => { seed = (seed * 16807) % 2147483647; return seed / 2147483647; };
+    const j = (v) => v + (r() - .5) * U * 1.1;
+    const k = {
+      reseed(n) { seed = 777 + n * 4241; },
+      line(pts, w = 1.9, col = C.ink) { ctx.strokeStyle = col; ctx.lineCap = 'round'; ctx.lineJoin = 'round'; for (let p = 0; p < 2; p++) { ctx.lineWidth = (p ? .55 : 1) * w * U * .55; ctx.globalAlpha = p ? .35 : .95; ctx.beginPath(); pts.forEach(([x, y], i) => (i ? ctx.lineTo(j(x), j(y)) : ctx.moveTo(j(x), j(y)))); ctx.stroke(); } ctx.globalAlpha = 1; },
+      fill(pts, col, off = U * 1.6) { ctx.fillStyle = col; ctx.beginPath(); pts.forEach(([x, y], i) => (i ? ctx.lineTo(x + off, y + off * .7) : ctx.moveTo(x + off, y + off * .7))); ctx.closePath(); ctx.fill(); },
+      hatch(pts, col, gap = U * 2.4) { ctx.save(); ctx.beginPath(); pts.forEach(([x, y], i) => (i ? ctx.lineTo(x, y) : ctx.moveTo(x, y))); ctx.closePath(); ctx.clip(); const xs = pts.map(p => p[0]), ys = pts.map(p => p[1]), mx = Math.min(...xs), Mx = Math.max(...xs), my = Math.min(...ys), My = Math.max(...ys); ctx.strokeStyle = col; ctx.lineWidth = U * .6; ctx.beginPath(); for (let x = mx - (My - my); x < Mx; x += gap) { ctx.moveTo(j(x), My); ctx.lineTo(j(x + (My - my)), my); } ctx.stroke(); ctx.restore(); },
+      shape(pts, fillCol, hatchCol, w) { if (fillCol) k.fill(pts, fillCol); if (hatchCol) k.hatch(pts, hatchCol); k.line([...pts, pts[0]], w); },
+      circ(cx, cy, rx, ry = rx, n = 24) { return Array.from({ length: n }, (_, i) => { const a = i / n * Math.PI * 2; return [cx + Math.cos(a) * rx, cy + Math.sin(a) * ry]; }); },
+      rect(x, y, w, h) { return [[x, y], [x + w, y], [x + w, y + h], [x, y + h]]; },
+      text(s, x, y, size, col = C.ink, align = 'left') { ctx.font = `700 ${size}px Caveat, "Comic Sans MS", cursive`; ctx.fillStyle = col; ctx.textAlign = align; ctx.fillText(s, x, y); },
+      arrow(x0, y0, x1, y1, col = C.ink, w = 1.9) { const mx = (x0 + x1) / 2, my = (y0 + y1) / 2 - Math.abs(x1 - x0) * .15; const pts = Array.from({ length: 12 }, (_, i) => { const t = i / 11; return [(1 - t) * (1 - t) * x0 + 2 * (1 - t) * t * mx + t * t * x1, (1 - t) * (1 - t) * y0 + 2 * (1 - t) * t * my + t * t * y1]; }); k.line(pts, w, col); const a = Math.atan2(y1 - pts[10][1], x1 - pts[10][0]), L = U * 4; k.line([[x1 - Math.cos(a - .5) * L, y1 - Math.sin(a - .5) * L], [x1, y1], [x1 - Math.cos(a + .5) * L, y1 - Math.sin(a + .5) * L]], w, col); },
+      plane(x, y, s, ang = 0) { ctx.save(); ctx.translate(x, y); ctx.rotate(ang); k.shape([[-s, 0], [s * .85, -s * .14], [s, 0], [s * .85, s * .14]], C.paper); k.line([[-s * .05, -s * .05], [-s * .45, -s * .7], [-s * .2, -s * .7], [s * .25, -s * .08]]); k.line([[-s * .05, s * .05], [-s * .45, s * .7], [-s * .2, s * .7], [s * .25, s * .08]]); k.line([[-s * .8, 0], [-s, -s * .35], [-s * .85, -s * .35], [-s * .6, -s * .05]]); ctx.restore(); },
+      face(cx, cy, rad, col, t) { k.shape(k.circ(cx, cy, rad), col); const blink = (t % 4) < .12; ctx.fillStyle = C.ink; if (blink) { k.line([[cx - rad * .45, cy - rad * .1], [cx - rad * .2, cy - rad * .1]], 1.2); k.line([[cx + rad * .2, cy - rad * .1], [cx + rad * .45, cy - rad * .1]], 1.2); } else { ctx.beginPath(); ctx.arc(cx - rad * .32, cy - rad * .12, U * .9, 0, 7); ctx.arc(cx + rad * .32, cy - rad * .12, U * .9, 0, 7); ctx.fill(); } k.line([[cx - rad * .35, cy + rad * .28], [cx, cy + rad * .45], [cx + rad * .35, cy + rad * .28]], 1.3); }
+    };
+    return k;
+  };
+
+  const SK = {
+    plane(k, W, H, t, U) { const a = t * .9, x = W / 2 + Math.cos(a) * W * .32, y = H / 2 + Math.sin(a) * H * .28; for (let i = 1; i < 12; i++) { const b = a - i * .12; k.line([[W / 2 + Math.cos(b) * W * .32, H / 2 + Math.sin(b) * H * .28], [W / 2 + Math.cos(b + .04) * W * .32, H / 2 + Math.sin(b + .04) * H * .28]], 1.2, C.muted); } k.plane(x, y, U * 9, a + Math.PI / 2); },
+    ask(k, W, H, t, U) {
+      const bx = W * .1, by = H * .14, bw = W * .74, bh = H * .5;
+      k.shape([[bx, by], [bx + bw, by], [bx + bw, by + bh], [bx + bw * .3, by + bh], [bx + bw * .16, by + bh + H * .16], [bx + bw * .2, by + bh], [bx, by + bh]], C.paper, null);
+      const q = (t % 5) / 5, lines = ['somewhere warm', 'in july, 2 of us', 'nothing fancy'];
+      lines.forEach((s, i) => { const show = Math.min(s.length, Math.max(0, Math.floor((q * 3 - i) * s.length))); if (show > 0) k.text(s.slice(0, show), bx + U * 3, by + U * 9 + i * U * 8.5, U * 7, C.blue); });
+      k.face(W * .86, H * .8, U * 8, C.hl, t);
+    },
+    tags(k, W, H, t, U) {
+      const tag = (x, y, w, h, col, label, price, strike) => { k.shape([[x, y + h / 2], [x + h * .4, y], [x + w, y], [x + w, y + h], [x + h * .4, y + h]], col); k.shape(k.circ(x + h * .45, y + h / 2, U * 1.5, U * 1.5, 10), C.paper); k.text(label, x + h * .8, y + h * .42, U * 5.2, C.muted); k.text(price, x + h * .8, y + h * .85, U * 8, strike ? C.muted : C.coral); if (strike) k.line([[x + h * .7, y + h * .68], [x + w - U * 3, y + h * .6]], 2.2); };
+      tag(W * .08, H * .12, W * .62, H * .3, C.paper, 'public', '$812', true);
+      const s = .5 + .5 * Math.sin(t * 2.2);
+      tag(W * .26, H * .5 + s * U, W * .66, H * .34, C.hl, 'member', '$668', false);
+      k.line(k.circ(W * .63, H * .76, W * .2, H * .15, 20).concat([k.circ(W * .63, H * .76, W * .2, H * .15, 20)[0]]), 1.8, C.coral);
+    },
+    yes(k, W, H, t, U) {
+      const px = W * .3, py = H * .06, pw = W * .4, ph = H * .86;
+      k.shape(k.rect(px, py, pw, ph), C.lilac); k.shape(k.rect(px + U * 2.5, py + U * 4, pw - U * 5, ph - U * 9), C.paper);
+      k.text('book it?', px + U * 5, py + U * 13, U * 6.5, C.ink);
+      const q = (t % 4) / 4; k.shape(k.rect(px + U * 5, py + U * 18, pw - U * 10, U * 9), q > .4 ? C.mint : C.paper); k.text(q > .4 ? 'yes ✓' : 'yes', px + U * 8, py + U * 24.5, U * 6.5, C.ink);
+      if (q > .55) { k.line([[W * .78, H * .3], [W * .84, H * .4], [W * .95, H * .16]], 3, C.blue); }
+    },
+    watch(k, W, H, t, U) {
+      const x0 = W * .08, x1 = W * .92, y0 = H * .18, y1 = H * .82;
+      k.line([[x0, y0], [x0, y1], [x1, y1]], 1.6);
+      k.line([[x0, H * .32], [x1, H * .32]], 1.1, C.muted); k.text('you paid', x0 + U * 2, H * .28, U * 5, C.muted);
+      const q = (t % 6) / 6, n = Math.max(2, Math.floor(q * 16));
+      const pts = Array.from({ length: n }, (_, i) => [x0 + (x1 - x0) * i / 15, H * .34 + (H * .36) * (i / 15) ** 1.5 + Math.sin(i * 1.7) * U * 1.5]);
+      k.line(pts, 2.2, C.blue);
+      if (q > .8) { const [ex, ey] = pts[pts.length - 1]; k.shape(k.circ(ex, ey, U * 2.2), C.coral); k.text('$ back', ex - U * 14, ey - U * 4, U * 6.5, C.coral); }
+    },
+    envelope(k, W, H, t, U) {
+      const x = W * .14, y = H * .3 + Math.sin(t * 2) * U, w = W * .72, h = H * .58;
+      k.shape(k.rect(x, y, w, h), C.paper); k.line([[x, y], [x + w / 2, y + h * .55], [x + w, y]], 1.8);
+      const ly = y - H * .22 + Math.sin(t * 2) * U * 1.5; k.shape(k.rect(x + w * .18, ly, w * .64, H * .3), C.hl); k.line([[x + w * .26, ly + U * 5], [x + w * .7, ly + U * 5]], 1.2); k.line([[x + w * .26, ly + U * 9], [x + w * .6, ly + U * 9]], 1.2);
+    },
+    timeline(k, W, H, t, U) {
+      const x0 = W * .06, x1 = W * .94, y1 = H * .78, top = H * .2;
+      k.line([[x0, y1], [x1, y1]], 1.6);
+      const ticks = ['booked', 'watching', 'price drops', 'rebooked', 'refund sent'], q = (t % 9) / 9;
+      ticks.forEach((s, i) => { const x = x0 + (x1 - x0) * (i / 4); k.line([[x, y1 - U * 2], [x, y1 + U * 2]], 1.4); k.text(s, x, y1 + U * 8, U * 5.4, q * 5 > i ? C.ink : C.muted, 'center'); });
+      const cancel = x0 + (x1 - x0) * .9; k.line([[cancel, top - U * 4], [cancel, y1]], 1.2, C.coral); k.text('free cancellation ends', cancel - U * 2, top - U * 6, U * 5, C.coral, 'right');
+      k.line([[x0, H * .36], [x1, H * .36]], 1.1, C.muted); k.text('you paid $1,060', x0 + U * 2, H * .32, U * 5.5, C.muted);
+      const n = Math.max(2, Math.floor(q * 40));
+      const P = Array.from({ length: n }, (_, i) => { const u = i / 39; return [x0 + (x1 - x0) * u, H * .38 + (u > .45 ? (H * .2) * Math.min(1, (u - .45) / .2) : 0) + Math.sin(i * 1.3) * U * 1.2]; });
+      k.line(P, 2.4, C.blue);
+      if (q > .62) { const x = x0 + (x1 - x0) * .75; k.shape(k.circ(x, H * .58, U * 2.4), C.mint); k.text('same room, $938', x + U * 4, H * .56, U * 6, C.blue); }
+      if (q > .88) { const x = x0 + (x1 - x0), y = H * .5; k.shape(k.rect(x - U * 26, y - U * 9, U * 22, U * 12), C.hl); k.text('$104 back ✓', x - U * 24, y - U * 1, U * 6, C.ink); }
+    },
+
+    refund(k, W, H, t, U) { const x = W * .16, y = H * .32, w = W * .5, h = H * .5; k.shape(k.rect(x, y, w, h), C.paper); k.line([[x, y], [x + w / 2, y + h * .55], [x + w, y]], 1.8); const b = (t * 1.2) % 2, cy = H * .2 + Math.min(1, b) * H * .2; if (b < 1.2) { k.shape(k.circ(W * .76, cy, U * 6), C.hl); k.text('$', W * .76, cy + U * 2.4, U * 7, C.ink, 'center'); } k.arrow(W * .72, H * .78, W * .9, H * .56, C.coral); },
+    credit(k, W, H, t, U) { const x = W * .1, y = H * .26, w = W * .62, h = H * .42; k.shape(k.rect(x, y, w, h), C.paper); k.line([[x + w * .72, y], [x + w * .72, y + h]], 1.2, C.muted); k.text('SYD → NAN', x + U * 3, y + U * 9, U * 6.5); k.text('seat 23A', x + U * 3, y + U * 17, U * 5, C.muted); k.plane(x + w * .86, y + h * .5, U * 4.5, 0); const q = (t % 3) / 3; k.shape(k.rect(W * .7, H * .62 - q * U * 4, W * .24, H * .2), C.mint); k.text('+$80 credit', W * .82, H * .75 - q * U * 4, U * 4.8, C.ink, 'center'); },
+    upgrade(k, W, H, t, U) { const b = (x, h, col, stars) => { k.shape(k.rect(x, H * .86 - h, W * .24, h), col); for (let i = 0; i < 3; i++) k.line([[x + W * .05, H * .86 - h + U * 5 + i * U * 6], [x + W * .19, H * .86 - h + U * 5 + i * U * 6]], 1); k.text('★'.repeat(stars), x + W * .12, H * .86 - h - U * 3, U * 5.5, C.coral, 'center'); }; b(W * .1, H * .34, C.paper, 3); b(W * .64, H * .54 + Math.sin(t * 2) * U, C.lilac, 5); k.arrow(W * .38, H * .5, W * .6, H * .36, C.blue); k.line([[W * .02, H * .86], [W * .98, H * .86]], 1.4); },
+    chat2(k, W, H, t, U) { k.shape([[W * .08, H * .12], [W * .78, H * .12], [W * .78, H * .62], [W * .34, H * .62], [W * .2, H * .86], [W * .24, H * .62], [W * .08, H * .62]], C.paper); const q = Math.floor(t * 2) % 4; k.text('ask ctx' + '.'.repeat(q), W * .14, H * .44, U * 9, C.blue); k.shape(k.circ(W * .86, H * .28, U * 6), C.hl); },
+
+    'stay-peaks'(k, W, H, t, U) { k.shape([[0, H * .9], [W * .3, H * .3], [W * .5, H * .6], [W * .7, H * .2], [W, H * .9]], C.lilac); k.line([[W * .25, H * .38], [W * .3, H * .3], [W * .36, H * .4]], 1.6); k.shape(k.circ(W * .85, H * .22, U * 5), C.hl); },
+    'stay-coast'(k, W, H, t, U) { k.shape(k.circ(W * .7, H * .45, U * 7), C.hl); k.shape([[0, H * .62], [W, H * .62], [W, H], [0, H]], '#9cc6e8', null); for (let i = 0; i < 3; i++) { const y = H * .72 + i * U * 4, o = Math.sin(t * 2 + i) * U * 3; k.line([[W * .1 + o, y], [W * .3 + o, y]], 1.2, C.blue); } },
+    'stay-park'(k, W, H, t, U) { [[.25, .5, 12], [.55, .45, 15], [.8, .55, 11]].forEach(([x, y, r]) => { k.shape(k.circ(W * x, H * y, U * r * .8), C.mint); k.line([[W * x, H * y + U * r * .8], [W * x, H * .92]], 1.8); }); k.line([[0, H * .92], [W, H * .92]], 1.4); },
+    'stay-city'(k, W, H, t, U) { [[.1, .5], [.32, .3], [.56, .45], [.76, .2]].forEach(([x, y], i) => { k.shape(k.rect(W * x, H * y, W * .18, H * (.92 - y)), i % 2 ? C.paper : C.lilac); }); k.shape(k.circ(W * .9, H * .15, U * 4), C.coral); },
+
+    'c-reel'(k, W, H, t, U) { const x = W * .32, y = H * .1, w = W * .3, h = H * .8; k.shape(k.rect(x, y, w, h), C.coral); k.shape([[x + w * .4, y + h * .38], [x + w * .65, y + h * .5], [x + w * .4, y + h * .62]], C.paper); k.arrow(x + w + U * 3, H * .5, W * .9, H * .32, C.blue); k.shape(k.circ(W * .9, H * .26, U * 4), C.hl); },
+    'c-inbox'(k, W, H, t, U) { for (let i = 0; i < 3; i++) { const y = H * .16 + i * H * .24 + (i === Math.floor(t) % 3 ? -U : 0); k.shape(k.rect(W * .14, y, W * .42, H * .18), i === 1 ? C.paper : C.paper); k.line([[W * .14, y], [W * .35, y + H * .1], [W * .56, y]], 1.4); } k.arrow(W * .6, H * .5, W * .76, H * .5, C.blue); k.shape(k.rect(W * .78, H * .22, W * .14, H * .56), C.hl); },
+    'c-heart'(k, W, H, t, U) { const cx = W / 2, cy = H * .5, s = U * (9 + Math.sin(t * 3) * .6); k.shape([[cx, cy + s * 1.2], [cx - s * 1.5, cy - s * .1], [cx - s * 1.1, cy - s * .9], [cx - s * .4, cy - s * .9], [cx, cy - s * .35], [cx + s * .4, cy - s * .9], [cx + s * 1.1, cy - s * .9], [cx + s * 1.5, cy - s * .1]], C.coral); [-1, 1].forEach(d => k.line([[cx + d * s * 2.2, cy - s], [cx + d * s * 2.7, cy - s * 1.4]], 1.4)); },
+    'c-map'(k, W, H, t, U) { k.shape(k.rect(W * .1, H * .1, W * .8, H * .8), '#eef0e6'); k.line([[W * .1, H * .55], [W * .9, H * .45]], 2.6, '#fff'); const r = (t % 3) / 3; k.line(k.circ(W * .5, H * .5, W * .26 * r, H * .3 * r, 20).concat([k.circ(W * .5, H * .5, W * .26 * r, H * .3 * r, 20)[0]]), 1.4, C.blue); k.shape(k.circ(W * .5, H * .5, U * 3), C.ink); k.shape(k.circ(W * .66, H * .36, U * 2.4), C.coral); k.shape(k.circ(W * .38, H * .64, U * 2.4), C.coral); },
+    'c-stars'(k, W, H, t, U) { for (let i = 0; i < 5; i++) { const cx = W * .18 + i * W * .16, cy = H * .45, r = U * 5.5, on = i < 4 || (t % 2) > 1; const pts = Array.from({ length: 10 }, (_, j) => { const a = -Math.PI / 2 + j * Math.PI / 5, rr = j % 2 ? r * .45 : r; return [cx + Math.cos(a) * rr, cy + Math.sin(a) * rr]; }); k.shape(pts, on ? C.hl : C.paper); } k.text('4.6 · 2,318 reviews', W / 2, H * .8, U * 6, C.ink, 'center'); },
+    'c-near'(k, W, H, t, U) { const cx = W * .35, cy = H * .55; [1, 2, 3].forEach(i => { const rr = U * 6 * i + ((t * 6) % 6) * U; k.line(k.circ(cx, cy, rr, rr * .8, 22).concat([k.circ(cx, cy, rr, rr * .8, 22)[0]]), 1.1, C.muted); }); k.shape(k.circ(cx, cy, U * 3.4), C.ink); k.shape(k.circ(W * .7, H * .4, U * 2.6), C.coral); k.text('6 min', W * .7, H * .3, U * 5.5, C.coral, 'center'); },
+
+    ctxbag(k, W, H, t, U) {
+      const nx = W * .56, ny = H * .5, nw = W * .3, nh = H * .5;
+      k.shape(k.rect(nx, ny - nh / 2, nw, nh), C.paper); k.line([[nx + U * 3, ny - nh / 2], [nx + U * 3, ny + nh / 2]], 1.2, C.coral);
+      k.text('ctx', nx + nw / 2 + U, ny + U * 2, U * 10, C.ink, 'center');
+      const items = [['reel', C.coral], ['email', C.paper], ['♥', C.coral], ['pin', C.mint], ['$', C.hl], ['who', C.lilac]];
+      items.forEach(([lab, col], i) => {
+        const a = Math.PI * .58 + i * (Math.PI * .84 / 5), R = Math.min(W, H) * .42, sx = W * .34 + Math.cos(a) * R * 1.05, sy = H * .44 + Math.sin(a) * R * .85;
+        const q = ((t * .35) + i / items.length) % 1, e = q < .7 ? q / .7 : 1, x = sx + (nx - sx) * e * e, y = sy + (ny - sy) * e * e;
+        if (q < .7) { k.shape(k.rect(x - U * 6, y - U * 4, U * 12, U * 8), col); k.text(lab, x, y + U * 1.8, U * 5, C.ink, 'center'); }
+      });
+      k.text('everything about your trip, in one place', W * .5, H * .99, U * 5, C.muted, 'center');
+    },
+    hand(k, W, H, t, U) { const cx = W / 2, cy = H * .55, b = Math.sin(t * 3) * U; k.shape([[cx - U * 9, cy + U * 9], [cx - U * 9, cy - U * 2 + b], [cx - U * 4, cy - U * 6 + b], [cx - U * 3, cy - U * 16 + b], [cx + U * 1, cy - U * 16 + b], [cx + U * 1, cy - U * 6 + b], [cx + U * 9, cy - U * 5], [cx + U * 9, cy + U * 9]], C.paper); [-1, 1].forEach(s => k.line([[cx + s * U * 16, cy - U * 12], [cx + s * U * 20, cy - U * 16]], 1.6, C.coral)); },
+    same(k, W, H, t, U) { const d = (x, col) => { k.shape(k.rect(x, H * .3, W * .26, H * .46), col); k.line([[x + W * .05, H * .44], [x + W * .21, H * .44]], 1.2); k.line([[x + W * .05, H * .54], [x + W * .18, H * .54]], 1.2); }; d(W * .1, C.paper); d(W * .62, C.paper); k.text('=', W * .5, H * .64, U * 14, C.blue, 'center'); },
+    lock(k, W, H, t, U) { const cx = W / 2, cy = H * .62; k.line(k.circ(cx, cy - U * 10, U * 8, U * 8, 14).slice(7, 14).concat([[cx + U * 8, cy - U * 10]]), 2.2); k.shape(k.rect(cx - U * 12, cy - U * 9, U * 24, U * 19), C.hl); k.shape(k.circ(cx, cy, U * 2.2, U * 2.2, 10), C.ink); },
+    suitcase(k, W, H, t, U) { const x = W * .3, y = H * .28 + Math.sin(t * 2) * U, w = W * .4, h = H * .6; k.shape(k.rect(x, y, w, h), C.coral); k.line([[x + w * .35, y], [x + w * .35, y - U * 6], [x + w * .65, y - U * 6], [x + w * .65, y]], 2); k.shape(k.circ(x + w * .3, y + h * .4, U * 5, U * 5, 14), C.hl); k.text('ctx', x + w * .3, y + h * .46, U * 5, C.ink, 'center'); k.plane(W * .14 + Math.sin(t) * U * 3, H * .3, U * 6, -.2); k.line([[W * .82, H * .2], [W * .9, H * .2]], 1.6); k.line([[W * .86, H * .14], [W * .86, H * .26]], 1.6); }
+  };
+
+  const mount = (cv) => {
+    const fn = SK[cv.dataset.sk]; if (!fn) return;
+    const ctx = cv.getContext('2d'); let W = 0, H = 0, vis = false, raf = 0, last = 0; const t0 = performance.now();
+    const size = () => { const r = cv.getBoundingClientRect(), d = Math.min(2, devicePixelRatio || 1); W = r.width; H = r.height; cv.width = Math.round(W * d); cv.height = Math.round(H * d); ctx.setTransform(d, 0, 0, d, 0, 0); };
+    const frame = (now) => { raf = 0; if (!vis) return; if (!W) size(); if (REDUCE || now - last > 190) { last = now; const t = REDUCE ? 5.5 : (now - t0) / 1000, U = Math.min(W, H) / 60; ctx.clearRect(0, 0, W, H); const k = kit(ctx, U); k.reseed(Math.floor(t * 5) % 3); fn(k, W, H, t, U); } if (!REDUCE) raf = requestAnimationFrame(frame); };
+    new IntersectionObserver(([e]) => { vis = e.isIntersecting; if (vis && !raf) raf = requestAnimationFrame(frame); }).observe(cv);
+    new ResizeObserver(() => { W = 0; }).observe(cv);
+  };
+  $$('canvas.sk').forEach(mount);
+
+
+  /* ---------- book a stay (demo results) ---------- */
+  const STAYS = {
+    Lisbon: [['Alfama guesthouse', 'Rated 9.1 · 6 min to tram 28', 203, 167, 'peaks'], ['River view hotel', 'Rated 8.8 · Cais do Sodré', 228, 191, 'coast'], ['Garden rooms', 'Rated 9.0 · Estrela, very quiet', 214, 182, 'park']],
+    Bali: [['Seminyak villa', 'Private pool · rated 9.3', 280, 241, 'coast'], ['Ubud jungle house', 'Rice-field views · rated 9.0', 190, 158, 'park'], ['Canggu surf lodge', 'Walk to the beach · rated 8.7', 145, 121, 'peaks']],
+    Tokyo: [['Shinjuku garden hotel', '4 min to station · rated 8.9', 238, 187, 'city'], ['Asakusa ryokan', 'Tatami rooms · rated 9.2', 260, 214, 'park'], ['Ginza business hotel', 'Compact, central · rated 8.5', 164, 139, 'city']],
+    Queenstown: [['Lake-view apartment', 'Balcony · rated 9.1', 240, 201, 'peaks'], ['Arrowtown cottage', 'Wood fire · rated 9.4', 210, 178, 'park'], ['Town-centre hotel', 'Walk to the gondola · rated 8.6', 176, 149, 'city']]
+  };
+  const nights = () => 4;
+  const res = $('#res');
+  const showStays = () => {
+    const list = STAYS[$('#mCity').value], n = nights();
+    res.innerHTML = list.map(([name, sub, pub, mem, art], i) => '<div class="rc" style="animation-delay:' + i * 120 + 'ms"><div class="a"><canvas class="sk" data-sk="stay-' + art + '" aria-hidden="true"></canvas></div><b>' + name + '</b><small>' + sub + '</small><div class="pp"><s>$' + pub + '</s><em>$' + mem + '</em><span>a night, member price</span></div><span class="prot">✓ price-drop refund on</span><span class="pick">Ask ctx to book</span></div>').join('');
+    $$('canvas.sk', res).forEach(mount);
+  };
+  $('#madlib').addEventListener('submit', (e) => { e.preventDefault(); showStays(); });
+  let bs = false;
+  new IntersectionObserver(([e]) => { if (e.isIntersecting && !bs) { bs = true; showStays(); } }, { threshold: .3 }).observe($('#madlib'));
+
+  /* ---------- the ctx app, scene by scene ---------- */
+  const phone = $('#phone'), rail = $$('#appRail li'), ann = $('#ann'), annT = $('#annT'), askT = $('#askT');
+  const scenes = [
+    { el: '.s-reel', note: 'share any reel', title: 'Japan · Oct', steps: [900, 1300, 1700] },
+    { el: '.s-inbox', note: 'it reads your booking emails', title: 'Japan · Oct', steps: [800, 1300, 1700] },
+    { el: '.s-map', note: 'ask the map anything', title: 'Near your hotel', steps: [2200, 1200, 900, 900], ask: 'ramen within 10 min walk, open late' },
+    { el: '.s-wish', note: 'your wishlist becomes a trip', title: 'Japan wishlist', steps: [900, 1500, 600] },
+    { el: '.s-lock', note: 'money back, automatically', title: '', steps: [700, 1200] }
+  ];
+  let stok = 0, si = 0;
+  const sw = (ms, my) => new Promise((res, rej) => setTimeout(() => (my === stok ? res() : rej('stop')), REDUCE ? 0 : ms));
+  const reset = (el) => { el.className = el.className.split(' ').filter(c => !/^p\d$/.test(c)).join(' '); };
+  async function showScene(i, my) {
+    const S = scenes[i], el = $(S.el, phone);
+    $$('.scr', phone).forEach(x => { x.classList.remove('on'); reset(x); });
+    rail.forEach((li, j) => li.classList.toggle('on', j === i));
+    phone.classList.toggle('lock', S.el === '.s-lock');
+    $('#appTitle').textContent = S.title || 'Japan · Oct';
+    ann.classList.add('swap'); ann.classList.remove('draw'); await sw(250, my); annT.textContent = S.note; ann.classList.remove('swap'); void ann.offsetWidth; ann.classList.add('draw');
+    el.classList.add('on');
+    if (S.ask) { askT.textContent = ''; for (let c = 1; c <= S.ask.length; c++) { askT.textContent = S.ask.slice(0, c); await sw(Math.max(10, S.steps[0] / S.ask.length), my); } }
+    for (let p = 0; p < S.steps.length; p++) { if (!S.ask || p > 0) await sw(S.steps[p], my); el.classList.add('p' + (p + 1)); }
+    await sw(3200, my);
+  }
+  async function playApp(start) { const my = ++stok; si = start; try { while (my === stok) { await showScene(si % scenes.length, my); si++; if (REDUCE) break; } } catch (e) { if (e !== 'stop') throw e; } }
+  rail.forEach((li, i) => li.addEventListener('click', () => playApp(i)));
+  if (REDUCE) { $$('.scr', phone).forEach(x => x.classList.add('p1', 'p2', 'p3', 'p4')); $('.s-map', phone).classList.add('on'); askT.textContent = scenes[2].ask; rail[2].classList.add('on'); annT.textContent = scenes[2].note; }
+  let appStarted = false;
+  new IntersectionObserver(([e]) => { if (e.isIntersecting && !appStarted && !REDUCE) { appStarted = true; playApp(0); } }, { threshold: .3 }).observe(phone);
+
+  /* ---------- member price ledger: strike public, write member ---------- */
+  const rows = $$('#ledger .lrow');
+  const ledgerRun = () => { rows.forEach(r => r.classList.remove('on')); rows.forEach((r, i) => setTimeout(() => r.classList.add('on'), 400 + i * 650)); };
+  let lr = false;
+  new IntersectionObserver(([e]) => { if (e.isIntersecting && !lr) { lr = true; ledgerRun(); if (!REDUCE) setInterval(ledgerRun, 8000); } }, { threshold: .4 }).observe($('#ledger'));
+
+  /* ---------- drop tray (demo only, nothing is uploaded) ---------- */
+  const tray = $('#tray'), read = $('#read');
+  const LINES = [['Hotel', 'Seminyak villa, Bali'], ['Dates', '12 to 19 July · 7 nights'], ['Room', 'One-bedroom pool villa'], ['You paid', '$1,060'], ['Free cancellation until', '5 July'], ['Status', 'now watching ✓']];
+  let reading = false;
+  const readDemo = async () => {
+    if (reading) return; reading = true; read.innerHTML = LINES.map(([a, b]) => `<div><span>${a}</span><em>${b}</em></div>`).join('');
+    const ds = $$('div', read); for (const d of ds) { await new Promise(r => setTimeout(r, REDUCE ? 0 : 420)); d.classList.add('on'); }
+    reading = false;
+  };
+  ['dragenter', 'dragover'].forEach(ev => tray.addEventListener(ev, (e) => { e.preventDefault(); tray.classList.add('over'); }));
+  ['dragleave', 'drop'].forEach(ev => tray.addEventListener(ev, (e) => { e.preventDefault(); tray.classList.remove('over'); if (ev === 'drop') readDemo(); }));
+  tray.addEventListener('click', readDemo); tray.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); readDemo(); } });
+  let tr = false;
+  new IntersectionObserver(([e]) => { if (e.isIntersecting && !tr) { tr = true; setTimeout(readDemo, 600); } }, { threshold: .5 }).observe(tray);
+
+  /* ---------- join (no backend yet: confirms on screen only) ---------- */
+  $('#form').addEventListener('submit', (e) => { e.preventDefault(); $('#joinBox').classList.add('done'); });
+})();
+</script>
+</body>
+</html>
