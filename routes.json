@@ -50,6 +50,12 @@
       "route": "/startups/adn-exchange/",
       "html_alias": "/startups/adn-exchange.html",
       "source": "startup-sites/adn-exchange/index.html"
+    },
+    {
+      "name": "Voice & Concierge",
+      "route": "/startups/voice-concierge/",
+      "html_alias": "/startups/voice-concierge.html",
+      "source": "startup-sites/voice-concierge/index.html"
     }
   ]
 }

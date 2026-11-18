@@ -23,6 +23,7 @@ BUSINESSES = [
     ('portal', 'Portal', 'startup-sites/portal-booking/index.html'),
     ('visa-clearance', 'Visa clearance', 'startup-sites/visa-clearance/index.html'),
     ('adn-exchange', 'ADN + Exchange', 'startup-sites/adn-exchange/index.html'),
+    ('voice-concierge', 'Voice & Concierge', 'startup-sites/voice-concierge/index.html'),
 ]
 FOLDERS = {str(PurePosixPath(source).parent): 'startups/' + slug for slug, _, source in BUSINESSES if source.endswith('/index.html')}
 FOLDERS['startup-sites/shared'] = 'startups/shared'

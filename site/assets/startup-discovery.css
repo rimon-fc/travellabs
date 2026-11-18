@@ -12,3 +12,5 @@
 .startup-discovery-list a:hover{color:var(--blue)}
 @media(max-width:899px){.startup-discovery>.wrap{grid-template-columns:1fr;gap:32px}.startup-discovery h2{font-size:46px}.startup-discovery-copy p{max-width:550px}}
 @media(max-width:400px){.startup-discovery-list{gap:0 18px}.startup-discovery-list span{font-size:24px}.startup-discovery-list small{font-size:10px}}
+
+.startup-discovery-list .incubating-business{grid-column:1/-1}.startup-discovery-list .incubating-business>span{display:flex;align-items:center;flex-wrap:wrap;gap:10px}.startup-discovery-list .incubating-badge{display:inline-block;font:10px/1.5 Arial,sans-serif;font-style:normal;letter-spacing:.04em;color:#344028;background:#ddfe6a;border:1px solid #b5c779;padding:3px 8px;border-radius:3px}

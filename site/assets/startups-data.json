@@ -166,5 +166,26 @@
       "Agree + book"
     ],
     "note": "This is a proposal; members, payment arrangements and fees are still to be agreed."
+  },
+  {
+    "id": "voice-concierge",
+    "name": "Voice & Concierge",
+    "role": "For hotels, holiday stays + travel teams",
+    "category": "Voice + guest service",
+    "stage": "Incubating",
+    "url": "startup-sites/voice-concierge/index.html",
+    "color": "#755d82",
+    "tint": "#eee5e8",
+    "title": "A warm welcome, even when your team is busy.",
+    "what": "An AI receptionist that answers calls and messages, helps with everyday guest requests and keeps staff informed in one shared inbox.",
+    "why": "Guests need help after hours and during busy periods. Missed calls and scattered messages create extra work and lost enquiries.",
+    "outcome": "Fewer missed enquiries, quicker answers and more staff time for guests who need a person. These are the aims of a future pilot.",
+    "example": "A guest calls at 2am about a late arrival. The assistant explains the approved arrival process and prepares a note for reception.",
+    "steps": [
+      "Answer the guest",
+      "Help with the request",
+      "Keep staff informed"
+    ],
+    "note": "Incubating: an early business concept and interactive preview. Live phone, messaging and booking connections are not yet active."
   }
 ]

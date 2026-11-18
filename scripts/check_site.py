@@ -26,7 +26,7 @@ class Page(HTMLParser):
             self.ids.append(attrs['id'])
         if tag == 'meta' and attrs.get('name') == 'viewport':
             self.viewport = 'width=device-width' in attrs.get('content','')
-        for name in ('href', 'src', 'poster', 'action', 'data-url'):
+        for name in ('href', 'src', 'poster', 'action', 'data-url', 'data-src'):
             if name in attrs:
                 self.refs.append(attrs[name])
     def handle_startendtag(self, tag, attrs):
