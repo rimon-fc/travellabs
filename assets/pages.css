@@ -1,0 +1,148 @@
+/* TravelLabs: a small journal with real pages, and an original living travel world. */
+.header nav{gap:25px}
+.header nav a[aria-current]{color:var(--green);text-decoration:underline;text-underline-offset:7px;text-decoration-thickness:1px}
+.page-utility{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:27px;padding-bottom:24px;border-bottom:1px solid var(--line)}
+.page-utility>a{font-size:13px;text-decoration:none}.page-utility>a:hover{text-decoration:underline}
+.page-utility .motion-toggle{border-color:var(--line);box-shadow:none;background:transparent}
+.research-page .research,.about-page .about-section,.manifesto-page .manifesto-section{padding-top:55px;margin-top:0;border-top:0;padding-bottom:65px}
+.research-page .section-title h1,.about-page .about-words h1,.manifesto-intro h1{font-size:clamp(46px,4.8vw,67px);line-height:1.04;max-width:700px}
+.research-page .section-title>p{max-width:310px}
+.about-page .about-words h1{margin-bottom:23px}
+.about-page .about-grid{grid-template-columns:1fr 1.05fr;gap:60px}
+.about-page .about-words{grid-column:1;grid-row:1}
+.about-page .atelier{grid-column:2;grid-row:1;height:330px}
+.manifesto-page .manifesto-section{grid-template-columns:.8fr 1.2fr;gap:75px;padding-top:60px}
+.manifesto-page .manifesto-intro h1{margin-bottom:25px}
+.manifesto-page .manifesto-intro{align-self:start;position:sticky;top:30px}
+.manifesto-page .manifesto-principle:first-child{padding-top:0}
+.manifesto-page .manifesto-statement{border-top:0}
+.manifesto-page .manifesto-principle{padding-block:25px}
+.manifesto-page .manifesto-principle h3{font-size:18px}
+.manifesto-page .manifesto-principle p{font-size:16px;line-height:1.7}
+.world-hero{max-width:1504px;margin:auto;padding:32px 34px 48px 64px;display:grid;grid-template-columns:.82fr 1.4fr;align-items:center;gap:32px}
+.world-intro{padding:0 0 74px;position:relative;z-index:1}
+.world-intro .eyebrow{font-size:10px;line-height:1.6;letter-spacing:.08em;margin-bottom:25px}
+.world-intro h1{font-size:clamp(64px,6.65vw,102px);line-height:.96;letter-spacing:-.04em}
+.world-lead{font-size:clamp(18px,1.65vw,22px);line-height:1.5;max-width:340px;margin:26px 0 28px}
+.world-intro .button{gap:25px}
+.world-note{font:10px/1.5 var(--mono);margin-top:24px;letter-spacing:.02em}
+.world-exhibit{min-width:0}
+.world-stage{height:clamp(400px,40vw,590px);position:relative;isolation:isolate;background:#e4ebdc;overflow:hidden;border-radius:5px}
+.world-stage canvas,.world-poster{display:block;width:100%;height:100%;position:absolute;inset:0}
+.world-poster{object-fit:contain;background:#e4ebdc}
+.world-stage canvas{cursor:grab;touch-action:pan-y;outline-offset:-5px}
+.world-stage canvas.dragging{cursor:grabbing}
+.world-kicker{position:absolute;z-index:1;top:22px;left:23px;right:23px;display:flex;justify-content:space-between;gap:10px;pointer-events:none;font:8px/1.5 var(--mono);letter-spacing:.06em;color:#647566}
+.world-stage-bottom{position:absolute;z-index:1;left:23px;right:20px;bottom:16px;display:flex;justify-content:space-between;align-items:center;gap:10px;pointer-events:none}
+.world-stage-bottom>span{font-size:10px;color:#506959}
+.world-turn{display:flex;gap:5px;pointer-events:auto}
+.world-turn button{background:#fbf9eabf;border:1px solid #9eaf9580;width:36px;height:36px;border-radius:50%;font:17px var(--sans)}
+.world-turn button:hover{background:#fffbec}
+.world-toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:15px 0 21px}
+.world-toolbar>span{font:9px/1.5 var(--mono);color:#697866}
+.world-toolbar>div{display:flex;align-items:center;gap:15px;flex-shrink:0}
+.world-toolbar button{background:none;border:0;border-bottom:1px solid #c0cbb6;border-radius:0;box-shadow:none;font-size:10px;padding:4px 0;min-height:32px}
+.world-toolbar button:disabled{opacity:.55}
+.world-places{display:flex;gap:5px;flex-wrap:wrap}
+.world-places button{border:1px solid transparent;border-radius:3px;background:none;padding:5px 10px;font-size:12px;min-height:34px}
+.world-places button:first-child{margin-left:-10px}
+.world-places button[aria-pressed=true]{background:#e8eddf;border-color:#d6dfcb;color:#36523c}
+.world-places button:hover{background:#edf0e6}
+#world-description{font-size:12px;line-height:1.65;max-width:570px;min-height:60px;margin-top:10px}
+.world-noscript{font-size:12px;margin-top:10px}
+.home-page .mission{padding-top:58px;padding-bottom:65px;border-top:1px solid var(--line)}
+.home-page .mission h2{font-size:clamp(40px,4.5vw,58px)}
+.home-page .mission .lead{font-size:22px}
+.home-directory{padding-block:66px}
+.home-directory .section-title h2{font-size:49px}
+.directory-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px}
+.directory-grid>a{display:flex;flex-direction:column;text-decoration:none;border-top:1px solid #aebda5;padding:23px 0 17px;transition:border-color .2s}
+.directory-grid>a:hover{border-color:#426951}
+.directory-number{font:10px/1.5 var(--mono);letter-spacing:.05em;color:#6b7c65}
+.directory-grid h3{font-size:35px;line-height:1.12;margin:22px 0 17px}
+.directory-grid p{font-size:15px;line-height:1.7;max-width:290px;margin-bottom:24px}
+.directory-link{margin-top:auto;font-size:13px;display:flex;justify-content:space-between;align-items:center;padding-top:12px;border-top:1px solid var(--line)}
+.directory-link>span{font-size:18px;transition:transform .2s}.directory-grid>a:hover .directory-link>span{transform:translate(2px,-2px)}
+.home-careers{border-top:1px solid var(--line);margin-top:30px;padding-top:25px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.home-careers p{font-size:14px}.home-careers strong{font-weight:550;color:var(--ink)}
+@media(max-width:1150px){
+ .header nav{gap:17px}.header nav a{font-size:13px}.header nav .nav-contact{padding:8px 12px}
+ .world-hero{padding-left:35px;padding-right:24px;gap:24px;grid-template-columns:.8fr 1.3fr}
+ .world-intro h1{font-size:clamp(63px,7vw,86px)}
+ .world-toolbar{align-items:start;flex-direction:column;gap:4px}.world-toolbar>div{gap:20px}
+}
+@media(min-width:761px) and (max-width:1050px){
+ .site-header .header{height:82px;min-height:0;flex-wrap:nowrap;padding:0 24px}
+ .header .brand-lockup{margin:0}.header .menu-toggle{display:flex;align-items:center;gap:12px;min-height:42px;padding:6px 12px;background:transparent;border:1px solid var(--line);border-radius:3px;font-size:13px}
+ .header nav{display:none;position:absolute;top:72px;right:24px;left:auto;width:270px;padding:12px;background:var(--paper);border:1px solid var(--line);border-radius:4px;box-shadow:0 12px 24px #263b2b14}
+ .header.menu-open nav{display:flex;flex-direction:column;align-items:stretch;gap:3px}
+ .header nav a{padding:11px 13px;font-size:15px}.header nav .nav-contact{padding:11px 13px;margin-top:6px;text-align:center}
+ .world-kicker>span:last-child{display:none}
+}
+@media(max-width:760px){
+ .world-hero{display:flex;flex-direction:column;align-items:stretch;gap:29px;padding:28px 15px 35px}
+ .world-intro{padding:8px 10px 0;text-align:center}.world-intro .eyebrow{font-size:9px;margin-bottom:20px}
+ .world-intro h1{font-size:clamp(63px,13vw,88px);line-height:.97}
+ .world-lead{font-size:18px;max-width:320px;margin:20px auto 24px}.world-note{margin-top:17px;font-size:9px}
+ .world-stage{height:clamp(340px,92vw,540px)}
+ .world-kicker{top:17px;left:16px;right:16px;font-size:7px}
+ .world-stage-bottom{left:15px;right:13px;bottom:12px}.world-stage-bottom>span{font-size:9px;max-width:180px}
+ .world-turn button{width:35px;height:35px}
+ .world-toolbar{flex-direction:row;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:15px;padding-inline:5px}.world-toolbar>span{font-size:8px}.world-toolbar button{font-size:10px}
+ .world-places{padding-inline:5px;gap:1px;justify-content:space-between}.world-places button{font-size:11px;padding-inline:7px}.world-places button:first-child{margin-left:0}
+ #world-description{font-size:12px;padding:0 7px;margin-top:12px;min-height:0}
+ .home-page .mission{padding-top:38px;padding-bottom:40px}.home-page .mission>div{gap:22px}.home-page .mission .lead{font-size:20px}
+ .home-directory{padding-block:42px}.home-directory .section-title h2{font-size:42px}
+ .directory-grid{grid-template-columns:1fr;gap:16px}.directory-grid>a{padding-top:20px;padding-bottom:10px}.directory-grid h3{font-size:33px;margin:15px 0}.directory-grid h3 br{display:none}.directory-grid p{max-width:none;margin-bottom:16px}.directory-link{padding-top:10px}
+ .home-careers{align-items:start;flex-direction:column;gap:8px;margin-top:24px}
+ .page-utility{padding-top:17px;padding-bottom:18px}
+ .research-page .research,.about-page .about-section,.manifesto-page .manifesto-section{padding-top:35px;padding-bottom:40px;margin-top:0}
+ .research-page .section-title h1,.about-page .about-words h1,.manifesto-intro h1{font-size:45px}
+ .research-page .section-title>p{max-width:none}
+ .about-page .about-grid{grid-template-columns:1fr;gap:30px}.about-page .about-words{grid-column:1;grid-row:1}.about-page .atelier{grid-column:1;grid-row:2;height:260px}
+ .manifesto-page .manifesto-section{grid-template-columns:1fr;gap:30px}.manifesto-page .manifesto-intro{position:static}.manifesto-page .manifesto-principle h3{font-size:17px}.manifesto-page .manifesto-principle p{font-size:15px}
+}
+@media(max-width:360px){.world-hero{padding-inline:10px}.world-kicker>span:last-child{display:none}.world-stage{height:320px}.world-toolbar>span{width:100%}.world-places button{font-size:10px;padding-inline:5px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.world-turn button,.directory-grid>a,.directory-link>span{transition:none}}
+@media print{.world-stage canvas,.world-toolbar,.world-turn,.page-utility .motion-toggle{display:none}.world-poster[hidden]{display:block!important}.world-hero{grid-template-columns:1fr 1fr}.world-stage{height:330px}.world-intro h1{font-size:55px}.world-kicker{display:none}.world-intro{padding:0}.world-description{min-height:0}.manifesto-page .manifesto-intro{position:static}}
+
+/* The coastal journal remains the hero; the miniature world lives inside the lab. */
+.home-directory>.world-exhibit{max-width:880px;margin:0 auto 45px}
+.home-directory .world-stage{height:520px}
+.home-directory .world-toolbar{flex-direction:row;align-items:center;flex-wrap:wrap}
+.home-directory #world-description{max-width:680px;min-height:0;margin-bottom:25px}
+.home-papers{padding-top:55px;padding-bottom:60px;margin-top:0}
+.home-papers>.text-link{margin-top:24px}
+.papers-page .papers-section{margin-top:0;padding-top:55px;padding-bottom:70px;border-top:0}
+.papers-page .section-title h1{font-size:clamp(46px,4.8vw,67px);line-height:1.04}
+@media(max-width:760px){.home-directory .world-stage{height:clamp(320px,92vw,480px)}.home-directory>.world-exhibit{margin-bottom:30px}.home-papers{padding-top:38px;padding-bottom:40px}.papers-page .papers-section{padding-top:35px;padding-bottom:40px}.papers-page .section-title h1{font-size:45px}}
+
+/* Inside TravelLabs: vertical choices on the left, living illustrations on the right. */
+.lab-explorer{display:grid;grid-template-columns:290px minmax(0,1fr);gap:46px;align-items:start}
+.lab-tabs{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.lab-tab{position:relative;display:flex;flex-direction:column;align-items:flex-start;width:100%;text-align:left;border:0;border-bottom:1px solid var(--line);background:transparent;padding:24px 37px 24px 20px;min-height:164px;transition:background .2s}
+.lab-tab[aria-selected=true]{background:#e9eee1;box-shadow:inset 3px 0 #557b5b}
+.lab-tab:hover{background:#eef1e7}
+.lab-tab-number{font:9px/1.5 var(--mono);letter-spacing:.04em;color:#718269}
+.lab-tab-title{font:400 31px/1.08 var(--serif);letter-spacing:-.025em;margin:15px 0 12px}
+.lab-tab-note{font:12px/1.55 var(--sans);color:var(--muted);max-width:220px}
+.lab-tab-arrow{position:absolute;right:18px;top:24px;color:#6b8265;opacity:.4;font-size:18px}
+.lab-tab[aria-selected=true] .lab-tab-arrow{opacity:1}
+.lab-panels,.lab-panel{min-width:0}
+.lab-panels{min-height:650px}
+.lab-panel .world-exhibit{max-width:none;margin:0}
+.home-directory .lab-panel .world-stage{height:410px}
+.lab-panel .world-toolbar{margin-bottom:12px}
+.home-directory .lab-panel #world-description{margin-bottom:15px;font-size:12px}
+.lab-panel .world-kicker{font-size:7px;left:17px;right:17px}
+.lab-panel .world-stage-bottom{left:17px;right:15px}
+.lab-art{height:410px;border-radius:5px;background:#dce5d3}
+.lab-art figcaption{position:absolute;bottom:0;left:0;right:0;padding:36px 20px 17px;background:linear-gradient(transparent,#19352b9c);font-size:12px;color:#fff8e5}
+.lab-panel-copy{display:flex;justify-content:space-between;align-items:start;gap:25px;border-top:1px solid var(--line);padding-top:17px;margin-top:20px}
+.lab-panel-copy p{font-size:14px;line-height:1.65;max-width:350px}
+.lab-panel-copy .text-link{flex-shrink:0;font-size:12px;margin-top:0;padding-top:0}
+@media(min-width:761px) and (max-width:1050px){.lab-explorer{grid-template-columns:235px minmax(0,1fr);gap:28px}.lab-tab{padding-left:16px;padding-right:30px}.lab-tab-title{font-size:29px}.lab-panel .world-kicker>span:last-child{display:none}.lab-panel-copy{flex-direction:column;gap:12px}.lab-panel .world-toolbar{align-items:start;flex-direction:column}.lab-panel .world-places{gap:1px}.lab-panel .world-places button{padding-inline:7px;font-size:11px}}
+@media(max-width:760px){.lab-explorer{grid-template-columns:1fr;gap:24px}.lab-tab{min-height:0;padding:15px 38px 15px 17px}.lab-tab-number{font-size:8px}.lab-tab-title{font-size:25px;margin:7px 0 5px}.lab-tab-title br{display:none}.lab-tab-note{font-size:11px;max-width:none}.lab-tab-arrow{top:22px}.lab-panels{min-height:0}.home-directory .lab-panel .world-stage{height:clamp(320px,92vw,430px)}.lab-art{height:clamp(260px,78vw,400px)}.lab-panel-copy{gap:12px;flex-direction:column;margin-top:17px}.lab-panel-copy p{max-width:none}.lab-panel-copy .text-link{font-size:13px}.lab-art figcaption{font-size:11px;padding-inline:15px}}
+@media(prefers-reduced-motion:reduce){.lab-tab{transition:none}}
+@media print{.lab-explorer{display:block}.lab-tabs{display:none}.lab-panel[hidden]{display:block!important}.lab-panel{break-inside:avoid;margin-bottom:30px}.lab-panels{min-height:0}}
+.lab-art-controls{display:flex;justify-content:flex-end;padding-top:10px}.lab-art-controls .motion-toggle{background:transparent;border-color:var(--line);box-shadow:none;font-size:11px}

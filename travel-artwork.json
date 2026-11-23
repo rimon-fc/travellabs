@@ -1,0 +1,34 @@
+[
+  {
+    "file": "assets/hero-travel.webp",
+    "source": "/Users/rimon.rony@flightcentre.com/.codex/generated_images/01a1ec4b-6af4-7690-92a9-90deb03f1b87/exec-a8944e36-f1d3-4962-95b5-de69f301e3ee.png",
+    "prompt": "Create ORIGINAL commissioned artwork for TravelLabs, a travel AI research lab. Style: sophisticated nostalgic pixel-painted editorial landscape, intricate blocky brushwork, lightly dithered shading, crisp pixel edges mixed with painterly atmospheric depth, reminiscent of high-end contemporary AI lab web illustrations and cosy 1990s adventure game backgrounds. Not a flat vector, not a photograph, not a glossy 3D render. Rich detailed environment, restrained natural colour palette, gentle shadows. No words, letters, numbers, logos, watermarks or brand marks. Wide panoramic 16:9 scene, a quiet coastal airport terrace overlooking a turquoise bay and green islands, runway beside the sea, distant small passenger aircraft parked at gates, a departure lounge with warm wooden benches and planters in the lower corners. Late afternoon soft sunlight, pale blue and cream open sky occupying upper half. Warm aspirational travel atmosphere, no people in foreground, no luggage mascot (will be added separately), clear lower right terrace for a mascot. Composition spacious, no dense UI.",
+    "tool": "Built-in image_gen",
+    "original_file": "assets/hero-travel.png",
+    "web_export": "Optimized WebP delivery copy; original generated PNG retained."
+  },
+  {
+    "file": "assets/graph-travel.webp",
+    "source": "/Users/rimon.rony@flightcentre.com/.codex/generated_images/01a1ec4b-6af4-7690-92a9-90deb03f1b87/exec-c174fdce-b58c-407a-9b57-a9121cc2786a.png",
+    "prompt": "Create ORIGINAL commissioned artwork for TravelLabs, a travel AI research lab. Style: sophisticated nostalgic pixel-painted editorial landscape, intricate blocky brushwork, lightly dithered shading, crisp pixel edges mixed with painterly atmospheric depth, reminiscent of high-end contemporary AI lab web illustrations and cosy 1990s adventure game backgrounds. Not a flat vector, not a photograph, not a glossy 3D render. Rich detailed environment, restrained natural colour palette, gentle shadows. No words, letters, numbers, logos, watermarks or brand marks. Wide 3:2 illustration of an alpine railway junction viewed from inside a small station control room. Wooden desk in foreground with folded travel itinerary, small classic computer displaying a simple route map with NO text, train tracks gracefully connect through a green mountain valley outside a giant window. Small red and cream train in middle distance. Clear sky upper right for an animated paper plane added separately. Warm daylight, sage greens, teal, ochre. The concept is continuity of a journey and remembering its progress.",
+    "tool": "Built-in image_gen",
+    "original_file": "assets/graph-travel.png",
+    "web_export": "Optimized WebP delivery copy; original generated PNG retained."
+  },
+  {
+    "file": "assets/keel-travel.webp",
+    "source": "/Users/rimon.rony@flightcentre.com/.codex/generated_images/01a1ec4b-6af4-7690-92a9-90deb03f1b87/exec-6fb0aa6a-a96a-4e5d-ae72-d833f172e0f6.png",
+    "prompt": "Create ORIGINAL commissioned artwork for TravelLabs, a travel AI research lab. Style: sophisticated nostalgic pixel-painted editorial landscape, intricate blocky brushwork, lightly dithered shading, crisp pixel edges mixed with painterly atmospheric depth, reminiscent of high-end contemporary AI lab web illustrations and cosy 1990s adventure game backgrounds. Not a flat vector, not a photograph, not a glossy 3D render. Rich detailed environment, restrained natural colour palette, gentle shadows. No words, letters, numbers, logos, watermarks or brand marks. Wide 3:2 illustration of a little harbour travel office with an open window onto a tranquil turquoise harbour, a small cream ferry at a jetty, travel tickets and a brass compass on a warm wooden counter. A small classic desktop computer at the side displays a simple checkmark without text. Sunlight, coastal greenery, golden highlights, muted teal and cream. Leave open water visible for subtle animated wave overlays added later. The concept is connecting travel services with careful permission.",
+    "tool": "Built-in image_gen",
+    "original_file": "assets/keel-travel.png",
+    "web_export": "Optimized WebP delivery copy; original generated PNG retained."
+  },
+  {
+    "file": "assets/studio-travel.webp",
+    "source": "/Users/rimon.rony@flightcentre.com/.codex/generated_images/01a1ec4b-6af4-7690-92a9-90deb03f1b87/exec-c6599c6f-c79d-4dc2-b9b0-e4e56cae0b3a.png",
+    "prompt": "Create ORIGINAL commissioned artwork for TravelLabs, a travel AI research lab. Style: sophisticated nostalgic pixel-painted editorial landscape, intricate blocky brushwork, lightly dithered shading, crisp pixel edges mixed with painterly atmospheric depth, reminiscent of high-end contemporary AI lab web illustrations and cosy 1990s adventure game backgrounds. Not a flat vector, not a photograph, not a glossy 3D render. Rich detailed environment, restrained natural colour palette, gentle shadows. No words, letters, numbers, logos, watermarks or brand marks. Wide 3:2 illustration of a cosy research studio inside a scenic sleeper train carriage. A desk with a folded map, notebook, pencil, small globe and laptop, large windows reveal green countryside and distant mountains at dawn. One small anonymous silhouette studying at desk, no facial detail. Thoughtful quiet travel research atmosphere, soft teal and golden sunlight. Clear landscape outside window for subtle moving-light overlay.",
+    "tool": "Built-in image_gen",
+    "original_file": "assets/studio-travel.png",
+    "web_export": "Optimized WebP delivery copy; original generated PNG retained."
+  }
+]

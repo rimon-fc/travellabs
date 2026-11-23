@@ -1,0 +1,24 @@
+{
+  "name": "A world in the making",
+  "renderer": "assets/travel-world.js",
+  "poster": "assets/art/travel-world-poster.webp",
+  "direction": "Original isometric coastal travel world: soft sage and sea-glass colours, warm architectural details, paper grain and tree textures. Typography references General Intelligence Company and Cofounder; no artwork copied from either.",
+  "reference": "Local hero-ideas-v2.html#i1 informed the self-building city interaction. Geometry, code and composition are original.",
+  "animation": [
+    "Staged building construction",
+    "Aircraft in flight",
+    "Passing three-car train",
+    "Harbour boats and water ripples",
+    "Street vehicle and fountain"
+  ],
+  "controls": [
+    "Drag or arrow keys to rotate",
+    "Rotation buttons",
+    "Five selectable places with plain-language descriptions",
+    "Replay build",
+    "Shared pause button",
+    "Reduced-motion preference",
+    "Offscreen and hidden-document suspension"
+  ],
+  "verification": "Desktop, mobile, rotated and mid-build Canvas frames rendered through the real drawing code; Node interaction/lifecycle checks passed. Full browser layout review unavailable in this environment."
+}

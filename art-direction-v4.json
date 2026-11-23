@@ -1,0 +1,30 @@
+[
+  {
+    "name": "journey",
+    "prompt": "Original premium editorial digital painting, richly crafted environments, a blend of contemporary realism and softened digital impressionism, with very fine dithered brush texture at edges reminiscent of beautifully made late-1990s illustrated adventure game backgrounds. Sophisticated colour relationships, no heavy black outlines, no flat vector clipart, no 3D plastic, no text or logos. Travel research lab visual world. Wide landscape 16:9. An extraordinary quiet coastal railway in the European Riviera at early morning. Atmospheric expansive powder-blue sky takes the entire upper 55 percent, empty and light for a dark website title to be laid over. In the lower half, a pale limestone railway viaduct curves from lower left towards a small coral and ivory seaside station on the right, above a luminous turquoise bay. Cypress trees, pale purple distant mountains, tiny sailboats, warm sun on tall grasses and a small traveller on the platform. No train on the tracks because a moving train will be added in code. Composed as a believable beautiful place you want to visit, not a collage. Very wide panoramic feeling, exquisitely detailed lower foreground but restful sky, soft Mediterranean light, blue sage chalk and restrained orange.",
+    "source": "/Users/rimon.rony@flightcentre.com/.codex/generated_images/01a1ec4b-6af4-7690-92a9-90deb03f1b87/exec-28df98bc-785f-4571-ac96-0b6527d69a89.png",
+    "file": "assets/art/journey-v4.webp",
+    "tool": "Built-in image_gen"
+  },
+  {
+    "name": "atelier",
+    "prompt": "Original premium editorial digital painting, richly crafted environments, a blend of contemporary realism and softened digital impressionism, with very fine dithered brush texture at edges reminiscent of beautifully made late-1990s illustrated adventure game backgrounds. Sophisticated colour relationships, no heavy black outlines, no flat vector clipart, no 3D plastic, no text or logos. Travel research lab visual world. Wide landscape 3:2. Interior of a small travel research atelier above a railway station. Close foreground: beautifully worn timber desk, an open travel notebook with small pencil drawings of a route and train, a brass compass, model glider, cream coffee cup, and a dark green glass desk lamp. Tall open window at the right reveals luminous turquoise sea, distant cliffs and a railway curve. Shelf of books at left. A quiet human place for thinking, nobody present. Restrained sea-green, ivory, sunlit honey timber, powder blue. Fine visible pencil marks in the notebook, tactile precise realism in objects and soft impressionist distant view. No screens, no legible writing, no logos. Outstanding editorial illustration, intimate and intelligent.",
+    "source": "/Users/rimon.rony@flightcentre.com/.codex/generated_images/01a1ec4b-6af4-7690-92a9-90deb03f1b87/exec-8a3ec20a-62ea-4439-8963-2fbc15f236a5.png",
+    "file": "assets/art/atelier-v4.webp",
+    "tool": "Built-in image_gen"
+  },
+  {
+    "name": "night-station",
+    "prompt": "Original premium editorial digital painting, richly crafted environments, a blend of contemporary realism and softened digital impressionism, with very fine dithered brush texture at edges reminiscent of beautifully made late-1990s illustrated adventure game backgrounds. Sophisticated colour relationships, no heavy black outlines, no flat vector clipart, no 3D plastic, no text or logos. Travel research lab visual world. Cinematic wide landscape 16:9, nocturnal travel scene, subtle futuristic surrealism grounded in beautifully believable architecture. An elegant small train station and long platform overlook a vast quiet blue ocean of clouds, illuminated warm amber windows and slender lamps. Parallel railway tracks lead from foreground lower right and gently arc into a distant starry horizon; tiny distant mountain islands seem to float above the cloud sea. Framing trees at very far edges. Main building at right, left half open deep indigo sky and mist with low detail and generous negative space for website text. Fine rich painted atmosphere, warm human scale, navy and deep teal with gold light, no giant portals, no machinery collage, no people close up.",
+    "source": "/Users/rimon.rony@flightcentre.com/.codex/generated_images/01a1ec4b-6af4-7690-92a9-90deb03f1b87/exec-c22cc98f-530c-4a42-ba5e-1d45d98f72a4.png",
+    "file": "assets/art/night-station-v4.webp",
+    "tool": "Built-in image_gen"
+  },
+  {
+    "name": "trunk",
+    "prompt": "Create a single small original suitcase companion for a premium travel research lab website. Transparent background. Full body 3/4 view, soft hand-painted contemporary realism with fine pixel-like brush details; a charming worn deep teal canvas carry-on case, two muted golden-yellow woven straps, brass corners and leather handle, two tiny dark button eyes and understated small smile on front, two very small feet. Clever, understated personality, friendly but not childish. Beautiful material texture, no black outlines, no huge eyes, no cartoon stroke. Isolated full figure and no ground shadow. Straight upright posture. Warm soft light from upper left. Designed to look excellent at 90px tall.",
+    "source": "/Users/rimon.rony@flightcentre.com/.codex/generated_images/01a1ec4b-6af4-7690-92a9-90deb03f1b87/exec-cd91d449-d750-42e9-89d1-ad98fb82a3ad.png",
+    "file": "assets/art/trunk-v4.webp",
+    "tool": "Built-in image_gen"
+  }
+]

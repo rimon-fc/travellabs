@@ -1,0 +1,23 @@
+.waypoint-explorer{margin:35px 0 45px;border:1px solid var(--ink);background:#faf9f5}
+.waypoint-example-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:30px;padding:26px}
+.waypoint-example-grid blockquote{margin:15px 0 20px;font-size:12px;line-height:1.85;white-space:pre-line;color:#444d50;border-left:2px solid #c6d1e1;padding-left:16px}
+.waypoint-question{display:block;font-size:12px;line-height:1.7;font-weight:500}
+.waypoint-output{min-width:0}
+.wp-bar-row{display:grid;grid-template-columns:65px minmax(0,1fr) 46px;align-items:center;gap:8px;margin-top:15px;font:10px Departure,monospace}
+.wp-bar-row>b{font-size:10px;font-weight:400;text-align:right}.wp-bar{height:12px;background:#e1e6db;overflow:hidden}.wp-bar>i{display:block;height:100%;background:var(--navy)}
+.wp-confidence{border-top:1px solid var(--line);margin:23px 0 18px;padding-top:18px;display:flex;align-items:center;justify-content:space-between;gap:15px}.wp-confidence dt{font-size:11px;line-height:1.5}.wp-confidence dd{font:18px Departure,monospace;margin:0;color:var(--navy)}
+.wp-threshold{font-size:11px;display:flex;justify-content:space-between;gap:10px}.wp-threshold output{font:11px Departure,monospace}
+#waypoint-threshold{display:block;width:100%;margin:15px 0 20px;accent-color:var(--blue);min-height:24px}
+.wp-decision{padding:12px;background:#dceadf;color:var(--navy);font:10px/1.7 Departure,monospace}.wp-decision[data-escalate="true"]{background:#f5e9d5;color:#76510b}
+.waypoint-output #threshold-scope{font-size:10px;line-height:1.7;margin:12px 0 0}
+.research-body .wp-example-note{font-size:12px;line-height:1.8;border-top:1px solid var(--line);margin:0;max-width:none;padding:20px 26px}
+.waypoint-explorer figcaption,.waypoint-lens-figure figcaption{font-size:11px;line-height:1.8;color:#626b6e;border-top:1px solid var(--line);padding:18px 24px}
+.waypoint-lens-figure{border:1px solid var(--line);margin:30px 0;background:white}.waypoint-lens-figure img{display:block;width:100%;height:auto;padding:20px 12px}
+.research-body .evidence-table caption{font:9px/1.7 Departure,monospace;text-align:left;padding:12px 14px;color:var(--muted)}
+.research-body code{overflow-wrap:anywhere;white-space:normal;font-size:11px}
+.waypoint-paper-feature{display:grid;grid-template-columns:1.1fr 1fr;align-items:center;gap:45px;padding:36px;margin:0 0 60px;border:1px solid var(--ink);background:#e8edf5}
+.waypoint-paper-feature h2{font:43px/1.1 Mondwest,Georgia,serif;margin:15px 0}.waypoint-paper-feature p{font-size:13px;line-height:1.85;margin:16px 0 22px;color:var(--muted)}
+.waypoint-paper-feature img{display:block;width:100%;background:white;border:1px solid var(--line);padding:16px}.waypoint-paper-feature .source-label{display:block;font:9px/1.7 Departure,monospace;color:var(--muted);margin-top:12px}
+.portfolio-paper-link{margin-top:18px}
+@media(max-width:760px){.waypoint-example-grid{grid-template-columns:1fr;padding:20px;gap:25px}.waypoint-output{border-top:1px solid var(--line);padding-top:23px}.wp-bar-row{grid-template-columns:75px minmax(0,1fr) 55px}.research-body .wp-example-note{padding:18px 20px}.waypoint-explorer figcaption,.waypoint-lens-figure figcaption{padding:16px;font-size:10px}.waypoint-paper-feature{grid-template-columns:1fr;padding:25px;gap:24px;margin-bottom:40px}.waypoint-paper-feature h2{font-size:36px}.waypoint-lens-figure{overflow-x:auto}.waypoint-lens-figure img{min-width:520px}.equation-math{overflow-x:auto}.waypoint-explorer .trace-heading{flex-wrap:wrap}}
+@media print{.waypoint-explorer{break-inside:avoid}.waypoint-explorer .trace-choices,#waypoint-threshold,.wp-threshold{display:none}.waypoint-example-grid{grid-template-columns:1.15fr 1fr;padding:18px;gap:20px}.waypoint-example-grid blockquote{font-size:9pt}.waypoint-lens-figure img{min-width:0}.waypoint-lens-figure{break-inside:avoid}.evidence-table caption{font-size:8pt}}

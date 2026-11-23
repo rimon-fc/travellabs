@@ -1,0 +1,29 @@
+{
+  "direction": "The TravelLabs field journal",
+  "artwork_manifest": "art-direction-v4.json",
+  "new_original_artwork": [
+    "assets/art/journey-v4.webp",
+    "assets/art/studio-v5.webp",
+    "assets/art/night-station-v4.webp",
+    "assets/art/trunk-v4.webp",
+    "assets/art/travel-world-poster.webp"
+  ],
+  "font_sources": {
+    "assets/fonts/mondwest.woff2": "https://www.generalintelligencecompany.com/_next/static/media/17330fd087386262-s.p.woff2",
+    "assets/fonts/neoris.woff2": "https://cofounder.co/_next/static/media/tt_neoris_variable-s.p.02vyesvbztyls.woff2",
+    "assets/fonts/departure.woff2": "https://cofounder.co/_next/static/media/DepartureMono_Regular-s.p.0en29d69u3w9m.woff2"
+  },
+  "logo": "Original railway-window and route mark; assets/journal-mark.svg",
+  "animation": "Original local canvas scenes in assets/travel-world.js and assets/journal.js, with CSS diagrams in assets/journal.css.",
+  "portraits": "Illustrative generated pencil portraits, names not yet supplied; see team-artwork.json",
+  "verification": "Font binaries parsed with fontTools; images decoded; local links validated; JS interaction and rendering lifecycle tested in Node. Browser rendering unavailable in this session.",
+  "about_artwork_manifest": "art-direction-v5.json",
+  "affiliation_logo": "assets/fctg.png, existing Flight Centre Travel Group logo supplied in the workspace",
+  "form_delivery": {
+    "provider": "FormSubmit",
+    "recipient": "rimon@travellabs.systems",
+    "activation": "Recipient must confirm the first activation email. No submissions sent during development.",
+    "resume_limit": "5 MB, PDF/DOC/DOCX"
+  },
+  "homepage_artwork_manifest": "art-direction-v6.json"
+}
