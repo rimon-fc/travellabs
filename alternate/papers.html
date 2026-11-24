@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Papers | TravelLabs</title>
+<meta name="description" content="Research papers and working drafts from TravelLabs. Planned submissions to NeurIPS and ICML.">
+<link rel="icon" href="assets/img/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/tl.css">
+<link rel="stylesheet" href="assets/pages.css">
+</head>
+<body data-page="papers" id="top">
+<div data-header></div>
+<main>
+
+<section class="phero">
+  <div class="wrap">
+    <div class="phero-c" data-in>
+      <span class="kick">/ <b>Papers</b></span>
+      <h1 class="h1" style="font-size:clamp(38px,4.6vw,62px)">Ideas, made inspectable.</h1>
+      <p class="lead">The thinking, evidence and open questions behind our work.</p>
+      <p class="papers-note">Planned submissions to <b>NeurIPS</b> and <b>ICML</b>.</p>
+      <div class="btns"><a class="btn pri" href="#series">The research series <span class="arr">↓</span></a><a class="btn" href="contact.html">Get in touch</a></div>
+    </div>
+    <div class="phero-art" data-in><canvas class="art" data-art="runway" aria-hidden="true"></canvas></div>
+  </div>
+</section>
+
+<section class="sec" id="series" style="padding-bottom:0;scroll-margin-top:80px">
+  <div class="wrap">
+    <div class="sec-h" data-in><span class="kick">/ Papers</span><h2 class="h2">The research series</h2></div>
+    <div class="dep papers-board" id="board" data-in>
+      <div class="dep-h">
+        <span class="t">TravelLabs Research</span>
+        <label class="dep-s"><i class="px" data-px="search"></i><input type="search" placeholder="Search papers" aria-label="Search papers"></label>
+        <div class="dep-f" aria-label="Filter papers"></div>
+      </div>
+      <div class="dep-cols" aria-hidden="true"><span>No.</span><span>Paper</span><span>Date</span><span>Category</span><span>Read</span></div>
+      <div class="dep-g"></div>
+      <div class="dep-n"></div>
+    </div>
+    <div class="merge" data-in><span>Decision models</span><span>Tools &amp; trust</span><span>Consent &amp; commerce</span><span>Agent systems</span><span>Working draft</span><i>→</i><b>Planned submissions to NeurIPS and ICML.</b></div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-h" data-in><span class="kick">/ Abstract</span><h2 class="h2">In this paper</h2></div>
+    <div class="faq top papers-faq">
+      <nav class="faq-nav" id="faqNav"><a href="#system-1" class="on">System 1<span>05</span></a><a href="#keel">Keel<span>01</span></a><a href="#atp">ATP<span>03</span></a><a href="#atfgraph">ATFGraph<span>02</span></a><a href="#payments">Payments<span>04</span></a><a href="contact.html">Get in touch<span>↗</span></a></nav>
+      <div class="faq-g">
+        <section id="system-1" style="scroll-margin-top:100px"><h2>System 1 for Co-consult<span>05</span></h2>
+          <details class="qa" open><summary>Abstract</summary><div><p>Our objective is to solve some of the hardest problems in travel with frontier AI. How can frequent travel decisions become faster without quietly accepting confident errors, missing alternatives or unauthorised actions?</p><p>Co-consult’s travel work contains many small decisions inside a much larger task. Waypoint explores a System 1 layer for those decisions: a non-generative model scores supplied options, reports confidence and supports escalation to a language model or consultant. This paper reviews its two model designs, saved evaluation results and the gap between an offline escalation policy and the serving contract. Decide performs well on several synthetic Co-consult tasks, but results vary by use case, shortlist construction and phrasing. The contribution is a bounded integration model: use fast option scoring where the evidence supports it, keep hard constraints and action authority outside the model, and treat escalation as an explicit application responsibility.</p><p><a class="link" href="paper-system-1.html">Read paper →</a></p></div></details>
+          <details class="qa"><summary>The central idea</summary><div><p><b>Give frequent, bounded decisions a fast path. Keep uncertainty, context and permission visible.</b></p></div></details>
+        </section>
+        <section id="keel" style="scroll-margin-top:100px"><h2>Keel: a governed kernel for travel agents<span>01</span></h2>
+          <details class="qa"><summary>Abstract</summary><div><p>Keel addresses the production infrastructure needed to solve hard travel problems with agents. A declarative agent.yaml manifest compiles into a complete Model Context Protocol agent: gateway orchestration, skills, flows, entities, staged disclosure, interactive interfaces, authentication, interceptors, policy, state, audit, evaluations and packaging. This paper adapts the complete Keel chapter of the source implementation report, including its formal definitions, capability states and engineering examples.</p><p><a class="link" href="paper-keel.html">Read paper →</a></p></div></details>
+          <details class="qa"><summary>Research objective</summary><div><p>Research objective: solving some of the hardest problems in travel with frontier AI. Adapted from the complete Keel chapter of Rimon Rony’s implementation report, 24 November 2026. Implementation claims and capability states are retained from that report; no new empirical evaluation is claimed.</p></div></details>
+        </section>
+        <section id="atp" style="scroll-margin-top:100px"><h2>ATP: the Agentic Travel Protocol<span>03</span></h2>
+          <details class="qa"><summary>Abstract</summary><div><p>ATP addresses travel work that spans changing inventory, independent suppliers, scoped authority and two payment rails. This paper develops the implementation contract for draft v0.3: five wire operations, a compensating booking saga, TravellerToken and consent gates, supplier conformance and capability declarations, per-leg payment instructions, margin policy and reconciliation. It expands the original implementation-report chapter using the supplied ATP and payments documentation, with selected code inspection to distinguish documented intent from configuration-dependent behavior. No new empirical results are claimed.</p><p><a class="link" href="paper-atp.html">Read paper →</a></p></div></details>
+        </section>
+        <section id="atfgraph" style="scroll-margin-top:100px"><h2>ATFGraph: Keeping the Promise<span>02</span></h2>
+          <details class="qa"><summary>Abstract</summary><div><p>Our objective is to solve some of the hardest problems in travel with frontier AI. How can a travel job remain coherent when workers restart, suppliers reply late and people approve actions hours later?</p><p>An agent’s work may outlast a model response, a worker process or a human approval. atfgraph provides a shared runtime for that work: it routes calls, records execution, schedules attempts, preserves state and supports decisions made later. This paper examines the supplied atfgraph snapshot as a framework-independent execution service with a Python authoring surface. We explain how existing agent code fits inside it, how a paused run continues and what an execution graph can actually show. We then connect those runtime primitives to Studio’s brief-to-agent build process. The central constraint is that durable records do not make arbitrary outside actions happen exactly once. Reliable applications still need replay-aware code, appropriate instrumentation and explicit approval checks.</p><p><a class="link" href="paper-atfgraph.html">Read paper →</a></p></div></details>
+          <details class="qa"><summary>The central idea</summary><div><p><b>Keep the agent’s framework. Give its work a durable identity, a place to wait and a record that can be inspected.</b></p></div></details>
+        </section>
+        <section id="payments" style="scroll-margin-top:100px"><h2>Agentic payments for travel<span>04</span></h2>
+          <details class="qa"><summary>Abstract</summary><div><p>Our objective is to solve some of the hardest problems in travel with frontier AI. How can an agent spend within a traveller’s authority and account for every financial obligation when bookings and payments evolve separately?</p><p>An agent can have permission to book without having unlimited permission to spend. Travel payments also continue after checkout: holds expire, bookings change, captures are delayed and refunds arrive later. This working draft separates approval of the purchase from authority to initiate payment and from evidence that money moved. It proposes a reservation-bound mandate, describes the role of a virtual credit card (VCC), and formalises duplicate control and reconciliation. The supplied keel payment implementation grounds parts of the design. The equations define a candidate contract and evaluation criteria; they do not establish a new adopted payment standard or certify live issuer behaviour.</p><p><a class="link" href="paper-payments.html">Read draft →</a></p></div></details>
+          <details class="qa"><summary>The central idea</summary><div><p><b>Every payment should be explainable through an approved reservation, a bounded instruction and a verified financial outcome.</b></p></div></details>
+        </section>
+      </div>
+    </div>
+
+    <div class="fees-h" data-in><div style="display:grid;gap:12px"><span class="kick">/ The research series</span><h2 class="h2">TravelLabs Research</h2></div><a class="btn" href="contact.html">Get in touch <span class="arr">→</span></a></div>
+    <div class="led-wrap" data-in><table class="feetab papers-tab">
+      <thead><tr><th>Paper</th><th>Date</th><th>Edition</th><th>Figures</th></tr></thead>
+      <tbody>
+        <tr><th><a href="paper-system-1.html">System 1 for Co-consult</a><small>TravelLabs Research · An AI lab for the world of travel</small></th><td><span class="v">23 November 2026</span><br>Revised</td><td>Working research paper</td><td><span class="v">5</span><br>Research figures</td></tr>
+        <tr><th><a href="paper-keel.html">Keel: a governed kernel for travel agents</a><small>Rimon Rony · Global Leisure AI-LAB · TravelLabs Research</small></th><td><span class="v">24 November 2026</span><br>Adapted</td><td>Complete Keel chapter</td><td><span class="v">10</span><br>Research figures</td></tr>
+        <tr><th><a href="paper-atp.html">ATP: the Agentic Travel Protocol</a><small>Rimon Rony · Global Leisure AI-LAB · TravelLabs Research</small></th><td><span class="v">24 November 2026</span><br>Expanded</td><td>ATP + payments documentation</td><td><span class="v">6</span><br>Research figures</td></tr>
+        <tr><th><a href="paper-atfgraph.html">ATFGraph: Keeping the Promise</a><small>TravelLabs · Flight Centre Travel Group · engine version 0.3</small></th><td><span class="v">November 2026</span><br>Research draft · revised 23 November 2026</td><td>Combined research edition<br>Existing paper + full source</td><td><span class="v">20</span><br>Figures</td></tr>
+        <tr><th><a href="paper-payments.html">Agentic payments for travel</a><small>TravelLabs Research · An AI lab for the world of travel</small></th><td><span class="v">23 November 2026</span><br>Revised</td><td>Working research paper</td><td><span class="v">5</span><br>Research figures</td></tr>
+      </tbody></table></div>
+  </div>
+</section>
+
+<section class="band"><div class="wrap"><div style="display:grid;gap:12px"><span class="kick">/ Get in touch</span><h2 class="h2">A good question is a good start.</h2></div><div class="btns"><a class="btn pri" href="contact.html">Get in touch <span class="arr">→</span></a><a class="btn" href="index.html">Back to the lab</a></div></div></section>
+</main>
+<div data-footer></div>
+<script src="assets/site.js"></script>
+<script>
+(() => {
+  const { $, $$ } = window.MX;
+  // Words come from the old papers page and each paper's own header.
+  const PAPERS = [
+    { code: '05', place: 'System 1 for Co-consult.', sub: 'Bounded decisions with Waypoint: fast where evidence supports it, deliberate where it does not.', col3: 'Revised 23 November 2026', r: 'Decision models', href: 'paper-system-1.html', read: 'Read paper' },
+    { code: '01', place: 'Keel: governed travel agents.', sub: 'Declarative compilation, governed capabilities and the production agent lifecycle.', col3: 'Adapted 24 November 2026', r: 'Tools & trust', href: 'paper-keel.html', read: 'Read paper' },
+    { code: '03', place: 'ATP: consent and recovery.', sub: 'Consent, compensating transactions and payment coordination across travel suppliers.', col3: 'Expanded 24 November 2026', r: 'Consent & commerce', href: 'paper-atp.html', read: 'Read paper' },
+    { code: '02', place: 'ATFGraph: durable travel work.', sub: 'A durable, temporal runtime for agents that sell and look after travel', col3: 'November 2026', r: 'Agent systems', href: 'paper-atfgraph.html', read: 'Read paper' },
+    { code: '04', place: 'Agentic payments for travel.', sub: 'Reservation-bound authority, uncertain outcomes and financial reconciliation.', col3: 'Revised 23 November 2026', r: 'Working draft', href: 'paper-payments.html', read: 'Read draft' }
+  ];
+  const byCode = new Map(PAPERS.map((p) => [p.code, p]));
+  const board = $('#board'), grid = $('.dep-g', board);
+
+  // MX.board rebuilds rows with innerHTML and a fixed status tag, so swap
+  // that tag for a real link each time the rows change.
+  const linkRows = () => $$('.dep-r', grid).forEach((row) => {
+    const p = byCode.get($('.c', row).textContent), tag = $('.s', row);
+    if (!p || !tag || tag.tagName === 'A') return;
+    const a = document.createElement('a');
+    a.className = 's'; a.href = p.href; a.textContent = p.read + ' →';
+    a.setAttribute('aria-label', p.read + ': ' + p.place);
+    tag.replaceWith(a);
+  });
+  // The count is built as "N papers shown", so fix the singular.
+  const count = () => { const n = $('.dep-n', board); if (n.textContent.startsWith('1 papers')) n.textContent = n.textContent.replace('1 papers', '1 paper'); };
+  new MutationObserver(() => { linkRows(); count(); }).observe(grid, { childList: true });
+  window.MX.board(board, PAPERS, [...new Set(PAPERS.map((p) => p.r))], 'papers');
+  linkRows(); count();
+
+  const links = $$('#faqNav a[href^="#"]');
+  const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) links.forEach((a) => a.classList.toggle('on', a.getAttribute('href') === '#' + e.target.id)); }), { rootMargin: '-40% 0px -55% 0px' });
+  $$('.faq-g section').forEach((s) => io.observe(s));
+})();
+</script>
+</body>
+</html>

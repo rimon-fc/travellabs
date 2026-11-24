@@ -1,0 +1,88 @@
+<svg class="f" viewBox="60 0 910 300" role="img" aria-label="Timeline of one trip over 120 days. A chat agent lives for one conversation. The trip job has brief bursts of compute separated by long waits, and no worker process holds it while it waits." width="910" height="300" xmlns="http://www.w3.org/2000/svg">
+      <title>Timeline of one trip over 120 days. A chat agent lives for one conversation. The trip job has brief bursts of compute separated by long waits, and no worker process holds it while it waits.</title><defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#263837"/></marker>
+    <marker id="aha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#376d69"/></marker>
+    <marker id="ahw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#a37c3a"/></marker>
+    <marker id="ahg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#929b94"/></marker>
+    <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="#fff"/><line x1="0" y1="0" x2="0" y2="6" stroke="#c9cacd" stroke-width="1.2"/></pattern>
+    <pattern id="hatchw" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="#fff"/><line x1="0" y1="0" x2="0" y2="6" stroke="#eab598" stroke-width="1.2"/></pattern>
+  </defs>
+<style>
+.f text{font-family:"DejaVu Sans Mono",monospace;font-size:11px;fill:#263837}
+.f .s{font-size:9.5px;fill:#68716c}
+.f .xs{font-size:8.5px;fill:#68716c}
+.f .h{font-size:9.5px;letter-spacing:.1em;font-weight:600}
+.f .hs{font-size:9px;letter-spacing:.12em;fill:#68716c}
+.f .serif{font-family:Georgia,serif;font-size:15px}
+.f .it{font-family:Georgia,serif;font-style:italic;font-size:13px}
+.f .b{font-weight:600}
+.f g.s text{font-size:9.5px;fill:#68716c}
+.f g.xs text{font-size:8.5px;fill:#68716c}
+.f g.hs text{font-size:9px;letter-spacing:.12em;fill:#68716c}
+.f .halo{paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+.f .w{fill:#fff}
+.f .ca{fill:#376d69} .f .cw{fill:#a37c3a} .f .cm{fill:#68716c} .f .cok{fill:#52735b}
+.f .ln{stroke:#263837;stroke-width:1;fill:none}
+.f .ln2{stroke:#263837;stroke-width:1.6;fill:none}
+.f .lt{stroke:#c4c5c9;stroke-width:.8;fill:none}
+.f .la{stroke:#376d69;stroke-width:1.3;fill:none}
+.f .lw{stroke:#a37c3a;stroke-width:1.3;fill:none}
+.f .dash{stroke-dasharray:3 3}
+.f .dot{stroke-dasharray:1 3;stroke-linecap:round}
+.f .box{fill:#fff;stroke:#263837;stroke-width:1}
+.f .boxp{fill:#eeede7;stroke:#263837;stroke-width:1}
+.f .boxa{fill:#e4ebe5;stroke:#376d69;stroke-width:1}
+.f .boxw{fill:#f0e9db;stroke:#a37c3a;stroke-width:1}
+.f .boxk{fill:#263837;stroke:#263837}
+.f .soft{fill:#eeede7;stroke:none}
+.f .hatch{fill:url(#hatch);stroke:#bcc5ba;stroke-width:.8}
+.f .pk{fill:#376d69} .f .pkw{fill:#a37c3a}
+.f .arr{marker-end:url(#ah)} .f .arra{marker-end:url(#aha)} .f .arrw{marker-end:url(#ahw)} .f .arrg{marker-end:url(#ahg)}
+.f .blink{animation:blink 1.6s steps(2,start) infinite}
+@keyframes blink{50%{opacity:.25}}
+.paused .f .blink{animation-play-state:paused}
+
+
+@media(prefers-reduced-motion:reduce){.blink{animation:none!important}.pk,.pkw,.playhead{display:none}}</style><text x="80" y="20" class="h">A CHAT-SHAPED AGENT</text>
+      <rect x="80" y="28" width="3" height="16" class="boxk"/>
+      <text x="92" y="41" class="s">one conversation; when it closes, the context is gone</text>
+
+      <text x="80" y="80" class="h">ONE TRIP AS A DURABLE JOB · ITS TRAVERSERS OVER TIME</text>
+      <line x1="80" y1="107" x2="950" y2="107" class="lt dash"/>
+      <rect x="83" y="97" width="19" height="20" class="hatch"/>
+      <rect x="533" y="97" width="18" height="20" class="hatch"/>
+      <g class="boxk">
+        <rect x="79" y="94" width="2.6" height="26"/><rect x="82" y="94" width="2.6" height="26"/><rect x="101" y="94" width="2.6" height="26"/>
+        <rect x="529" y="94" width="2.6" height="26"/><rect x="532" y="94" width="2.6" height="26"/><rect x="550" y="94" width="2.6" height="26"/>
+        <rect x="948" y="94" width="2.6" height="26"/>
+      </g>
+      <g fill="#376d69">
+        <rect x="109" y="101" width="1.6" height="12"/><rect x="138" y="101" width="1.6" height="12"/><rect x="167" y="101" width="1.6" height="12"/><rect x="196" y="101" width="1.6" height="12"/><rect x="225" y="101" width="1.6" height="12"/><rect x="254" y="101" width="1.6" height="12"/><rect x="283" y="101" width="1.6" height="12"/><rect x="312" y="101" width="1.6" height="12"/><rect x="341" y="101" width="1.6" height="12"/><rect x="370" y="101" width="1.6" height="12"/><rect x="399" y="101" width="1.6" height="12"/><rect x="428" y="101" width="1.6" height="12"/><rect x="457" y="101" width="1.6" height="12"/><rect x="486" y="101" width="1.6" height="12"/><rect x="515" y="101" width="1.6" height="12"/>
+      </g>
+      <path d="M530 88 l0 -6" class="lw"/><circle cx="530" cy="86" r="3.2" class="cw blink"/>
+
+      <g class="lt">
+        <path d="M80 122V142"/><path d="M92 122V160"/><path d="M102 122V178"/>
+        <path d="M312 116V196"/><path d="M530 122V142"/><path d="M542 122V160"/><path d="M551 122V178"/><path d="M949 122V178"/>
+      </g>
+      <text x="80" y="152" class="s"><tspan class="b" fill="#263837">[1]</tspan> trip.plan fans out: fares · hotels · weather</text>
+      <text x="92" y="170" class="s"><tspan class="b" fill="#263837">[2]</tspan> approval requested; lease closed, no process held</text>
+      <text x="102" y="188" class="s"><tspan class="b" fill="#263837">[3]</tspan> Thursday: manager approves → continuation</text>
+      <text x="318" y="206" class="s"><tspan class="b" fill="#376d69">[4]</tspan> schedule emitter: one shared fare watch</text>
+      <text x="530" y="152" class="s"><tspan class="b" fill="#a37c3a">[5]</tspan> airline schedule change arrives (signed webhook)</text>
+      <text x="548" y="170" class="s"><tspan class="b" fill="#263837">[6]</tspan> refund above desk limit: wait</text>
+      <text x="557" y="188" class="s"><tspan class="b" fill="#263837">[7]</tspan> approved → refund issued</text>
+      <text x="949" y="188" class="s" text-anchor="end"><tspan class="b" fill="#263837">[8]</tspan> departure: care continues</text>
+
+      <text x="80" y="226" class="h">WORKER PROCESSES HOLDING THIS JOB</text>
+      <line x1="80" y1="250" x2="950" y2="250" class="lt"/>
+      <g fill="#929b94"><rect x="79" y="242" width="2.6" height="16"/><rect x="82" y="242" width="2.6" height="16"/><rect x="101" y="242" width="2.6" height="16"/><rect x="529" y="242" width="2.6" height="16"/><rect x="532" y="242" width="2.6" height="16"/><rect x="550" y="242" width="2.6" height="16"/><rect x="948" y="242" width="2.6" height="16"/></g>
+      <text x="700" y="238" class="s">none, while the job waits</text>
+
+      <g class="lt"><path d="M80 272H950"/><path d="M80 268V276M297.5 268V276M515 268V276M732.5 268V276M950 268V276"/></g>
+      <g class="xs" text-anchor="middle"><text x="80" y="290">day 0</text><text x="297.5" y="290">30</text><text x="515" y="290">60</text><text x="732.5" y="290">90</text><text x="950" y="290">120</text></g>
+      <line class="playhead" x1="80" y1="60" x2="80" y2="276" stroke="#376d69" stroke-width="1" stroke-opacity=".55">
+        <animate attributeName="x1" values="80;950" dur="20s" repeatCount="indefinite"/>
+        <animate attributeName="x2" values="80;950" dur="20s" repeatCount="indefinite"/>
+      </line>
+    </svg>

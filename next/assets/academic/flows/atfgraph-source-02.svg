@@ -1,0 +1,91 @@
+<svg class="f" viewBox="0 0 720 368" role="img" aria-label="Architecture. Callers and emitters send work into the graph server. Agent nodes connect outbound to the server to claim, renew and complete work. No node accepts a connection." width="720" height="368" xmlns="http://www.w3.org/2000/svg">
+      <title>Architecture. Callers and emitters send work into the graph server. Agent nodes connect outbound to the server to claim, renew and complete work. No node accepts a connection.</title><defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#263837"/></marker>
+    <marker id="aha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#376d69"/></marker>
+    <marker id="ahw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#a37c3a"/></marker>
+    <marker id="ahg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#929b94"/></marker>
+    <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="#fff"/><line x1="0" y1="0" x2="0" y2="6" stroke="#c9cacd" stroke-width="1.2"/></pattern>
+    <pattern id="hatchw" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="#fff"/><line x1="0" y1="0" x2="0" y2="6" stroke="#eab598" stroke-width="1.2"/></pattern>
+  </defs>
+<style>
+.f text{font-family:"DejaVu Sans Mono",monospace;font-size:11px;fill:#263837}
+.f .s{font-size:9.5px;fill:#68716c}
+.f .xs{font-size:8.5px;fill:#68716c}
+.f .h{font-size:9.5px;letter-spacing:.1em;font-weight:600}
+.f .hs{font-size:9px;letter-spacing:.12em;fill:#68716c}
+.f .serif{font-family:Georgia,serif;font-size:15px}
+.f .it{font-family:Georgia,serif;font-style:italic;font-size:13px}
+.f .b{font-weight:600}
+.f g.s text{font-size:9.5px;fill:#68716c}
+.f g.xs text{font-size:8.5px;fill:#68716c}
+.f g.hs text{font-size:9px;letter-spacing:.12em;fill:#68716c}
+.f .halo{paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+.f .w{fill:#fff}
+.f .ca{fill:#376d69} .f .cw{fill:#a37c3a} .f .cm{fill:#68716c} .f .cok{fill:#52735b}
+.f .ln{stroke:#263837;stroke-width:1;fill:none}
+.f .ln2{stroke:#263837;stroke-width:1.6;fill:none}
+.f .lt{stroke:#c4c5c9;stroke-width:.8;fill:none}
+.f .la{stroke:#376d69;stroke-width:1.3;fill:none}
+.f .lw{stroke:#a37c3a;stroke-width:1.3;fill:none}
+.f .dash{stroke-dasharray:3 3}
+.f .dot{stroke-dasharray:1 3;stroke-linecap:round}
+.f .box{fill:#fff;stroke:#263837;stroke-width:1}
+.f .boxp{fill:#eeede7;stroke:#263837;stroke-width:1}
+.f .boxa{fill:#e4ebe5;stroke:#376d69;stroke-width:1}
+.f .boxw{fill:#f0e9db;stroke:#a37c3a;stroke-width:1}
+.f .boxk{fill:#263837;stroke:#263837}
+.f .soft{fill:#eeede7;stroke:none}
+.f .hatch{fill:url(#hatch);stroke:#bcc5ba;stroke-width:.8}
+.f .pk{fill:#376d69} .f .pkw{fill:#a37c3a}
+.f .arr{marker-end:url(#ah)} .f .arra{marker-end:url(#aha)} .f .arrw{marker-end:url(#ahw)} .f .arrg{marker-end:url(#ahg)}
+.f .blink{animation:blink 1.6s steps(2,start) infinite}
+@keyframes blink{50%{opacity:.25}}
+.paused .f .blink{animation-play-state:paused}
+
+
+@media(prefers-reduced-motion:reduce){.blink{animation:none!important}.pk,.pkw,.playhead{display:none}}</style><text x="10" y="26" class="h">CALLERS</text>
+      <rect x="10" y="36" width="160" height="28" class="box"/><text x="20" y="54">atfg traverse · CLI</text>
+      <rect x="10" y="72" width="160" height="28" class="box"/><text x="20" y="90">Client SDK</text>
+      <rect x="10" y="108" width="160" height="28" class="box"/><text x="20" y="126">Console</text>
+      <text x="10" y="180" class="h">EMITTERS</text>
+      <rect x="10" y="190" width="160" height="28" class="boxa"/><text x="20" y="208">schedule · cron</text>
+      <rect x="10" y="226" width="160" height="28" class="boxw"/><text x="20" y="244">webhook · signed</text>
+      <rect x="10" y="262" width="160" height="28" class="boxa"/><text x="20" y="280">memory change</text>
+
+      <g class="ln arr">
+        <path id="c1" d="M170 50C200 50 205 110 228 110"/><path id="c2" d="M170 86C200 86 205 118 228 118"/><path id="c3" d="M170 122H228"/>
+        <path id="c4" d="M170 204C200 204 205 214 228 214"/><path id="c5" d="M170 240C200 240 205 222 228 222"/><path id="c6" d="M170 276C200 276 205 230 228 230"/>
+      </g>
+
+      <rect x="230" y="30" width="262" height="300" class="boxp"/>
+      <text x="245" y="52" class="h">GRAPH SERVER</text>
+      <text x="245" y="68" class="s">atfgraphd · the only inbound endpoint</text>
+      <g>
+        <rect x="245" y="80" width="232" height="32" class="box"/><text x="256" y="100">admission · schemas · policy</text>
+        <rect x="245" y="120" width="232" height="32" class="box"/><text x="256" y="140">router · scheduler · leases</text>
+        <rect x="245" y="160" width="232" height="32" class="box"/><text x="256" y="180">paths · steps · attempts</text>
+        <rect x="245" y="200" width="232" height="32" class="box"/><text x="256" y="220">memory · knowledge · checkpoints</text>
+        <rect x="245" y="240" width="232" height="32" class="box"/><text x="256" y="260">approvals · emitters · usage</text>
+        <rect x="245" y="280" width="232" height="32" class="box"/><text x="256" y="300">registry · discovery</text>
+      </g>
+
+      <text x="540" y="26" class="h">AGENT NODES</text>
+      <g>
+        <rect x="540" y="36" width="170" height="44" class="box"/><text x="550" y="54" class="b">trip 1.0.0</text><text x="550" y="70" class="s">plan · rank</text>
+        <rect x="540" y="90" width="170" height="44" class="box"/><text x="550" y="108" class="b">fares 1.0.0 · 2.0.0</text><text x="550" y="124" class="s">search · hold · quote</text>
+        <rect x="540" y="144" width="170" height="44" class="box"/><text x="550" y="162" class="b">hotels 1.0.0</text><text x="550" y="178" class="s">search</text>
+        <rect x="540" y="198" width="170" height="44" class="box"/><text x="550" y="216" class="b">refunds 1.0.0</text><text x="550" y="232" class="s">request_refund · assess</text>
+        <rect x="540" y="252" width="170" height="44" class="box" stroke-dasharray="3 3"/><text x="550" y="270" class="b">your agent, wrapped</text><text x="550" y="286" class="s">any framework, in a handler</text>
+      </g>
+      <g class="ln arr">
+        <path id="w1" d="M540 58C514 58 512 130 494 130"/><path id="w2" d="M540 112C516 112 512 136 494 136"/><path id="w3" d="M540 166C516 166 512 142 494 142"/><path id="w4" d="M540 220C514 220 512 148 494 148"/><path id="w5" d="M540 274C512 274 512 154 494 154"/>
+      </g>
+      <text x="520" y="346" class="xs" text-anchor="middle">claim · renew · complete</text>
+      <text x="360" y="362" class="s" text-anchor="middle">every arrow points at the server · no node opens a port · nodes never call each other</text>
+
+      <circle r="3" class="pk"><animateMotion dur="2.4s" repeatCount="indefinite"><mpath href="#c1"/></animateMotion></circle>
+      <circle r="3" class="pk"><animateMotion dur="3s" begin=".8s" repeatCount="indefinite"><mpath href="#c4"/></animateMotion></circle>
+      <circle r="3" class="pkw"><animateMotion dur="3.4s" begin="1.4s" repeatCount="indefinite"><mpath href="#c5"/></animateMotion></circle>
+      <circle r="3" class="pk"><animateMotion dur="2.8s" begin=".3s" repeatCount="indefinite"><mpath href="#w2"/></animateMotion></circle>
+      <circle r="3" class="pk"><animateMotion dur="3.2s" begin="1.1s" repeatCount="indefinite"><mpath href="#w4"/></animateMotion></circle>
+    </svg>

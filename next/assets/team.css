@@ -1,0 +1,4 @@
+.journal-team .team-role-copy{min-width:0;padding:16px 0}
+.journal-team .team-role-copy h3{margin:0}
+.journal-team .team-role-note{font:12px/1.5 var(--sans);color:var(--muted);margin:6px 0 0;max-width:33ch}
+.journal-team .team-role-link{display:inline-block;font:11px/1.5 var(--sans);color:var(--ink);margin-top:5px;text-underline-offset:3px}

@@ -1,0 +1,97 @@
+/* About + manifesto pages. Built only from mcpx parts in site.css / tl.css. */
+
+/* anchors land below the sticky header */
+#apply, #careers, #team, #trunk, #beliefs, .mag article { scroll-margin-top: 140px; }
+
+/* Hero: sketch frame with a caption strip, like the home plate */
+.phero-art.sk { background: #fbf7ee; box-shadow: 8px 8px 0 var(--lime); }
+.phero-art canvas { position: absolute; inset: 0; }
+.phero-art.sk canvas { bottom: auto; height: calc(100% - 52px); }
+.phero-art.sk .hx-cap { min-height: 52px; align-items: center; }
+@media (max-width: 600px) {
+  .phero-art.sk canvas { height: calc(100% - 64px); }
+  .phero-art.sk .hx-cap { min-height: 64px; align-items: flex-start; justify-content: center; }
+}
+.phero-art .hx-cap { z-index: 2; }
+.phero-c .lead + .lead { margin-top: -8px; }
+
+/* mstats outside the hero, six items that wrap */
+.mstats { display: flex; flex-wrap: wrap; gap: 22px 40px; margin-top: 10px; }
+.mstats div { display: grid; gap: 6px; }
+.mstats b { font: 500 40px/1 var(--sans); letter-spacing: -.04em; color: var(--ultra); }
+.mstats span { font: 500 11px/1.3 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.mstats.six { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin-top: 6px; border-top: 1.5px solid var(--ink); border-left: 1px solid var(--line-2); }
+.mstats.six div { padding: 18px 18px 20px; border-right: 1px solid var(--line-2); border-bottom: 1px solid var(--line-2); background: var(--paper); }
+.mstats.six div:nth-child(3n+1) b { color: var(--ink); }
+
+/* Team: cats cards with a pencil portrait in a white mat */
+.cats.team figure { grid-template-rows: 230px auto; position: relative; }
+.cats.team .pt { position: relative; display: grid; place-items: center; background: #fbf7ee; overflow: hidden; }
+.cats.team .pt::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(var(--line-2) 1px, transparent 1px); background-size: 14px 14px; opacity: .55; }
+.cats.team img { position: relative; width: 168px; height: 168px; object-fit: cover; display: block; background: #fff; padding: 8px; border: 1.5px solid var(--ink); box-shadow: 5px 5px 0 var(--lime); transform: rotate(-1.5deg); transition: transform .3s, box-shadow .3s; }
+.cats.team figure:nth-child(even) img { transform: rotate(1.5deg); box-shadow: 5px 5px 0 var(--ultra-2); }
+.cats.team figure:hover img { transform: rotate(0) translate(-2px, -2px); box-shadow: 7px 7px 0 var(--ultra); }
+.cats.team figcaption { align-content: start; }
+.cats.team figcaption b { font-size: 18px; letter-spacing: -.01em; }
+.cats.team .no { font: 500 10.5px/1 var(--mono); letter-spacing: .1em; color: var(--soft); }
+.cats.team .hiring { border: 1.5px solid var(--ink); box-shadow: 6px 6px 0 var(--ultra); }
+.cats.team .hiring .pt { background: var(--lime-2); }
+.cats.team .hiring a { font: 500 11px/1 var(--mono); letter-spacing: .05em; color: var(--ultra); margin-top: 6px; }
+.cats.team .hiring a:hover { text-decoration: underline; }
+.cats.team .stamp { top: 12px; right: 12px; }
+
+/* prov cards: link row */
+.prov .link { margin-top: 6px; }
+.prov a.link:hover { text-decoration: underline; }
+
+/* Careers form: mcpx .form with the original fields */
+.ct-side .art-box { position: relative; }
+.ct-list a { color: var(--ultra); }
+.form .fx { display: grid; gap: 8px; align-content: start; }
+.form .fx > label { display: block; }
+.form .form-honey { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.form input[type="file"] { padding: 10px; font-size: 12.5px; background: var(--paper); border-style: dashed; cursor: pointer; }
+.form input[type="file"]::file-selector-button { font: 500 11px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; padding: 9px 12px; margin-right: 12px; border: 1.5px solid var(--ink); background: var(--lime); color: var(--ink); cursor: pointer; }
+.form .field-error { font: 500 11.5px/1.4 var(--mono); color: #c23b22; margin: 0; }
+.form .field-error:empty { display: none; }
+.form .form-consent { display: grid; grid-template-columns: 20px 1fr; gap: 12px; align-items: start; text-transform: none; letter-spacing: 0; font: 400 13px/1.55 var(--mono); color: var(--ink-2); cursor: pointer; }
+.form .form-consent input { width: 18px; height: 18px; padding: 0; margin: 1px 0 0; accent-color: var(--ultra); }
+.form .form-privacy { font: 400 11.5px/1.6 var(--mono); color: var(--muted); margin: 0; padding-top: 14px; border-top: 1px dashed var(--line-2); }
+.form .form-privacy a { color: var(--ultra); }
+.form .form-status { font: 400 12px/1.5 var(--mono); color: var(--ultra); margin: 0; }
+.form .form-status:empty { display: none; }
+.form .form-status.has-error { color: #c23b22; }
+.form button[disabled] { opacity: .6; cursor: progress; }
+.form-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding-bottom: 14px; border-bottom: 1.5px solid var(--ink); }
+.form-head .px { width: 26px; height: 26px; }
+
+/* Manifesto teaser */
+.mf .art-box { box-shadow: 8px 8px 0 var(--ultra); border: 1.5px solid var(--ink); }
+.mf .art-box canvas { position: absolute; inset: 0; }
+.mf .art-box .stamp { top: 14px; right: 14px; }
+
+/* Manifesto page */
+.mf-h { display: grid; gap: 22px; max-width: 900px; }
+.vals a { font: 500 11.5px/1 var(--mono); padding: 9px 11px; border: 1px solid var(--ink); background: var(--paper); color: var(--ink); transition: transform .12s, box-shadow .12s; }
+.vals a:nth-child(3n+1) { background: var(--lime); }
+.vals a:hover { transform: translate(-2px, -2px); box-shadow: 3px 3px 0 var(--ink); }
+.mag .mag-art { box-shadow: 8px 8px 0 var(--lime); background: #f3eee4; }
+.mag article:nth-child(even) .mag-art { box-shadow: 8px 8px 0 var(--ultra); }
+.mag-c .vals { margin-top: 4px; }
+.big-line { text-align: center; display: grid; gap: 18px; justify-items: center; }
+.big-line .h2 { max-width: 18ch; }
+
+@media (max-width: 1100px) {
+  .cats.team figure { grid-template-rows: 200px auto; }
+  .cats.team img { width: 148px; height: 148px; }
+}
+@media (max-width: 960px) {
+  .mstats.six { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+  .mstats b { font-size: 32px; }
+  .mstats.six div { padding: 14px; }
+  .cats.team figure { grid-template-rows: 210px auto; }
+  .cats.team img { width: 160px; height: 160px; }
+  .form-head { flex-wrap: wrap; }
+}

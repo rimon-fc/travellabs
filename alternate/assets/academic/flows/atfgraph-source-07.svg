@@ -1,0 +1,98 @@
+<svg class="f" viewBox="0 0 1000 400" role="img" aria-label="Emitter compute. Four sources feed a five-stage pipeline in the graph server: verify, dedupe, filter, transform, admit. Each stage has a refusal exit. Admitted deliveries wake the relevant agents." width="1000" height="400" xmlns="http://www.w3.org/2000/svg">
+      <title>Emitter compute. Four sources feed a five-stage pipeline in the graph server: verify, dedupe, filter, transform, admit. Each stage has a refusal exit. Admitted deliveries wake the relevant agents.</title><defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#263837"/></marker>
+    <marker id="aha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#376d69"/></marker>
+    <marker id="ahw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#a37c3a"/></marker>
+    <marker id="ahg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#929b94"/></marker>
+    <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="#fff"/><line x1="0" y1="0" x2="0" y2="6" stroke="#c9cacd" stroke-width="1.2"/></pattern>
+    <pattern id="hatchw" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="#fff"/><line x1="0" y1="0" x2="0" y2="6" stroke="#eab598" stroke-width="1.2"/></pattern>
+  </defs>
+<style>
+.f text{font-family:"DejaVu Sans Mono",monospace;font-size:11px;fill:#263837}
+.f .s{font-size:9.5px;fill:#68716c}
+.f .xs{font-size:8.5px;fill:#68716c}
+.f .h{font-size:9.5px;letter-spacing:.1em;font-weight:600}
+.f .hs{font-size:9px;letter-spacing:.12em;fill:#68716c}
+.f .serif{font-family:Georgia,serif;font-size:15px}
+.f .it{font-family:Georgia,serif;font-style:italic;font-size:13px}
+.f .b{font-weight:600}
+.f g.s text{font-size:9.5px;fill:#68716c}
+.f g.xs text{font-size:8.5px;fill:#68716c}
+.f g.hs text{font-size:9px;letter-spacing:.12em;fill:#68716c}
+.f .halo{paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+.f .w{fill:#fff}
+.f .ca{fill:#376d69} .f .cw{fill:#a37c3a} .f .cm{fill:#68716c} .f .cok{fill:#52735b}
+.f .ln{stroke:#263837;stroke-width:1;fill:none}
+.f .ln2{stroke:#263837;stroke-width:1.6;fill:none}
+.f .lt{stroke:#c4c5c9;stroke-width:.8;fill:none}
+.f .la{stroke:#376d69;stroke-width:1.3;fill:none}
+.f .lw{stroke:#a37c3a;stroke-width:1.3;fill:none}
+.f .dash{stroke-dasharray:3 3}
+.f .dot{stroke-dasharray:1 3;stroke-linecap:round}
+.f .box{fill:#fff;stroke:#263837;stroke-width:1}
+.f .boxp{fill:#eeede7;stroke:#263837;stroke-width:1}
+.f .boxa{fill:#e4ebe5;stroke:#376d69;stroke-width:1}
+.f .boxw{fill:#f0e9db;stroke:#a37c3a;stroke-width:1}
+.f .boxk{fill:#263837;stroke:#263837}
+.f .soft{fill:#eeede7;stroke:none}
+.f .hatch{fill:url(#hatch);stroke:#bcc5ba;stroke-width:.8}
+.f .pk{fill:#376d69} .f .pkw{fill:#a37c3a}
+.f .arr{marker-end:url(#ah)} .f .arra{marker-end:url(#aha)} .f .arrw{marker-end:url(#ahw)} .f .arrg{marker-end:url(#ahg)}
+.f .blink{animation:blink 1.6s steps(2,start) infinite}
+@keyframes blink{50%{opacity:.25}}
+.paused .f .blink{animation-play-state:paused}
+
+
+@media(prefers-reduced-motion:reduce){.blink{animation:none!important}.pk,.pkw,.playhead{display:none}}</style><text x="20" y="26" class="hs">SOMETHING CHANGES</text>
+      <rect x="20" y="42" width="196" height="54" class="boxa"/><text x="30" y="60" class="b">schedule</text><text x="30" y="75" class="s">every 6 h · Australia/Brisbane</text><text x="30" y="88" class="xs">key schedule:&lt;due time&gt;</text>
+      <rect x="20" y="108" width="196" height="54" class="boxw"/><text x="30" y="126" class="b">webhook · generic_hmac</text><text x="30" y="141" class="s">airline schedule_change</text><text x="30" y="154" class="xs">key from X-Delivery-Id</text>
+      <rect x="20" y="174" width="196" height="54" class="boxw"/><text x="30" y="192" class="b">webhook · stripe</text><text x="30" y="207" class="s">payment.succeeded</text><text x="30" y="220" class="xs">key = provider event id</text>
+      <rect x="20" y="240" width="196" height="54" class="boxa"/><text x="30" y="258" class="b">memory · global</text><text x="30" y="273" class="s">prefix fare. · action set</text><text x="30" y="286" class="xs">key memory:…:&lt;key&gt;:&lt;rev&gt;</text>
+      <g class="ln arr"><path d="M216 69C236 69 232 170 252 172"/><path id="e2" d="M216 135C234 135 234 174 252 174"/><path d="M216 201C234 201 234 178 252 178"/><path d="M216 267C236 267 232 182 252 180"/></g>
+
+      <rect x="240" y="38" width="500" height="300" class="soft"/>
+      <text x="252" y="60" class="h">EMITTER COMPUTE</text>
+      <text x="252" y="76" class="s">one delivery → at most one traverser per binding</text>
+      <text x="252" y="104" class="it">verify, dedupe, filter, admit; then reshape and validate</text>
+      <text x="252" y="140" class="hs">GRAPH SERVER</text><text x="580" y="140" class="hs">WORKER · code-managed</text>
+      <path d="M567 128V214" class="lt dash"/>
+      <g>
+        <rect x="250" y="150" width="70" height="52" class="box"/><text x="285" y="172" text-anchor="middle" class="b">verify</text><text x="285" y="188" text-anchor="middle" class="xs">signature</text>
+        <rect x="328" y="150" width="70" height="52" class="box"/><text x="363" y="172" text-anchor="middle" class="b">dedupe</text><text x="363" y="188" text-anchor="middle" class="xs">delivery key</text>
+        <rect x="406" y="150" width="70" height="52" class="box"/><text x="441" y="172" text-anchor="middle" class="b">filter</text><text x="441" y="188" text-anchor="middle" class="xs">event types</text>
+        <rect x="484" y="150" width="70" height="52" class="boxk"/><text x="519" y="172" text-anchor="middle" class="b w">admit</text><text x="519" y="188" text-anchor="middle" class="xs w">traverser</text>
+        <rect x="580" y="150" width="70" height="52" class="boxa"/><text x="615" y="172" text-anchor="middle" class="b">transform</text><text x="615" y="188" text-anchor="middle" class="xs">raw → typed</text>
+        <rect x="658" y="150" width="70" height="52" class="boxa"/><text x="693" y="172" text-anchor="middle" class="b">validate</text><text x="693" y="188" text-anchor="middle" class="xs">bind · schema</text>
+      </g>
+      <g class="ln arr"><path d="M320 176H326"/><path d="M398 176H404"/><path d="M476 176H482"/><path d="M554 176H578"/><path d="M650 176H656"/></g>
+      <g class="lt arrg"><path d="M285 202V236"/><path d="M363 202V236"/><path d="M441 202V236"/><path d="M519 202V236"/><path d="M615 202V236"/><path d="M693 202V236"/></g>
+      <g class="xs" text-anchor="middle">
+        <text x="285" y="252" style="fill:#a37c3a">401 refused</text><text x="285" y="264">nothing</text><text x="285" y="275">admitted</text>
+        <text x="363" y="252" style="fill:#376d69">202 repeat</text><text x="363" y="264">same</text><text x="363" y="275">traverser</text><text x="363" y="292" style="fill:#a37c3a">409 same key,</text><text x="363" y="303">other body</text>
+        <text x="441" y="252">filtered</text><text x="441" y="264">stored,</text><text x="441" y="275">no run</text>
+        <text x="519" y="252">UI-managed:</text><text x="519" y="264">schema here;</text><text x="519" y="275" style="fill:#a37c3a">dead letter</text>
+        <text x="615" y="252" style="fill:#a37c3a">transform_</text><text x="615" y="264" style="fill:#a37c3a">failed</text><text x="615" y="275">handler idle</text>
+        <text x="693" y="252" style="fill:#a37c3a">invalid_</text><text x="693" y="264" style="fill:#a37c3a">input</text><text x="693" y="275">handler idle</text>
+      </g>
+      <text x="252" y="326" class="s">webhook secrets live only in the server's environment</text>
+
+      <text x="764" y="26" class="hs">RELEVANT AGENTS</text>
+      <g>
+        <rect x="764" y="42" width="216" height="36" class="box"/><text x="776" y="58" class="b">fares.watch</text><text x="776" y="71" class="xs">new traverser · scheduled tick</text>
+        <rect x="764" y="88" width="216" height="36" class="boxw"/><text x="776" y="104" class="b">disruption.handle_change</text><text x="776" y="117" class="xs">new traverser · airline event</text>
+        <rect x="764" y="134" width="216" height="36" class="box"/><text x="776" y="150" class="b">payments.settle</text><text x="776" y="163" class="xs">new traverser · charge cleared</text>
+        <rect x="764" y="180" width="216" height="36" class="boxa"/><text x="776" y="196" class="b">trip.reprice</text><text x="776" y="209" class="xs">memory write fare.BNE-NRT, rev 8</text>
+        <rect x="764" y="226" width="216" height="36" class="boxa"/><text x="776" y="242" class="b">loyalty.notify</text><text x="776" y="255" class="xs">same write, its own binding</text>
+        <rect x="764" y="272" width="216" height="36" class="boxa"/><text x="776" y="288" class="b">policy.recheck</text><text x="776" y="301" class="xs">same write, its own binding</text>
+      </g>
+      <g class="ln arr"><path d="M728 176C746 176 746 60 762 60"/><path d="M728 176C748 176 746 106 762 106"/><path d="M728 176C750 176 750 152 762 152"/><path d="M728 176C750 176 750 198 762 198"/><path d="M728 176C748 176 748 244 762 244"/><path d="M728 176C746 176 746 290 762 290"/></g>
+
+      <line x1="20" y1="356" x2="980" y2="356" class="lt"/>
+      <text x="500" y="384" class="h" text-anchor="middle">ONE PERMITTED UPDATE CAN SERVE MANY AGENTS</text>
+
+      <circle r="4" class="pkw"><animateMotion dur="4.5s" repeatCount="indefinite" path="M216 135C234 135 234 158 252 158H728C748 158 748 106 762 106"/></circle>
+      <circle r="4" class="pkw" opacity=".55"><animateMotion dur="4.5s" begin="1.6s" repeatCount="indefinite" path="M216 135C234 135 234 158 252 158H363V244"/></circle>
+      <circle r="4" class="pk"><animateMotion dur="5s" begin=".7s" repeatCount="indefinite" path="M216 267C236 267 232 158 252 158H728C748 158 748 198 762 198"/></circle>
+      <circle r="4" class="pk"><animateMotion dur="5s" begin="1.1s" repeatCount="indefinite" path="M216 267C236 267 232 158 252 158H728C748 158 748 244 762 244"/></circle>
+      <circle r="4" class="pk"><animateMotion dur="5s" begin="1.5s" repeatCount="indefinite" path="M216 267C236 267 232 158 252 158H728C748 158 748 290 762 290"/></circle>
+    </svg>

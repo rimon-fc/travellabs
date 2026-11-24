@@ -1,0 +1,70 @@
+<svg class="f" viewBox="0 0 720 236" role="img" aria-label="Left: a token bucket admitting a FIFO queue of supplier calls. Right: single-flight cache collapsing duplicate legs into one pricing step." width="720" height="236" xmlns="http://www.w3.org/2000/svg">
+      <title>Left: a token bucket admitting a FIFO queue of supplier calls. Right: single-flight cache collapsing duplicate legs into one pricing step.</title><defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#263837"/></marker>
+    <marker id="aha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#376d69"/></marker>
+    <marker id="ahw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#a37c3a"/></marker>
+    <marker id="ahg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#929b94"/></marker>
+    <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="#fff"/><line x1="0" y1="0" x2="0" y2="6" stroke="#c9cacd" stroke-width="1.2"/></pattern>
+    <pattern id="hatchw" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="#fff"/><line x1="0" y1="0" x2="0" y2="6" stroke="#eab598" stroke-width="1.2"/></pattern>
+  </defs>
+<style>
+.f text{font-family:"DejaVu Sans Mono",monospace;font-size:11px;fill:#263837}
+.f .s{font-size:9.5px;fill:#68716c}
+.f .xs{font-size:8.5px;fill:#68716c}
+.f .h{font-size:9.5px;letter-spacing:.1em;font-weight:600}
+.f .hs{font-size:9px;letter-spacing:.12em;fill:#68716c}
+.f .serif{font-family:Georgia,serif;font-size:15px}
+.f .it{font-family:Georgia,serif;font-style:italic;font-size:13px}
+.f .b{font-weight:600}
+.f g.s text{font-size:9.5px;fill:#68716c}
+.f g.xs text{font-size:8.5px;fill:#68716c}
+.f g.hs text{font-size:9px;letter-spacing:.12em;fill:#68716c}
+.f .halo{paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+.f .w{fill:#fff}
+.f .ca{fill:#376d69} .f .cw{fill:#a37c3a} .f .cm{fill:#68716c} .f .cok{fill:#52735b}
+.f .ln{stroke:#263837;stroke-width:1;fill:none}
+.f .ln2{stroke:#263837;stroke-width:1.6;fill:none}
+.f .lt{stroke:#c4c5c9;stroke-width:.8;fill:none}
+.f .la{stroke:#376d69;stroke-width:1.3;fill:none}
+.f .lw{stroke:#a37c3a;stroke-width:1.3;fill:none}
+.f .dash{stroke-dasharray:3 3}
+.f .dot{stroke-dasharray:1 3;stroke-linecap:round}
+.f .box{fill:#fff;stroke:#263837;stroke-width:1}
+.f .boxp{fill:#eeede7;stroke:#263837;stroke-width:1}
+.f .boxa{fill:#e4ebe5;stroke:#376d69;stroke-width:1}
+.f .boxw{fill:#f0e9db;stroke:#a37c3a;stroke-width:1}
+.f .boxk{fill:#263837;stroke:#263837}
+.f .soft{fill:#eeede7;stroke:none}
+.f .hatch{fill:url(#hatch);stroke:#bcc5ba;stroke-width:.8}
+.f .pk{fill:#376d69} .f .pkw{fill:#a37c3a}
+.f .arr{marker-end:url(#ah)} .f .arra{marker-end:url(#aha)} .f .arrw{marker-end:url(#ahw)} .f .arrg{marker-end:url(#ahg)}
+.f .blink{animation:blink 1.6s steps(2,start) infinite}
+@keyframes blink{50%{opacity:.25}}
+.paused .f .blink{animation-play-state:paused}
+
+
+@media(prefers-reduced-motion:reduce){.blink{animation:none!important}.pk,.pkw,.playhead{display:none}}</style><text x="10" y="20" class="hs">(a) RATE LIMITER · key supplier:fares</text>
+      <path d="M150 40V30" class="la arra"/><text x="160" y="36" class="xs" style="fill:#376d69">refill r / P</text>
+      <path d="M100 44L112 140H188L200 44" class="ln2"/>
+      <g class="ca"><circle cx="130" cy="128" r="6"/><circle cx="146" cy="128" r="6"/><circle cx="162" cy="128" r="6"/><circle cx="138" cy="114" r="6"/><circle cx="154" cy="114" r="6"/></g>
+      <path d="M100 56H90M100 56" class="lt"/><text x="56" y="60" class="xs">burst B</text>
+      <g><rect x="10" y="168" width="28" height="22" class="box"/><rect x="42" y="168" width="28" height="22" class="box"/><rect x="74" y="168" width="28" height="22" class="box"/><rect x="106" y="168" width="28" height="22" class="box" stroke-dasharray="3 3"/></g>
+      <g class="xs"><text x="16" y="183">c4</text><text x="48" y="183">c3</text><text x="80" y="183">c2</text></g>
+      <text x="10" y="206" class="xs">FIFO waiters ≤ max_pending</text>
+      <path d="M138 179H210" class="ln arr"/><rect x="212" y="166" width="80" height="26" class="boxk"/><text x="252" y="183" text-anchor="middle" class="xs w">in flight ≤ C</text>
+      <path d="M252 166V146C252 134 200 134 194 134" class="ln"/>
+      <text x="10" y="226" class="xs" style="fill:#a37c3a">queue full or timeout → RateLimitExceeded, with retry_after</text>
+
+      <text x="380" y="20" class="hs">(b) SINGLE-FLIGHT CACHE</text>
+      <g><rect x="380" y="40" width="110" height="26" class="box"/><text x="392" y="57">BNE → SYD</text>
+        <rect x="380" y="76" width="110" height="26" class="box"/><text x="392" y="93">BNE → SYD</text>
+        <rect x="380" y="112" width="110" height="26" class="box"/><text x="392" y="129">MEL → PER</text></g>
+      <rect x="530" y="40" width="64" height="98" class="boxp"/><text x="562" y="86" text-anchor="middle" class="b">cache</text><text x="562" y="100" text-anchor="middle" class="xs">ttl · LRU</text>
+      <g class="ln arr"><path d="M490 53H528"/><path d="M490 89H528"/><path d="M490 125H528"/></g>
+      <g class="la arra"><path d="M594 60H628"/><path d="M594 118H628"/></g>
+      <rect x="630" y="46" width="80" height="26" class="boxa"/><text x="670" y="63" text-anchor="middle" class="xs" style="fill:#263837">price step</text>
+      <rect x="630" y="104" width="80" height="26" class="boxa"/><text x="670" y="121" text-anchor="middle" class="xs" style="fill:#263837">price step</text>
+      <text x="380" y="170" class="s">3 legs, 2 identical → 2 steps on the path</text>
+      <text x="380" y="186" class="xs">concurrent callers share one computation;</text>
+      <text x="380" y="198" class="xs">a failure is shared too and nothing is cached</text>
+    </svg>

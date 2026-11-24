@@ -1,0 +1,57 @@
+/* Foundation studies share the site's muted technical illustration palette. */
+.framework-showcase{padding:28px 0 10px;scroll-margin-top:28px}
+.foundation-intro{display:grid;grid-template-columns:1fr 1fr;gap:15px 45px;align-items:end;margin-bottom:34px}
+.foundation-intro .eyebrow{grid-column:1/-1;font-size:10px;margin:0}
+.foundation-intro h2{font:400 clamp(33px,3.6vw,49px)/1.1 var(--serif);letter-spacing:-.025em;margin:0}
+.foundation-intro>p:last-child{font-size:15px;line-height:1.7;color:var(--muted);margin:0;max-width:57ch}
+.foundation-studies{display:grid;grid-template-columns:1fr 1fr;gap:36px}
+.foundation-study{min-width:0;display:flex;flex-direction:column;align-items:start}
+.foundation-study figure{width:100%;margin:0 0 24px;background:linear-gradient(135deg,#eef1e3,#e8ecdb);border-top:1px solid #d1dac5;border-bottom:1px solid #d1dac5}
+.foundation-study svg{display:block;width:100%;height:auto}
+.foundation-study figcaption{border-top:1px solid #d6decc;padding:12px 20px;font:9px/1.5 var(--mono);letter-spacing:.04em;color:#819078}
+.foundation-name{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.foundation-name h3{font:400 36px/1.1 var(--serif);margin:0;letter-spacing:-.02em}
+.foundation-beta{font:9px var(--mono);padding:4px 7px;border:1px solid #d3ddc8;color:#7d8c71;border-radius:2px}
+.foundation-study>p{font-size:14px;line-height:1.7;color:var(--muted);margin:0 0 15px}
+.foundation-study>.foundation-promise{font-size:17px;line-height:1.4;color:var(--ink);margin:0 0 12px}
+.foundation-example{border-top:1px solid var(--line);padding-top:17px;margin-top:auto;width:100%}
+.foundation-example>span{font:9px var(--mono);color:#8b987e;letter-spacing:.07em}
+.foundation-example p{font-size:13px;line-height:1.65;color:var(--muted);margin:9px 0 0}
+.foundation-study>.text-link{font-size:12px;margin-top:18px;padding-top:0}
+.foundation-footnote{display:flex;justify-content:space-between;gap:20px;border-top:1px solid var(--line);padding-top:18px;margin-top:32px;font-size:12px;color:#7d8e74}
+.foundation-footnote a{color:#506e57;text-underline-offset:4px}
+@media(max-width:760px){.foundation-intro{grid-template-columns:1fr;gap:15px}.foundation-studies{grid-template-columns:1fr;gap:36px}.foundation-study figure{margin-bottom:20px}.foundation-intro h2{font-size:37px}.foundation-footnote{flex-wrap:wrap}.foundation-study figcaption{font-size:8px;padding:10px 14px}}
+@media print{.foundation-study{break-inside:avoid}}
+.foundation-study figure{background:#f2f0e6;border:1px solid #d5d3c7}.foundation-study figcaption{background:#f7f6ee;border-color:#d5d3c7;color:#898778}
+.foundation-bridge{max-width:1000px;margin:8px auto 0;text-align:center}.foundation-bridge>svg{display:block;width:100%;height:105px}.foundation-agent{display:inline-flex;align-items:center;gap:15px;text-align:left;border:1px solid #d3d9c9;background:#f3f5eb;padding:15px 25px;border-radius:42px;max-width:100%}.foundation-agent img{flex-shrink:0}.foundation-agent strong{display:block;font-size:17px;line-height:1.4;color:#3c5543}.foundation-agent span{display:block;font-size:12px;line-height:1.5;color:#839078;margin-top:3px}.foundation-bridge>p{font-size:12px;line-height:1.6;color:#8c9580;margin-top:15px}.foundation-footnote{margin-top:24px}
+@media(max-width:760px){.foundation-bridge>svg{height:70px}.foundation-agent{border-radius:14px;padding:13px 17px}.foundation-agent span{font-size:11px}.foundation-agent strong{font-size:15px}}
+
+/* Original light illustrations, without the gradient experiments. */
+.foundation-study figure{background:#eff2e7;border:1px solid #dce3d1;border-radius:4px;overflow:hidden}
+.foundation-study:nth-child(2) figure{background:#f2f1e7}
+.foundation-study figcaption{display:none}
+.foundation-study .framework-original{padding:10px 18px;box-sizing:border-box;aspect-ratio:540/240}
+.foundation-capabilities{margin:0 0 22px;width:100%;display:grid;gap:12px}
+.foundation-capabilities dt{font-size:13px;font-weight:600;color:var(--ink);margin:0 0 3px}
+.foundation-capabilities dd{font-size:13px;line-height:1.6;color:var(--muted);margin:0}
+.foundation-agent{background:#f4f6ed;border-color:#d3ddc7}
+
+/* Exact original artwork: journal.css owns its sizing, fonts and animation. */
+.foundation-study>.framework-art{width:100%;box-sizing:border-box;margin-bottom:24px}
+.foundation-study .framework-drawing{width:100%;height:100%;padding:0;aspect-ratio:auto}
+
+/* Complete source figures, scaled into equal-height cards with a full-size view. */
+.foundation-study>.full-framework-art{height:460px;background:#fcfcf5;border-color:#d6dec9}
+.full-framework-content{height:100%;display:flex;flex-direction:column;align-items:center;text-decoration:none;color:#365347;padding:12px 14px 0;box-sizing:border-box}
+.full-framework-art .full-framework-svg{display:block;width:100%;height:calc(100% - 44px);min-height:0;object-fit:contain;object-position:center top}
+.full-framework-caption{width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;height:44px;border-top:1px solid #d6dec9;color:#758571;font:12px/1.4 var(--sans)}
+@media(max-width:760px){.foundation-study>.full-framework-art{height:410px}}
+
+/* Live source paths, scoped to the embedded diagrams. No raster swap. */
+.foundation-flow-art text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+.foundation-flow-art .signal{animation:foundation-flow-travel 2.8s linear infinite;stroke-width:2.8}
+.foundation-flow-art .cell-active{animation:foundation-flow-activity 5s ease-in-out infinite}
+.foundation-flow-art.is-flow-paused .signal,.foundation-flow-art.is-flow-paused .cell-active{animation-play-state:paused!important}
+@keyframes foundation-flow-travel{to{stroke-dashoffset:-44}}
+@keyframes foundation-flow-activity{0%,100%{opacity:1}50%{opacity:.55}}
+@media(prefers-reduced-motion:reduce){.foundation-flow-art .signal,.foundation-flow-art .cell-active{animation:none!important}}

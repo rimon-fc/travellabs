@@ -1,0 +1,65 @@
+<svg class="f" viewBox="0 0 720 270" role="img" aria-label="Lease timeline. Worker A claims, renews, then is lost. The lease expires and the task is requeued. Worker B claims and completes. A late completion from worker A is rejected." width="720" height="270" xmlns="http://www.w3.org/2000/svg">
+      <title>Lease timeline. Worker A claims, renews, then is lost. The lease expires and the task is requeued. Worker B claims and completes. A late completion from worker A is rejected.</title><defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#263837"/></marker>
+    <marker id="aha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#376d69"/></marker>
+    <marker id="ahw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#a37c3a"/></marker>
+    <marker id="ahg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#929b94"/></marker>
+    <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="#fff"/><line x1="0" y1="0" x2="0" y2="6" stroke="#c9cacd" stroke-width="1.2"/></pattern>
+    <pattern id="hatchw" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="#fff"/><line x1="0" y1="0" x2="0" y2="6" stroke="#eab598" stroke-width="1.2"/></pattern>
+  </defs>
+<style>
+.f text{font-family:"DejaVu Sans Mono",monospace;font-size:11px;fill:#263837}
+.f .s{font-size:9.5px;fill:#68716c}
+.f .xs{font-size:8.5px;fill:#68716c}
+.f .h{font-size:9.5px;letter-spacing:.1em;font-weight:600}
+.f .hs{font-size:9px;letter-spacing:.12em;fill:#68716c}
+.f .serif{font-family:Georgia,serif;font-size:15px}
+.f .it{font-family:Georgia,serif;font-style:italic;font-size:13px}
+.f .b{font-weight:600}
+.f g.s text{font-size:9.5px;fill:#68716c}
+.f g.xs text{font-size:8.5px;fill:#68716c}
+.f g.hs text{font-size:9px;letter-spacing:.12em;fill:#68716c}
+.f .halo{paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+.f .w{fill:#fff}
+.f .ca{fill:#376d69} .f .cw{fill:#a37c3a} .f .cm{fill:#68716c} .f .cok{fill:#52735b}
+.f .ln{stroke:#263837;stroke-width:1;fill:none}
+.f .ln2{stroke:#263837;stroke-width:1.6;fill:none}
+.f .lt{stroke:#c4c5c9;stroke-width:.8;fill:none}
+.f .la{stroke:#376d69;stroke-width:1.3;fill:none}
+.f .lw{stroke:#a37c3a;stroke-width:1.3;fill:none}
+.f .dash{stroke-dasharray:3 3}
+.f .dot{stroke-dasharray:1 3;stroke-linecap:round}
+.f .box{fill:#fff;stroke:#263837;stroke-width:1}
+.f .boxp{fill:#eeede7;stroke:#263837;stroke-width:1}
+.f .boxa{fill:#e4ebe5;stroke:#376d69;stroke-width:1}
+.f .boxw{fill:#f0e9db;stroke:#a37c3a;stroke-width:1}
+.f .boxk{fill:#263837;stroke:#263837}
+.f .soft{fill:#eeede7;stroke:none}
+.f .hatch{fill:url(#hatch);stroke:#bcc5ba;stroke-width:.8}
+.f .pk{fill:#376d69} .f .pkw{fill:#a37c3a}
+.f .arr{marker-end:url(#ah)} .f .arra{marker-end:url(#aha)} .f .arrw{marker-end:url(#ahw)} .f .arrg{marker-end:url(#ahg)}
+.f .blink{animation:blink 1.6s steps(2,start) infinite}
+@keyframes blink{50%{opacity:.25}}
+.paused .f .blink{animation-play-state:paused}
+
+
+@media(prefers-reduced-motion:reduce){.blink{animation:none!important}.pk,.pkw,.playhead{display:none}}</style><g class="hs"><text x="10" y="54">SERVER</text><text x="10" y="134">WORKER A</text><text x="10" y="214">WORKER B</text></g>
+      <path d="M100 50H710" class="ln2"/>
+      <path d="M100 130H320" class="ln"/><path d="M320 130H660" class="lt dash"/>
+      <path d="M100 210H410" class="lt dash"/><path d="M410 210H620" class="ln"/>
+      <g class="ln arr"><path d="M140 128V54"/><path d="M210 128V54"/><path d="M280 128V54"/></g>
+      <g class="ln arr"><path d="M430 208V54"/><path d="M490 208V54"/><path d="M550 208V54"/></g>
+      <path d="M600 208V54" class="la arra"/>
+      <path d="M660 130V54" class="lw arrw"/>
+      <g class="s"><text x="145" y="96">claim L₁</text><text x="215" y="112">renew</text><text x="285" y="96">renew</text>
+        <text x="435" y="176">claim L₂</text><text x="495" y="192">renew</text><text x="555" y="176">renew</text></g>
+      <text x="605" y="160" class="s halo" style="fill:#376d69">complete(L₂)</text>
+      <path d="M314 124l12 12M326 124l-12 12" class="lw"/><text x="320" y="154" class="s" text-anchor="middle">worker lost</text>
+      <text x="336" y="124" class="xs halo" style="fill:#929b94">partitioned, not dead</text>
+      <rect x="372" y="40" width="20" height="20" class="boxw"/><text x="382" y="28" class="s" text-anchor="middle" style="fill:#a37c3a">L₁ expires → requeue</text>
+      <circle cx="600" cy="50" r="5" class="cok"/><text x="600" y="30" class="s" text-anchor="middle" style="fill:#52735b">recorded ✓</text>
+      <path d="M654 44l12 12M666 44l-12 12" class="lw"/><text x="652" y="82" class="s halo" text-anchor="end" style="fill:#a37c3a">complete(L₁)</text><text x="652" y="94" class="s halo" text-anchor="end" style="fill:#a37c3a">rejected: stale lease</text>
+      <g class="lt"><path d="M100 246H710"/></g>
+      <text x="100" y="262" class="xs">time →</text>
+      <text x="710" y="262" class="xs" text-anchor="end">finished steps stay finished; only the in-flight step runs again</text>
+    </svg>

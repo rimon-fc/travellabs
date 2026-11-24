@@ -1,0 +1,38 @@
+.home-directory .lab-panel .research-minds,.about-page .research-minds{position:relative;isolation:isolate;background:#f7f8f2;height:auto;aspect-ratio:1100/550;border-radius:0;overflow:visible;border-top:1px solid #dbe1d3;border-bottom:1px solid #dbe1d3;margin:0}
+.research-minds .minds-sketch{display:block;width:100%;height:100%;overflow:visible}
+.minds-kicker{position:absolute;inset:17px 22px auto;display:flex;align-items:center;justify-content:space-between;gap:12px;pointer-events:none;font:8px/1.4 var(--mono);letter-spacing:.06em;color:#8b967f}
+.research-minds figcaption{position:absolute;left:0;right:0;bottom:17px;padding:0 22px;background:none;color:#63765a;font:13px/1.5 var(--sans);text-align:center}
+.mind-character{cursor:pointer;outline:none;transform-box:fill-box;transform-origin:center bottom}
+.mind-body{transform-box:fill-box;transform-origin:center bottom;animation:mind-sway var(--mind-duration) ease-in-out infinite;animation-delay:var(--mind-delay)}
+.mind-eye{animation:mind-blink 5.8s linear infinite;animation-delay:var(--mind-delay)}
+.mind-pupil{transition:transform .18s ease-out}
+.mind-shape{transition:filter .25s,stroke .25s}
+.mind-character:hover .mind-body,.mind-character:focus-visible .mind-body{animation:mind-greet .65s cubic-bezier(.22,1,.36,1) both}
+.mind-character:hover .mind-shape,.mind-character:focus-visible .mind-shape{stroke:#607b59;filter:drop-shadow(0 6px 1px #3b583017)}
+.mind-character:focus-visible .mind-shape{stroke:#ad8e48;stroke-width:6}
+.mind-character.is-greeting .mind-body{animation:mind-pop .8s cubic-bezier(.22,1,.36,1) both}
+.minds-idea{transform-box:fill-box;transform-origin:center;animation:minds-idea 6s ease-in-out infinite}
+.minds-doodles{animation:minds-ink 7s ease-in-out infinite}
+.research-minds.is-still *{animation-play-state:paused!important}
+@keyframes mind-sway{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-7px) rotate(var(--mind-turn))}}
+@keyframes mind-blink{0%,43%,46%,100%{transform:scaleY(1)}44%,45%{transform:scaleY(.08)}}
+@keyframes mind-greet{0%{transform:translateY(0)}60%{transform:translateY(-13px) rotate(-3deg)}100%{transform:translateY(-6px) rotate(2deg)}}
+@keyframes mind-pop{0%{transform:scale(1)}22%{transform:scale(1.07,.93)}55%{transform:translateY(-22px) rotate(-5deg) scale(.97,1.03)}80%{transform:scale(1.03,.97)}100%{transform:none}}
+@keyframes minds-idea{0%,100%{transform:translateY(0) rotate(-8deg);opacity:.6}50%{transform:translateY(-11px) rotate(12deg);opacity:1}}
+@keyframes minds-ink{0%,100%{opacity:.4}50%{opacity:.9}}
+.about-page .research-minds{aspect-ratio:1.2}.about-page .research-minds .minds-sketch{object-fit:contain}
+@media(max-width:760px){.home-directory .lab-panel .research-minds{aspect-ratio:1.65}.minds-kicker{font-size:7px;inset:12px 12px auto}.research-minds figcaption{font-size:11px;bottom:12px;padding-inline:12px}.about-page .research-minds{aspect-ratio:1.65}}
+@media(max-width:420px){.minds-kicker>span:last-child{display:none}.research-minds figcaption{font-size:10px}}
+@media(prefers-reduced-motion:reduce){.research-minds *{animation:none!important;transition:none!important}}
+@media print{.research-minds *{animation:none!important}.minds-kicker>span:last-child{display:none}}
+
+/* Three small studies: a curious spark, geometric minds and pixel experiments. */
+.home-directory .lab-panel .research-minds,.about-page .research-minds{aspect-ratio:1100/420;overflow:hidden}
+.research-minds .minds-sketch{width:100%;height:100%;overflow:hidden}
+.pixel-cell{animation:pixel-think 4s steps(1) infinite;animation-delay:var(--pixel-delay)}
+.pixel-scan{animation:pixel-scan 4s steps(6) infinite}
+.spark-wave{transform-box:fill-box;transform-origin:right bottom;animation:spark-wave 4s ease-in-out infinite}
+@keyframes pixel-think{0%,70%,100%{fill:#51654e;opacity:.8}30%,50%{fill:#b6c78e;opacity:.5}}
+@keyframes pixel-scan{0%,100%{transform:translateX(0)}50%{transform:translateX(116px)}}
+@keyframes spark-wave{0%,70%,100%{transform:rotate(0)}20%,40%{transform:rotate(12deg)}30%,50%{transform:rotate(-8deg)}}
+@media(max-width:760px){.home-directory .lab-panel .research-minds,.about-page .research-minds{aspect-ratio:1.9}.research-minds .minds-sketch{padding-block:20px;box-sizing:border-box}}

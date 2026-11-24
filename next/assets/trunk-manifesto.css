@@ -1,0 +1,47 @@
+.trunk-manifesto{padding-top:34px;padding-bottom:65px}
+.belief-intro{text-align:center;max-width:880px;margin:0 auto}
+.belief-intro .eyebrow{font-size:10px;margin:0 0 18px}
+.belief-intro :is(h1,h2){font:400 clamp(36px,4.6vw,64px)/1.07 var(--serif);letter-spacing:-.035em;margin:0 0 20px}
+.belief-intro>p:last-child{font-size:16px;color:var(--muted)}
+.belief-universe{position:relative;isolation:isolate;height:520px;max-width:960px;margin:20px auto 0;background:radial-gradient(ellipse at 50% 54%,#e9eddb90,transparent 64%)}
+.belief-orbit-line{position:absolute;left:10%;right:10%;top:24%;height:51%;border:1px dashed #aebba742;border-radius:50%;transform:rotate(-6deg);pointer-events:none}
+.belief-center{position:absolute;width:clamp(200px,30vw,285px);left:50%;top:49%;transform:translate(-50%,-46%);z-index:5;text-align:center}
+.trunk-hello{padding:0;border:0;background:none;cursor:pointer;display:block;width:100%;color:var(--ink)}
+.trunk-hello img{display:block;width:100%;height:auto;filter:drop-shadow(0 12px 10px #304e4212);transform-origin:50% 85%;animation:trunk-breathe 5s ease-in-out infinite;will-change:transform}
+.trunk-hello-label{display:inline-block;font:10px var(--mono);letter-spacing:.03em;padding:9px 13px;border:1px solid #cdd7c1;border-radius:20px;background:#f7f8f2bb;transition:background .2s}
+.trunk-hello:hover .trunk-hello-label{background:#e8eddc}
+.belief-shadow{position:absolute;left:24%;right:24%;bottom:35px;height:14px;background:#566f4d22;border-radius:50%;filter:blur(7px);animation:trunk-shadow-breathe 5s ease-in-out infinite}
+.trunk-speech{position:absolute;bottom:calc(100% - 14px);left:50%;width:max-content;max-width:250px;transform:translate(-50%,8px) rotate(-4deg);border:1px solid #d4d8c9;background:#fffdf2;padding:11px 15px;border-radius:15px 15px 15px 3px;font:13px var(--sans);box-shadow:0 8px 20px #3e50370a;opacity:0;pointer-events:none;transition:opacity .2s,transform .3s}
+.belief-center.is-hello .trunk-speech{opacity:1;transform:translate(-50%,0) rotate(-4deg)}
+.belief-center.is-hello img{animation:trunk-delight .85s cubic-bezier(.22,1,.36,1) both}
+.belief-object{position:absolute;left:calc(50% + cos(var(--i)*60deg)*38%);top:calc(49% + sin(var(--i)*60deg)*25%);width:112px;height:112px;padding:0;border:0;background:none;color:#41574a;cursor:pointer;transform:translate(-50%,-50%);z-index:6;outline-offset:5px}
+.belief-toy{display:block;width:100%;height:100%;filter:drop-shadow(0 7px 5px #35472b14);transition:transform .3s cubic-bezier(.22,1,.36,1),filter .3s}
+.belief-toy svg{display:block;width:100%;height:100%;overflow:visible}
+.belief-label{position:absolute;left:50%;top:100%;transform:translate(-50%,8px);white-space:nowrap;font:500 12px/1.3 var(--sans);padding:6px 10px;border-radius:8px;background:#fffef5ed;border:1px solid #d7ddcd;opacity:0;transition:opacity .2s,transform .25s;pointer-events:none}
+.belief-object:hover .belief-toy,.belief-object:focus-visible .belief-toy{transform:translateY(-6px) rotate(-7deg) scale(1.12);filter:drop-shadow(0 12px 7px #35472b20)}
+.belief-object:hover .belief-label,.belief-object:focus-visible .belief-label,.belief-object[aria-expanded=true] .belief-label{opacity:1;transform:translate(-50%,2px)}
+.belief-object:focus-visible,.trunk-hello:focus-visible,.belief-reset:focus-visible{outline:2px solid #759b85;border-radius:12px}
+.belief-spark{position:absolute;color:#bca268;pointer-events:none;font-size:21px;animation:belief-twinkle 7s ease-in-out infinite}.spark-one{left:29%;top:22%}.spark-two{right:29%;bottom:20%;animation-delay:-3s;font-size:17px}
+.belief-hint{position:absolute;bottom:6px;width:100%;text-align:center;font:10px/1.6 var(--mono);color:#83907c}
+.belief-reading{max-width:760px;margin:5px auto 0;text-align:center;min-height:205px}
+.belief-copy{padding:22px 25px 25px;border-top:1px solid var(--line)}
+.belief-copy[hidden]{display:none}
+.belief-number{font:9px var(--mono);letter-spacing:.09em;color:#8a957e}
+.belief-copy :is(h2,h3){font:400 clamp(27px,3vw,37px)/1.15 var(--serif);margin:13px 0 12px;letter-spacing:-.02em}
+.belief-copy p{font-size:15px;line-height:1.7;max-width:65ch;margin:0 auto;color:var(--muted)}
+.belief-footer{max-width:760px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding:18px 0;color:#84917a;font:10px var(--mono)}
+.belief-reset{font:11px var(--sans);color:#5b7b61;border:0;background:none;padding:8px;cursor:pointer}
+@keyframes trunk-breathe{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-11px) rotate(2deg)}}
+@keyframes trunk-shadow-breathe{50%{transform:scale(.85);opacity:.65}}
+@keyframes trunk-delight{0%{transform:translateY(0) rotate(0)}20%{transform:scale(1.07,.91) rotate(-5deg)}45%{transform:translateY(-35px) rotate(10deg) scale(.96,1.04)}70%{transform:translateY(0) rotate(-5deg) scale(1.06,.94)}100%{transform:none}}
+@keyframes belief-twinkle{0%,100%{opacity:.35;transform:scale(.8) rotate(0)}50%{opacity:1;transform:scale(1.1) rotate(30deg)}}
+.belief-universe.is-resting *{animation-play-state:paused!important}
+@media(max-width:760px){.trunk-manifesto{padding-top:22px}.belief-intro :is(h1,h2){font-size:43px}.belief-universe{height:430px;margin-top:10px}.belief-center{width:210px}.belief-object{width:86px;height:86px}.belief-label{font-size:10px;padding:5px 7px}.belief-reading{min-height:230px}.belief-copy{padding-inline:10px}.belief-hint{font-size:8px}.belief-intro>p:last-child{font-size:14px}}
+@media(max-width:440px){.belief-intro :is(h1,h2){font-size:35px}.belief-center{width:175px}.belief-universe{height:395px}.belief-object{width:76px;height:76px}.belief-label{font-size:9px}.belief-orbit-line{left:8%;right:8%}.belief-footer{font-size:8px}.trunk-speech{font-size:11px}.belief-copy p{font-size:14px}}
+@media(prefers-reduced-motion:reduce){.belief-universe *{animation:none!important;transition:none!important}.belief-object:hover .belief-toy{transform:none}}
+@media print{.belief-universe,.belief-footer{display:none}.belief-copy[hidden]{display:block}.belief-reading{text-align:left}.belief-intro{margin-bottom:30px}}
+.home-beliefs .belief-universe{margin-top:0;height:460px;max-width:900px}.home-beliefs .belief-reading{min-height:185px}.home-beliefs .belief-footer{display:none}
+@media(max-width:760px){.home-beliefs .belief-universe{height:390px}.home-beliefs .belief-reading{min-height:210px}}
+
+.about-page .trunk-manifesto{border-top:1px solid var(--line);margin-top:44px;padding-top:54px;scroll-margin-top:28px}
+@media(max-width:760px){.about-page .trunk-manifesto{margin-top:30px;padding-top:36px}}

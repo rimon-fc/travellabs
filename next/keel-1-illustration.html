@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Keel, end to end</title>
+<style>
+:root{--bg:#f5f4ef;--ink:#263837;--mute:#68716c;--line:#d4d7cf;--acc:#376d69}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+main{max-width:960px;margin:0 auto;padding:28px 16px 48px}
+.top{display:flex;flex-wrap:wrap;gap:10px 18px;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--line);padding-bottom:12px;margin-bottom:18px}
+.top a,.top button{color:var(--acc);font:inherit;font-size:13px;background:none;border:0;padding:0;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.top .links{display:flex;gap:16px;flex-wrap:wrap}
+h1{font-size:13px;font-weight:600;letter-spacing:.06em;margin:0}
+figure{margin:0;background:#fff;border:1px solid var(--line);padding:12px}
+figure img{display:block;width:100%;height:auto}
+figcaption{font-size:12px;color:var(--mute);padding-top:12px}
+</style><link rel="icon" type="image/svg+xml" href="assets/travellabs-favicon.svg?v=968497dea9"></head>
+<body><main>
+<div class="top"><h1>Keel, end to end</h1><div class="links"><a href="paper-keel.html">← Keel paper</a><button type="button" id="pause" aria-pressed="false">Pause motion</button><a href="assets/academic/flows/keel-1-illustration.png" download>Download PNG</a></div></div>
+<figure><img id="fig" src="assets/academic/flows/keel-1-illustration.svg" data-still="assets/academic/flows/keel-1-illustration-still.svg" data-anim="assets/academic/flows/keel-1-illustration.svg" alt="Keel end to end: Figures 1–10 of the paper redrawn on one spine. Author and autobuild, release gates and distribution, the governed runtime, and the audit chain. Schematic; motion traces connections, not live execution."><figcaption>Keel end to end: Figures 1–10 of the paper redrawn on one spine. Author and autobuild, release gates and distribution, the governed runtime, and the audit chain. Schematic; motion traces connections, not live execution.</figcaption></figure>
+</main>
+<script>
+const b=document.getElementById('pause'),f=document.getElementById('fig');
+b.addEventListener('click',()=>{const p=b.getAttribute('aria-pressed')!=='true';b.setAttribute('aria-pressed',p);b.textContent=p?'Play motion':'Pause motion';f.src=p?f.dataset.still:f.dataset.anim;});
+</script>
+</body></html>

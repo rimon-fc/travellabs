@@ -1,0 +1,618 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Research | TravelLabs</title>
+<meta name="description" content="Research that goes places. Tools, working products and the questions we’re exploring next.">
+<link rel="icon" href="assets/img/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/tl.css">
+<link rel="stylesheet" href="assets/impact.css">
+<link rel="stylesheet" href="assets/research.css">
+</head>
+<body data-page="research" id="top">
+<div data-header></div>
+<main>
+
+<section class="phero">
+  <div class="wrap">
+    <div class="phero-c" data-in><span class="kick">/ <b>Inside the lab</b></span><h1 class="h1" style="font-size:clamp(38px,4.6vw,62px)">Research that goes places.</h1><p class="lead">Tools, working products and the questions we’re exploring next.</p><div class="btns"><a class="btn pri" href="#frameworks">Frameworks <span class="arr">→</span></a><a class="btn" href="#built">Leisure AI</a><a class="btn" href="#next">What’s next</a><a class="btn" href="papers.html">Papers</a></div></div>
+    <div class="phero-art" data-in><canvas class="art" data-art="snow" aria-hidden="true"></canvas><div class="hx-cap"><span>Build what’s next.</span><span>Make it work for travel</span></div></div>
+  </div>
+</section>
+
+<section class="sec" id="frameworks">
+  <div class="wrap">
+    <div class="sec-h" data-in><span class="kick">/ The foundations</span><h2 class="h2">Built for travel’s hardest parts.</h2><p class="lead">Infrastructure for travel agents that can act, wait and keep looking after a trip. ATFGraph runs the work over time. Keel connects it to travel tools, transaction rules and controlled payments.</p></div>
+
+    <div class="fw-h" data-in>
+      <div class="fw-id"><span class="bt-tag">Durable jobs + graph server</span><h3 class="fw-name">ATFGraph <span class="tagp">Beta</span></h3><p class="fw-line">A durable runtime for agentic work.</p></div>
+      <div class="fw-copy"><p class="lead">Run agents built with any framework. Durable state preserves progress.</p><a class="link" href="paper-atfgraph.html">Read the ATFGraph paper ↗</a></div>
+    </div>
+    <div class="cards3" data-in>
+      <div class="card top-u"><div class="mini"><canvas class="art" data-art="fanout" aria-hidden="true"></canvas></div><h3>Emitter compute</h3><p>Schedules, incoming events and shared monitoring wake the agents that need to act.</p></div>
+      <div class="card top-l"><div class="mini"><canvas class="art" data-art="hold" aria-hidden="true"></canvas></div><h3>Temporal execution</h3><p>Lets a job wait for an approval or booking update, then continue with its context.</p></div>
+      <div class="card top-k"><div class="mini"><canvas class="art" data-art="trace" aria-hidden="true"></canvas></div><h3>Recovery &amp; oversight</h3><p>Recorded steps, retry rules, human approvals and shadow mode make long-running work inspectable.</p></div>
+    </div>
+    <div class="band-in" data-in><span class="kick">Why it matters in travel</span><p>A disruption arrives after booking. The relevant agent wakes, retrieves the trip context and prepares the next action for approval.</p></div>
+
+    <div class="fw-h fw-gap" data-in>
+      <div class="fw-id"><span class="bt-tag">Governed runtime + audit chain</span><h3 class="fw-name">Keel <span class="tagp">Beta</span></h3><p class="fw-line">Travel tools. ATP. Controlled payments.</p></div>
+      <div class="fw-copy"><a class="link" href="paper-keel.html">Read the Keel paper ↗</a></div>
+    </div>
+    <div class="fw-split" data-in>
+      <div class="flist">
+        <div><span class="n">01</span><h3>Travel tools</h3><p>Connect supply through checked MCP tools and MCP-Apps.</p><i class="px" data-px="link"></i></div>
+        <div><span class="n">02</span><h3>ATP</h3><p>ATP—the Agentic Travel Protocol—coordinates checking, reserving, booking, changing and cancelling across the parts of a trip.</p><i class="px" data-px="stack"></i></div>
+        <div><span class="n">03</span><h3>Agentic Payment for Travel</h3><p>Booking-linked virtual cards bound spending to the approved purchase, amount and expiry.</p><i class="px" data-px="card"></i></div>
+        <div><span class="n">04</span><h3>Supplier &amp; transaction controls</h3><p>Look-to-book protection, fresh price checks and permissions govern actions; booking and payment outcomes stay traceable.</p><i class="px" data-px="shield"></i></div>
+      </div>
+      <div class="card top-u"><div class="mini"><canvas class="art" data-art="scan" data-labels="fares,hotels,trip,policy" aria-hidden="true"></canvas></div><h3>Checked MCP tools</h3><p>Every call crosses one path.</p></div>
+    </div>
+
+    <div class="fw-sub" data-in><span class="kick">01 / Travel tools</span><h3 class="h3">Connect supply through checked MCP tools and MCP-Apps.</h3></div>
+    <div class="conn" data-in>
+      <div><div class="ch"><b>MCP TOOLS</b><p>Connect supply through checked MCP tools.</p></div><pre><span class="c">// KEEL  tool schemas</span>
+<span class="k">├</span> fares.search
+<span class="k">├</span> hotels.search
+<span class="k">└</span> fares.hold
+<span class="k">←</span> <span class="s">validate → typed ✓</span></pre></div>
+      <div><div class="ch"><b>MCP-APPS</b><p>Explore travel ideas inside ChatGPT through a TravelLabs MCP app.</p></div><pre><span class="c">// TravelLabs MCP app · travel ideation</span>
+<span class="k">→</span> <span class="s">Where could a week take you?</span>
+<span class="k">←</span> Bali · Kyoto · Hoi An
+<span class="k">←</span> <span class="s">Shape this idea ↗</span></pre></div>
+      <div><div class="ch"><b>CONTROLS</b><p>Look-to-book protection, fresh price checks and permissions govern actions.</p></div><pre><span class="c">// ENFORCEMENT  every call crosses one path</span>
+<span class="k">→</span> admission · schemas · policy
+<span class="k">←</span> <span class="s">schema valid → advance</span>
+<span class="k">←</span> permit freed</pre></div>
+    </div>
+
+    <div class="fw-sub" data-in><span class="kick">02 / ATP · Why it matters in travel</span><h3 class="h3">Checking, reserving, booking, changing and cancelling across the parts of a trip.</h3></div>
+    <div class="proto" id="proto" data-in>
+      <div class="pr"><span class="k">01 · TRIP</span><h4>A trip spans several suppliers.</h4></div>
+      <div class="pr"><span class="k">02 · ATP</span><h4>ATP coordinates each supported step,</h4></div>
+      <div class="pr"><span class="k">03 · OUTCOME</span><h4>records the outcome</h4></div>
+      <div class="pr"><span class="k">04 · RECOVERY</span><h4>and routes failed bookings or payment exceptions for recovery.</h4></div>
+    </div>
+    <div class="conn conn-one" data-in><div><pre id="protoMsg"></pre></div></div>
+
+    <div class="vcc-h fw-gap" data-in><div style="display:grid;gap:16px"><span class="kick">03 / Agentic Payment for Travel</span><h2 class="h2">Booking-linked virtual cards.</h2></div><p class="lead">Bound spending to the approved purchase, amount and expiry.</p></div>
+    <div class="vcc" data-in>
+      <div class="vcc-panel">
+        <div class="vcc-bar"><span>Agentic Payment for Travel</span><span class="dot">Illustrative workflow</span></div>
+        <div class="vcc-stage"><div class="vcc-card" id="vccCard"><div class="vcc-t"><b>ATP</b><span>Agentic Payment<br>for Travel</span></div><span class="chip"></span><span class="num">•••• •••• •••• ••••</span><div class="vcc-t"><span id="vccState">Approved purchase</span><span>Booking-linked</span></div></div></div>
+        <dl class="vcc-f"><div><dt>Purchase</dt><dd>Approved</dd><small>booking-linked</small></div><div><dt>Amount</dt><dd>Approved</dd><small>bound spending</small></div><div><dt>Expiry</dt><dd>Approved</dd><small>bound spending</small></div></dl>
+        <ul class="vcc-log" id="vccLog"></ul>
+      </div>
+      <div class="vcc-copy">
+        <span class="tagp">Keel · Beta</span>
+        <h3 class="h3" style="font-size:30px">Supplier &amp; transaction controls.</h3>
+        <p class="sub" style="font-size:14px">Permissions govern actions.</p>
+        <ul class="arrows"><li>Look-to-book protection</li><li>Fresh price checks</li><li>Booking and payment outcomes stay traceable</li><li>Failed bookings or payment exceptions routed for recovery</li></ul>
+        <p class="fine">Illustrative workflow · approval is simulated here. Real spending waits for a person.</p>
+      </div>
+    </div>
+
+    <div class="sec-h fw-gap" data-in><span class="kick">/ Your travel agents</span><h2 class="h2">Durable execution + travel tools + ATP + controlled payments.</h2></div>
+    <div class="pot rs-pot" data-in>
+      <div class="pot-in">
+        <p class="rs-pot-lead">One foundation for agents to coordinate, transact and care for the trip over time.</p>
+        <div class="pot-mix"><span>Open foundations.</span><div id="potMix"><button type="button" class="on">Durable execution</button><button type="button">Travel tools</button><button type="button">ATP</button><button type="button">Controlled payments</button></div></div>
+        <div class="pot-grow"><span>Shadow mode first, then live.</span>
+          <div class="race rs-race" id="race">
+            <div><span>Shadow mode</span><div class="lane"><i></i></div></div>
+            <div class="me"><span>Live</span><div class="lane"><i></i></div></div>
+          </div>
+        </div>
+        <div class="btns"><a class="btn pri" href="contact.html?topic=frameworks">Build with us <span class="arr">↗</span></a></div>
+      </div>
+      <div class="pot-out">
+        <div class="pot-h"><span>Durable execution + travel tools + ATP + controlled payments</span><span>Your travel agents</span></div>
+        <div class="pot-r on"><i class="px" data-px="clock"></i><span><b>Durable execution</b><em>ATFGraph</em></span><code>run · wait · wake</code><strong>+</strong></div>
+        <div class="pot-r"><i class="px" data-px="link"></i><span><b>Travel tools</b><em>Keel</em></span><code>checked MCP tools and MCP-Apps</code><strong>+</strong></div>
+        <div class="pot-r"><i class="px" data-px="check"></i><span><b>ATP</b><em>Keel</em></span><code>checking, reserving, booking, changing and cancelling</code><strong>+</strong></div>
+        <div class="pot-r"><i class="px" data-px="card"></i><span><b>Controlled payments</b><em>Keel</em></span><code>Booking-linked virtual cards</code><strong>=</strong></div>
+        <div class="pot-tot"><div><span>Your travel agents</span><b>One foundation.</b><em>Open foundations.</em></div><div><span>Shadow mode first</span><b>Then live.</b><em>Human approvals and shadow mode make long-running work inspectable.</em></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="built" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-h" data-in><span class="kick">/ Leisure AI · What we’ve built</span><h2 class="h2">For the work behind every journey.</h2><p class="lead">Help for consultants, travellers and the teams behind them.</p></div>
+    <div class="imp" data-in data-imp aria-label="Leisure AI performance">
+      <div class="imp-h"><span class="kick"><b>/</b> Agents in production</span><button class="btn imp-pause" type="button" aria-pressed="false">Pause animation</button></div>
+      <div class="imp-tabs" role="tablist" aria-label="Leisure AI impact">
+        <button type="button" role="tab" id="imp-t0" aria-controls="imp-p0" aria-selected="true"><b>01</b>In use<i aria-hidden="true"></i></button>
+        <button type="button" role="tab" id="imp-t1" aria-controls="imp-p1" aria-selected="false" tabindex="-1"><b>02</b>Time back<i aria-hidden="true"></i></button>
+        <button type="button" role="tab" id="imp-t2" aria-controls="imp-p2" aria-selected="false" tabindex="-1"><b>03</b>Adoption<i aria-hidden="true"></i></button>
+        <button type="button" role="tab" id="imp-t3" aria-controls="imp-p3" aria-selected="false" tabindex="-1"><b>04</b>Teamwork<i aria-hidden="true"></i></button>
+        <button type="button" role="tab" id="imp-t4" aria-controls="imp-p4" aria-selected="false" tabindex="-1"><b>05</b>AIBQ success<i aria-hidden="true"></i></button>
+      </div>
+
+      <section class="imp-p" id="imp-p0" role="tabpanel" aria-labelledby="imp-t0" tabindex="0">
+        <div class="imp-main">
+          <div class="imp-lead"><strong class="imp-n" data-to="19,400+">19,400+</strong><h3>AI requests processed.</h3><p>Specialist work, brought together<br>for the travel consultant.</p><small>Reported 90-day snapshot</small></div>
+          <div class="imp-win"><div class="imp-bar"><span>■ ■ ■ Specialists at work</span><small>Illustrative</small></div>
+            <div class="imp-scroll" tabindex="0" role="region" aria-label="Illustrative specialist activity"><div class="imp-grid" data-grid></div></div>
+            <div class="imp-legend"><span><i class="kept"></i> Context kept</span><span><i class="work"></i> Working</span><span class="imp-step" aria-hidden="true">STEP 10 / 10</span></div>
+          </div>
+        </div>
+        <div class="mstats imp-stats"><div><b>590</b><span>unique users</span></div><div><b>2,250+</b><span>consultant sessions</span></div><div><b>9–13</b><span>approx. agent interactions per session</span></div></div>
+      </section>
+
+      <section class="imp-p" id="imp-p1" role="tabpanel" aria-labelledby="imp-t1" tabindex="0" hidden>
+        <div class="imp-main">
+          <div class="imp-lead"><strong class="imp-n" data-to="83%+">83%+</strong><h3>Less time constructing a trip.</h3><p>More time for the customer.<br>Less time putting the pieces together.</p><small>Reported before-and-after comparison</small></div>
+          <div class="imp-win"><div class="imp-bar"><span>Trip construction</span><small>Minutes</small></div>
+            <div class="imp-time">
+              <div class="imp-tl"><span>Before</span><strong>120 min</strong></div>
+              <div class="imp-track before" aria-hidden="true"><i class="on" style="--d:0"></i><i class="on" style="--d:1"></i><i class="on" style="--d:2"></i><i class="on" style="--d:3"></i><i class="on" style="--d:4"></i><i class="on" style="--d:5"></i><i class="on" style="--d:6"></i><i class="on" style="--d:7"></i><i class="on" style="--d:8"></i><i class="on" style="--d:9"></i><i class="on" style="--d:10"></i><i class="on" style="--d:11"></i></div>
+              <div class="imp-tl"><span>With Co-consult</span><strong>Under 20 min</strong></div>
+              <div class="imp-track after" aria-hidden="true"><i class="on" style="--d:0"></i><i class="on" style="--d:1"></i><i style="--d:2"></i><i style="--d:3"></i><i style="--d:4"></i><i style="--d:5"></i><i style="--d:6"></i><i style="--d:7"></i><i style="--d:8"></i><i style="--d:9"></i><i style="--d:10"></i><i style="--d:11"></i></div>
+              <div class="imp-ruler"><span>0</span><span>60</span><span>120</span></div>
+              <p>Each block represents 10 minutes.</p>
+            </div>
+          </div>
+        </div>
+        <div class="mstats imp-stats"><div><b>2,000+</b><span>consultant hours potentially saved · rough estimate</span></div><div><b>27.8%</b><span>proposal funnel conversion · reported 90 days</span></div><div><b>10m 48s</b><span>median proposal conversion time</span></div></div>
+      </section>
+
+      <section class="imp-p" id="imp-p2" role="tabpanel" aria-labelledby="imp-t2" tabindex="0" hidden>
+        <div class="imp-main">
+          <div class="imp-lead"><strong class="imp-n" data-to="+61%">+61%</strong><h3>Growth in AI requests.</h3><p>More consultants.<br>More sessions. More work supported.</p><small>September to October · year not specified</small></div>
+          <div class="imp-win"><div class="imp-bar"><span>Adoption</span><small>September → October</small></div>
+            <div class="imp-growth">
+              <div><strong>+53%</strong><span>Users</span><div class="imp-gb" aria-hidden="true"><i style="--bar:65.36%"></i><i style="--bar:100%"></i></div><small>SEP <em>OCT</em></small></div>
+              <div><strong>+50%</strong><span>Sessions</span><div class="imp-gb" aria-hidden="true"><i style="--bar:66.67%"></i><i style="--bar:100%"></i></div><small>SEP <em>OCT</em></small></div>
+              <div><strong>+61%</strong><span>AI requests</span><div class="imp-gb" aria-hidden="true"><i style="--bar:62.11%"></i><i style="--bar:100%"></i></div><small>SEP <em>OCT</em></small></div>
+            </div>
+          </div>
+        </div>
+        <div class="mstats imp-stats"><div><b>1,179</b><span>sessions · reported latest 30 days</span></div><div><b>358</b><span>active users · reported latest 30 days</span></div><div><b>+18.7% / +9.5%</b><span>sessions / active users vs previous 30 days</span></div></div>
+      </section>
+
+      <section class="imp-p" id="imp-p3" role="tabpanel" aria-labelledby="imp-t3" tabindex="0" hidden>
+        <div class="imp-main">
+          <div class="imp-lead"><strong class="imp-n" data-to="13">13</strong><h3>Specialised capabilities.</h3><p>Research, recommendations and checks.<br>One conversation for the consultant.</p><small>AI/ML and platform capabilities</small></div>
+          <div class="imp-win"><div class="imp-bar"><span>From research to proposal</span><small>Illustrative</small></div>
+            <div class="imp-scroll" tabindex="0" role="region" aria-label="Illustrative parallel research and proposal flow"><canvas class="imp-flow" data-flow aria-hidden="true"></canvas></div>
+          </div>
+        </div>
+        <div class="mstats imp-stats"><div><b>11</b><span>distinct LLM roles</span></div><div><b>9–13</b><span>approx. agent interactions per session</span></div><div><b>One workspace</b><span>travel objectives, products and a proposal</span></div></div>
+      </section>
+
+      <section class="imp-p" id="imp-p4" role="tabpanel" aria-labelledby="imp-t4" tabindex="0" hidden>
+        <div class="imp-main">
+          <div class="imp-lead"><strong class="imp-n" data-to="11,382">11,382</strong><h3>AIBQ unique sessions.</h3><small>Since launch · about $1,295 total<br>$0.116 per conversation</small></div>
+          <div class="imp-win"><div class="imp-bar"><span>AIBQ success metrics</span><small>Since launch</small></div>
+            <div class="imp-rates">
+              <div><span>Positive interaction</span><i style="--rate:92.3%"><s></s></i><strong>92.3%</strong></div>
+              <div><span>Issue resolved</span><i style="--rate:81.3%"><s></s></i><strong>81.3%</strong></div>
+              <div class="warn"><span>Consultant hand-off</span><i style="--rate:17.7%"><s></s></i><strong>17.7%</strong></div>
+              <div class="warn"><span>System error</span><i style="--rate:1.1%"><s></s></i><strong>1.1%</strong></div>
+            </div>
+          </div>
+        </div>
+        <div class="mstats imp-stats"><div><b>+14.6 pts</b><span>resolution improvement since launch</span></div><div><b>−5.1 pts</b><span>consultant hand-off since launch</span></div><div><b>−10.0 pts</b><span>system error since launch</span></div></div>
+      </section>
+      <p class="imp-note">Reported Co-consult results, not live analytics. Activity and flows are illustrative. Exact reporting dates were not supplied.</p>
+    </div>
+
+    <div class="lx" data-in>
+      <div class="lx-tabs" role="tablist" aria-label="Leisure AI products">
+        <button type="button" role="tab" id="lx-t0" aria-controls="lx-p0" aria-selected="true"><span class="tg">Consultant workspace</span><b>Co-consult</b></button>
+        <button type="button" role="tab" id="lx-t1" aria-controls="lx-p1" aria-selected="false" tabindex="-1"><span class="tg">After booking</span><b>AIBQ</b></button>
+        <button type="button" role="tab" id="lx-t2" aria-controls="lx-p2" aria-selected="false" tabindex="-1"><span class="tg">Enquiry to proposal</span><b>IQR</b></button>
+        <button type="button" role="tab" id="lx-t3" aria-controls="lx-p3" aria-selected="false" tabindex="-1"><span class="tg">Travel discovery</span><b>ChatGPT App</b></button>
+        <button type="button" role="tab" id="lx-t4" aria-controls="lx-p4" aria-selected="false" tabindex="-1"><span class="tg">Engineering support</span><b>Conductor</b></button>
+        <button type="button" role="tab" id="lx-t5" aria-controls="lx-p5" aria-selected="false" tabindex="-1"><span class="tg">Travel servicing</span><b>CTRLPLANE</b></button>
+        <button type="button" role="tab" id="lx-t6" aria-controls="lx-p6" aria-selected="false" tabindex="-1"><span class="tg">Travel decision model</span><b>Waypoint</b></button>
+      </div>
+
+      <section class="lx-p cc" id="lx-p0" role="tabpanel" aria-labelledby="lx-t0" tabindex="0">
+        <div class="lx-head"><div><span class="kick">Co-consult / <b>From request to review</b></span><h3 class="lx-h">Brief becomes the trip.</h3></div><div><span class="tg">Product</span><p class="lead">Flights, hotels, activities and advice in one conversation. Help consultants turn a travel brief into a complete proposal.</p></div></div>
+        <div class="cc-pick"><span class="kick">example trips</span><div class="bk-pick" id="ccPick"></div></div>
+        <ol class="bk-rail six" id="ccRail"><li><b>01</b>You ask</li><li><b>02</b>AI understands</li><li><b>03</b>Agents search</li><li><b>04</b>Best value picked</li><li><b>05</b>A person approves</li><li><b>06</b>Booked together</li></ol>
+        <div class="bk-step cc-say"><b id="ccSay"></b></div>
+        <div class="cc-body">
+          <pre class="call" id="ccCall"></pre>
+          <div class="cc-side">
+            <div class="mstats" id="ccStats"></div>
+            <div class="merge" id="ccMerge"></div>
+          </div>
+        </div>
+        <div class="src4" id="ccAgents"></div>
+        <p class="fine">Illustrative workflow · sample trips and prices · approval is simulated here. Real spending waits for a person.</p>
+      </section>
+
+      <section class="lx-p" id="lx-p1" role="tabpanel" aria-labelledby="lx-t1" tabindex="0" hidden>
+        <div class="lx-two">
+          <div class="sk-panel"><canvas class="art" data-art="sk-app" aria-hidden="true"></canvas></div>
+          <div class="lx-stack">
+            <span class="kick">AIBQ / <b>A little reassurance</b></span>
+            <div class="trip-c"><span class="kick">Your upcoming journey</span><b>Brisbane — Singapore</b><p>Booking information, in one place.</p></div>
+            <div class="chat"><p class="me">Where can I find my baggage allowance?</p><p>Let’s check the baggage details in your booking.</p></div>
+            <div class="lx-note"><span>Changes go to a consultant.</span><span class="tagp">Illustrative workflow</span></div>
+            <span class="tg">Product</span><p class="lead">Answers about an existing trip, inside the Leisure app. Itinerary and baggage questions get help; booking changes go to a person.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="lx-p ph2" id="lx-p2" role="tabpanel" aria-labelledby="lx-t2" tabindex="0" hidden>
+        <div class="ph2-art"><canvas class="art" data-art="hotel" data-style="gouache" aria-hidden="true"></canvas><div class="hx-cap"><span>IQR / From enquiry to possibility</span><span>The enquiry</span></div></div>
+        <div class="wrap">
+          <div class="phero-c">
+            <span class="kick">IQR / <b>From enquiry to possibility</b></span>
+            <h3 class="lx-h">Your holiday, considered.</h3>
+            <span class="tg">Product</span>
+            <p class="lead">Read a holiday enquiry, match available offers and prepare a branded proposal for a consultant to follow up.</p>
+          </div>
+          <div class="lx-stack">
+            <pre class="call"><span class="c">// The enquiry</span>
+<span class="s">“Somewhere warm. A family holiday.
+ Room to slow down.”</span>
+
+<span class="k">←</span> A few good possibilities.
+<span class="k">←</span> Prepared for your consultant</pre>
+            <p class="fine">Illustrative workflow</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="lx-p" id="lx-p3" role="tabpanel" aria-labelledby="lx-t3" tabindex="0" hidden>
+        <div class="lx-two">
+          <div class="sk-panel"><canvas class="art" data-art="sk-chat" aria-hidden="true"></canvas></div>
+          <div class="lx-stack">
+            <span class="kick">ChatGPT / <b>Illustrative conversation</b></span>
+            <div class="chat"><p class="me">A week away. Somewhere with good food, a little exploring and time to slow down.</p><p><i>✳</i> Let’s find the kind of trip you have in mind. Here are a few directions we can explore together.</p></div>
+            <div class="app-c">
+              <div class="vcc-bar"><span>TravelLabs MCP app · travel ideation</span><span class="dot">In this conversation</span></div>
+              <div class="app-b">
+                <h4>Where could a week take you?</h4><p class="sub">A starting point. We’ll shape the details together.</p>
+                <div class="q4 three" id="ideas">
+                  <button type="button" aria-pressed="true"><h3>Bali</h3><p>Slow mornings, coast and local food.</p><span>Shape this idea ↗</span></button>
+                  <button type="button" aria-pressed="false"><h3>Kyoto</h3><p>Small streets, gardens and good food.</p><span>Shape this idea ↗</span></button>
+                  <button type="button" aria-pressed="false"><h3>Hoi An</h3><p>Old-town walks and time by the sea.</p><span>Shape this idea ↗</span></button>
+                </div>
+              </div>
+            </div>
+            <div class="chat"><p id="ideaReply"><i>✳</i> For Bali, would you rather stay by the coast or split your time with somewhere quieter inland?</p></div>
+            <div class="ask-bar"><span>Keep exploring in the conversation…</span><b>↑</b></div>
+            <span class="tg">Product</span><p class="lead">Explore travel ideas inside ChatGPT through a TravelLabs MCP app. Compare directions, refine preferences and shape the trip within the conversation.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="lx-p" id="lx-p4" role="tabpanel" aria-labelledby="lx-t4" tabindex="0" hidden>
+        <div class="lx-head"><div><span class="kick">Conductor / <b>Engineering workspace</b></span><h3 class="lx-h">From issue to evidence.</h3></div><div><span class="tg">Human review</span><p class="lead">Investigate bugs, reproduce them in a sandbox and draft fixes. Engineers review the evidence and approve what ships.</p></div></div>
+        <div class="src4 three" id="cdSteps">
+          <div><span class="tg">01 · Investigate</span><h3>Reproduce the reported issue</h3><p>Sandbox</p></div>
+          <div><span class="tg">02 · Prepare</span><h3>Draft a fix and check it</h3><p>Evidence attached</p></div>
+          <div><span class="tg">03 · Review</span><h3>Engineer reviews the change</h3><p>Human approval</p></div>
+        </div>
+        <pre class="call cd-call" id="cdCall"></pre>
+        <p class="fine">Illustrative workflow</p>
+      </section>
+
+      <section class="lx-p" id="lx-p5" role="tabpanel" aria-labelledby="lx-t5" tabindex="0" hidden>
+        <div class="lx-head"><div><span class="kick">CTRLPLANE / <b>Servicing desk</b></span><h3 class="lx-h">Keep the loose ends together.</h3></div><div><span class="tg">Product</span><p class="lead">Specialist agents prepare cancellations, refunds and supplier follow-ups. A person approves decisions that spend money.</p></div></div>
+        <div class="q4" id="cpRows">
+          <div><i class="px" data-px="mail"></i><h3>Supplier follow-up</h3><p>Response prepared</p><em class="st ok">Ready</em></div>
+          <div><i class="px" data-px="x"></i><h3>Cancellation request</h3><p>Terms checked</p><em class="st">Review</em></div>
+          <div><i class="px" data-px="card"></i><h3>Refund decision</h3><p>Money needs permission</p><em class="st no">Approval</em></div>
+          <div class="me"><i class="px" data-px="team"></i><h3>A person makes the important call.</h3><p>Illustrative workflow</p></div>
+        </div>
+      </section>
+
+      <section class="lx-p ph2" id="lx-p6" role="tabpanel" aria-labelledby="lx-t6" tabindex="0" hidden>
+        <div class="ph2-art"><canvas class="art" data-art="road" aria-hidden="true"></canvas><div class="hx-cap"><span>Waypoint / Decisions, with confidence</span><span>Model · v0.1.1</span></div></div>
+        <div class="wrap">
+          <div class="phero-c">
+            <span class="kick">Waypoint / <b>Decisions, with confidence</b></span>
+            <h3 class="lx-h">Choose well. Know when to ask.</h3>
+            <span class="tg">Model · v0.1.1</span>
+            <p class="lead">Rank travel options, compare the shortlist and report confidence. Uncertain choices go to a language model or consultant.</p>
+          </div>
+          <div class="lx-stack">
+            <ol class="wp-rank" id="wpRank"><li><span>Fits the brief</span><em>First</em></li><li><span>A different trade-off</span><em>Next</em></li><li><span>Needs a closer look</span><em>Review</em></li></ol>
+            <div class="merge"><span>Enough confidence?</span><i>→</i><b>Recommend</b></div>
+            <div class="merge wp-ask"><span>Still uncertain?</span><i>→</i><b>Ask for help</b></div>
+            <p class="fine">Illustrative workflow</p>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div class="lx-foot" data-in><p class="fine">Availability varies by product and team.</p><a class="link" href="contact.html?topic=Leisure%20AI%20walkthrough">Request a walkthrough ↗</a></div>
+  </div>
+</section>
+
+<section class="sec" id="next" style="padding-top:0">
+  <div class="wrap split">
+    <div class="sk-panel" data-in><canvas class="art" data-art="sk-voice" aria-hidden="true"></canvas></div>
+    <div data-in style="display:grid;gap:18px"><span class="kick">/ What we’re working on</span><h2 class="h2">The next questions worth answering.</h2><p class="lead">New experiences. Focused models. Ideas to test, thoughtfully.</p><div class="btns"><a class="btn" href="#model-roadmap">Explore the research <span class="arr">↓</span></a></div></div>
+  </div>
+</section>
+
+<section class="sec" id="model-roadmap" style="padding-top:0">
+  <div class="wrap">
+    <div class="caps-h" data-in><div style="display:grid;gap:16px"><span class="kick">/ Research roadmap</span><h2 class="h2">Frontier AI Models for Travel.</h2></div><div style="display:grid;gap:12px"><p class="lead">Learn from expert travel decisions. Build models that judge quality, spot risks and choose better options.</p><p class="lead">Prove them in a sandbox, then with consultants, before scaling.</p></div></div>
+    <div class="rm-h" data-in><b>Many possibilities. A more considered path.</b><span>How we plan to build better travel models · <em>8 research capabilities</em></span></div>
+    <div class="dep rm-board" id="rmBoard" data-in>
+      <div class="dep-h">
+        <span class="t">Frontier AI Models for Travel</span>
+        <label class="dep-s"><i class="px" data-px="search"></i><input type="search" placeholder="Search capabilities" aria-label="Search research capabilities"></label>
+        <div class="dep-f" aria-label="Filter by priority"></div>
+      </div>
+      <div class="dep-cols" aria-hidden="true"><span>No.</span><span>Capability</span><span>Priority</span><span></span><span>Path</span></div>
+      <div class="dep-g"></div>
+      <div class="dep-n"></div>
+    </div>
+    <div class="tl rs-tl rm-path" data-in>
+      <div><span>01 · Sandbox</span><b>Prove them in a sandbox,</b><p>Practise multi-step decisions in a test environment.</p></div>
+      <div><span>02 · Consultants</span><b>then with consultants,</b><p>Check safety and value in limited real use.</p></div>
+      <div><span>03 · Scale</span><b>before scaling.</b><p>Transfer proven behaviour to smaller, faster models.</p></div>
+    </div>
+    <p class="fine rm-note" data-in>Planned research, not completed training. Training changes a model’s learned parameters; a controlled trial evaluates its behaviour.</p>
+  </div>
+</section>
+
+<section class="sec pcs-sec">
+  <div class="wrap">
+    <div class="sec-h center" data-in><span class="kick">/ Concepts, research and upcoming work</span><h2 class="h2">Ideas to test, thoughtfully.</h2></div>
+    <div class="pcs" data-in>
+      <article class="pc"><div class="pc-art"><canvas class="art" data-art="harbour" data-style="gouache" aria-hidden="true"></canvas><span class="stamp">Research</span></div><p class="hand">Agentic TMS</p><p>A personal agent that remembers each client, plans trips, books on approval and keeps watch after booking. Enquiries, changes and refunds keep moving; decisions that spend money wait for a person.</p></article>
+      <article class="pc"><div class="pc-art"><canvas class="art" data-art="island" aria-hidden="true"></canvas><span class="stamp">Concept</span></div><p class="hand">Travel Canvas</p><p>A shared board for itineraries, stays and trade-offs. Keep the whole trip visible while consultants and travellers plan together.</p></article>
+      <article class="pc"><div class="pc-art"><canvas class="art" data-art="city" data-style="gouache" aria-hidden="true"></canvas><span class="stamp">Upcoming</span></div><p class="hand">Voice Agents</p><p>Answer everyday questions aloud, in more languages. Start with approved FAQs; hand unclear requests to a consultant. No booking changes.</p></article>
+      <article class="pc"><div class="pc-art"><canvas class="art" data-art="peaks" data-style="gouache" aria-hidden="true"></canvas><span class="stamp">Research roadmap</span></div><p class="hand">Proprietary travel models</p><p>Use consultant choices, preferences and booking outcomes to improve ranking, recommendations and the next best step.</p></article>
+      <article class="pc"><div class="pc-art"><canvas class="art" data-art="dunes" aria-hidden="true"></canvas><span class="stamp">Research</span></div><p class="hand">Agentic payments</p><p>Tie each payment to the traveller’s permission, the booking and a clear record of what happened.</p></article>
+      <article class="pc"><div class="pc-art"><canvas class="art" data-art="balloons" aria-hidden="true"></canvas><span class="stamp">Incubating</span></div><p class="hand">Voice &amp; Concierge</p><p>Explore a voice and messaging concierge for travel businesses. Separate from the planned IQR Voice Agents capability.</p></article>
+    </div>
+    <p class="fine pcs-note" data-in>Concepts, research and upcoming work. These describe direction, not confirmed launches.</p>
+  </div>
+</section>
+
+<section class="band"><div class="wrap"><div style="display:grid;gap:12px"><span class="kick">/ Build what’s next</span><h2 class="h2">Make it work for travel.</h2></div><div class="btns"><a class="btn pri" href="contact.html?topic=frameworks">Build with us <span class="arr">↗</span></a><a class="btn" href="contact.html">Get in touch</a></div></div></section>
+</main>
+<div data-footer></div>
+<script>
+/* The canvas art in site.js paints a few demo words of its own. This page swaps
+   them for words from the research copy, so every visible word stays on brief. */
+(() => {
+  const SWAP = {
+    'SEARCH · LIVE': 'CHECKED MCP TOOLS', 'HOLD → COMMIT': 'RUN · WAIT · WAKE', 'HELD · 18:40': 'WAITING', 'BOOKED': 'APPROVED',
+    'LOOK AFTER · PRICE': 'RECOVERY & OVERSIGHT', 'you paid': 'booking update', '−$120': 'Review', 'ALL BACK · 1.2s': 'ALL AT ONCE',
+    'somewhere warm?': 'A week away.', 'Fiji · $2,380': 'Kyoto', 'held ✓': 'Bali ✓', 'booked ✓': 'baggage ✓', '"move my flight to 7am"': 'Answer aloud'
+  };
+  const P = CanvasRenderingContext2D.prototype, fill = P.fillText;
+  P.fillText = function (s, ...rest) {
+    const t = String(s), m = /^SEARCHING (\d+\/\d+)$/.exec(t);
+    return fill.call(this, m ? 'EMITTER COMPUTE ' + m[1] : (SWAP[t] ?? t), ...rest);
+  };
+})();
+</script>
+<script src="assets/site.js"></script>
+<script>
+(() => {
+  const { $, $$, REDUCE } = window.MX;
+  const aud = (n) => '$' + Math.round(n).toLocaleString('en-AU');
+  const seen = (el, fn, threshold = .3) => new IntersectionObserver(([e]) => { if (e.isIntersecting) fn(); }, { threshold }).observe(el);
+
+  /* ATP: four parts of one sentence, with the message for each part below */
+  const MSG = [
+    '<span class="c">// A trip spans several suppliers.</span>\n<span class="k">→</span> fares.search\n<span class="k">→</span> hotels.search\n<span class="k">→</span> weather.today\n<span class="k">←</span> <span class="s">trip context</span>',
+    '<span class="c">// checking, reserving, booking, changing and cancelling</span>\n<span class="k">→</span> checking <span class="s">✓</span>\n<span class="k">→</span> reserving <span class="s">✓</span>\n<span class="k">→</span> booking …',
+    '<span class="c">// records the outcome</span>\n<span class="k">←</span> booking and payment outcomes\n<span class="k">←</span> <span class="s">traceable ✓</span>',
+    '<span class="c">// failed bookings or payment exceptions</span>\n<span class="k">→</span> retry rules\n<span class="k">→</span> human approvals\n<span class="k">→</span> <span class="s">recovery</span>'
+  ];
+  const prs = $$('#proto .pr'), pout = $('#protoMsg');
+  let pi = 0;
+  const ptick = () => { prs.forEach((p, j) => p.classList.toggle('on', j === pi % prs.length)); pout.innerHTML = MSG[pi % prs.length]; pi++; };
+  prs.forEach((p, j) => p.addEventListener('click', () => { pi = j; ptick(); }));
+  ptick(); if (!REDUCE) setInterval(ptick, 3200);
+
+  /* Trip-bound card checks (illustrative) */
+  const LOG = [['The approved purchase', 'Approved ✓', 'ok'], ['Failed bookings', 'Recovery', 'no'], ['Payment exceptions', 'Recovery', 'no']];
+  const vlog = $('#vccLog');
+  let vtok = 0;
+  const vwait = (ms, my) => new Promise((res, rej) => setTimeout(() => (my === vtok ? res() : rej('stop')), REDUCE ? 0 : ms));
+  async function vrun() {
+    const my = ++vtok;
+    try {
+      while (my === vtok) {
+        vlog.innerHTML = ''; $('#vccState').textContent = 'Approved purchase'; $('#vccCard').classList.remove('used');
+        for (const [what, res, cls] of LOG) {
+          const li = document.createElement('li'); li.innerHTML = `<span>${what}</span><em>waiting</em>`; vlog.appendChild(li);
+          await vwait(1100, my); const em = li.querySelector('em'); em.textContent = res; em.className = cls;
+          if (cls === 'ok') { $('#vccState').textContent = 'Approved ✓'; $('#vccCard').classList.add('used'); }
+          await vwait(900, my);
+        }
+        await vwait(2600, my);
+        if (REDUCE) break;
+      }
+    } catch (e) { if (e !== 'stop') throw e; }
+  }
+  let vs = false;
+  seen($('.vcc'), () => { if (!vs) { vs = true; vrun(); } });
+
+  /* Your travel agents: each part goes into one foundation */
+  const mixB = $$('#potMix button'), potR = $$('.rs-pot .pot-r');
+  let mi = 0, mixT = 0;
+  const mix = (k) => { mi = k; mixB.forEach((b, j) => b.classList.toggle('on', j === k)); potR.forEach((r, j) => r.classList.toggle('on', j === k)); };
+  mixB.forEach((b, j) => b.addEventListener('click', () => { clearInterval(mixT); mix(j); }));
+  if (!REDUCE) mixT = setInterval(() => mix((mi + 1) % mixB.length), 2400);
+  const race = $('#race');
+  seen(race, () => race.classList.add('go'), .4);
+
+  /* Leisure AI tabs */
+  const tabs = $$('.lx-tabs [role=tab]');
+  const show = (k, focus) => {
+    tabs.forEach((t, j) => { const on = j === k; t.setAttribute('aria-selected', String(on)); t.tabIndex = on ? 0 : -1; $('#' + t.getAttribute('aria-controls')).hidden = !on; });
+    if (focus) tabs[k].focus();
+  };
+  tabs.forEach((t, j) => {
+    t.addEventListener('click', () => show(j));
+    t.addEventListener('keydown', (e) => {
+      const d = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key];
+      if (d) { e.preventDefault(); show((j + d + tabs.length) % tabs.length, true); }
+      else if (e.key === 'Home') { e.preventDefault(); show(0, true); }
+      else if (e.key === 'End') { e.preventDefault(); show(tabs.length - 1, true); }
+    });
+  });
+
+  /* Co-consult: one brief becomes the trip. Sample trips and prices from the old research page. */
+  const TRIPS = [
+    { who: 'Emma', sub: 'family of four', brief: 'Bali for the four of us in the July school holidays. A villa with a pool, a car, and something fun for the kids. Around $9,000.',
+      facts: [['From', 'Brisbane'], ['To', 'Bali'], ['When', 'July school holidays'], ['Who', '2 adults, 2 kids'], ['Stay', 'villa with a pool'], ['Budget', 'about $9,000']],
+      agents: [
+        { n: 'Flights', scan: '38 airlines', why: 'Direct, bags in. The cheapest fare had a 9-hour stop.', item: ['Flights', 'BNE → DPS · 4 seats together', 3120] },
+        { n: 'Stays', scan: '214 villas', why: 'Private pool, rated 4.8, free cancellation.', item: ['Villa', 'Seminyak · 7 nights · private pool', 3410] },
+        { n: 'Car hire', scan: '9 rental desks', why: 'Child seats included. The cheapest charged $25 a day for them.', item: ['Car hire', '7-seater · 8 days · 2 child seats', 420] },
+        { n: 'Activities', scan: '120 things to do', why: 'The two most popular with families, both free to cancel.', item: ['Activities', 'Waterbom park + Ubud day trip', 560] }
+      ],
+      checks: ['Inside the $9,000 budget', 'Dates match the school holidays', 'Passports valid for 6+ months', 'Free cancellation on the villa', 'Child seats in the car'],
+      saved: 640, savedL: 'less than booking each part on its own', ap: ['Jess', 'travel consultant'] },
+    { who: 'Kenji', sub: 'watching every dollar', brief: 'Cheapest sensible way to Tokyo for a week in late March. Somewhere near a train line. Under $2,500 all in.',
+      facts: [['From', 'Sydney'], ['To', 'Tokyo'], ['When', 'late March · 7 nights'], ['Who', '1 adult'], ['Must have', 'near a train line'], ['Budget', 'under $2,500']],
+      agents: [
+        { n: 'Flights', scan: '41 airlines', why: 'Direct. With a bag added it is still $280 under the next direct fare.', item: ['Flights', 'SYD → NRT · 1 seat + 1 bag', 798] },
+        { n: 'Stays', scan: '1,630 hotels', why: 'Private room, 3 minutes from the station.', item: ['Hotel', 'Ueno · 7 nights · 3 min to station', 686] },
+        { n: 'Rail', scan: '12 pass types', why: 'He stays in Tokyo, so the big JR pass would be wasted money.', item: ['Rail', 'Tokyo subway pass · 72h × 2', 64] },
+        { n: 'Activities', scan: '300 things to do', why: 'His two most-wanted, both free to cancel.', item: ['Activities', 'Mt Fuji day tour + teamLab', 161] }
+      ],
+      checks: ['Under the $2,500 budget', 'Bag included in the fare', 'Hotel close to a train line', 'Free cancellation on activities', 'Fare watch stays on after booking'],
+      saved: 412, savedL: 'less than the first prices found', ap: ['Jess', 'travel consultant'] },
+    { who: 'Daniel', sub: 'business trip', brief: 'London from Sydney, Tuesday to Thursday, for a client meeting in Canary Wharf. Keep it inside our travel policy.',
+      facts: [['From', 'Sydney'], ['To', 'London'], ['When', 'Tue to Thu'], ['Who', '1 traveller'], ['Why', 'client meeting'], ['Rule', 'company travel policy']],
+      agents: [
+        { n: 'Flights', scan: '26 airlines', why: 'Policy allows business over 8 hours. This is the lowest business fare.', item: ['Flights', 'SYD → LHR · business · return', 7940] },
+        { n: 'Stays', scan: '480 hotels', why: 'Company rate, a 4-minute walk to the client.', item: ['Hotel', 'Canary Wharf · 2 nights · company rate', 624] },
+        { n: 'Transfers', scan: '6 options', why: 'Policy prefers rail when it is the quicker option.', item: ['Transfers', 'Heathrow Express + Elizabeth line', 64] },
+        { n: 'Extras', scan: '40 restaurants', why: 'Client dinner for six near the hotel, inside the meal limit.', item: ['Client dinner', 'Thursday · 6 people', 420] }
+      ],
+      checks: ['Inside the company travel policy', 'Business class allowed over 8 hours', 'Hotel at the negotiated rate', 'Dinner under the per-head limit', 'Traveller tracked for duty of care'],
+      saved: 1180, savedL: 'under the usual fares for these dates', ap: ['Ana', 'travel manager'] }
+  ];
+  const SAY = [
+    (t) => `${t.who} types what ${t.who === 'Emma' ? 'her family' : 'he'} wants, in plain words.`,
+    () => 'The AI picks out the facts that matter.',
+    (t) => `${t.agents.length} agents search at the same time, each on one part of the trip.`,
+    () => 'Each agent keeps the best value that fits, not just the cheapest. Every pick is checked.',
+    (t) => `${t.ap[0]}, a ${t.ap[1]}, looks it over and approves. Nothing is charged before this.`,
+    () => 'The approved trip is recorded together. Each booking result is checked.'
+  ];
+  const ccRail = $$('#ccRail li'), ccCall = $('#ccCall'), ccAg = $('#ccAgents'), ccMerge = $('#ccMerge'), ccPick = $('#ccPick');
+  ccPick.innerHTML = TRIPS.map((t, i) => `<button type="button" aria-pressed="${i === 0}">${t.who} · ${t.sub}</button>`).join('');
+  let ctok = 0, cpick = 0;
+  const cwait = (ms, my) => new Promise((res, rej) => setTimeout(() => (my === ctok ? res() : rej('stop')), REDUCE ? 0 : ms));
+  const cstep = (k, t) => { ccRail.forEach((li, i) => { li.classList.toggle('on', i === k); li.classList.toggle('done', i < k); }); $('#ccSay').textContent = SAY[k](t); };
+  const pad = (s) => (s + '          ').slice(0, 10);
+  // Fill the panel before the demo starts, so the page height doesn't jump later.
+  const skeleton = (t) => {
+    $('#ccStats').innerHTML = `<div><b>${t.agents.length}</b><span>Agents at work, all at once</span></div><div><b>${t.checks.length}</b><span>Checks</span></div><div><b>${aud(t.saved)}</b><span>${t.savedL}</span></div>`;
+    ccMerge.innerHTML = '';
+    ccAg.innerHTML = t.agents.map((a, i) => `<div><span class="tg">0${i + 1} · ${a.n}</span><h3>—</h3><p>searching ${a.scan}…</p></div>`).join('');
+  };
+  skeleton(TRIPS[0]);
+  async function cplay(t, my) {
+    $$('button', ccPick).forEach((b, i) => b.setAttribute('aria-pressed', String(TRIPS[i] === t)));
+    const total = t.agents.reduce((s, a) => s + a.item[2], 0);
+    skeleton(t);
+    const cells = $$(':scope > div', ccAg);
+    const head = `<span class="c">// You ask · ${t.who} · ${t.sub}</span>\n`;
+    cstep(0, t);
+    for (let i = 1; i <= t.brief.length; i += 2) { ccCall.innerHTML = head + '<span class="s">“' + t.brief.slice(0, i) + '</span>'; await cwait(18, my); }
+    const brief = head + '<span class="s">“' + t.brief + '”</span>\n\n<span class="c">// What the AI understood</span>\n';
+    ccCall.innerHTML = brief; await cwait(500, my);
+    cstep(1, t);
+    let facts = '';
+    for (const [a, b] of t.facts) { facts += `<span class="k">${pad(a)}</span>${b}\n`; ccCall.innerHTML = brief + facts; await cwait(260, my); }
+    await cwait(700, my);
+    cstep(2, t);
+    cells.forEach((c) => c.classList.add('scan'));
+    await cwait(2200, my);
+    cstep(3, t);
+    let sum = 0;
+    for (let i = 0; i < cells.length; i++) {
+      const d = t.agents[i], c = cells[i];
+      c.classList.remove('scan'); c.classList.add('me');
+      c.querySelector('h3').textContent = aud(d.item[2]); c.querySelector('p').textContent = d.why;
+      sum += d.item[2];
+      const sp = document.createElement('span'); sp.textContent = d.item[0]; ccMerge.appendChild(sp);
+      await cwait(900, my);
+    }
+    ccCall.innerHTML = brief + facts + '\n<span class="c">// Checks</span>\n' + t.checks.map((c) => `<span class="k">✓</span> ${c}`).join('\n');
+    await cwait(1200, my);
+    cstep(4, t);
+    ccMerge.insertAdjacentHTML('beforeend', `<i>→</i><b>${t.who}'s trip: ${t.agents.length} parts, ${aud(total)} total.</b>`);
+    await cwait(2000, my);
+    ccMerge.querySelector('b').textContent = `Approved by ${t.ap[0]} ✓`;
+    await cwait(1200, my);
+    cstep(5, t);
+    ccMerge.querySelector('b').textContent = 'BOOKED TOGETHER every part paid in one go';
+    ccRail.forEach((li) => { li.classList.remove('on'); li.classList.add('done'); });
+    $('#ccSay').textContent = `Booked. ${t.who} gets one record for the whole trip.`;
+    await cwait(4200, my);
+  }
+  async function crun() { const my = ++ctok; let i = cpick; try { while (my === ctok) { await cplay(TRIPS[i++ % TRIPS.length], my); if (REDUCE) break; } } catch (e) { if (e !== 'stop') throw e; } }
+  $$('button', ccPick).forEach((b, i) => b.addEventListener('click', () => { cpick = i; crun(); }));
+  let cs = false;
+  seen($('#ccRail'), () => { if (!cs) { cs = true; crun(); } }, .2);
+
+  /* ChatGPT App: the three ideas take turns */
+  const ideas = $$('#ideas button'), reply = $('#ideaReply');
+  const REPLIES = ['For Bali, would you rather stay by the coast or split your time with somewhere quieter inland?', 'For Kyoto, shall we build the week around food and neighbourhood walks, with a quieter day in the gardens?', 'For Hoi An, how would you split your time between the old town and the coast?'];
+  let ii = 0, iT = 0;
+  const idea = (k) => { ii = k; ideas.forEach((b, j) => b.setAttribute('aria-pressed', String(j === k))); reply.innerHTML = '<i>✳</i> ' + REPLIES[k]; };
+  ideas.forEach((b, j) => b.addEventListener('click', () => { clearInterval(iT); idea(j); }));
+  if (!REDUCE) iT = setInterval(() => idea((ii + 1) % ideas.length), 6000);
+
+  /* Conductor: issue to evidence */
+  const cd = $$('#cdSteps > div'), cdCall = $('#cdCall');
+  const CD = ['› Reproduction captured', '› Checks collected', '› Ready for human review _'];
+  let ci = 0;
+  const cdTick = () => { const k = ci % cd.length; cd.forEach((d, j) => d.classList.toggle('me', j === k)); cdCall.textContent = CD.slice(0, k + 1).join('\n'); ci++; };
+  cdTick(); if (!REDUCE) setInterval(cdTick, 1800);
+
+  /* Waypoint: walk down the shortlist */
+  const wp = $$('#wpRank li');
+  let wi = 0;
+  const wpTick = () => { wp.forEach((li, j) => li.classList.toggle('on', j === wi % wp.length)); wi++; };
+  wpTick(); if (!REDUCE) setInterval(wpTick, 1600);
+})();
+</script>
+<script src="assets/impact.js"></script>
+<script>
+(() => {
+  const { $, $$ } = window.MX;
+  // The eight planned research capabilities, in the order of the path.
+  const CAPS = [
+    ['Judge & grader', 'Score answers and the steps an agent took.', 'Very high priority'],
+    ['Compliance classifier', 'Spot defined risks before an answer reaches a customer.', 'High priority'],
+    ['Supervised fine-tuning', 'Teach specific behaviours shown by expert consultants.', 'High priority'],
+    ['Preference reranking', 'Learn which options people prefer from real choices.', 'Medium–high priority'],
+    ['Reinforcement fine-tuning', 'Improve reasoning and tool use with scored feedback.', 'Experimental'],
+    ['Sandbox reinforcement learning', 'Practise multi-step decisions in a test environment.', 'Research'],
+    ['Controlled consultant trials', 'Check safety and value in limited real use.', 'Before scale'],
+    ['Distillation', 'Transfer proven behaviour to smaller, faster models.', 'Later-stage scale']
+  ].map(([place, sub, pri], i) => ({ code: String(i + 1).padStart(2, '0'), place, sub, col3: pri, r: pri }));
+  const board = $('#rmBoard'), grid = $('.dep-g', board);
+  // Swap the board's fixed status tag for a small path meter: where this step sits among the eight.
+  const meter = () => $$('.dep-r', grid).forEach((row) => {
+    const tag = $('.s', row); if (!tag || tag.classList.contains('path')) return;
+    const n = Number($('.c', row).textContent);
+    tag.className = 's path'; tag.setAttribute('aria-label', 'Step ' + n + ' of 8');
+    tag.innerHTML = Array.from({ length: 8 }, (_, k) => '<i class="' + (k + 1 < n ? 'done' : k + 1 === n ? 'on' : '') + '"></i>').join('');
+  });
+  const count = () => { const el = $('.dep-n', board); el.textContent = el.textContent.replace(/^1 capabilities/, '1 capability'); };
+  new MutationObserver(() => { meter(); count(); }).observe(grid, { childList: true });
+  window.MX.board(board, CAPS, [...new Set(CAPS.map((c) => c.r))], 'capabilities');
+  meter(); count();
+})();
+</script>
+</body>
+</html>

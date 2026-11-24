@@ -1,0 +1,69 @@
+<svg class="f" viewBox="0 0 720 300" role="img" aria-label="Left: a shared fare watch writes one memory key that wakes many trips. Right: supplier searches per day grow linearly with N when each agent polls, and stay flat when the watch is shared." width="720" height="300" xmlns="http://www.w3.org/2000/svg">
+      <title>Left: a shared fare watch writes one memory key that wakes many trips. Right: supplier searches per day grow linearly with N when each agent polls, and stay flat when the watch is shared.</title><defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#263837"/></marker>
+    <marker id="aha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#376d69"/></marker>
+    <marker id="ahw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#a37c3a"/></marker>
+    <marker id="ahg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#929b94"/></marker>
+    <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="#fff"/><line x1="0" y1="0" x2="0" y2="6" stroke="#c9cacd" stroke-width="1.2"/></pattern>
+    <pattern id="hatchw" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="#fff"/><line x1="0" y1="0" x2="0" y2="6" stroke="#eab598" stroke-width="1.2"/></pattern>
+  </defs>
+<style>
+.f text{font-family:"DejaVu Sans Mono",monospace;font-size:11px;fill:#263837}
+.f .s{font-size:9.5px;fill:#68716c}
+.f .xs{font-size:8.5px;fill:#68716c}
+.f .h{font-size:9.5px;letter-spacing:.1em;font-weight:600}
+.f .hs{font-size:9px;letter-spacing:.12em;fill:#68716c}
+.f .serif{font-family:Georgia,serif;font-size:15px}
+.f .it{font-family:Georgia,serif;font-style:italic;font-size:13px}
+.f .b{font-weight:600}
+.f g.s text{font-size:9.5px;fill:#68716c}
+.f g.xs text{font-size:8.5px;fill:#68716c}
+.f g.hs text{font-size:9px;letter-spacing:.12em;fill:#68716c}
+.f .halo{paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+.f .w{fill:#fff}
+.f .ca{fill:#376d69} .f .cw{fill:#a37c3a} .f .cm{fill:#68716c} .f .cok{fill:#52735b}
+.f .ln{stroke:#263837;stroke-width:1;fill:none}
+.f .ln2{stroke:#263837;stroke-width:1.6;fill:none}
+.f .lt{stroke:#c4c5c9;stroke-width:.8;fill:none}
+.f .la{stroke:#376d69;stroke-width:1.3;fill:none}
+.f .lw{stroke:#a37c3a;stroke-width:1.3;fill:none}
+.f .dash{stroke-dasharray:3 3}
+.f .dot{stroke-dasharray:1 3;stroke-linecap:round}
+.f .box{fill:#fff;stroke:#263837;stroke-width:1}
+.f .boxp{fill:#eeede7;stroke:#263837;stroke-width:1}
+.f .boxa{fill:#e4ebe5;stroke:#376d69;stroke-width:1}
+.f .boxw{fill:#f0e9db;stroke:#a37c3a;stroke-width:1}
+.f .boxk{fill:#263837;stroke:#263837}
+.f .soft{fill:#eeede7;stroke:none}
+.f .hatch{fill:url(#hatch);stroke:#bcc5ba;stroke-width:.8}
+.f .pk{fill:#376d69} .f .pkw{fill:#a37c3a}
+.f .arr{marker-end:url(#ah)} .f .arra{marker-end:url(#aha)} .f .arrw{marker-end:url(#ahw)} .f .arrg{marker-end:url(#ahg)}
+.f .blink{animation:blink 1.6s steps(2,start) infinite}
+@keyframes blink{50%{opacity:.25}}
+.paused .f .blink{animation-play-state:paused}
+
+
+@media(prefers-reduced-motion:reduce){.blink{animation:none!important}.pk,.pkw,.playhead{display:none}}</style><text x="10" y="22" class="hs">(a) THE SHARED WATCH</text>
+      <rect x="10" y="40" width="112" height="40" class="boxa"/><text x="20" y="57" class="b">schedule</text><text x="20" y="71" class="xs">every Δ = 6 h</text>
+      <rect x="10" y="100" width="112" height="40" class="box"/><text x="20" y="117" class="b">fares.watch</text><text x="20" y="131" class="xs">1 search per tick</text>
+      <rect x="10" y="160" width="112" height="40" class="box"/><text x="20" y="177" class="b">supplier</text><text x="20" y="191" class="xs">metered search</text>
+      <rect x="160" y="40" width="150" height="40" class="boxa"/><text x="170" y="57" class="b">fare.BNE-NRT</text><text x="170" y="71" class="xs">set only if moved · rev 8</text><rect x="160" y="110" width="150" height="40" class="boxk"/><text x="170" y="127" class="b w">trip.reprice</text><text x="170" y="141" class="xs w">1 run per change</text>
+      <g class="ln arr"><path d="M66 80V98"/><path d="M60 140V158"/><path d="M76 158V142" class="ln"/><path d="M122 112C140 112 140 60 158 60"/><path d="M235 80V108"/></g>
+      <g><rect x="196" y="176" width="114" height="22" class="box"/><text x="206" y="191" class="s" style="fill:#263837">trip A · child</text>
+        <rect x="196" y="204" width="114" height="22" class="box"/><text x="206" y="219" class="s" style="fill:#263837">trip B · child</text>
+        <rect x="196" y="232" width="114" height="22" class="box" stroke-dasharray="3 3"/><text x="206" y="247" class="s" style="fill:#263837">… trip N</text></g>
+      <g class="la arra"><path d="M235 150V174"/><path d="M178 150C178 196 188 214 194 214"/><path d="M170 150C170 230 184 243 194 243"/></g><text x="242" y="98" class="xs" style="fill:#376d69">memory binding</text>
+      <text x="10" y="282" class="s">one search per tick; trips revisited only on change</text>
+
+      <text x="380" y="22" class="hs">(b) SUPPLIER SEARCHES PER DAY</text>
+      <g class="lt"><path d="M410 250H700"/><path d="M410 250V40"/></g>
+      <g class="lt dot"><path d="M410 197.5H700M410 145H700M410 92.5H700"/></g>
+      <g class="xs" text-anchor="end"><text x="404" y="253">0</text><text x="404" y="200">100</text><text x="404" y="148">200</text><text x="404" y="95">300</text><text x="404" y="43">400</text></g>
+      <g class="xs" text-anchor="middle"><text x="410" y="266">1</text><text x="555" y="266">50</text><text x="700" y="266">100</text><text x="555" y="282">N, trips watching one fare</text></g>
+      <path d="M410 250L700 40V248Z" fill="#f0e9db"/>
+      <path d="M410 248L700 40" class="lw"/>
+      <path d="M410 248H700" class="la" stroke-width="2"/>
+      <text x="600" y="98" class="s" style="fill:#a37c3a">each agent polls: 4N</text>
+      <text x="560" y="240" class="s" style="fill:#376d69">shared watch: 4</text>
+      <text x="620" y="200" class="xs">searches not made</text>
+    </svg>

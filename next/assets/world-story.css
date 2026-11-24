@@ -1,0 +1,46 @@
+/* The miniature city explains a traveller journey, with a persistent readable narrative. */
+.world-story-layout{display:grid;grid-template-columns:300px minmax(0,1fr);border:1px solid #d7ddd0;border-radius:5px;overflow:hidden;background:#eef1e5}
+.world-story-panel{padding:24px;background:#f4f5ed;border-right:1px solid #d7ddd0;min-width:0}
+.world-story-label{font:11px/1.5 var(--mono);text-transform:uppercase;letter-spacing:.06em;color:#637664;margin-bottom:12px}
+.world-story-choices{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px}
+.world-story-choices button{font:12px/1.3 var(--sans);padding:7px 9px;border:1px solid #cdd6c4;border-radius:3px;background:transparent;color:#425c4b;cursor:pointer}
+.world-story-choices button[aria-pressed=true]{background:#365947;color:#fffdf1;border-color:#365947}
+.world-story-who{font:25px/1.1 var(--serif);color:#273f35}
+.world-story-brief{font:15px/1.5 var(--sans);color:#526352;margin:9px 0 20px;min-height:90px}
+.world-story-result-title{font:11px/1.5 var(--mono);color:#637664;margin:0 0 8px}
+.world-story-results{list-style:none;margin:0;padding:0}
+.world-story-results li{display:flex;justify-content:space-between;gap:10px;border-top:1px solid #dce1d4;padding:9px 0;font:12px/1.4 var(--sans)}
+.world-story-results strong{color:#365947;white-space:nowrap;font-weight:500;text-align:right}
+.world-story-results s{display:block;font-size:10px;color:#7d8375;font-weight:400}
+.world-story-outcome{border-top:1px solid #ccd6c2;margin-top:9px;padding-top:12px;font:13px/1.4 var(--sans);color:#385b46}
+.world-story-panel .world-story-disclaimer{font:11px/1.5 var(--sans);color:#6a7667;margin:10px 0 0}
+.home-directory .lab-panel .world-story-layout .world-stage{height:540px;border-radius:0}
+.world-pins{position:absolute;inset:0;pointer-events:none;z-index:2}
+.world-pin{position:absolute;left:0;top:0;pointer-events:auto;min-height:26px;padding:5px 8px;background:#fcfbefed;color:#3d5848;border:1px solid #9eaf95;border-radius:3px;font:11px/1.2 var(--sans);box-shadow:0 2px 5px #36594712;cursor:pointer;white-space:nowrap}
+.world-pin.is-active{background:#365947;color:#fffdf1;border-color:#365947}
+.world-pin.is-supplier{border-bottom:2px solid #b79c65}
+.world-pin:hover,.world-pin:focus-visible{outline:2px solid #b79c65;outline-offset:2px;z-index:4}
+.world-story-steps{display:grid;grid-template-columns:repeat(7,1fr);padding:0;margin:0;list-style:none;border-bottom:1px solid #d7ddd0}
+.world-story-steps li{min-width:0}
+.world-story-steps button{width:100%;height:62px;text-align:left;padding:10px 12px;border:0;border-bottom:2px solid transparent;background:transparent;font:14px/1.3 var(--sans);color:#657360;cursor:pointer}
+.world-story-steps button span{display:block;font:10px/1.4 var(--mono);margin-bottom:4px}
+.world-story-steps button[aria-current=step]{border-bottom-color:#456b53;color:#273f35;background:#e9eedf}
+.world-story-steps button.is-complete span{color:#456b53}
+.world-story-caption{display:grid;grid-template-columns:1fr 1.45fr;gap:28px;padding:23px 0 12px;min-height:120px}
+.world-story-title{font:30px/1.1 var(--serif);color:#273f35}
+.world-story-text{font:16px/1.6 var(--sans);color:#647168}
+.world-inspect{font:12px/1.5 var(--sans);color:#647168;min-height:36px;margin-bottom:8px}
+.world-story-mode{font:11px/1.4 var(--mono);color:#66765f}
+.world-exhibit .world-toolbar{flex-direction:row;align-items:center;flex-wrap:wrap;gap:12px}
+.world-exhibit .world-toolbar button{font-size:12px}
+@media(max-width:1000px){.world-story-layout{grid-template-columns:250px minmax(0,1fr)}.world-story-panel{padding:18px}.world-pin{font-size:10px;padding:5px 6px}.world-story-brief{font-size:14px}}
+@media(max-width:760px){
+ .world-story-layout{display:flex;flex-direction:column}.world-story-panel{border-right:0;border-bottom:1px solid #d7ddd0;padding:18px}
+ .world-story-choices{margin-bottom:14px}.world-story-brief{min-height:0;margin-bottom:14px;font-size:15px}
+ .world-story-results{display:grid;grid-template-columns:1fr 1fr;gap:0 18px}.world-story-results li{font-size:11px}
+ .home-directory .lab-panel .world-story-layout .world-stage{height:380px}
+ .world-story-steps{display:flex;overflow:auto}.world-story-steps li{flex:0 0 88px}
+ .world-story-caption{grid-template-columns:1fr;gap:10px;min-height:160px;padding-top:19px}.world-story-title{font-size:28px}.world-story-text{font-size:15px}
+ .world-pin{font-size:10px}.world-story-mode{width:100%}
+}
+@media print{.world-pins,.world-story-choices,.world-story-steps{display:none}.world-story-layout{display:block}.world-story-panel{border:0}.world-story-caption{min-height:0}}

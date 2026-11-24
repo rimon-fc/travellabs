@@ -1,0 +1,12 @@
+/* Stable headline layout: characters reveal in place once. */
+.journey-hero .hero-words{width:min(1120px,calc(100% - 48px));padding-top:38px}
+.journey-hero .hero-words .eyebrow{display:block;font-size:clamp(16px,1.35vw,19px);line-height:1.3;letter-spacing:.055em;color:#254b3f;background:none;border:0;border-radius:0;padding:0;margin:0 0 20px;box-shadow:none}
+.journey-hero .hero-words h1{font-size:clamp(48px,5.5vw,84px);line-height:1.02;letter-spacing:-.025em;text-wrap:balance}
+.hero-type-line{display:block}
+.hero-type-word{display:inline-block;white-space:nowrap}
+.hero-type-char{visibility:visible}
+.hero-type-running .hero-type-char:not(.is-typed){visibility:hidden}
+.journey-hero .hero-words .hero-tagline{font-size:21px;line-height:1.2;margin:19px 0 22px;color:#365b50}
+@media(max-width:760px){.journey-hero .hero-words{width:calc(100% - 32px);padding-top:32px}.journey-hero .hero-words h1{font-size:clamp(39px,8.5vw,62px);line-height:1.04}.journey-hero .hero-words .hero-tagline{font-size:18px;margin:18px 0}}
+@media(prefers-reduced-motion:reduce){.hero-type-running .hero-type-char{visibility:visible!important}}
+@media print{.hero-type-running .hero-type-char{visibility:visible!important}}
