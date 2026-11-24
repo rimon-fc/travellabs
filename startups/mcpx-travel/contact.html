@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact | mcpx.travel</title>
+<meta name="description" content="Talk to the mcpx.travel team.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 7' shape-rendering='crispEdges'%3E%3Crect width='7' height='7' fill='%230f1115'/%3E%3Cg fill='%232a3bff'%3E%3Crect x='1' y='1' width='1' height='1'/%3E%3Crect x='5' y='1' width='1' height='1'/%3E%3Crect x='2' y='2' width='1' height='1'/%3E%3Crect x='4' y='2' width='1' height='1'/%3E%3Crect x='2' y='4' width='1' height='1'/%3E%3Crect x='4' y='4' width='1' height='1'/%3E%3Crect x='1' y='5' width='1' height='1'/%3E%3Crect x='5' y='5' width='1' height='1'/%3E%3C/g%3E%3Crect x='3' y='3' width='1' height='1' fill='%23d7ff3c'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="../shared/creator.css"><script defer src="../shared/preview.js"></script></head>
+<body data-page="contact"><div class="startup-credit"><span>Built by Rimon R for Travellabs</span><a href="../index.html">All businesses ↗</a></div>
+<div data-header></div>
+<main>
+
+<section class="sec">
+  <div class="wrap ct">
+    <div data-in style="display:grid;gap:22px">
+      <span class="kick">/ Contact</span><h1 class="h1" style="font-size:clamp(38px,4.6vw,62px)">How can we help?</h1>
+      <p class="lead">Tell us what you are building or what you are stuck on. We reply by email, usually within a working day.</p>
+      <div class="ct-side">
+        <div class="art-box"><canvas class="art" data-art="peaks" aria-hidden="true"></canvas></div>
+        <div class="ct-list">
+          <div><i class="px" data-px="spark"></i><p><b>Sales and API keys</b><span>hello@mcpx.travel</span></p></div>
+          <div id="support"><i class="px" data-px="chat"></i><p><b>Support</b><span>support@mcpx.travel · 24/7 for live bookings</span></p></div>
+          <div><i class="px" data-px="team"></i><p><b>Suppliers and partners</b><span>partners@mcpx.travel</span></p></div>
+        </div>
+      </div>
+    </div>
+    <form class="form" id="form" data-in>
+      <div class="fld" style="display:grid;gap:18px">
+        <div class="row"><label>First name<input required name="first" autocomplete="given-name"></label><label>Last name<input required name="last" autocomplete="family-name"></label></div>
+        <label>Company <em>(optional)</em><input name="company" autocomplete="organization"></label>
+        <label>Work email<input required type="email" name="email" autocomplete="email"><small>This is where our reply goes.</small></label>
+        <label>What is this about?<select name="topic"><option>Getting an API key</option><option>Pricing and Scale plan</option><option>A problem with a booking</option><option>Becoming a supplier</option><option>Something else</option></select></label>
+        <label>Message<textarea name="msg" placeholder="What are you building, and what do you need?"></textarea></label>
+        <button class="btn pri" type="submit" style="justify-self:start">Send request <span class="arr">→</span></button>
+      </div>
+      <div class="sent"><i class="px" data-px="check" style="width:40px;height:40px"></i><h3 class="h3">Thanks, we have your message.</h3><p class="sub">We will reply to your work email soon.</p><button class="btn" type="button" id="again">Send another</button></div>
+    </form>
+  </div>
+</section>
+</main>
+<div data-footer></div>
+<script src="assets/site.js"></script>
+<script>
+(() => { const f = document.getElementById('form');
+  // No backend yet: the form only confirms on screen.
+  f.addEventListener('submit', (e) => { e.preventDefault(); f.classList.add('done'); });
+  document.getElementById('again').addEventListener('click', () => { f.reset(); f.classList.remove('done'); }); })();
+</script>
+</body>
+</html>

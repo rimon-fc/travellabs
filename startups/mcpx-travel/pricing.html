@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pricing | mcpx.travel</title>
+<meta name="description" content="Pay as you go. No deposit, no setup fee.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 7' shape-rendering='crispEdges'%3E%3Crect width='7' height='7' fill='%230f1115'/%3E%3Cg fill='%232a3bff'%3E%3Crect x='1' y='1' width='1' height='1'/%3E%3Crect x='5' y='1' width='1' height='1'/%3E%3Crect x='2' y='2' width='1' height='1'/%3E%3Crect x='4' y='2' width='1' height='1'/%3E%3Crect x='2' y='4' width='1' height='1'/%3E%3Crect x='4' y='4' width='1' height='1'/%3E%3Crect x='1' y='5' width='1' height='1'/%3E%3Crect x='5' y='5' width='1' height='1'/%3E%3C/g%3E%3Crect x='3' y='3' width='1' height='1' fill='%23d7ff3c'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="../shared/creator.css"><script defer src="../shared/preview.js"></script></head>
+<body data-page="pricing"><div class="startup-credit"><span>Built by Rimon R for Travellabs</span><a href="../index.html">All businesses ↗</a></div>
+<div data-header></div>
+<main>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-h center" data-in><span class="kick">/ Pricing</span><h1 class="h1" style="font-size:clamp(38px,4.6vw,62px)">Free to start. Built to earn.</h1><p class="lead">No deposit and no setup fee. Searching is free, and you earn on every stay and experience your agent books.</p></div>
+    <div class="sec-h" data-in style="margin-top:72px"><span class="kick">/ Earning potential</span><h2 class="h2">What a month could earn you</h2><p class="lead">Pick how many trips your agent books and how you price them. Every number below shows its working.</p></div>
+    <div class="pot" data-in>
+      <div class="pot-in">
+        <label>Bookings a month <b id="pB">100</b><input type="range" id="rB" min="10" max="2000" step="10" value="100"></label>
+        <div class="pot-mix"><span>Trip mix</span><div id="mix"><button type="button" data-m="40,40,20" class="on">Balanced</button><button type="button" data-m="15,65,20">Mostly stays</button><button type="button" data-m="70,20,10">Mostly flights</button><button type="button" data-m="10,30,60">Mostly experiences</button></div></div>
+        <label>Your markup <b id="pM">11%</b><input type="range" id="rM" min="0" max="30" step="1" value="11"></label>
+        <p class="fine">Example only. Average booking values are illustrative. Your commission share on stays and experiences is set in your agreement (4% used here). Your markup rules are yours to set.</p>
+      </div>
+      <div class="pot-out">
+        <div class="pot-h"><span>What one booking earns</span><span>avg value · working · you keep</span></div>
+        <div class="pot-r" id="eF"><i class="px" data-px="plane"></i><span><b>Flight</b><em>$780 avg</em></span><code></code><strong></strong></div>
+        <div class="pot-r" id="eS"><i class="px" data-px="bed"></i><span><b>Stay</b><em>$620 avg</em></span><code></code><strong></strong></div>
+        <div class="pot-r" id="eE"><i class="px" data-px="pin"></i><span><b>Experience</b><em>$140 avg</em></span><code></code><strong></strong></div>
+        <div class="pot-tot"><div><span>Each month</span><b id="pMo">$0</b><em id="pMix"></em></div><div><span>Each year</span><b id="pYr">$0</b><em>12 months at this pace</em></div></div>
+        <div class="pot-grow"><span>As you grow</span><div id="grow"></div></div>
+      </div>
+    </div>
+    <div class="fees-h" data-in><div style="display:grid;gap:12px"><span class="kick">/ Fees</span><h2 class="h2">Every fee, in one table</h2></div><a class="btn" href="contact.html">Ask about Scale pricing <span class="arr">→</span></a></div>
+    <div class="led-wrap" data-in><table class="feetab">
+      <thead><tr><th>Product</th><th>To search</th><th>To book</th><th>What you earn</th></tr></thead>
+      <tbody>
+        <tr><th>Flights</th><td><span class="v">Free</span><br>2,000 searches per booking included, then $0.004 each</td><td><span class="v">$2.50</span><br>per ticket, billed monthly</td><td>Add your own service fee when you take the payment</td></tr>
+        <tr><th>Hotels</th><td><span class="v">Free</span></td><td><span class="v">Free</span></td><td>A share of every completed stay, paid after check-out</td></tr>
+        <tr><th>Tours</th><td><span class="v">Free</span></td><td><span class="v">Free</span></td><td>A share of every completed experience, paid after the date</td></tr>
+        <tr><th>Scale plan</th><td colspan="3">Volume pricing, a higher share, a support engineer, your own licences and a service-level agreement. <a class="link" href="contact.html">Talk to sales →</a></td></tr>
+      </tbody></table></div>
+  </div>
+</section>
+<section class="sec" style="padding-top:0">
+  <div class="wrap" style="max-width:900px">
+    <div class="sec-h" data-in><span class="kick">/ Questions</span><h2 class="h2">Pricing questions</h2></div>
+    <details class="qa"><summary>Why is there a search allowance?</summary><div><p>Searching costs us money even when nobody books. Each booking includes 2,000 searches, which covers almost every agent. Extra searches past that are billed at a small flat rate each month.</p></div></details>
+    <details class="qa"><summary>When do I get paid for stays and experiences?</summary><div><p>Earnings are paid at the end of each month, once the trip part is complete: after check-out or after the activity date. There is no minimum payout.</p></div></details>
+    <details class="qa"><summary>Can I add my own service fee?</summary><div><p>Yes, when your business takes the payment. Show your fee separately from the travel price so the traveller can see both.</p></div></details>
+    <details class="qa"><summary>How do I get Scale pricing?</summary><div><p>If you already sell travel or expect real volume, <a class="link" href="contact.html">talk to us</a> and we will put together a proposal.</p></div></details>
+  </div>
+</section>
+<section class="band"><div class="wrap"><div style="display:grid;gap:12px"><span class="kick">/ Start</span><h2 class="h2">Ship travel this week.</h2></div><div class="btns"><a class="btn pri" href="contact.html">Get API key <span class="arr">→</span></a><a class="btn" href="contact.html">Talk to us</a></div></div></section></main>
+<div data-footer></div>
+<script src="assets/site.js"></script>
+<script>
+(() => { const $ = (i) => document.getElementById(i);
+  const f0 = (n) => '$' + Math.round(n).toLocaleString('en-US'), f2 = (n) => '$' + n.toFixed(2);
+  const AVG = { F: 780, S: 620, E: 140 }, SHARE = .04, FEE = 2.5;
+  let mix = [40, 40, 20];
+  const per = (m) => ({ F: AVG.F * m - FEE, S: AVG.S * (m + SHARE), E: AVG.E * (m + SHARE) });
+  const month = (n, m) => { const p = per(m); return n * (mix[0] * p.F + mix[1] * p.S + mix[2] * p.E) / 100; };
+  const go = () => {
+    const n = +$('rB').value, m = +$('rM').value / 100, p = per(m);
+    $('pB').textContent = n.toLocaleString('en-US'); $('pM').textContent = Math.round(m * 100) + '%';
+    const row = (id, txt, v) => { $(id).querySelector('code').textContent = txt; $(id).querySelector('strong').textContent = f2(Math.max(0, v)); };
+    row('eF', AVG.F + ' × ' + Math.round(m * 100) + '% − $2.50 fee', p.F);
+    row('eS', AVG.S + ' × (' + Math.round(m * 100) + '% + 4%)', p.S);
+    row('eE', AVG.E + ' × (' + Math.round(m * 100) + '% + 4%)', p.E);
+    const mo = month(n, m);
+    $('pMo').textContent = f0(Math.max(0, mo)); $('pYr').textContent = f0(Math.max(0, mo * 12));
+    $('pMix').textContent = Math.round(n * mix[0] / 100) + ' flights · ' + Math.round(n * mix[1] / 100) + ' stays · ' + Math.round(n * mix[2] / 100) + ' experiences';
+    const steps = [50, 100, 250, 500, 1000, 2000], max = month(2000, m) || 1;
+    const cur = steps.filter(k => k <= n).pop() || steps[0]; $('grow').innerHTML = steps.map(k => '<div class="' + (k <= n ? 'on' : '') + (k === cur ? ' now' : '') + '"><i style="height:' + Math.max(4, month(k, m) / max * 100) + '%"></i><b>' + f0(month(k, m)) + '</b><span>' + k.toLocaleString('en-US') + '</span></div>').join('');
+  };
+  document.querySelectorAll('#mix button').forEach(btn => btn.addEventListener('click', () => { document.querySelectorAll('#mix button').forEach(x => x.classList.toggle('on', x === btn)); mix = btn.dataset.m.split(',').map(Number); go(); }));
+  ['rB', 'rM'].forEach(i => $(i).addEventListener('input', go)); go(); })();
+</script>
+</body>
+</html>

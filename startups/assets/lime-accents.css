@@ -1,0 +1,14 @@
+/* Lime sampled from the supplied swatch; pink remains a secondary accent. */
+:root{--lime:#ddfe6a}
+.logo-core{fill:var(--lime)}
+.lbl.dot::before{background:var(--lime)}
+.btn,.button{box-shadow:4px 4px 0 var(--lime)}
+.btn:hover{box-shadow:6px 6px 0 var(--lime)}
+.btn:active{box-shadow:0 0 0 var(--lime)}
+.button:hover{box-shadow:2px 2px 0 var(--lime)}
+.journey-actions .btn{box-shadow:3px 3px 0 var(--lime)}
+.diagram rect[fill="#ff93ed"]{fill:var(--lime)}
+.appr-c{box-shadow:7px 7px 0 var(--lime)}
+.appr-b .yes{box-shadow:3px 3px 0 var(--lime)}
+.appr-b .yes.press{box-shadow:0 0 0 var(--lime)}
+.appr-b .yes.done{background:var(--lime);color:var(--ink)}

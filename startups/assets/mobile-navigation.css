@@ -1,0 +1,29 @@
+/* Shared navigation and small-screen safeguards. */
+.mobile-contact{display:none!important}
+@media screen and (max-width:1200px){
+  .masthead #menu-toggle,.site-header .menu-toggle{display:block;margin-left:auto;min-width:64px;min-height:44px;padding:10px 12px}
+  .masthead nav,.site-header .nav{display:none;position:absolute;top:calc(100% - 4px);padding:16px 20px;background:#fbfaf7;border:1px solid var(--ink);box-shadow:none;flex-direction:column;align-items:stretch;gap:2px;margin:0;max-height:calc(100svh - 100px);overflow-y:auto}
+  .masthead nav{left:24px;right:24px}
+  .site-header .nav{left:0;right:0}
+  .masthead nav.open,.site-header .nav.open{display:flex}
+  .masthead nav a,.site-header .nav a{display:flex;align-items:center;min-height:44px;padding:10px 0;font-size:14px}
+  .site-header .nav .nav-cta{margin:0;padding:10px 0;border:0;text-align:left}
+  .masthead .contact-link{display:none}
+  .masthead nav .mobile-contact{display:flex!important}
+}
+@media screen and (max-width:600px){
+  .hero h1{font-size:clamp(46px,11vw,68px)}
+  .btn,.button,.quiet-link,.text-link,.trips4 button{min-height:44px;display:inline-flex;align-items:center}
+  .layer-stack,.stack-layer>div,.split>div,.form-grid>*{min-width:0}
+  .stack-layer{flex-wrap:wrap}
+  .stack-layer code{overflow-wrap:anywhere}
+  .field input,.field textarea,.field select{font-size:16px}
+  .portfolio-figure figcaption{flex-wrap:wrap}
+  .portfolio-figure figcaption a{min-height:44px;display:inline-flex;align-items:center}
+}
+@media screen and (max-width:400px){
+  .frontier-stage{grid-template-columns:20px minmax(0,1fr)}
+  .frontier-stage i{grid-column:2;justify-self:start}
+  .portfolio-tabs{column-gap:10px}
+  .portfolio-tab strong{overflow-wrap:anywhere}
+}

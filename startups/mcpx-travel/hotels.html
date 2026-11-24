@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hotels for AI agents | mcpx.travel</title>
+<meta name="description" content="Rooms from direct deals, the big chains and wholesale bedbanks, cleaned up and merged so your agent sees one tidy list with live prices.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 7' shape-rendering='crispEdges'%3E%3Crect width='7' height='7' fill='%230f1115'/%3E%3Cg fill='%232a3bff'%3E%3Crect x='1' y='1' width='1' height='1'/%3E%3Crect x='5' y='1' width='1' height='1'/%3E%3Crect x='2' y='2' width='1' height='1'/%3E%3Crect x='4' y='2' width='1' height='1'/%3E%3Crect x='2' y='4' width='1' height='1'/%3E%3Crect x='4' y='4' width='1' height='1'/%3E%3Crect x='1' y='5' width='1' height='1'/%3E%3Crect x='5' y='5' width='1' height='1'/%3E%3C/g%3E%3Crect x='3' y='3' width='1' height='1' fill='%23d7ff3c'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="../shared/creator.css"><script defer src="../shared/preview.js"></script></head>
+<body data-page="hotels"><div class="startup-credit"><span>Built by Rimon R for Travellabs</span><a href="../index.html">All businesses ↗</a></div>
+<div data-header></div>
+<main>
+
+<section class="ph2">
+  <div class="ph2-art"><canvas class="art" data-art="hotel" data-style="gouache" aria-hidden="true"></canvas><div class="hx-cap"><span>Plate 03 · A villa pool at noon</span><span>Hotels</span></div></div>
+  <div class="wrap">
+    <div class="phero-c" data-in>
+      <span class="kick">/ <b>Hotels</b></span>
+      <h1 class="h1" style="font-size:clamp(36px,4.2vw,56px)">2.9 million places to stay, in a single stream.</h1>
+      <p class="lead">Rooms from direct deals, the big chains and wholesale bedbanks, cleaned up and merged so your agent sees one tidy list with live prices.</p>
+      <div class="btns"><a class="btn pri" href="contact.html">Start building <span class="arr">→</span></a><a class="btn" href="builders.html#quickstart">Read the quickstart</a></div>
+      <div class="mstats"><div><b>2.9M</b><span>Properties</span></div><div><b>3</b><span>Kinds of supply</span></div><div><b>1</b><span>Stream to connect</span></div></div>
+    </div>
+    <pre class="call" data-in><span class="c">// rooms people can picture</span>
+search_stays({
+  ask: <span class="s">"quiet, near Shinjuku station"</span>,
+  nights: 5, max: 250
+})
+<span class="k">←</span> 1,630 stays · free cancellation shown
+
+hold_offer(<span class="s">"rm_2HQ8"</span>)
+<span class="k">←</span> held · free to cancel until 10 Oct</pre>
+  </div>
+</section>
+
+
+<section class="sec" style="padding-bottom:0">
+  <div class="wrap">
+    <div class="sec-h" data-in><span class="kick">/ Supply</span><h2 class="h2">Three kinds of supply, merged</h2></div>
+    <div class="src4 three" data-in>
+      <div><span class="tg">01</span><h3>Direct deals</h3><p>Rates agreed with each hotel, one by one.</p></div>
+      <div><span class="tg">02</span><h3>Hotel groups</h3><p>Rooms straight from the big brands.</p></div>
+      <div><span class="tg">03</span><h3>Wholesalers</h3><p>Bedbank reach in markets everywhere.</p></div>
+    </div>
+  </div>
+</section>
+<section class="sec" style="padding-bottom:0">
+  <div class="wrap">
+    <div class="sec-h" data-in><span class="kick">/ Four steps</span><h2 class="h2">Search. Hold. Commit. Look after.</h2><p class="lead">The same four steps as every other trip, from the first search to the stay itself.</p></div>
+    <div class="proto" id="proto" data-in>
+      <div class="pr"><span class="k">01 · SEARCH</span><h4>Search</h4><p>Live prices for the city, dates and party size the traveller gave.</p><code>search_stays()</code></div>
+      <div class="pr"><span class="k">02 · HOLD</span><h4>Hold</h4><p>The exact price and terms are rechecked and held with a clear expiry.</p><code>hold_offer() → $212 held</code></div>
+      <div class="pr"><span class="k">03 · COMMIT</span><h4>Commit</h4><p>The room is paid and booked, and the confirmation lands in the same thread.</p><code>commit() → MX-2HQ8</code></div>
+      <div class="pr"><span class="k">04 · LOOK AFTER</span><h4>Look after</h4><p>Rate watch until free cancellation ends, changes, and full hotel details whenever the agent asks.</p><code>on("price_drop")</code></div>
+    </div>
+  </div>
+</section>
+<section class="sec" style="padding-bottom:0">
+  <div class="wrap">
+    <div class="sec-h" data-in><span class="kick">/ Data quality</span><h2 class="h2">One hotel, one record</h2><p class="lead">The same hotel turns up from many suppliers. Your agent only ever sees it once, described the same way.</p></div>
+    <div class="q4" data-in>
+      <div><i class="px" data-px="stack"></i><h3>One listing per hotel</h3><p>When five suppliers sell the same hotel, your agent sees it once.</p></div>
+      <div><i class="px" data-px="bed"></i><h3>Rooms that line up</h3><p>A "Deluxe King" and a "Superior King Room" are recognised as the same room.</p></div>
+      <div><i class="px" data-px="book"></i><h3>Tidy details</h3><p>Facilities, star ratings, addresses and map pins in one consistent format.</p></div>
+      <div><i class="px" data-px="link"></i><h3>IDs that stay put</h3><p>A hotel keeps the same reference even as its suppliers come and go.</p></div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="sec earn-sec">
+  <div class="wrap earn-wrap">
+    <div class="earn-copy" data-in>
+      <span class="kick">/ How you earn</span>
+      <h2 class="h2">Set your margin once. Earn on every booking.</h2>
+      <p class="lead">Commission and smart markup live inside the same connection. Pick the lowest and highest markup you'll accept and how far under the market you want to sit. mcpx prices each booking inside those lines.</p>
+      <ul class="arrows"><li>Switch smart markup on or off for each product.</li><li>A lowest and a highest markup keep every price inside your limits.</li><li>A market check keeps you competitive, down to the gap you choose.</li><li>Change the rules whenever you like. Your integration stays the same.</li></ul>
+    </div>
+    <div class="earn" data-earn data-in></div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-h" data-in><span class="kick">/ For your agent</span><h2 class="h2">What your agent can do</h2></div>
+    <div class="cards3" data-in><div class="card top-u"><div class="mini"><canvas class="art" data-art="scan" data-labels="RM1,RM2,VIL,APT" aria-hidden="true"></canvas></div><h3>Rooms described properly</h3><p>Bed types, views, walking time to the station and what is really included, so your agent can answer follow-up questions.</p></div><div class="card top-l"><div class="mini"><canvas class="art" data-art="hold" aria-hidden="true"></canvas></div><h3>Free cancellation, clearly shown</h3><p>Every rate says when free cancellation ends. Your agent can hold the room and remind the traveller before the deadline.</p></div><div class="card top-k"><div class="mini"><canvas class="art" data-art="trace" aria-hidden="true"></canvas></div><h3>Rate watch after booking</h3><p>If the same room gets cheaper before free cancellation ends, your agent hears about it and can offer the rebook.</p></div></div>
+  </div>
+</section>
+
+<section class="band"><div class="wrap"><div style="display:grid;gap:12px"><span class="kick">/ One layer</span><h2 class="h2">Add hotels to any agent.</h2></div><div class="btns"><a class="btn pri" href="builders.html#connect">Explore the API <span class="arr">→</span></a><a class="btn" href="contact.html">Talk to us</a></div></div></section>
+</main>
+<div data-footer></div>
+<script src="assets/site.js"></script>
+<script>(() => { const prs = [...document.querySelectorAll('#proto .pr')]; let i = 0; const tick = () => { prs.forEach((x, j) => x.classList.toggle('on', j === i % prs.length)); i++; }; tick(); if (!MX.REDUCE) setInterval(tick, 1800); })();</script>
+</body>
+</html>
