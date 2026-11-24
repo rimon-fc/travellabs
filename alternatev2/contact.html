@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Get in touch | TravelLabs</title>
+<meta name="description" content="Bring a hard travel problem, ask about our research, or request beta access.">
+<link rel="icon" href="assets/img/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/tl.css">
+<link rel="stylesheet" href="assets/pages.css">
+</head>
+<body data-page="contact" id="top">
+<div data-header></div>
+<main>
+
+<section class="sec">
+  <div class="wrap ct">
+    <div data-in style="display:grid;gap:22px">
+      <span class="kick">/ Get in touch</span><h1 class="h1" style="font-size:clamp(38px,4.6vw,62px)">A good question<br>is a good start.</h1>
+      <p class="lead">Bring a hard travel problem, ask about our research, or request beta access.</p>
+      <div class="ct-side">
+        <div class="art-box"><canvas class="art" data-art="peaks" aria-hidden="true"></canvas></div>
+        <div class="ct-list">
+          <div><i class="px" data-px="mail"></i><p><b>Prefer email?</b><span><a href="mailto:rimon@travellabs.systems">rimon@travellabs.systems</a></span></p></div>
+          <div><i class="px" data-px="book"></i><p><b>Papers</b><span><a href="papers.html">Ideas, made inspectable.</a></span></p></div>
+        </div>
+      </div>
+    </div>
+    <form class="form submission-form" id="form" action="https://formsubmit.co/rimon@travellabs.systems" method="POST" data-form="contact" data-in>
+      <input name="_subject" type="hidden" value="TravelLabs — Contact enquiry">
+      <input name="_template" type="hidden" value="table">
+      <div aria-hidden="true" class="form-honey"><label>Leave this empty<input autocomplete="off" name="_honey" tabindex="-1" type="text"></label></div>
+      <div class="fld" style="display:grid;gap:18px">
+        <div class="row">
+          <label for="full-name"><span>Full name <em>(required)</em></span><input autocomplete="name" id="full-name" maxlength="120" name="name" required></label>
+          <label for="email"><span>Email <em>(required)</em></span><input autocomplete="email" id="email" maxlength="254" name="email" required type="email"></label>
+        </div>
+        <label for="organisation"><span>Organisation <em>(optional)</em></span><input autocomplete="organization" id="organisation" maxlength="160" name="organisation"></label>
+        <label for="topic">What would you like to discuss?<select id="topic" name="topic"><option>General enquiry</option><option>ATFGraph beta access</option><option>Keel beta access</option><option>Leisure AI walkthrough</option><option>Research collaboration</option><option>Partnership</option></select></label>
+        <label for="message"><span>Your message <em>(required)</em></span><textarea id="message" maxlength="5000" name="message" placeholder="What would you like to explore together?" required rows="6"></textarea></label>
+        <p class="form-privacy">Your information is sent to rimon@travellabs.systems through <a href="https://formsubmit.co/privacy.pdf" rel="noopener noreferrer" target="_blank">FormSubmit</a> to respond to this enquiry. Please only include information relevant to your request.</p>
+        <p aria-live="polite" class="form-status" role="status"></p>
+        <button class="btn pri" type="submit" style="justify-self:start">Send enquiry</button>
+      </div>
+    </form>
+  </div>
+</section>
+</main>
+<div data-footer></div>
+<script src="assets/site.js"></script>
+<script src="assets/forms.js"></script>
+</body>
+</html>

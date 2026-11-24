@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TravelLabs | Solving the hardest problems in travel with frontier AI</title>
+<meta name="description" content="TravelLabs is the research and development division of Flight Centre Travel Group. An AI Lab for the world of travel.">
+<link rel="icon" href="assets/img/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css">
+<link rel="stylesheet" href="assets/tl.css">
+<link rel="stylesheet" href="assets/hero-scenes.css">
+<link rel="stylesheet" href="assets/carousel.css">
+<link rel="stylesheet" href="assets/city.css">
+</head>
+<body data-page="home" id="top">
+<div data-header></div>
+<main>
+
+<section class="hx hc">
+  <div class="wrap">
+    <div class="hx-top" data-in>
+      <div style="display:grid;gap:18px"><span class="badge"><i>X</i>An AI Lab · For the world of travel</span><h1 class="h1">Solving the hardest problems <br class="hc-br">in travel with frontier AI.</h1></div>
+      <div style="display:grid;gap:22px;align-content:end"><div class="btns"><a class="btn pri" href="research.html">Explore the research <span class="arr">→</span></a><a class="btn" href="papers.html">Read the papers</a></div></div>
+    </div>
+
+    <div class="hc-frame" id="hc" aria-roledescription="carousel" aria-label="Four ways to see TravelLabs at work">
+      <div class="hc-track" id="hcTrack" tabindex="0">
+
+        <!-- 01 · the painted coast, with the ticket cycling through richer cards -->
+        <section class="hc-slide" aria-roledescription="slide" aria-label="1 of 4 · Painted live">
+          <div class="hc-coast">
+            <canvas class="art" data-art="coast" aria-hidden="true"></canvas>
+            <div class="hc-cards" id="hcCards" aria-live="polite">
+              <div class="hc-card hx-ticket-card on" data-card="ticket"><b><span id="hcT">ATFGraph</span><span>illustrative</span></b><div class="ln"><span>role</span><span id="hc1">Coordinates durable work</span></div><div class="ln"><span>step</span><span id="hc2">Plan</span></div><div class="ln ok"><span>then</span><span id="hc3">saves the job while it waits</span></div></div>
+              <div class="hc-card hc-dest" data-card="dest">
+                <div class="d-art"><div class="d-scene" id="dScene"></div><span class="d-code" id="dCode">JTR · Greece</span><span class="d-name" id="dName">Santorini</span></div>
+                <ul class="d-rows" id="dRows"></ul>
+                <div class="d-foot"><span>3 suppliers via keel<br>sample prices, AUD</span><span class="d-btn">Plan trip →</span></div>
+              </div>
+              <div class="hc-card hc-run" data-card="run">
+                <div class="r-head"><b>trip-desk.plan</b><span id="rcId">run · eee8</span></div>
+                <ol class="r-steps" id="rcSteps"></ol>
+                <div class="r-foot"><span class="live"><i></i><span id="rcState">running</span></span><span id="rcCount">0 / 7</span></div>
+              </div>
+            </div>
+            <div class="hx-cap hc-cap"><span>Plate 01 · For the world of travel · painted live in your browser</span><span>Big questions. Real journeys.</span></div>
+          </div>
+        </section>
+
+        <!-- 02 · painted by agents -->
+        <section class="hc-slide" aria-roledescription="slide" aria-label="2 of 4 · Painted by agents">
+          <div class="a-frame" id="aFrame">
+            <canvas id="aCanvas" aria-label="Agents paint a coastal travel scene inside a pencil sketch, then wait for approval" role="img"></canvas>
+            <span class="a-cap">Plate 02 · painted by agents · drag to help</span>
+            <div class="a-ticket" aria-live="polite"><b><span>One brief · a durable job</span><span id="aPct">0%</span></b><div id="aJobs"></div><div class="bar"><i id="aBar"></i></div></div>
+            <div class="a-approve" id="aApprove"><span>Proposal ready.<br>A person approves.</span><button class="btn pri" type="button" id="aBtn">Approve ✓</button></div>
+          </div>
+        </section>
+
+        <!-- 03 · the departures board -->
+        <section class="hc-slide" aria-roledescription="slide" aria-label="3 of 4 · The departures board">
+          <div class="b-hero" id="bHero" aria-label="A split-flap departures board spelling the TravelLabs headline and the problems it solves" role="img">
+            <div class="b-meta"><span>TravelLabs · an AI lab for travel</span><span id="bClock">--:--</span></div>
+            <div class="flaps b-head" id="bHead"></div>
+            <div class="b-rows">
+              <div class="b-cols"><span id="bC1">Problem</span><span id="bC2">In travel</span><span id="bC3">Status</span></div>
+              <div id="bRows"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 04 · one brief, every moving part -->
+        <section class="hc-slide" aria-roledescription="slide" aria-label="4 of 4 · One brief, every moving part">
+          <div class="c-hero" id="cHero">
+            <canvas id="cCanvas" aria-label="A traveller's brief made of particles becomes a network of suppliers, is checked and approved, and settles into the headline" role="img"></canvas>
+            <div class="c-chrome">
+              <div class="c-step"><span id="cStep"><b>01</b> · One brief</span><span class="c-dots" id="cDots"><i class="on"></i><i></i><i></i><i></i></span></div>
+              <div></div>
+              <div class="c-bottom"><p id="cCap">A traveller describes the trip in plain words. Their preferences and constraints stay with the job.</p></div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div class="hc-rail" role="tablist" aria-label="Hero scenes">
+      <button type="button" role="tab" aria-selected="true"><b>01</b>Painted live<i></i></button>
+      <button type="button" role="tab" aria-selected="false" tabindex="-1"><b>02</b>Painted by agents<i></i></button>
+      <button type="button" role="tab" aria-selected="false" tabindex="-1"><b>03</b>Departures board<i></i></button>
+      <button type="button" role="tab" aria-selected="false" tabindex="-1"><b>04</b>One brief, every part<i></i></button>
+      <span class="hc-ctl"><button type="button" class="hc-arrow" data-dir="-1" aria-label="Previous scene">←</button><button type="button" class="hc-arrow" data-dir="1" aria-label="Next scene">→</button><button type="button" class="hc-pause" aria-pressed="false">Pause</button></span>
+    </div>
+  </div>
+</section>
+
+<section class="sec tight">
+  <div class="wrap">
+    <span class="kick" data-in>/ Our reason for being</span>
+    <p class="ed" data-in style="margin-top:18px">We’re building the <b>intelligence layer</b> for travel. TravelLabs is the <b>research and development</b> division of <b>Flight Centre Travel Group</b>.</p>
+  </div>
+</section>
+
+<section class="sec mission" style="padding-top:40px">
+  <div class="wrap split">
+    <div class="art-box" data-in><canvas class="art" data-art="island" aria-hidden="true"></canvas></div>
+    <div data-in style="display:grid;gap:18px"><span class="kick">/ Why travel</span><h2 class="h2">AI agents are starting to plan, buy and look after travel for people.</h2><p class="lead">Travel is the hardest place for them to do it well:</p>
+      <ul class="arrows"><li>Prices change by the minute.</li><li>One trip involves many businesses.</li><li>Real money is at stake.</li></ul>
+      <p class="after">We research these problems, build open foundations and our own models, and turn them into businesses, so FCTG helps decide how travel is sold next.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:40px" id="objectives">
+  <div class="wrap">
+    <div class="sec-h" data-in><span class="kick">/ Our five objectives</span><h2 class="h2">Five objectives. The systems we’re working towards.</h2></div>
+    <div class="caps6 eq" data-in>
+      <div><span class="stp">Objective 01</span><i class="px" data-px="globe"></i><h3>Reimagine how travel is distributed.</h3><p>A trusted way for AI agents and suppliers to do business, so travel reaches people wherever their trip begins.</p></div>
+      <div><span class="stp">Objective 02</span><i class="px" data-px="shield"></i><h3>Make agentic commerce safe.</h3><p>Agents that people and businesses can trust with a real trip and real money.</p></div>
+      <div><span class="stp">Objective 03</span><i class="px" data-px="clock"></i><h3>Give agents a sense of time and a word they keep.</h3><p>Agents that remember the trip and keep their word, from first search until the traveller is home.</p></div>
+      <div><span class="stp">Objective 04</span><i class="px" data-px="link"></i><h3>Open travel to everyone.</h3><p>Every builder can sell it, every traveller can get a better deal, and every supplier, large or small, can be found.</p></div>
+      <div><span class="stp">Objective 05</span><i class="px" data-px="spark"></i><h3>Turn FCTG’s expertise into intelligence.</h3><p>Decades of knowing what makes a great trip, built into our own models and an agent for every consultant.</p></div>
+      <div class="obj-more"><span class="stp">Take a closer look</span><h3>Inside TravelLabs.</h3><p>Research, the people behind the questions and the principles that guide us.</p><a class="paper-link" style="color:#fff" href="#inside">Explore the lab →</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:40px" id="demo">
+  <div class="wrap">
+    <div class="sec-h" data-in><span class="kick">/ One brief becomes a trip</span><h2 class="h2">Start with the traveller.</h2><p class="lead">A brief becomes coordinated agent work, checked supplier calls, a proposal for approval and a trip that is watched after booking.</p></div>
+    <div class="bk-pick" id="bkPick" data-in style="margin-bottom:16px"></div>
+    <div class="bk" data-in>
+      <ol class="bk-rail seven" id="bkRail"><li><b>01</b>Brief</li><li><b>02</b>Plan</li><li><b>03</b>Check</li><li><b>04</b>Compare</li><li><b>05</b>Approve</li><li><b>06</b>Book</li><li><b>07</b>Watch</li></ol>
+      <div class="bk-req"><span class="kick">The brief</span><p id="bkAsk"></p><div class="bk-who" id="bkWho"></div><div class="bk-step"><b id="bkStepT">Start with the traveller.</b><span id="bkStepX"></span></div></div>
+      <div class="bk-sheet"><div class="bk-sh"><span class="kick">Tasks in this trip</span><span class="bk-ref" id="bkRef">not booked</span></div><div id="bkRows"></div><div class="bk-tot"><span>Example total</span><b id="bkTot">$0</b></div><div class="bk-ev" id="bkEv"></div></div>
+    </div>
+    <p class="demo-note">Illustrative scenarios and prices, not live offers or bookings.</p>
+  </div>
+</section>
+
+<section class="sec earn-sec">
+  <div class="wrap earn-wrap">
+    <div class="earn-copy" data-in>
+      <span class="kick">/ Compare</span>
+      <h2 class="h2">Find value that fits the brief.</h2>
+      <p class="lead">Compare eligible options on price, preferences and terms. These example quotes are ready for review, not booked.</p>
+      <ul class="arrows"><li>Prices and terms are checked before action.</li><li>A changed price or scope needs fresh approval.</li><li>Real spending waits for a person.</li></ul>
+    </div>
+    <div class="earn" id="val" data-in>
+      <div class="earn-h"><span>Compare</span><span class="dot">example only</span></div>
+      <div class="earn-tabs"><button type="button" class="on">Honeymoon</button><button type="button">Backpacking</button><button type="button">Conference</button><button type="button">Family holiday</button></div>
+      <dl class="earn-lim"><div><dt>Traveller</dt><dd class="v-who">Mia &amp; Leo</dd></div><div><dt>Tasks</dt><dd class="v-n">4</dd></div><div><dt>Quote</dt><dd class="v-lab" style="font-size:15px;line-height:1.2">Business class × 2</dd></div></dl>
+      <p class="earn-note"></p>
+      <div class="earn-lad">
+        <div class="r mkt"><span>Example price</span><i><s class="mkt"></s></i><b class="v-mkt"></b></div>
+        <div class="r you"><span>Fits the brief</span><i><s class="you"></s></i><b class="v-you"></b></div>
+      </div>
+      <div class="earn-out"><span><em class="what"></em>Example saving</span><b class="v-earn"></b></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:40px" id="frameworks">
+  <div class="wrap">
+    <div class="sec-h" data-in><span class="kick">/ Meet our frameworks</span><h2 class="h2">Meet our frameworks.</h2><p class="lead">ATFGraph coordinates durable work. Keel checks supplier calls. A person approves the proposal before ATP coordinates booking and controlled payments. Emitters keep watching the trip.</p></div>
+    <div class="bento" data-in>
+      <article class="bt bt-a">
+        <span class="bt-tag">Agent systems</span>
+        <h3>ATFGraph: durable travel work.</h3>
+        <p>One trip. Agents working together. Durable state keeps the brief, progress and results together.</p>
+        <ol class="act" id="act"><li>Plan</li><li>Save</li><li>Wait for approval</li><li>Resume</li></ol>
+        <pre class="act-log" id="actLog"></pre>
+        <div class="bt-foot"><span>Save progress.</span><b>Resume when ready.</b><a href="paper-atfgraph.html">Read the ATFGraph paper →</a></div>
+      </article>
+      <article class="bt bt-b">
+        <span class="bt-tag">Tools &amp; trust</span>
+        <h3>Keel: governed travel agents.</h3>
+        <p>Every supplier call goes through Keel. Checked tools validate inputs and apply travel rules.</p>
+        <div class="mock"><div class="mock-bar"><i></i><i></i><i></i><span>keel · checked tools</span></div><div class="mock-b"><b>Checked tools</b><div class="mock-q">Flights · Stays · Experiences</div><div class="mock-r"><span>Validate inputs</span><em>✓</em></div><div class="mock-r"><span>Apply travel rules</span><em>✓</em></div><div class="mock-r"><span>Check prices and terms</span><em>✓</em></div><div class="mock-btn">Permission to act</div></div></div>
+        <a class="bt-link" href="paper-keel.html">Read the Keel paper →</a>
+      </article>
+      <article class="bt bt-c">
+        <span class="bt-tag">Consent &amp; commerce</span>
+        <h3>ATP: consent and recovery.</h3>
+        <p>ATP coordinates supplier commitments; controlled payments stay within approved limits.</p>
+        <div class="race" id="race"><div><span>A person approves the proposal</span><div class="lane"><i></i></div><em>review · approval · fresh approval if price or scope changes</em></div><div class="me"><span>ATP coordinates booking</span><div class="lane"><i></i></div><em>within approved limits · record · recover</em></div></div>
+        <a class="bt-link" href="paper-atp.html">Read the ATP paper →</a>
+      </article>
+    </div>
+    <div class="btns" data-in style="margin-top:28px"><a class="btn" href="research.html">Explore the research <span class="arr">↗</span></a><span class="trunk" style="align-self:center">Explore Leisure AI and frontier models for travel.</span></div>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:40px" id="inside">
+  <div class="wrap">
+    <div class="sec-h" data-in><span class="kick">/ Take a closer look</span><h2 class="h2">Inside TravelLabs.</h2></div>
+    <div class="chs" data-in>
+      <a href="research.html"><figure><canvas class="art" data-art="sk-chat" aria-hidden="true"></canvas><figcaption><b>01 / Research</b><span>From questions to useful things. Frameworks, Leisure AI and what’s next.</span><em class="go">Open research ↗</em></figcaption></figure></a>
+      <a href="about.html"><figure><canvas class="art" data-art="sk-team" aria-hidden="true"></canvas><figcaption><b>02 / About us</b><span>Curious minds. Shared purpose. The people behind the questions.</span><em class="go">Open about us ↗</em></figcaption></figure></a>
+      <a href="manifesto.html"><figure><canvas class="art" data-art="sk-voice" aria-hidden="true"></canvas><figcaption><b>03 / Manifesto</b><span>Let the work speak for itself. The principles that guide us.</span><em class="go">Open manifesto ↗</em></figcaption></figure></a>
+      <a href="papers.html"><figure><canvas class="art" data-art="sk-app" aria-hidden="true"></canvas><figcaption><b>04 / Papers</b><span>Ideas, made inspectable. The thinking, evidence and open questions behind our work.</span><em class="go">Open papers ↗</em></figcaption></figure></a>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:40px" id="city" data-city>
+  <div class="wrap">
+    <div class="sec-h" data-in><span class="kick">/ Meet our frameworks</span><h2 class="h2">Built for travel’s hardest parts.</h2><p class="lead">Infrastructure for travel agents that can act, wait and keep looking after a trip. ATFGraph runs the work over time. Keel connects it to travel tools, transaction rules and controlled payments.</p><div class="btns"><a class="btn" href="paper-atfgraph.html">Read the ATFGraph paper <span class="arr">↗</span></a><a class="btn" href="paper-keel.html">Read the Keel paper <span class="arr">↗</span></a></div></div>
+    <div class="city" data-in>
+      <ol class="bk-rail city-steps" aria-label="Explore the framework steps"></ol>
+      <div class="city-body">
+        <div class="city-panel">
+          <span class="kick">The foundations</span>
+          <div class="bk-pick city-choices" aria-label="Choose a framework"></div>
+          <p class="city-name">ATFGraph</p>
+          <p class="city-tag">Durable jobs + graph server</p>
+          <p class="city-line">A durable runtime for agentic work.</p>
+          <div class="city-sh"><span class="kick">Places in the travel system</span></div>
+          <ul class="city-places"></ul>
+          <p class="city-disc">Illustrative workflow</p>
+        </div>
+        <div class="city-stage">
+          <canvas class="city-canvas" role="img" tabindex="0" aria-label="Animated travel system showing ATFGraph, Keel, consultant approval, ATP payments and connected suppliers." aria-describedby="city-hint city-caption"></canvas>
+          <div class="city-pins" aria-label="Places in the travel system"></div>
+          <div class="city-bottom"><span class="city-hint" id="city-hint">Drag to turn · arrow keys to rotate</span><div class="city-turn"><button class="city-left" type="button" aria-label="Rotate city left">←</button><button class="city-right" type="button" aria-label="Rotate city right">→</button></div></div>
+        </div>
+      </div>
+      <div class="city-caption" id="city-caption"><h3 class="city-title">A durable runtime for agentic work.</h3><p class="city-text">Run agents built with any framework. Durable state preserves progress; temporal execution lets a job wait for an approval or booking update, then continue with its context.</p></div>
+    </div>
+    <p class="city-inspect" aria-live="polite">Select a place in the city to see its role.</p>
+    <div class="city-toolbar"><span class="city-mode">Illustrative journey · autoplay</span><div class="btns"><button class="btn city-replay" type="button">Replay the journey</button><button class="btn city-pause" type="button" aria-pressed="false">Pause animation</button></div></div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="wrap split">
+    <div class="sk-panel" data-in><canvas class="art" data-art="sk-flyer" aria-hidden="true"></canvas></div>
+    <div data-in style="display:grid;gap:18px"><span class="kick">/ Curious minds. Shared purpose.</span><h2 class="h2">Different minds. Better questions.</h2><p class="lead">We bring research and engineering together to solve difficult travel problems.</p>
+      
+      <p class="trunk"><a href="manifesto.html#trunk">Meet Trunk ↗</a> Packed light. Brought curiosity.</p>
+      <div class="btns"><a class="btn" href="about.html">Meet the lab <span class="arr">↗</span></a><a class="btn" href="contact.html">Say hello <span class="arr">↙</span></a></div></div>
+  </div>
+</section>
+
+<section class="sec pcs-sec">
+  <div class="wrap">
+    <div class="sec-h center" data-in><span class="kick">/ Our manifesto</span><h2 class="h2">Small suitcase. Big beliefs.</h2><p class="lead">Read deeply. Do the work that needs doing. Learn through intelligent failures.</p></div>
+    <div class="pcs" data-in>
+      <article class="pc"><div class="pc-art"><canvas class="art" data-art="harbour" aria-hidden="true"></canvas><span class="stamp">No. 01</span></div><p class="hand">Let your work speak for itself.</p><p>Whatever you choose to do, be so good at it that your work speaks for itself.</p></article>
+      <article class="pc"><div class="pc-art"><canvas class="art" data-art="peaks" data-style="gouache" aria-hidden="true"></canvas><span class="stamp">No. 02</span></div><p class="hand">Follow your curiosity deeply.</p><p>Read deeply about what you love and are passionate about. Pursue knowledge by any means necessary, even if your methods look strange or unconventional to the rest of the world.</p></article>
+      <article class="pc"><div class="pc-art"><canvas class="art" data-art="dunes" aria-hidden="true"></canvas><span class="stamp">No. 03</span></div><p class="hand">Bring your vision to life.</p><p>Move with speed, act with control, and wait with patience. All that matters is bringing your vision to life.</p></article>
+      <article class="pc"><div class="pc-art"><canvas class="art" data-art="city" data-style="gouache" aria-hidden="true"></canvas><span class="stamp">No. 04</span></div><p class="hand">We are impact players.</p><p>Impact players do not merely do the job they were given. They figure out the job that actually needs doing.</p></article>
+      <article class="pc"><div class="pc-art"><canvas class="art" data-art="floating" aria-hidden="true"></canvas><span class="stamp">No. 05</span></div><p class="hand">Put friction in the right places.</p><p>Remove friction from the right behaviours and deliberately add friction to the wrong ones.</p></article>
+      <article class="pc"><div class="pc-art"><canvas class="art" data-art="runway" data-style="gouache" aria-hidden="true"></canvas><span class="stamp">No. 06</span></div><p class="hand">Make failure intelligent.</p><p>Failure is intelligent when it occurs in genuinely uncertain territory, is hypothesis-driven, and is no larger than necessary to learn.</p></article>
+    </div>
+    <div class="btns" data-in style="justify-content:center;margin-top:40px"><a class="btn" href="manifesto.html">Read our principles <span class="arr">↗</span></a></div>
+  </div>
+</section>
+
+<section class="sec tight">
+  <div class="wrap">
+    <div class="hire" data-in><p><b>We’re hiring.</b> Help shape what travel becomes next.</p><a class="btn pri" href="careers.html">Explore careers <span class="arr">↗</span></a></div>
+  </div>
+</section>
+
+<section class="sec" style="padding-top:40px" id="papers">
+  <div class="wrap">
+    <div class="caps-h" data-in><div style="display:grid;gap:16px"><span class="kick">/ Papers</span><h2 class="h2">Ideas, made inspectable.</h2></div><p class="lead">The thinking, evidence and open questions behind our work.<br><span class="papers-note">Planned submissions to <b>NeurIPS</b> and <b>ICML</b>.</span></p></div>
+    <div class="caps6" data-in>
+      <div><span class="stp">Decision models</span><i class="px" data-px="chart"></i><h3>System 1 for Co-consult.</h3><a class="paper-link" href="paper-system-1.html">Read paper →</a></div>
+      <div><span class="stp">Tools &amp; trust</span><i class="px" data-px="shield"></i><h3>Keel: governed travel agents.</h3><a class="paper-link" href="paper-keel.html">Read paper →</a></div>
+      <div><span class="stp">Consent &amp; commerce</span><i class="px" data-px="check"></i><h3>ATP: consent and recovery.</h3><a class="paper-link" href="paper-atp.html">Read paper →</a></div>
+      <div><span class="stp">Agent systems</span><i class="px" data-px="stack"></i><h3>ATFGraph: durable travel work.</h3><a class="paper-link" href="paper-atfgraph.html">Read paper →</a></div>
+      <div><span class="stp">Working draft</span><i class="px" data-px="card"></i><h3>Agentic payments for travel.</h3><a class="paper-link" href="paper-payments.html">Read draft →</a></div>
+      <div class="obj-more"><span class="stp">Papers</span><h3>Explore all papers.</h3><p>The thinking, evidence and open questions behind our work.</p><a class="paper-link" style="color:#fff" href="papers.html">Explore all papers ↗</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="final left">
+  <canvas class="art" data-art="door" aria-hidden="true"></canvas>
+  <div class="final-c" data-in><span class="kick">/ There’s more to discover</span><h2 class="h2">The next journey starts with a question.</h2><p class="lead" style="text-align:center">Bring a hard travel problem. Let’s make something useful.</p><div class="btns" style="justify-content:center"><a class="btn pri" href="contact.html">Start a conversation <span class="arr">→</span></a><a class="btn" href="#inside">Explore the lab</a></div></div>
+</section>
+
+</main>
+<div data-footer></div>
+<script src="assets/site.js"></script>
+<script src="assets/ideation.js"></script>
+<script src="assets/carousel.js"></script>
+<script src="assets/city.js"></script>
+<script>
+(() => {
+  const { $, $$, REDUCE } = window.MX;
+
+
+  /* one brief becomes a trip: TravelLabs' own scenarios, all prices illustrative */
+  const STORIES = [
+    { name: 'Honeymoon', who: 'Mia & Leo', brief: 'Ten nights, an ocean-view suite, a short cruise and private tours.', saving: '$1,230 on the example flights', stops: [['airport', 'Business class × 2', '$9,840', '$8,610'], ['hotel', 'Ocean suite / night', '$1,180', '$940'], ['harbour', 'Three-night cruise', '$4,200', '$3,650'], ['tours', 'Private guide', '$1,100', '$880']] },
+    { name: 'Backpacking', who: 'Sam', brief: 'Two weeks backpacking. An affordable fare, a clean hostel and trains between cities.', saving: '$174 on the example flight', stops: [['airport', 'Economy fare', '$612', '$438'], ['hostel', 'Hostel bed / night', '$68', '$49'], ['station', '14-day rail pass', '$420', '$365'], ['tours', 'Walking tours', '$90', '$60']] },
+    { name: 'Conference', who: 'Priya', brief: 'Melbourne to Singapore. A good fare, a hotel near the venue and a car for two days.', saving: '$189 on the example flight', watch: true, stops: [['airport', 'Return fare', '$1,240', '$1,051'], ['hotel', 'Hotel / night', '$289', '$241'], ['car', 'Car hire / two days', '$180', '$142']] },
+    { name: 'Family holiday', who: 'The Lees', brief: 'Four of us in the school holidays. Flights, a hotel with a pool, a car and a couple of tours.', saving: '$740 on the example package', stops: [['package', 'Holiday package', '$9,660', '$8,920'], ['airport', 'Four seats together', '', 'Included'], ['hotel', 'Family room + pool', '', 'Included'], ['car', 'Seven-seater', '', 'Included'], ['tours', 'Theme park + reef', '', 'Included']] }
+  ];
+  const STEPS = [
+    ['Start with the traveller.', (s) => s.who + (s.who === 'Mia & Leo' || s.who === 'The Lees' ? ' describe' : ' describes') + ' the trip in plain words. Their preferences and constraints stay with the job.'],
+    ['One trip. Agents working together.', (s) => 'ATFGraph coordinates ' + s.stops.length + ' supplier tasks in parallel. Durable state keeps the brief, progress and results together.'],
+    ['Every supplier call goes through Keel.', () => 'Checked tools validate inputs and apply travel rules. Searches respect supplier limits; prices and terms are checked before action.'],
+    ['Find value that fits the brief.', (s) => s.name === 'Family holiday' ? 'Compare the package with booking the parts separately, including the family’s needs and the terms.' : 'Compare eligible options on price, preferences and terms. These example quotes are ready for review, not booked.'],
+    ['Wait for a person’s approval.', () => 'The consultant and traveller review the proposal. ATFGraph saves the job while it waits. A changed price or scope needs fresh approval.'],
+    ['Coordinate the approved trip.', () => 'ATP coordinates supplier commitments; controlled payments stay within approved limits. Record each outcome and recover or compensate if a part fails.'],
+    ['The work continues after booking.', (s) => s.watch ? 'An emitter spots a fare change and wakes the saved job. Agents check the fare rules and propose a change for approval before rebooking.' : 'Emitters watch for schedule changes, supplier responses and other trip events. The saved job wakes when there is work to do.']
+  ];
+  const ICON = { airport: 'plane', hotel: 'bed', hostel: 'bed', harbour: 'ship', tours: 'pin', station: 'train', car: 'car', package: 'stack' };
+  const PLACE = { airport: 'Flights', hotel: 'Stay', hostel: 'Stay', harbour: 'Cruise', tours: 'Tours', station: 'Rail', car: 'Car', package: 'Package' };
+  const num = (p) => Number(String(p).replace(/[^0-9.]/g, '')) || 0;
+  const rail = $$('#bkRail li'), rows = $('#bkRows');
+  let token = 0, pick = 0;
+  const wait = (ms, my) => new Promise((res, rej) => setTimeout(() => (my === token ? res() : rej('stop')), REDUCE ? 0 : ms));
+  const step = (k, s) => { rail.forEach((li, i) => { li.classList.toggle('on', i === k); li.classList.toggle('done', i < k); }); $('#bkStepT').textContent = STEPS[k][0]; $('#bkStepX').textContent = STEPS[k][1](s); };
+  const status = (txt, cls = '') => $$('.bk-row .st', rows).forEach((st) => { st.textContent = txt; st.className = 'st ' + cls; });
+  const picker = $('#bkPick');
+  picker.innerHTML = STORIES.map((s, i) => `<button type="button" aria-pressed="${i === 0}">${s.name}</button>`).join('');
+  $$('button', picker).forEach((b, i) => b.addEventListener('click', () => { pick = i; run(); }));
+  async function play(S, my) {
+    $$('button', picker).forEach((b, i) => b.setAttribute('aria-pressed', String(STORIES[i] === S)));
+    step(0, S); $('#bkWho').textContent = S.who + ' · ' + S.name.toLowerCase(); $('#bkRef').textContent = 'not booked'; $('#bkRef').classList.remove('ok'); $('#bkTot').textContent = '$0'; $('#bkEv').className = 'bk-ev'; $('#bkEv').innerHTML = '';
+    rows.innerHTML = S.stops.map(([pl, label, was, now]) => `<div class="bk-row"><i class="px" data-px="${ICON[pl] || 'pin'}"></i><div><b>${PLACE[pl] || pl}</b><span>${label}</span></div><strong${now === 'Included' ? ' class="inc"' : ''}>—</strong><em class="st">waiting</em></div>`).join('');
+    window.MX.paintIcons(rows);
+    const R = $$('.bk-row', rows);
+    for (let i = 1; i <= S.brief.length; i += 2) { $('#bkAsk').textContent = '“' + S.brief.slice(0, i); await wait(16, my); }
+    $('#bkAsk').textContent = '“' + S.brief + '”';
+    R.forEach((r, i) => setTimeout(() => r.classList.add('in'), i * 120));
+    await wait(1700, my);
+    step(1, S); status('task started'); await wait(2200, my);
+    step(2, S); status('checked ✓', 'held'); await wait(2200, my);
+    step(3, S); let tot = 0;
+    for (let i = 0; i < R.length; i++) { const now = S.stops[i][3]; tot += num(now); R[i].querySelector('strong').textContent = now; R[i].querySelector('.st').textContent = 'quote ready'; $('#bkTot').textContent = '$' + Math.round(tot).toLocaleString('en-US'); await wait(600, my); }
+    await wait(900, my);
+    step(4, S); status('awaiting approval', 'held'); await wait(2400, my);
+    status('approved ✓', 'ok'); $('#bkRef').textContent = 'approved'; await wait(1000, my);
+    step(5, S); status('booked ✓', 'ok'); $('#bkRef').textContent = 'booked · example'; $('#bkRef').classList.add('ok'); await wait(2200, my);
+    step(6, S); $('#bkEv').innerHTML = `<i class="px" data-px="${S.watch ? 'bell' : 'clock'}"></i><span><b>${S.watch ? 'Fare change spotted. Saved job woken.' : 'Emitters keep watching the trip.'}</b>Example saving: ${S.saving}</span>`; window.MX.paintIcons($('#bkEv')); $('#bkEv').classList.add('in');
+    await wait(4200, my);
+  }
+  async function run() { const my = ++token; let i = pick; try { while (my === token) { await play(STORIES[i++ % STORIES.length], my); if (REDUCE) break; } } catch (e) { if (e !== 'stop') throw e; } }
+  let started = false;
+  new IntersectionObserver(([e]) => { if (e.isIntersecting && !started) { started = true; run(); } }, { threshold: .3 }).observe($('.bk'));
+
+  /* ATFGraph tile */
+  const acts = $$('#act li'), alog = $('#actLog');
+  const CALLS = ['ATFGraph coordinates supplier tasks in parallel.', 'Durable state keeps the brief, progress and results together.', 'ATFGraph saves the job while it waits.', 'The saved job wakes when there is work to do.'];
+  let ai = 0;
+  const actTick = () => { const k = ai % acts.length; acts.forEach((li, j) => { li.classList.toggle('on', j === k); li.classList.toggle('done', j < k); }); alog.textContent = CALLS[k]; ai++; };
+  actTick(); if (!REDUCE) setInterval(actTick, 1800);
+
+  /* ATP tile lanes */
+  const race = $('#race');
+  new IntersectionObserver(([e]) => { if (e.isIntersecting) race.classList.add('go'); }, { threshold: .4 }).observe(race);
+
+  /* value panel: the same example trips, before and after comparing */
+  const val = $('#val'), vtabs = $$('.earn-tabs button', val);
+  const vshow = (i) => {
+    const S = STORIES[i], [pl, label, was, now] = S.stops[0], a = num(was), b = num(now), top = a * 1.06;
+    vtabs.forEach((t, j) => t.classList.toggle('on', j === i));
+    $('.v-who', val).textContent = S.who; $('.v-n', val).textContent = String(S.stops.length); $('.v-lab', val).textContent = label;
+    $('.earn-note', val).textContent = '“' + S.brief + '”';
+    $('s.mkt', val).style.width = (a / top * 100) + '%'; $('s.you', val).style.width = (b / top * 100) + '%';
+    $('.v-mkt', val).textContent = was; $('.v-you', val).textContent = now;
+    $('.what', val).textContent = S.saving; $('.v-earn', val).textContent = S.saving.split(' ')[0];
+  };
+  let vi = 0;
+  vtabs.forEach((t, i) => t.addEventListener('click', () => { vi = i; vshow(i); }));
+  vshow(0); if (!REDUCE) setInterval(() => vshow(vi = (vi + 1) % STORIES.length), 4200);
+})();
+</script>
+</body>
+</html>

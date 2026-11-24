@@ -1,0 +1,57 @@
+/* Shared by papers.html, contact.html and thank-you.html. Built on site.css components. */
+
+/* Papers: departures board rows become links */
+.papers-board .dep-r { position: relative; transition: background .2s; }
+.papers-board .dep-r:hover { background: #1b1e24; }
+.papers-board .dep-r a.s { text-decoration: none; white-space: nowrap; }
+.papers-board .dep-r a.s::after { content: ""; position: absolute; inset: 0; }
+.papers-board .dep-r a.s:focus-visible { outline: 2px solid var(--lime); outline-offset: 2px; }
+.papers-board .dep-r > span:nth-child(2) { min-width: 0; }
+.papers-board .dep-g { max-height: none; }
+.papers-board .dep-g > .dep-n { display: none; }
+.papers-board .dep-cols span:last-child { text-align: right; }
+.papers-board + .merge { margin-top: 28px; }
+@media (max-width: 600px) {
+  .papers-board .dep-cols, .papers-board .dep-r { grid-template-columns: 44px 1fr 92px; }
+  .papers-board .dep-h .t { width: 100%; }
+}
+
+/* Papers: abstracts accordion */
+.papers-faq .faq-g h2 { gap: 16px; }
+.papers-faq .qa .lead-in { font-weight: 500; color: var(--ink); }
+.papers-faq .qa .link { margin-top: 4px; }
+
+/* Papers: metadata table */
+.papers-tab { min-width: 640px; }
+.papers-tab tbody th small { display: block; margin-top: 6px; font: 400 12px/1.5 var(--mono); color: var(--muted); }
+.papers-tab tbody th a { color: inherit; text-decoration: none; }
+.papers-tab tbody th a:hover { text-decoration: underline; text-underline-offset: 4px; }
+.papers-tab td { color: var(--ink-2); }
+.papers-tab td:last-child { white-space: nowrap; }
+@media (max-width: 600px) {
+  .papers-tab { min-width: 0; }
+  .papers-tab, .papers-tab tbody { display: block; }
+  .papers-tab thead { display: none; }
+  .papers-tab tr { display: grid; grid-template-columns: 1fr auto; border-bottom: 1px solid var(--line); }
+  .papers-tab tr:last-child { border-bottom: 0; }
+  .papers-tab th, .papers-tab td { border-bottom: 0; }
+  .papers-tab tbody th { grid-column: 1 / -1; padding-bottom: 4px; }
+  .papers-tab td { padding-top: 8px; }
+  .papers-tab td:nth-of-type(1) { order: 1; }
+  .papers-tab td:nth-of-type(3) { order: 2; text-align: right; }
+  .papers-tab td:nth-of-type(2) { order: 3; grid-column: 1 / -1; padding-top: 0; }
+}
+
+/* Contact: FormSubmit honeypot stays off screen */
+.form-honey { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.form { position: relative; }
+.form .form-privacy { font: 400 12px/1.6 var(--mono); color: var(--muted); margin: 0; }
+.form .form-privacy a { color: var(--ultra); }
+.form .form-status { font: 400 12.5px/1.5 var(--mono); color: var(--ink-2); margin: 0; }
+.form .form-status:empty { display: none; }
+.form .form-status.has-error { color: #b42318; }
+.ct-list a { color: var(--ultra); }
+.ct-list a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+/* Thank you: the painted door fills the screen */
+.final.full { min-height: max(560px, calc(100vh - 160px)); }

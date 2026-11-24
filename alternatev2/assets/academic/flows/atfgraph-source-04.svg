@@ -1,0 +1,85 @@
+<svg class="f" viewBox="0 0 1000 312" role="img" aria-label="Path of trip.plan as a tree and as a timing chart, plus the DAG it traces." width="1000" height="312" xmlns="http://www.w3.org/2000/svg">
+      <title>Path of trip.plan as a tree and as a timing chart, plus the DAG it traces.</title><defs>
+    <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#263837"/></marker>
+    <marker id="aha" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#376d69"/></marker>
+    <marker id="ahw" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#a37c3a"/></marker>
+    <marker id="ahg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#929b94"/></marker>
+    <pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="#fff"/><line x1="0" y1="0" x2="0" y2="6" stroke="#c9cacd" stroke-width="1.2"/></pattern>
+    <pattern id="hatchw" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="#fff"/><line x1="0" y1="0" x2="0" y2="6" stroke="#eab598" stroke-width="1.2"/></pattern>
+  </defs>
+<style>
+.f text{font-family:"DejaVu Sans Mono",monospace;font-size:11px;fill:#263837}
+.f .s{font-size:9.5px;fill:#68716c}
+.f .xs{font-size:8.5px;fill:#68716c}
+.f .h{font-size:9.5px;letter-spacing:.1em;font-weight:600}
+.f .hs{font-size:9px;letter-spacing:.12em;fill:#68716c}
+.f .serif{font-family:Georgia,serif;font-size:15px}
+.f .it{font-family:Georgia,serif;font-style:italic;font-size:13px}
+.f .b{font-weight:600}
+.f g.s text{font-size:9.5px;fill:#68716c}
+.f g.xs text{font-size:8.5px;fill:#68716c}
+.f g.hs text{font-size:9px;letter-spacing:.12em;fill:#68716c}
+.f .halo{paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+.f .w{fill:#fff}
+.f .ca{fill:#376d69} .f .cw{fill:#a37c3a} .f .cm{fill:#68716c} .f .cok{fill:#52735b}
+.f .ln{stroke:#263837;stroke-width:1;fill:none}
+.f .ln2{stroke:#263837;stroke-width:1.6;fill:none}
+.f .lt{stroke:#c4c5c9;stroke-width:.8;fill:none}
+.f .la{stroke:#376d69;stroke-width:1.3;fill:none}
+.f .lw{stroke:#a37c3a;stroke-width:1.3;fill:none}
+.f .dash{stroke-dasharray:3 3}
+.f .dot{stroke-dasharray:1 3;stroke-linecap:round}
+.f .box{fill:#fff;stroke:#263837;stroke-width:1}
+.f .boxp{fill:#eeede7;stroke:#263837;stroke-width:1}
+.f .boxa{fill:#e4ebe5;stroke:#376d69;stroke-width:1}
+.f .boxw{fill:#f0e9db;stroke:#a37c3a;stroke-width:1}
+.f .boxk{fill:#263837;stroke:#263837}
+.f .soft{fill:#eeede7;stroke:none}
+.f .hatch{fill:url(#hatch);stroke:#bcc5ba;stroke-width:.8}
+.f .pk{fill:#376d69} .f .pkw{fill:#a37c3a}
+.f .arr{marker-end:url(#ah)} .f .arra{marker-end:url(#aha)} .f .arrw{marker-end:url(#ahw)} .f .arrg{marker-end:url(#ahg)}
+.f .blink{animation:blink 1.6s steps(2,start) infinite}
+@keyframes blink{50%{opacity:.25}}
+.paused .f .blink{animation-play-state:paused}
+
+
+@media(prefers-reduced-motion:reduce){.blink{animation:none!important}.pk,.pkw,.playhead{display:none}}</style><text x="20" y="22" class="hs">(a) THE PATH · atfg path &lt;id&gt;</text>
+      <g>
+        <text x="20" y="52" class="b">1  trip.plan</text>
+        <text x="20" y="76">2  ├─ fares.search</text>
+        <text x="20" y="96">3  ├─ hotels.search</text>
+        <text x="20" y="116">4  ├─ weather.today</text>
+        <text x="20" y="140">5  ├─ trip.rank</text>
+        <text x="20" y="164">6  └─ fares.hold</text>
+      </g>
+      <g class="s"><text x="250" y="52">root · 1 attempt</text><text x="250" y="140">child of 1</text><text x="250" y="164">child of 1</text></g>
+      <path d="M232 70H240V120H232" class="la"/><text x="250" y="90" class="s" style="fill:#376d69">asyncio.gather</text><text x="250" y="102" class="s" style="fill:#376d69">three concurrent</text><text x="250" y="114" class="s" style="fill:#376d69">children</text>
+
+      <text x="440" y="22" class="hs">(b) THE SAME STEPS IN TIME · ms, illustrative</text>
+      <g class="lt"><path d="M440 186H960"/><path d="M440 182V190M570 182V190M700 182V190M830 182V190M960 182V190"/></g>
+      <g class="xs" text-anchor="middle"><text x="440" y="202">0</text><text x="570" y="202">100</text><text x="700" y="202">200</text><text x="830" y="202">300</text><text x="960" y="202">400</text></g>
+      <rect x="440" y="44" width="429" height="12" class="box"/>
+      <rect x="453" y="46" width="406" height="8" fill="url(#hatch)"/>
+      <rect x="453" y="68" width="182" height="11" class="boxk"/>
+      <rect x="453" y="88" width="260" height="11" class="boxk"/>
+      <rect x="453" y="108" width="78" height="11" class="boxk"/>
+      <rect x="720" y="132" width="32" height="11" class="boxk"/>
+      <rect x="759" y="156" width="104" height="11" class="boxk"/>
+      <g class="lt dash"><path d="M713 100V130"/><path d="M752 144V154"/></g>
+      <text x="869" y="38" class="s" text-anchor="end">parent: permit released while it waits</text>
+      <g class="s"><text x="453" y="35">level 1</text><text x="720" y="128">level 2</text><text x="759" y="176">level 3</text></g>
+
+      <text x="20" y="232" class="hs">(c) THE GRAPH IT TRACES</text>
+      <g>
+        <rect x="20" y="248" width="80" height="24" class="box"/><text x="60" y="264" text-anchor="middle">trip.plan</text>
+        <rect x="140" y="236" width="104" height="20" class="box"/><text x="192" y="250" text-anchor="middle" class="s" style="fill:#263837">fares.search</text>
+        <rect x="140" y="261" width="104" height="20" class="box"/><text x="192" y="275" text-anchor="middle" class="s" style="fill:#263837">hotels.search</text>
+        <rect x="140" y="286" width="104" height="20" class="box"/><text x="192" y="300" text-anchor="middle" class="s" style="fill:#263837">weather.today</text>
+        <rect x="280" y="252" width="80" height="24" class="box"/><text x="320" y="268" text-anchor="middle">trip.rank</text>
+        <rect x="400" y="252" width="84" height="24" class="box"/><text x="442" y="268" text-anchor="middle">fares.hold</text>
+      </g>
+      <g class="ln arr"><path d="M100 256L138 247"/><path d="M100 260L138 270"/><path d="M100 266L138 295"/><path d="M244 247L278 259"/><path d="M244 271H278"/><path d="M244 296L278 272"/><path d="M360 264H398"/></g>
+      <text x="530" y="252" class="it">Nothing declares this graph.</text>
+      <text x="530" y="270" class="s">It is the shape of await and gather in one handler;</text>
+      <text x="530" y="284" class="s">the server records it as it happens.</text>
+    </svg>
