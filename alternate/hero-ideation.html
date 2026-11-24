@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hero ideation · three directions | TravelLabs</title>
+<link rel="icon" href="assets/img/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/ideation.css">
+</head>
+<body>
+
+<header class="top"><div class="wrap">
+  <img src="assets/img/travellabs.png" alt="TravelLabs" width="301" height="66">
+  <span class="t">Hero ideation · three directions</span>
+  <nav aria-label="Jump to an option"><a href="#a">A · Painted</a><a href="#b">B · Board</a><a href="#c">C · Particles</a><a href="#pick">The pick</a></nav>
+</div></header>
+
+<main>
+<section class="intro"><div class="wrap">
+  <span class="kick">/ The homepage hero · ideation</span>
+  <h1>Three ways to say <em>what TravelLabs is</em> in five seconds.</h1>
+  <p>The current hero is a lovely painted coast, but it could belong to any travel brand. Each direction below is a working prototype, not a mock: scroll to it and it plays. All three keep the same headline and buttons, so you are judging the picture, not the words.</p>
+  <div class="brief">
+    <div><b>What the hero must say</b><span>An AI lab solving travel's hardest problems: prices that move by the minute, one trip across many businesses, real money at stake.</span></div>
+    <div><b>What it must show</b><span>Agents that act, wait and keep their word, with a person approving before money moves. ATFGraph, Keel and ATP, without a diagram.</span></div>
+    <div><b>What it must feel like</b><span>Curious, crafted and calm. A lab you trust with a real trip, not a hype reel.</span></div>
+  </div>
+</div></section>
+
+<!-- A -->
+<section class="opt" id="a"><div class="wrap">
+  <div class="opt-h">
+    <div class="l"><span class="tag"><i></i>Option A · inside the mcpx world</span><h2>Painted by agents.</h2><p>The painted scene stays, but now the agents paint it. Each small blue square is a job, like <code>fares.search</code> or <code>hotels.search</code>, laying down brush strokes inside a pencil sketch until the trip is complete. Then it stops and waits for you to approve.</p></div>
+  </div>
+  <div class="stage">
+    <div class="stage-bar"><i></i><i></i><i></i><span>travellabs · option A</span><button type="button" data-replay="a">Replay</button></div>
+    <div class="mini-nav"><img src="assets/img/travellabs.png" alt=""><span>Research</span><span>Papers</span><span>About us</span><span>Manifesto</span></div>
+    <div class="a-hero">
+      <div class="a-top">
+        <h3>Solving the hardest problems in travel with frontier AI.</h3>
+        <div class="side"><p>Agents plan, buy and look after a trip. A person approves before money moves. Then they keep watching.</p><div><a class="btn pri" href="#a">Explore the lab →</a> <a class="btn" href="#a">Read the papers</a></div></div>
+      </div>
+      <div class="a-frame" id="aFrame">
+        <canvas id="aCanvas" aria-label="Agents paint a coastal travel scene inside a pencil sketch, then wait for approval" role="img"></canvas>
+        <span class="a-cap">Plate 01 · painted by agents · drag to help</span>
+        <div class="a-ticket" aria-live="polite"><b><span>One brief · a durable job</span><span id="aPct">0%</span></b><div id="aJobs"></div><div class="bar"><i id="aBar"></i></div></div>
+        <div class="a-approve" id="aApprove"><span>Proposal ready.<br>A person approves.</span><button class="btn pri" type="button" id="aBtn">Approve ✓</button></div>
+      </div>
+    </div>
+  </div>
+  <p class="hint">Drag across the picture to paint alongside the agents. Approve when the trip is ready, and watch what happens after booking.</p>
+  <div class="notes">
+    <div><b>The idea</b><p>Agents make the trip, stroke by stroke. The picture is the output of the work, not decoration.</p></div>
+    <div><b>Why it's TravelLabs</b><ul><li>Parallel jobs (ATFGraph)</li><li>A pause for a person (ATP)</li><li>A watcher after booking (emitters)</li></ul></div>
+    <div><b>Strengths</b><ul><li>Keeps the painted look you already have</li><li>Interactive without needing explanation</li><li>Warm, human, crafted</li></ul></div>
+    <div><b>Trade-offs</b><ul><li>Takes about 12 seconds to tell the full story</li><li>The approval beat needs a click, or it autoplays</li></ul></div>
+  </div>
+</div></section>
+
+<!-- B -->
+<section class="opt" id="b"><div class="wrap">
+  <div class="opt-h">
+    <div class="l"><span class="tag mid"><i></i>Option B · mcpx, stretched to hero scale</span><h2>The departures board.</h2><p>Every traveller knows the clatter of a split-flap board. Here the headline flips in letter by letter. Then travel's hard problems arrive like departures, each one flipping from SEARCHING to its solved status. Every few seconds the board turns over to show the frameworks doing the work.</p></div>
+  </div>
+  <div class="stage">
+    <div class="stage-bar"><i></i><i></i><i></i><span>travellabs · option B</span><button type="button" data-replay="b">Replay</button></div>
+    <div class="mini-nav dark"><img src="assets/img/travellabs.png" alt=""><span>Research</span><span>Papers</span><span>About us</span><span>Manifesto</span></div>
+    <div class="b-hero" id="bHero" aria-label="A split-flap departures board spelling the TravelLabs headline and the problems it solves" role="img">
+      <div class="b-meta"><span>TravelLabs · an AI lab for travel</span><span id="bClock">--:--</span></div>
+      <div class="flaps b-head" id="bHead"></div>
+      <div class="b-rows">
+        <div class="b-cols"><span id="bC1">Problem</span><span id="bC2">In travel</span><span id="bC3">Status</span></div>
+        <div id="bRows"></div>
+      </div>
+      <div class="b-foot"><span class="who">Big questions. Real journeys.</span><span class="btns"><a class="btn pri" href="#b">Explore the lab →</a><a class="btn" href="#b">Read the papers</a></span></div>
+    </div>
+  </div>
+  <p class="hint">Hover a row to hold it. The board alternates between the problems and the frameworks that solve them.</p>
+  <div class="notes">
+    <div><b>The idea</b><p>Travel's own language, used as the interface. The headline is literally announced.</p></div>
+    <div><b>Why it's TravelLabs</b><ul><li>Names the hard problems out loud</li><li>Statuses show the promise: checked, approved, watching</li><li>Reuses the mcpx board, so it ties into the Papers page</li></ul></div>
+    <div><b>Strengths</b><ul><li>Instantly readable, even with no motion</li><li>Typographic, fast, very ownable</li><li>Light on code and performance</li></ul></div>
+    <div><b>Trade-offs</b><ul><li>Dark and dense, a mood shift from the paper pages</li><li>Could feel "airport" rather than "AI lab" if overused</li></ul></div>
+  </div>
+</div></section>
+
+<!-- C -->
+<section class="opt" id="c"><div class="wrap">
+  <div class="opt-h">
+    <div class="l"><span class="tag reb"><i></i>Option C · rebel, breaks the mcpx world</span><h2>One brief, every moving part.</h2><p>A traveller's brief appears, written in thousands of particles. It bursts into a living network: suppliers orbit an ATFGraph hub and agents stream between them. Every stream passes through the Keel gate and turns lime once checked. A person approves, and the particles settle into the headline. Move your cursor through it and the system makes way.</p></div>
+  </div>
+  <div class="stage">
+    <div class="stage-bar"><i></i><i></i><i></i><span>travellabs · option C</span><button type="button" data-replay="c">Replay</button></div>
+    <div class="mini-nav dark"><img src="assets/img/travellabs.png" alt=""><span>Research</span><span>Papers</span><span>About us</span><span>Manifesto</span></div>
+    <div class="c-hero" id="cHero">
+      <canvas id="cCanvas" aria-label="A traveller's brief made of particles becomes a network of suppliers, is checked and approved, and settles into the headline" role="img"></canvas>
+      <div class="c-chrome">
+        <div class="c-step"><span id="cStep"><b>01</b> · One brief</span><span class="c-dots" id="cDots"><i class="on"></i><i></i><i></i><i></i></span></div>
+        <div></div>
+        <div class="c-bottom"><p id="cCap">“Ten nights, an ocean-view suite, a short cruise and private tours.”</p><span class="btns"><a class="btn pri" href="#c">Explore the lab →</a><a class="btn" href="#c">Read the papers</a></span></div>
+      </div>
+    </div>
+  </div>
+  <p class="hint">Move your cursor through the particles. The full loop takes about 22 seconds: brief → many businesses → checked and approved → the headline.</p>
+  <div class="notes">
+    <div><b>The idea</b><p>Complexity, made visible and then resolved. The headline is the outcome of the work.</p></div>
+    <div><b>Why it's TravelLabs</b><ul><li>"One trip involves many businesses", shown literally</li><li>Keel as a gate that turns work lime</li><li>Approval before the trip comes together</li></ul></div>
+    <div><b>Strengths</b><ul><li>Feels like frontier AI, not a brochure</li><li>Memorable, shareable, very "lab"</li><li>Works full-bleed on any screen</li></ul></div>
+    <div><b>Trade-offs</b><ul><li>Breaks the paper and painted mcpx look</li><li>Heaviest to build and tune for slow phones</li><li>Needs a still fallback for reduced motion</li></ul></div>
+  </div>
+</div></section>
+
+<section class="cmp" id="pick"><div class="wrap">
+  <span class="kick">/ Side by side</span>
+  <h2>How they compare.</h2>
+  <table>
+    <thead><tr><th>&nbsp;</th><th>A · Painted by agents</th><th>B · Departures board</th><th>C · One brief, every moving part</th></tr></thead>
+    <tbody>
+      <tr><td>Says "AI lab" instantly</td><td><span class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span>Once you notice the agents</td><td><span class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>It's written on the board</td><td><span class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span>The whole hero is AI at work</td></tr>
+      <tr><td>Says "travel" instantly</td><td><span class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span>A coast, a plane, a sunset</td><td><span class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span>The most travel object there is</td><td><span class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span>Through the brief and the suppliers</td></tr>
+      <tr><td>Fits the current site</td><td><span class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span>Native mcpx</td><td><span class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>Echoes the Papers board</td><td><span class="meter"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span>A deliberate break</td></tr>
+      <tr><td>Memorability</td><td><span class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>Interactive painting</td><td><span class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i></i></span>The flip sound you can almost hear</td><td><span class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span>The "wow" option</td></tr>
+      <tr><td>Build and performance</td><td><span class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span>Canvas, light</td><td><span class="meter"><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i><i class="on"></i></span>Plain HTML, lightest</td><td><span class="meter"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></span>Particles, needs tuning</td></tr>
+    </tbody>
+  </table>
+  <div class="pick"><b>My pick</b><p><strong>A for the homepage, C as a launch moment.</strong> Painted by agents keeps the craft of the site you already love, and adds the one thing the current hero is missing: agents doing real work, then waiting for a person. C is the strongest "frontier AI" statement. I'd use it for the January launch, a keynote or the Research page hero, where a deliberate break from the paper world earns its place. B is the safest high-impact option if you want the headline to land in under two seconds.</p></div>
+</div></section>
+</main>
+
+<script src="assets/ideation.js"></script>
+</body>
+</html>
