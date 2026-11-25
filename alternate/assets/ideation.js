@@ -7,7 +7,7 @@
 
   /* ------------------------------------------------------------------ A */
   (() => {
-    const frame = document.getElementById('aFrame'); if (!frame) return;
+    const frame = document.getElementById('aFrame'); if (!frame || frame.hasAttribute('data-diffusion')) return;
     const paint = document.getElementById('aCanvas');
     const over = document.createElement('canvas'); over.setAttribute('aria-hidden', 'true'); frame.insertBefore(over, paint.nextSibling);
     const pc = paint.getContext('2d'), oc = over.getContext('2d');

@@ -22,6 +22,7 @@
 .hx.hx-vision .hx-top .btns{justify-self:start;flex-wrap:wrap;margin:0}
 @media(max-width:600px){.hx.hx-vision .hx-top{gap:20px}.hx.hx-vision .hx-top .h1{font-size:clamp(28px,7vw,38px)}}
 </style>
+<link rel="stylesheet" href="assets/diffusion.css">
 </head>
 <body data-page="home" id="top">
 <div data-header></div>
@@ -59,13 +60,18 @@
         </section>
 
         <!-- 02 · painted by agents -->
-        <section class="hc-slide" aria-roledescription="slide" aria-label="2 of 4 · Painted by agents">
-          <div class="a-frame" id="aFrame">
-            <canvas id="aCanvas" aria-label="Agents paint a coastal travel scene inside a pencil sketch, then wait for approval" role="img"></canvas>
-            <span class="a-cap">Plate 02 · painted by agents · drag to help</span>
-            <div class="a-ticket" aria-live="polite"><b><span>One brief · a durable job</span><span id="aPct">0%</span></b><div id="aJobs"></div><div class="bar"><i id="aBar"></i></div></div>
-            <div class="a-approve" id="aApprove"><span>Proposal ready.<br>A person approves.</span><button class="btn pri" type="button" id="aBtn">Approve ✓</button></div>
-          </div>
+        <section class="hc-slide" aria-roledescription="slide" aria-label="2 of 4 · Parallel refinement">
+          <div class="a-frame diffusion" id="aFrame" data-diffusion>
+  <div class="df-scene">
+    <canvas id="aCanvas" role="img" aria-label="A coastal painting resolves from visual noise through parallel refinement"></canvas>
+    <div class="df-head"><span>Plate 02 · From noise to a journey</span><span data-diffusion-status aria-live="polite">Refinement 01 / 08</span></div>
+  </div>
+  <div class="df-panel">
+    <div class="df-row"><span class="df-label">Parallel refinement</span><div class="df-tokens" data-parallel aria-label="A quieter coast. A better journey. Ready for review."><span aria-hidden="true">···</span><span aria-hidden="true">···</span><span aria-hidden="true">···</span><span aria-hidden="true">···</span><span aria-hidden="true">···</span><span aria-hidden="true">···</span><span aria-hidden="true">···</span><span aria-hidden="true">···</span><span aria-hidden="true">···</span></div></div>
+    <div class="df-row sequential"><span class="df-label">One token at a time</span><div class="df-tokens" data-sequential aria-label="A quieter coast. A better journey. Ready for review."><span aria-hidden="true">···</span><span aria-hidden="true">···</span><span aria-hidden="true">···</span><span aria-hidden="true">···</span><span aria-hidden="true">···</span><span aria-hidden="true">···</span><span aria-hidden="true">···</span><span aria-hidden="true">···</span><span aria-hidden="true">···</span></div></div>
+    <div class="df-footer"><span>Illustrative comparison</span><div class="df-progress" aria-hidden="true"><i data-diffusion-progress></i></div><div class="df-controls"><button type="button" data-diffusion-pause aria-pressed="false">Pause</button><button type="button" data-diffusion-replay>Replay ↻</button></div></div>
+  </div>
+</div>
         </section>
 
         <!-- 03 · the departures board -->
@@ -96,7 +102,7 @@
 
     <div class="hc-rail" role="tablist" aria-label="Hero scenes">
       <button type="button" role="tab" aria-selected="true"><b>01</b>Painted live<i></i></button>
-      <button type="button" role="tab" aria-selected="false" tabindex="-1"><b>02</b>Painted by agents<i></i></button>
+      <button type="button" role="tab" aria-selected="false" tabindex="-1"><b>02</b>Parallel refinement<i></i></button>
       <button type="button" role="tab" aria-selected="false" tabindex="-1"><b>03</b>Departures board<i></i></button>
       <button type="button" role="tab" aria-selected="false" tabindex="-1"><b>04</b>One brief, every part<i></i></button>
       <span class="hc-ctl"><button type="button" class="hc-arrow" data-dir="-1" aria-label="Previous scene">←</button><button type="button" class="hc-arrow" data-dir="1" aria-label="Next scene">→</button><button type="button" class="hc-pause" aria-pressed="false">Pause</button></span>
@@ -295,7 +301,8 @@
 </main>
 <div data-footer></div>
 <script src="assets/site.js"></script>
-<script src="assets/ideation.js"></script>
+<script src="assets/ideation.js?v=diffusion"></script>
+<script src="assets/diffusion.js"></script>
 <script src="assets/carousel.js"></script>
 <script src="assets/city.js"></script>
 <script>
