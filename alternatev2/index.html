@@ -14,16 +14,24 @@
 <link rel="stylesheet" href="assets/carousel.css">
 <link rel="stylesheet" href="assets/city.css">
 <style>.pcs.manifesto-cards{grid-template-columns:repeat(2,minmax(0,1fr))}@media(max-width:600px){.pcs.manifesto-cards{grid-template-columns:1fr}}</style>
+<style>
+/* The vision is the main hero statement, with room to wrap on every screen. */
+.hx.hx-vision .hx-top{grid-template-columns:minmax(0,1fr);grid-template-areas:none;gap:24px;align-items:start}
+.hx.hx-vision .hx-top .h1{max-width:none;white-space:normal;font-size:clamp(30px,4.4vw,60px);line-height:1.12;letter-spacing:-.035em;text-wrap:balance}
+.hx.hx-vision .hx-top .badge{line-height:1.4}
+.hx.hx-vision .hx-top .btns{justify-self:start;flex-wrap:wrap;margin:0}
+@media(max-width:600px){.hx.hx-vision .hx-top{gap:20px}.hx.hx-vision .hx-top .h1{font-size:clamp(28px,7vw,38px)}}
+</style>
 </head>
 <body data-page="home" id="top">
 <div data-header></div>
 <main>
 
-<section class="hx hc">
+<section class="hx hc hx-vision">
   <div class="wrap">
     <div class="hx-top" data-in>
-      <div style="display:grid;gap:18px"><span class="badge"><i>X</i>An AI Lab · For the world of travel</span><h1 class="h1">Solving the hardest problems <br class="hc-br">in travel with frontier AI.</h1></div>
-      <div style="display:grid;gap:22px;align-content:end"><div class="hero-vision"><span class="kick">Vision</span><p class="lead" style="margin:10px 0 0">We are one of the largest travel companies in the world, and TravelLabs is our R&amp;D division focused on solving the hardest problems in travel.</p></div><div class="btns"><a class="btn pri" href="research.html">Explore the research <span class="arr">→</span></a><a class="btn" href="papers.html">Read the papers</a></div></div>
+      <div style="display:grid;gap:18px"><span class="badge">THE AI LAB VISION</span><h1 class="h1">We are one of the largest travel companies in the world, and TravelLabs is our R&amp;D division focused on solving the hardest problems in travel.</h1></div>
+      <div style="display:grid;gap:22px;align-content:end"><div class="btns"><a class="btn pri" href="research.html">Explore the research <span class="arr">→</span></a><a class="btn" href="papers.html">Read the papers</a></div></div>
     </div>
 
     <div class="hc-frame" id="hc" aria-roledescription="carousel" aria-label="Four ways to see TravelLabs at work">
@@ -376,6 +384,8 @@
 </script>
 </body>
 </html>
+
+
 
 
 
