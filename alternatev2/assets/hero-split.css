@@ -1,33 +1,35 @@
-/* Match the text-left, illustration-right layout used by the inner pages. */
+/* MCPX layout: introduction above a wide framed painting. */
 .hx.hx-vision { padding: 0; }
-.hx.hx-vision > .wrap { display: grid; grid-template-columns: minmax(0,1.05fr) minmax(0,1fr); gap: 56px; align-items: center; padding-top: 80px; padding-bottom: 80px; }
-.hero-copy { display: grid; gap: 22px; min-width: 0; }
-.hero-copy .badge { justify-self: start; line-height: 1.4; }
-.hero-copy .h1 { margin: 0; max-width: none; font-size: clamp(30px,3.5vw,46px); line-height: 1.12; letter-spacing: -.035em; }
-.hx.hx-vision .hero-copy .btns { display: flex; flex-wrap: wrap; gap: 12px; margin: 4px 0 0; }
+.hx.hx-vision > .wrap { display: grid; grid-template-columns: minmax(0,1fr); gap: 40px; padding-top: 48px; padding-bottom: 64px; }
+.hero-copy { display: grid; grid-template-columns: minmax(0,1.5fr) minmax(0,1fr); grid-template-areas: "label label" "headline actions"; gap: 24px 56px; align-items: end; min-width: 0; }
+.hero-copy .badge { grid-area: label; justify-self: start; line-height: 1.4; }
+.hero-copy .h1 { grid-area: headline; margin: 0; max-width: none; font-size: clamp(30px,3.5vw,46px); line-height: 1.12; letter-spacing: -.035em; }
+.hx.hx-vision .hero-copy .btns { grid-area: actions; display: flex; flex-wrap: wrap; gap: 12px; margin: 0 0 4px; }
 .hero-media { width: 100%; min-width: 0; }
 .hero-media .hx-frame, .hero-media .hc-frame { margin: 0; border: 1.5px solid var(--ink); box-shadow: 8px 8px 0 var(--ultra); }
-.hero-media .hx-frame, .hero-media .hc-slide { height: 440px; min-height: 0; }
-.hero-media .hx-cap { flex-direction: column; font-size: 9px; gap: 4px; }
-.hero-media .hc-rail { margin-top: 16px; border: 1.5px solid var(--ink); grid-template-columns: repeat(4,minmax(0,1fr)); }
-.hero-media .hc-rail [role="tab"] { padding: 9px 8px 11px; font-size: 9px; line-height: 1.35; letter-spacing: 0; }
+.hero-media .hx-frame, .hero-media .hc-slide { height: clamp(380px,42vw,560px); min-height: 0; }
+.hero-media .hx-cap { flex-direction: row; font-size: 11px; gap: 16px; }
+.hero-media .hc-rail { margin-top: 16px; border: 1.5px solid var(--ink); grid-template-columns: repeat(4,minmax(0,1fr)) auto; }
+.hero-media .hc-rail [role="tab"] { padding: 9px 16px 11px; font-size: 10px; line-height: 1.35; letter-spacing: 0; }
 .hero-media .hc-rail [role="tab"] b { margin-bottom: 3px; font-size: 10px; }
-.hero-media .hc-ctl { grid-column: 1 / -1; border-top: 1px solid var(--line-2); border-left: 0; }
-.hero-media .hc-ctl button { flex: 1; height: 34px; font-size: 10px; }
+.hero-media .hc-ctl { grid-column: auto; border-top: 0; border-left: 1px solid var(--line-2); }
+.hero-media .hc-ctl button { height: auto; font-size: 10px; }
 .hero-media .hc-cards { max-width: calc(100% - 36px); }
-.hero-media .a-ticket { left: 12px; bottom: 14px; width: 240px; max-width: calc(100% - 24px); padding: 10px 12px; font-size: 10.5px; }
-.hero-media .a-ticket b { font-size: 9px; }
-.hero-media .a-cap { top: 12px; right: 12px; max-width: calc(100% - 24px); font-size: 8px; line-height: 1.4; }
-.hero-media .a-approve { top: 58px; right: 12px; bottom: auto; max-width: calc(100% - 24px); padding: 9px 10px; font-size: 11px; gap: 8px; }
-.hero-media .a-approve .btn { font-size: 10px; height: 36px; padding: 0 12px; }
 .hero-copy .hero-highlight { background: linear-gradient(transparent 62%, var(--lime) 62%, var(--lime) 92%, transparent 92%); padding: 0 .08em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
 @media (max-width: 900px) {
-  .hx.hx-vision > .wrap { grid-template-columns: minmax(0,1fr); gap: 40px; padding-top: 48px; padding-bottom: 48px; }
+  .hero-copy { grid-template-columns: minmax(0,1fr); grid-template-areas: "label" "headline" "actions"; gap: 22px; }
+  .hero-media .hc-rail { grid-template-columns: repeat(4,minmax(0,1fr)); }
+  .hero-media .hc-ctl { grid-column: 1 / -1; border-top: 1px solid var(--line-2); border-left: 0; }
+  .hero-media .hc-ctl button { flex: 1; height: 34px; }
 }
 @media (max-width: 600px) {
   .hx.hx-vision > .wrap { padding-top: 32px; padding-bottom: 40px; gap: 28px; }
   .hero-media .hx-frame { height: 360px; }
   .hero-media .hc-slide { height: 420px; }
-  .hero-media .hc-rail [role="tab"] { font-size: 8px; }
+  .hero-media .hx-cap { flex-direction: column; gap: 4px; font-size: 9px; }
+  .hero-media .hc-rail [role="tab"] { font-size: 8px; padding: 9px 6px; }
   .hero-media .hx-ticket { left: 12px; width: calc(100% - 24px); max-width: 290px; bottom: 64px; font-size: 11px; }
+  .hero-media .a-cap { top: 12px; right: 12px; max-width: calc(100% - 24px); font-size: 8px; line-height: 1.4; }
+  .hero-media .a-approve { top: 58px; right: 12px; bottom: auto; max-width: calc(100% - 24px); padding: 9px 10px; font-size: 11px; gap: 8px; }
+  .hero-media .a-approve .btn { font-size: 10px; height: 36px; padding: 0 12px; }
 }
