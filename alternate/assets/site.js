@@ -47,7 +47,7 @@
 
   /* ---------- header + footer ---------- */
   const NX = "";
-  const NAV = [[NX + "research.html", "Research", "spark", "Frameworks, Leisure AI and what’s next"], [NX + "papers.html", "Papers", "book", "Ideas, made inspectable"], [NX + "about.html", "About us", "team", "Curious minds. Shared purpose."], [NX + "manifesto.html", "Manifesto", "stack", "The principles that guide us"]];
+  const NAV = [[NX + "research.html", "Research Projects", "spark", "Frameworks, Leisure AI and what’s next"], [NX + "papers.html", "Papers", "book", "Ideas, made inspectable"], [NX + "about.html", "About us", "team", "Curious minds. Shared purpose."], [NX + "manifesto.html", "Manifesto", "stack", "The principles that guide us"]];
   const page = document.body.dataset.page || "";
   const LOGO = `<a class="logo tl-logo" href="index.html" aria-label="TravelLabs home"><img src="assets/img/travellabs.png" alt="TravelLabs" width="301" height="66"></a>`;
   const header = `
@@ -70,7 +70,7 @@
       </div>
       <div class="f-top">
         <div class="f-brand">${LOGO}<p>An AI Lab. Solving the hardest problems in travel with frontier AI.</p><a class="link" href="${NX}contact.html">Start a conversation →</a></div>
-        <div><h6>Research</h6><ul><li><a href="${NX}research.html#frameworks">Frameworks</a></li><li><a href="${NX}research.html#built">Leisure AI</a></li><li><a href="${NX}research.html#next">What’s next</a></li></ul></div>
+        <div><h6>Research Projects</h6><ul><li><a href="${NX}research.html#frameworks">Frameworks</a></li><li><a href="${NX}research.html#built">Leisure AI</a></li><li><a href="${NX}research.html#next">What’s next</a></li></ul></div>
         <div><h6>Papers</h6><ul><li><a href="${NX}paper-atfgraph.html">ATFGraph</a></li><li><a href="${NX}paper-keel.html">Keel</a></li><li><a href="${NX}paper-atp.html">ATP</a></li><li><a href="${NX}papers.html">All papers</a></li></ul></div>
         <div><h6>About us</h6><ul><li><a href="${NX}about.html">About us</a></li><li><a href="${NX}manifesto.html">Manifesto</a></li><li><a href="${NX}careers.html">Careers</a></li></ul></div>
         <div><h6>Get in touch</h6><ul><li><a href="${NX}contact.html">Contact</a></li><li><a href="#top">Back to top</a></li></ul></div>
@@ -679,3 +679,4 @@
     if (!REDUCE) setInterval(() => { const r = $$('.dep-r', grid); if (!r.length) return; const el = r[Math.floor(Math.random() * Math.min(r.length, 12))]; el.classList.remove('flip'); void el.offsetWidth; el.classList.add('flip'); }, 1400);
   };
 })();
+
