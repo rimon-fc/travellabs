@@ -1,9 +1,9 @@
 /* MCPX layout: introduction above a wide framed painting. */
 .hx.hx-vision { padding: 0; }
 .hx.hx-vision > .wrap { display: grid; grid-template-columns: minmax(0,1fr); gap: 40px; padding-top: 48px; padding-bottom: 64px; }
-.hero-copy { display: grid; grid-template-columns: minmax(0,1.5fr) minmax(0,1fr); grid-template-areas: "label label" "headline actions"; gap: 24px 56px; align-items: end; min-width: 0; }
+.hero-copy { display: grid; grid-template-columns: minmax(0,1.1fr) minmax(0,1fr); grid-template-areas: "label label" "headline description" "headline actions"; gap: 24px 56px; align-items: start; min-width: 0; }
 .hero-copy .badge { grid-area: label; justify-self: start; line-height: 1.4; }
-.hero-copy .h1 { grid-area: headline; margin: 0; max-width: none; font-size: clamp(30px,3.5vw,46px); line-height: 1.12; letter-spacing: -.035em; }
+.hero-copy .h1 { grid-area: headline; margin: 0; max-width: none; font-size: clamp(38px,4.6vw,62px); line-height: 1.05; letter-spacing: -.035em; }
 .hx.hx-vision .hero-copy .btns { grid-area: actions; display: flex; flex-wrap: wrap; gap: 12px; margin: 0 0 4px; }
 .hero-media { width: 100%; min-width: 0; }
 .hero-media .hx-frame, .hero-media .hc-frame { margin: 0; border: 1.5px solid var(--ink); box-shadow: 8px 8px 0 var(--ultra); }
@@ -17,7 +17,7 @@
 .hero-media .hc-cards { max-width: calc(100% - 36px); }
 .hero-copy .hero-highlight { background: linear-gradient(transparent 62%, var(--lime) 62%, var(--lime) 92%, transparent 92%); padding: 0 .08em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
 @media (max-width: 900px) {
-  .hero-copy { grid-template-columns: minmax(0,1fr); grid-template-areas: "label" "headline" "actions"; gap: 22px; }
+  .hero-copy { grid-template-columns: minmax(0,1fr); grid-template-areas: "label" "headline" "description" "actions"; gap: 22px; }
   .hero-media .hc-rail { grid-template-columns: repeat(4,minmax(0,1fr)); }
   .hero-media .hc-ctl { grid-column: 1 / -1; border-top: 1px solid var(--line-2); border-left: 0; }
   .hero-media .hc-ctl button { flex: 1; height: 34px; }
@@ -33,3 +33,6 @@
   .hero-media .a-approve { top: 58px; right: 12px; bottom: auto; max-width: calc(100% - 24px); padding: 9px 10px; font-size: 11px; gap: 8px; }
   .hero-media .a-approve .btn { font-size: 10px; height: 36px; padding: 0 12px; }
 }
+
+.hero-copy .hero-description { grid-area: description; margin: 0; font: 400 15px/1.65 var(--mono); color: var(--ink-2); }
+@media (max-width: 600px) { .hero-copy .hero-description { font-size: 14px; } }
