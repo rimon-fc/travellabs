@@ -219,21 +219,21 @@
 @media (max-width: 760px) { .rm-path { grid-template-columns: 1fr; } }
 
 /* MCPX layout: headline left, supporting copy right, wide painting below. */
-.research-hero .wrap { display: grid; grid-template-columns: minmax(0,1fr); gap: 40px; padding-top: 48px; padding-bottom: 64px; }
-.research-hero .phero-c { display: grid; grid-template-columns: minmax(0,1.1fr) minmax(0,1fr); grid-template-areas: "label label" "headline description" "headline actions"; gap: 24px 56px; align-items: start; min-width: 0; }
+.research-hero .wrap { display: grid; grid-template-columns: minmax(0,1fr); gap: 24px; padding-top: 20px; padding-bottom: 28px; }
+.research-hero .phero-c { display: grid; grid-template-columns: minmax(0,1.1fr) minmax(0,1fr); grid-template-areas: "label label" "headline description" "headline actions"; grid-template-rows: auto auto 1fr; gap: 18px 56px; align-items: start; min-width: 0; }
 .research-hero .kick { grid-area: label; }
-.research-hero .h1 { grid-area: headline; margin: 0; font-size: clamp(38px,4.6vw,62px); line-height: 1.05; max-width: none; text-wrap: balance; }
+.research-hero .h1 { grid-area: headline; margin: 0; font-size: clamp(34px,4vw,52px); line-height: 1.05; max-width: none; text-wrap: balance; }
 .research-hero .lead { grid-area: description; margin: 0; font-size: 15px; line-height: 1.65; }
 .research-hero .btns { grid-area: actions; flex-wrap: wrap; margin: 0; }
-.research-hero .phero-art { height: clamp(380px,42vw,560px); min-width: 0; }
+.research-hero .phero-art { height: clamp(240px,calc(100svh - 480px),340px); min-width: 0; }
 .research-hero .phero-art canvas { position: absolute; inset: 0; }
 .research-hero .hx-cap { font-size: 11px; }
 @media (max-width: 900px) {
-  .research-hero .phero-c { grid-template-columns: minmax(0,1fr); grid-template-areas: "label" "headline" "description" "actions"; gap: 22px; }
+  .research-hero .phero-c { grid-template-columns: minmax(0,1fr); grid-template-areas: "label" "headline" "description" "actions"; grid-template-rows: none; gap: 18px; }
 }
 @media (max-width: 600px) {
-  .research-hero .wrap { padding-top: 32px; padding-bottom: 40px; gap: 28px; }
-  .research-hero .phero-art { height: 320px; }
+  .research-hero .wrap { padding-top: 20px; padding-bottom: 28px; gap: 24px; }
+  .research-hero .phero-art { height: 280px; }
   .research-hero .lead { font-size: 14px; }
   .research-hero .hx-cap { font-size: 9px; gap: 4px; }
 }
