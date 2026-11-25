@@ -7,7 +7,7 @@
 .hx.hx-vision .hero-copy .btns { grid-area: actions; display: flex; flex-wrap: wrap; gap: 12px; margin: 0 0 4px; }
 .hero-media { width: 100%; min-width: 0; }
 .hero-media .hx-frame, .hero-media .hc-frame { margin: 0; border: 1.5px solid var(--ink); box-shadow: 8px 8px 0 var(--ultra); }
-.hero-media .hx-frame, .hero-media .hc-slide { height: clamp(260px,calc(100svh - 450px),360px); min-height: 0; }
+.hero-media .hx-frame, .hero-media .hc-slide { height: clamp(360px,36vw,480px); min-height: 0; }
 .hero-media .hx-cap { flex-direction: row; font-size: 11px; gap: 16px; }
 .hero-media .hc-rail { margin-top: 12px; border: 1.5px solid var(--ink); grid-template-columns: repeat(4,minmax(0,1fr)) auto; }
 .hero-media .hc-rail [role="tab"] { padding: 9px 16px 11px; font-size: 10px; line-height: 1.35; letter-spacing: 0; }
@@ -24,8 +24,8 @@
 }
 @media (max-width: 600px) {
   .hx.hx-vision > .wrap { padding-top: 20px; padding-bottom: 28px; gap: 24px; }
-  .hero-media .hx-frame { height: 300px; }
-  .hero-media .hc-slide { height: 340px; }
+  .hero-media .hx-frame { height: 360px; }
+  .hero-media .hc-slide { height: 380px; }
   .hero-media .hx-cap { flex-direction: column; gap: 4px; font-size: 9px; }
   .hero-media .hc-rail [role="tab"] { font-size: 8px; padding: 9px 6px; }
   .hero-media .hx-ticket { left: 12px; width: calc(100% - 24px); max-width: 290px; bottom: 64px; font-size: 11px; }
