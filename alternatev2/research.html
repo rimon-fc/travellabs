@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Research | TravelLabs</title>
-<meta name="description" content="Research that goes places. Tools, working products and the questions we’re exploring next.">
+<meta name="description" content="We research. We build. We create new businesses. We turn AI research into real-world products, tools, platforms and new commercial opportunities. From Co-Consult, AIBQ and IQR to the next generation of travel technologies, our focus is on delivering measurable business value and creating new revenue streams.">
 <link rel="icon" href="assets/img/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="assets/tl.css">
 <link rel="stylesheet" href="assets/impact.css">
 <link rel="stylesheet" href="assets/research.css">
+<link rel="stylesheet" href="assets/ambient.css">
 </head>
 <body data-page="research" id="top">
 <div data-header></div>
@@ -19,7 +20,7 @@
 
 <section class="phero">
   <div class="wrap">
-    <div class="phero-c" data-in><span class="kick">/ <b>Inside the lab</b></span><h1 class="h1" style="font-size:clamp(38px,4.6vw,62px)">Research that goes places.</h1><p class="lead">Tools, working products and the questions we’re exploring next.</p><div class="btns"><a class="btn pri" href="#built">Leisure AI <span class="arr">→</span></a><a class="btn" href="#frameworks">Frameworks</a><a class="btn" href="#next">What’s next</a><a class="btn" href="papers.html">Papers</a></div></div>
+    <div class="phero-c" data-in><span class="kick">/ <b>Inside the lab</b></span><h1 class="h1" style="font-size:clamp(38px,4.6vw,62px)">We research. We build. We create new businesses.</h1><p class="lead">We turn AI research into real-world products, tools, platforms and new commercial opportunities. From Co-Consult, AIBQ and IQR to the next generation of travel technologies, our focus is on delivering measurable business value and creating new revenue streams.</p><div class="btns"><a class="btn pri" href="#built">Leisure AI <span class="arr">→</span></a><a class="btn" href="#next">Current R&amp;D</a><a class="btn" href="#frameworks">Foundations</a><a class="btn" href="papers.html">Papers</a></div></div>
     <div class="phero-art" data-in><canvas class="art" data-art="snow" aria-hidden="true"></canvas><div class="hx-cap"><span>Build what’s next.</span><span>Make it work for travel</span></div></div>
   </div>
 </section>
@@ -234,6 +235,115 @@
   </div>
 </section>
 
+<section class="sec" id="next" style="padding-top:0;padding-bottom:56px">
+  <div class="wrap"><div class="sec-h" data-in style="margin-bottom:0"><span class="kick">/ Current research &amp; development</span><h2 class="h2">The problems we are actively working to solve.</h2><p class="lead">New experiences. Focused models. Ideas to test, thoughtfully.</p></div></div>
+</section>
+
+<section class="sec" id="ambient-ai" style="padding-top:0">
+  <div class="wrap">
+    <div class="ambient-intro" data-in>
+      <div><span class="kick">/ Ambient AI · Current research</span><h2 class="h2">Already working.<br>Before you ask.</h2></div>
+      <p class="lead">One personal AI agent for every consultant. It notices new enquiries, remembers customer context and prepares the groundwork, then keeps watching for the next useful moment. The consultant stays in control.</p>
+    </div>
+    <div class="ambient-demo" data-ambient aria-label="Ambient Co-Consult: an illustrative five-stage workflow">
+      <div class="ambient-bar"><span class="ambient-status">Ambient Co-Consult / one personal agent</span><button class="ambient-pause" type="button" aria-pressed="false">Pause example</button></div>
+      <div class="ambient-stage">
+        <aside class="ambient-memory" aria-label="Example customer context">
+          <span class="ambient-tiny">The person, remembered</span>
+          <strong class="ambient-name">Maya’s next trip.</strong>
+          <p>A family of four.<br>Ten nights in Japan.</p>
+          <ul><li>Walkable hotels.</li><li>Room for the children.</li><li>Loved Kyoto last time.</li></ul>
+          <small>From the systems you already use. ↗</small>
+        </aside>
+        <div class="ambient-agent" aria-hidden="true">
+          <svg viewBox="0 0 100 100" fill="none"><path d="M13 33Q23 5 54 9T93 43Q97 81 63 92T9 61Z" fill="#d7ff3c" stroke="#2b2a2e" stroke-width="1.6"/><path d="M18 35Q28 12 54 16T86 46Q90 75 61 85T16 59Z" fill="#2a3bff" stroke="#2b2a2e" stroke-width="1.6"/><g stroke="#fffdf6" stroke-width="2.5" stroke-linecap="round"><path d="M50 29L51 71M30 50L72 51M35 35L66 67M66 35L35 67"/></g><circle cx="51" cy="51" r="6" fill="#d7ff3c" stroke="#2b2a2e" stroke-width="1.5"/><path d="M5 13L10 17M88 88L95 94M84 6L82 13" stroke="#2a3bff" stroke-width="2"/></svg>
+          <span class="ambient-tiny">Your agent<br>always attentive</span>
+        </div>
+        <div class="ambient-panels">
+          <div class="ambient-panel ambient-mail" id="ambient-panel-0">
+            <span class="ambient-tiny">01 / An enquiry arrives · 06:42</span>
+            <h4>“Could we go back to Japan?”</h4>
+            <p class="ambient-hand">Ten nights with the children.<br>We loved Kyoto last time.<br>What would you suggest?</p>
+            <p>A new customer enquiry is noticed without a fresh prompt.</p>
+            <span class="ambient-tag">Enquiry detected → work begins</span>
+          </div>
+          <div class="ambient-panel" id="ambient-panel-1" hidden>
+            <span class="ambient-tiny">02 / The context comes together</span>
+            <h4>It remembers what matters.</h4>
+            <div class="ambient-context"><span><b>CRM</b>Maya · family of four</span><span><b>Past trips</b>Kyoto and Osaka</span><span><b>Preferences</b>Walkable stays · family-friendly</span></div>
+            <p class="ambient-hand">Start with the person.<br>Not another blank page.</p>
+          </div>
+          <div class="ambient-panel" id="ambient-panel-2" hidden>
+            <span class="ambient-tiny">03 / The groundwork, in the background</span>
+            <h4>A trip shaped around Maya.</h4>
+            <div class="ambient-research"><div><b>Flights</b><span>Family-friendly timings<br>✓ Options compared</span></div><div><b>Stays</b><span>Close to city transport<br>✓ Shortlist prepared</span></div><div><b>Explore</b><span>Culture + family days<br>✓ Ideas matched</span></div></div>
+            <p class="ambient-hand">Research. Compare. Bring it together.</p>
+          </div>
+          <div class="ambient-panel" id="ambient-panel-3" hidden>
+            <span class="ambient-tiny">04 / Prepared for your review</span>
+            <h4>Japan, their way.</h4>
+            <svg class="ambient-landscape" viewBox="0 0 440 80" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><path d="M0 65L80 12L139 57L199 20L272 65L355 23L440 66V80H0Z" fill="#b9a8ea" stroke="#2b2a2e" stroke-width="1.5"/><path d="M0 71Q120 44 221 69T440 62V80H0Z" fill="#69a883" stroke="#2b2a2e" stroke-width="1.5"/><circle cx="320" cy="18" r="11" fill="#f5c451"/><path d="M197 72V37H237V72M190 37L216 21L244 37ZM191 48H244M203 70V56H216V70" fill="#fbf7ee" stroke="#2b2a2e" stroke-width="1.5"/></svg>
+            <p>Flights, stays and experiences in one tailored draft.</p>
+            <span class="ambient-tag">Consultant review → approve what gets sent</span>
+          </div>
+          <div class="ambient-panel" id="ambient-panel-4" hidden>
+            <span class="ambient-tiny">05 / The next useful moment</span>
+            <h4>Still looking after the journey.</h4>
+            <ul class="ambient-watch"><li><time>09:10</time><span><b>Follow-up due</b>A thoughtful draft, ready to review.</span></li><li><time>14:25</time><span><b>A hotel rate changes</b>A better-value option is flagged.</span></li><li><time>20:15</time><span><b>Maya replies</b>The next response is prepared.</span></li></ul>
+          </div>
+        </div>
+      </div>
+      <div class="ambient-caption"><strong data-ambient-number>01 / 05</strong><p data-ambient-caption>The enquiry arrives. Your agent notices first.</p></div>
+      <div class="ambient-steps" role="group" aria-label="Explore the Ambient AI example">
+        <button type="button" data-ambient-step aria-pressed="true" aria-controls="ambient-panel-0"><span>01</span>Notice</button>
+        <button type="button" data-ambient-step aria-pressed="false" aria-controls="ambient-panel-1"><span>02</span>Remember</button>
+        <button type="button" data-ambient-step aria-pressed="false" aria-controls="ambient-panel-2"><span>03</span>Prepare</button>
+        <button type="button" data-ambient-step aria-pressed="false" aria-controls="ambient-panel-3"><span>04</span>Review</button>
+        <button type="button" data-ambient-step aria-pressed="false" aria-controls="ambient-panel-4"><span>05</span>Keep watch</button>
+      </div>
+    </div>
+    <div class="ambient-foot"><span>Research concept · illustrative example</span><span>Approved context. Private workspaces. Human decisions where they matter.</span></div>
+  </div>
+</section>
+
+<section class="sec" id="model-roadmap" style="padding-top:0">
+  <div class="wrap">
+    <div class="caps-h" data-in><div style="display:grid;gap:16px"><span class="kick">/ Research roadmap</span><h2 class="h2">Frontier AI Models for Travel.</h2></div><div style="display:grid;gap:12px"><p class="lead">Learn from expert travel decisions. Build models that judge quality, spot risks and choose better options.</p><p class="lead">Prove them in a sandbox, then with consultants, before scaling.</p></div></div>
+    <div class="rm-h" data-in><b>Many possibilities. A more considered path.</b><span>How we plan to build better travel models · <em>8 research capabilities</em></span></div>
+    <div class="dep rm-board" id="rmBoard" data-in>
+      <div class="dep-h">
+        <span class="t">Frontier AI Models for Travel</span>
+        <label class="dep-s"><i class="px" data-px="search"></i><input type="search" placeholder="Search capabilities" aria-label="Search research capabilities"></label>
+        <div class="dep-f" aria-label="Filter by priority"></div>
+      </div>
+      <div class="dep-cols" aria-hidden="true"><span>No.</span><span>Capability</span><span>Priority</span><span></span><span>Path</span></div>
+      <div class="dep-g"></div>
+      <div class="dep-n"></div>
+    </div>
+    <div class="tl rs-tl rm-path" data-in>
+      <div><span>01 · Sandbox</span><b>Prove them in a sandbox,</b><p>Practise multi-step decisions in a test environment.</p></div>
+      <div><span>02 · Consultants</span><b>then with consultants,</b><p>Check safety and value in limited real use.</p></div>
+      <div><span>03 · Scale</span><b>before scaling.</b><p>Transfer proven behaviour to smaller, faster models.</p></div>
+    </div>
+    <p class="fine rm-note" data-in>Planned research, not completed training. Training changes a model’s learned parameters; a controlled trial evaluates its behaviour.</p>
+  </div>
+</section>
+
+<section class="sec pcs-sec">
+  <div class="wrap">
+    <div class="sec-h center" data-in><span class="kick">/ Concepts, research and upcoming work</span><h2 class="h2">Ideas to test, thoughtfully.</h2></div>
+    <div class="pcs" data-in>
+      <article class="pc"><div class="pc-art"><canvas class="art nx-art" data-m="1" data-next="tms" aria-hidden="true"></canvas><span class="stamp">Research</span></div><p class="hand">Agentic TMS</p><p>A personal agent that remembers each client, plans trips, books on approval and keeps watch after booking. Enquiries, changes and refunds keep moving; decisions that spend money wait for a person.</p></article>
+      <article class="pc"><div class="pc-art"><canvas class="art nx-art" data-m="1" data-next="canvas" aria-hidden="true"></canvas><span class="stamp">Concept</span></div><p class="hand">Travel Canvas</p><p>A shared board for itineraries, stays and trade-offs. Keep the whole trip visible while consultants and travellers plan together.</p></article>
+      
+      <article class="pc"><div class="pc-art"><canvas class="art nx-art" data-m="1" data-next="models" aria-hidden="true"></canvas><span class="stamp">Research roadmap</span></div><p class="hand">Proprietary travel models</p><p>Use consultant choices, preferences and booking outcomes to improve ranking, recommendations and the next best step.</p></article>
+      <article class="pc"><div class="pc-art"><canvas class="art nx-art" data-m="1" data-next="payments" aria-hidden="true"></canvas><span class="stamp">Research</span></div><p class="hand">Agentic payments</p><p>Tie each payment to the traveller’s permission, the booking and a clear record of what happened.</p></article>
+      
+    </div>
+    <p class="fine pcs-note" data-in>Concepts, research and upcoming work. These describe direction, not confirmed launches.</p>
+  </div>
+</section>
+
 <section class="sec" id="frameworks">
   <div class="wrap">
     <div class="sec-h" data-in><span class="kick">/ The foundations</span><h2 class="h2">The infrastructure behind intelligent travel.</h2><p class="lead">Infrastructure for travel agents that can act, wait and keep looking after a trip. ATFGraph runs the work over time. Keel connects it to travel tools, transaction rules and controlled payments.</p></div>
@@ -328,51 +438,6 @@
         <div class="pot-tot"><div><span>Your travel agents</span><b>One foundation.</b><em>Open foundations.</em></div><div><span>Shadow mode first</span><b>Then live.</b><em>Human approvals and shadow mode make long-running work inspectable.</em></div></div>
       </div>
     </div>
-  </div>
-</section>
-
-<section class="sec" id="next" style="padding-top:0">
-  <div class="wrap split">
-    <div class="sk-panel" data-in><canvas class="art" data-art="sk-voice" aria-hidden="true"></canvas></div>
-    <div data-in style="display:grid;gap:18px"><span class="kick">/ What we’re working on</span><h2 class="h2">The next questions worth answering.</h2><p class="lead">New experiences. Focused models. Ideas to test, thoughtfully.</p><div class="btns"><a class="btn" href="#model-roadmap">Explore the research <span class="arr">↓</span></a></div></div>
-  </div>
-</section>
-
-<section class="sec" id="model-roadmap" style="padding-top:0">
-  <div class="wrap">
-    <div class="caps-h" data-in><div style="display:grid;gap:16px"><span class="kick">/ Research roadmap</span><h2 class="h2">Frontier AI Models for Travel.</h2></div><div style="display:grid;gap:12px"><p class="lead">Learn from expert travel decisions. Build models that judge quality, spot risks and choose better options.</p><p class="lead">Prove them in a sandbox, then with consultants, before scaling.</p></div></div>
-    <div class="rm-h" data-in><b>Many possibilities. A more considered path.</b><span>How we plan to build better travel models · <em>8 research capabilities</em></span></div>
-    <div class="dep rm-board" id="rmBoard" data-in>
-      <div class="dep-h">
-        <span class="t">Frontier AI Models for Travel</span>
-        <label class="dep-s"><i class="px" data-px="search"></i><input type="search" placeholder="Search capabilities" aria-label="Search research capabilities"></label>
-        <div class="dep-f" aria-label="Filter by priority"></div>
-      </div>
-      <div class="dep-cols" aria-hidden="true"><span>No.</span><span>Capability</span><span>Priority</span><span></span><span>Path</span></div>
-      <div class="dep-g"></div>
-      <div class="dep-n"></div>
-    </div>
-    <div class="tl rs-tl rm-path" data-in>
-      <div><span>01 · Sandbox</span><b>Prove them in a sandbox,</b><p>Practise multi-step decisions in a test environment.</p></div>
-      <div><span>02 · Consultants</span><b>then with consultants,</b><p>Check safety and value in limited real use.</p></div>
-      <div><span>03 · Scale</span><b>before scaling.</b><p>Transfer proven behaviour to smaller, faster models.</p></div>
-    </div>
-    <p class="fine rm-note" data-in>Planned research, not completed training. Training changes a model’s learned parameters; a controlled trial evaluates its behaviour.</p>
-  </div>
-</section>
-
-<section class="sec pcs-sec">
-  <div class="wrap">
-    <div class="sec-h center" data-in><span class="kick">/ Concepts, research and upcoming work</span><h2 class="h2">Ideas to test, thoughtfully.</h2></div>
-    <div class="pcs" data-in>
-      <article class="pc"><div class="pc-art"><canvas class="art nx-art" data-m="1" data-next="tms" aria-hidden="true"></canvas><span class="stamp">Research</span></div><p class="hand">Agentic TMS</p><p>A personal agent that remembers each client, plans trips, books on approval and keeps watch after booking. Enquiries, changes and refunds keep moving; decisions that spend money wait for a person.</p></article>
-      <article class="pc"><div class="pc-art"><canvas class="art nx-art" data-m="1" data-next="canvas" aria-hidden="true"></canvas><span class="stamp">Concept</span></div><p class="hand">Travel Canvas</p><p>A shared board for itineraries, stays and trade-offs. Keep the whole trip visible while consultants and travellers plan together.</p></article>
-      
-      <article class="pc"><div class="pc-art"><canvas class="art nx-art" data-m="1" data-next="models" aria-hidden="true"></canvas><span class="stamp">Research roadmap</span></div><p class="hand">Proprietary travel models</p><p>Use consultant choices, preferences and booking outcomes to improve ranking, recommendations and the next best step.</p></article>
-      <article class="pc"><div class="pc-art"><canvas class="art nx-art" data-m="1" data-next="payments" aria-hidden="true"></canvas><span class="stamp">Research</span></div><p class="hand">Agentic payments</p><p>Tie each payment to the traveller’s permission, the booking and a clear record of what happened.</p></article>
-      
-    </div>
-    <p class="fine pcs-note" data-in>Concepts, research and upcoming work. These describe direction, not confirmed launches.</p>
   </div>
 </section>
 
@@ -615,8 +680,10 @@
   meter(); count();
 })();
 </script>
+<script src="assets/ambient.js"></script>
 </body>
 </html>
+
 
 
 
