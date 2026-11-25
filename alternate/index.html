@@ -12,14 +12,7 @@
 <link rel="stylesheet" href="assets/tl.css">
 <link rel="stylesheet" href="assets/city.css">
 <style>.pcs.manifesto-cards{grid-template-columns:repeat(2,minmax(0,1fr))}@media(max-width:600px){.pcs.manifesto-cards{grid-template-columns:1fr}}</style>
-<style>
-/* The vision is the main hero statement, with room to wrap on every screen. */
-.hx.hx-vision .hx-top{grid-template-columns:minmax(0,1fr);grid-template-areas:none;gap:24px;align-items:start}
-.hx.hx-vision .hx-top .h1{max-width:none;white-space:normal;font-size:clamp(30px,4.4vw,60px);line-height:1.12;letter-spacing:-.035em;text-wrap:balance}
-.hx.hx-vision .hx-top .badge{line-height:1.4}
-.hx.hx-vision .hx-top .btns{justify-self:start;flex-wrap:wrap;margin:0}
-@media(max-width:600px){.hx.hx-vision .hx-top{gap:20px}.hx.hx-vision .hx-top .h1{font-size:clamp(28px,7vw,38px)}}
-</style>
+<link rel="stylesheet" href="assets/hero-split.css">
 </head>
 <body data-page="home" id="top">
 <div data-header></div>
@@ -27,15 +20,19 @@
 
 <section class="hx hx-vision">
   <div class="wrap">
-    <div class="hx-top" data-in>
-      <div style="display:grid;gap:18px"><span class="badge">THE AI LAB VISION</span><h1 class="h1">We are one of the largest travel companies in the world, with an R&amp;D lab dedicated to solving the hardest problems in travel through frontier AI.</h1></div>
-      <div style="display:grid;gap:22px;align-content:end"><div class="btns"><a class="btn pri" href="#inside">Explore the lab <span class="arr">→</span></a><a class="btn" href="#papers">Read the papers</a></div></div>
+    <div class="hero-copy" data-in>
+      <span class="badge">THE AI LAB VISION</span>
+      <h1 class="h1">Frontier AI for the world of travel.</h1>
+      <p class="hero-description">We are one of the largest travel companies in the world, with an R&amp;D lab dedicated to solving the hardest problems in travel through frontier AI.</p>
+      <div class="btns"><a class="btn pri" href="research.html">Explore the research <span class="arr">→</span></a><a class="btn" href="papers.html">Read the papers</a></div>
     </div>
+    <div class="hero-media">
     <figure class="hx-frame" data-in>
       <canvas class="art" data-art="coast" aria-hidden="true"></canvas>
       <div class="hx-ticket" aria-hidden="true"><b><span id="hcT">ATFGraph</span><span>illustrative</span></b><div class="ln"><span>role</span><span id="hc1">Coordinates durable work</span></div><div class="ln"><span>step</span><span id="hc2">Plan</span></div><div class="ln ok"><span>then</span><span id="hc3">saves the job while it waits</span></div></div>
       <figcaption class="hx-cap"><span>Plate 01 · For the world of travel · painted live in your browser</span><span>Big questions. Real journeys.</span></figcaption>
     </figure>
+    </div>
   </div>
 </section>
 

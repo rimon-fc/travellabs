@@ -8,7 +8,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/ideation.css">
-<link rel="stylesheet" href="assets/diffusion.css">
 </head>
 <body>
 
@@ -33,7 +32,7 @@
 <!-- A -->
 <section class="opt" id="a"><div class="wrap">
   <div class="opt-h">
-    <div class="l"><span class="tag"><i></i>Option A · inside the mcpx world</span><h2>From noise to a journey.</h2><p>A coastal painting and its words resolve through parallel refinement. Compare many positions settling together with words arriving one at a time.</p></div>
+    <div class="l"><span class="tag"><i></i>Option A · inside the mcpx world</span><h2>Painted by agents.</h2><p>The painted scene stays, but now the agents paint it. Each small blue square is a job, like <code>fares.search</code> or <code>hotels.search</code>, laying down brush strokes inside a pencil sketch until the trip is complete. Then it stops and waits for you to approve.</p></div>
   </div>
   <div class="stage">
     <div class="stage-bar"><i></i><i></i><i></i><span>travellabs · option A</span><button type="button" data-replay="a">Replay</button></div>
@@ -43,25 +42,20 @@
         <h3>Solving the hardest problems in travel with frontier AI.</h3>
         <div class="side"><p>Agents plan, buy and look after a trip. A person approves before money moves. Then they keep watching.</p><div><a class="btn pri" href="#a">Explore the lab →</a> <a class="btn" href="#a">Read the papers</a></div></div>
       </div>
-      <div class="a-frame diffusion" id="aFrame" data-diffusion>
-  <div class="df-scene">
-    <canvas id="aCanvas" role="img" aria-label="A coastal painting resolves from visual noise through parallel refinement"></canvas>
-    <div class="df-head"><span>Plate 02 · From noise to a journey</span><span data-diffusion-status aria-live="polite">Refinement 01 / 08</span></div>
-  </div>
-  <div class="df-panel">
-    <div class="df-row"><span class="df-label">Parallel refinement</span><div class="df-tokens" data-parallel aria-label="A quieter coast. A better journey. Ready for review."><span aria-hidden="true">···</span><span aria-hidden="true">···</span><span aria-hidden="true">···</span><span aria-hidden="true">···</span><span aria-hidden="true">···</span><span aria-hidden="true">···</span><span aria-hidden="true">···</span><span aria-hidden="true">···</span><span aria-hidden="true">···</span></div></div>
-    <div class="df-row sequential"><span class="df-label">One token at a time</span><div class="df-tokens" data-sequential aria-label="A quieter coast. A better journey. Ready for review."><span aria-hidden="true">···</span><span aria-hidden="true">···</span><span aria-hidden="true">···</span><span aria-hidden="true">···</span><span aria-hidden="true">···</span><span aria-hidden="true">···</span><span aria-hidden="true">···</span><span aria-hidden="true">···</span><span aria-hidden="true">···</span></div></div>
-    <div class="df-footer"><span>Illustrative comparison</span><div class="df-progress" aria-hidden="true"><i data-diffusion-progress></i></div><div class="df-controls"><button type="button" data-diffusion-pause aria-pressed="false">Pause</button><button type="button" data-diffusion-replay>Replay ↻</button></div></div>
-  </div>
-</div>
+      <div class="a-frame" id="aFrame">
+        <canvas id="aCanvas" aria-label="Agents paint a coastal travel scene inside a pencil sketch, then wait for approval" role="img"></canvas>
+        <span class="a-cap">Plate 01 · painted by agents · drag to help</span>
+        <div class="a-ticket" aria-live="polite"><b><span>One brief · a durable job</span><span id="aPct">0%</span></b><div id="aJobs"></div><div class="bar"><i id="aBar"></i></div></div>
+        <div class="a-approve" id="aApprove"><span>Proposal ready.<br>A person approves.</span><button class="btn pri" type="button" id="aBtn">Approve ✓</button></div>
+      </div>
     </div>
   </div>
-  <p class="hint">Use Pause to inspect a refinement pass, or Replay to start again. This is an illustrative animation, not a performance benchmark.</p>
+  <p class="hint">Drag across the picture to paint alongside the agents. Approve when the trip is ready, and watch what happens after booking.</p>
   <div class="notes">
-    <div><b>The idea</b><p>Many parts of the scene refine together, from scattered colour to a finished journey.</p></div>
-    <div><b>Two patterns</b><ul><li>Parallel refinement</li><li>One token at a time</li><li>The same final words</li></ul></div>
-    <div><b>Controls</b><ul><li>Pause and replay</li><li>Respects reduced motion</li><li>Stops when out of view</li></ul></div>
-    <div><b>Illustrative</b><p>Designed to explain a visual idea. The timing does not represent a model benchmark.</p></div>
+    <div><b>The idea</b><p>Agents make the trip, stroke by stroke. The picture is the output of the work, not decoration.</p></div>
+    <div><b>Why it's TravelLabs</b><ul><li>Parallel jobs (ATFGraph)</li><li>A pause for a person (ATP)</li><li>A watcher after booking (emitters)</li></ul></div>
+    <div><b>Strengths</b><ul><li>Keeps the painted look you already have</li><li>Interactive without needing explanation</li><li>Warm, human, crafted</li></ul></div>
+    <div><b>Trade-offs</b><ul><li>Takes about 12 seconds to tell the full story</li><li>The approval beat needs a click, or it autoplays</li></ul></div>
   </div>
 </div></section>
 
@@ -135,8 +129,7 @@
 </div></section>
 </main>
 
-<script src="assets/ideation.js?v=diffusion"></script>
-<script src="assets/diffusion.js"></script>
+<script src="assets/ideation.js?v=painting-restored"></script>
 </body>
 </html>
 

@@ -1,0 +1,44 @@
+/* A compact introduction beside the existing live artwork. */
+.hx.hx-vision { padding: 38px 0 48px; }
+.hx.hx-vision > .wrap { display: grid; grid-template-columns: minmax(0,.9fr) minmax(0,1.1fr); gap: clamp(28px,3.4vw,48px); align-items: center; }
+.hero-copy { display: grid; gap: 24px; min-width: 0; }
+.hero-copy .badge { justify-self: start; line-height: 1.4; }
+.hero-copy .h1 { font-size: clamp(40px,4.3vw,62px); line-height: 1.04; letter-spacing: -.045em; max-width: 14ch; text-wrap: balance; margin: 0; }
+.hero-copy .hero-description { margin: 0; max-width: 48ch; font: 400 clamp(15px,1.25vw,17px)/1.65 var(--sans); color: var(--ink-2); }
+.hx.hx-vision .hero-copy .btns { display: flex; flex-wrap: wrap; gap: 10px; margin: 4px 0 0; }
+.hero-copy .btn { padding: 0 14px; font-size: 11px; }
+.hero-media { min-width: 0; }
+.hero-media .hx-frame { height: clamp(420px,39vw,530px); min-height: 0; }
+.hero-media .hx-cap { font-size: 9px; flex-direction: column; gap: 4px; }
+.hero-media .hc-slide { height: 450px; min-height: 450px; }
+.hero-media .hc-rail { margin-top: 16px; grid-template-columns: repeat(4,minmax(0,1fr)); }
+.hero-media .hc-rail [role="tab"] { padding: 9px 8px 11px; font-size: 9px; letter-spacing: 0; line-height: 1.35; }
+.hero-media .hc-rail [role="tab"] b { margin-bottom: 3px; font-size: 10px; }
+.hero-media .hc-ctl { grid-column: 1 / -1; border-top: 1px solid var(--ink); border-left: 0; }
+.hero-media .hc-ctl button { flex: 1; height: 34px; font-size: 10px; }
+.hero-media .hc-cards { max-width: calc(100% - 36px); }
+@media (max-width: 1000px) {
+  .hx.hx-vision > .wrap { grid-template-columns: minmax(0,1fr); gap: 30px; }
+  .hero-copy { max-width: 740px; gap: 20px; }
+  .hero-copy .h1 { max-width: 20ch; font-size: clamp(38px,6vw,56px); }
+  .hero-copy .hero-description { max-width: 66ch; font-size: 16px; }
+  .hero-media .hx-frame { height: 430px; }
+  .hero-media .hc-slide { height: 460px; min-height: 460px; }
+}
+@media (max-width: 600px) {
+  .hx.hx-vision { padding: 28px 0 36px; }
+  .hero-copy { gap: 18px; }
+  .hero-copy .h1 { font-size: clamp(36px,9vw,48px); max-width: 15ch; }
+  .hero-copy .hero-description { font-size: 15px; line-height: 1.6; }
+  .hero-media .hx-frame { height: 360px; box-shadow: 5px 5px 0 var(--ultra); }
+  .hero-media .hx-ticket { left: 12px; width: calc(100% - 24px); max-width: 290px; bottom: 64px; font-size: 11px; }
+  .hero-media .hc-frame { box-shadow: 5px 5px 0 var(--ultra); }
+  .hero-media .hc-rail [role="tab"] { font-size: 8px; }
+}
+
+/* Keep the original painting controls readable in the narrower hero column. */
+.hero-media .a-ticket { left: 12px; bottom: 14px; width: 240px; max-width: calc(100% - 24px); padding: 10px 12px; font-size: 10.5px; }
+.hero-media .a-ticket b { font-size: 9px; }
+.hero-media .a-cap { top: 12px; right: 12px; max-width: calc(100% - 24px); font-size: 8px; line-height: 1.4; }
+.hero-media .a-approve { top: 58px; right: 12px; bottom: auto; max-width: calc(100% - 24px); padding: 9px 10px; font-size: 11px; gap: 8px; }
+.hero-media .a-approve .btn { font-size: 10px; height: 36px; padding: 0 12px; }
