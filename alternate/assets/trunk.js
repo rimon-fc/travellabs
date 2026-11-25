@@ -1,15 +1,29 @@
-/* Trunk, redrawn in the mcpx style. Six beliefs orbit him with depth; he says hello.
+/* Trunk, redrawn in the mcpx style. Four commitments orbit him with depth; he says hello.
    Usage: <div class="trunk-stage" data-trunk data-href="manifesto.html"></div>
-   data-href is the page that holds the belief spreads (#b1 to #b6). Leave it empty on that page. */
+   data-href is the page that holds the belief spreads (#b1 to #b4). Leave it empty on that page. */
 (() => {
   const BELIEFS = [
-    ['Good work', 'check', 'Let your work speak for itself.'],
-    ['Deep curiosity', 'book', 'Follow your curiosity deeply.'],
-    ['Make it real', 'bolt', 'Bring your vision to life.'],
-    ['Find the work', 'search', 'We are impact players.'],
-    ['Thoughtful friction', 'lock', 'Put friction in the right places.'],
-    ['Learn by trying', 'refresh', 'Make failure intelligent.']
-  ];
+  [
+    "The hardest problems",
+    "check",
+    "We take on the hardest problems in travel."
+  ],
+  [
+    "Untapped opportunities",
+    "search",
+    "We focus exclusively on untapped opportunities, from the traveller experience to the systems behind it."
+  ],
+  [
+    "Across FCTG",
+    "refresh",
+    "We work vertically within individual FCTG brands and businesses, and horizontally across the group through shared teams, systems and capabilities."
+  ],
+  [
+    "Open contributions",
+    "book",
+    "We welcome open-source contributions from developers, researchers and travel experts."
+  ]
+];
   const GREETINGS = ['Packed light. Brought curiosity.', 'Mostly ideas. One emergency biscuit.', 'That question? Definitely coming with us.', 'A small case of big curiosity.'];
 
   // Ink outline, blue case, lime straps and a hard offset shadow, like the mcpx sketches.
@@ -55,7 +69,7 @@
       stage.classList.toggle('is-flat', flat());
       chips.forEach((c, i) => {
         if (flat()) { c.style.cssText = ''; return; }
-        const a = angle + i * Math.PI / 3 - .4, depth = (Math.sin(a) + 1) / 2;
+        const a = angle + i * 2 * Math.PI / chips.length - .4, depth = (Math.sin(a) + 1) / 2;
         c.style.left = (W * .5 + Math.cos(a) * Math.max(60, W / 2 - 92)) + 'px';
         c.style.top = (H * .5 + Math.sin(a) * Math.max(50, H / 2 - 58)) + 'px';
         c.style.transform = `translate(-50%,-50%) scale(${.8 + depth * .2})`;
@@ -118,3 +132,5 @@
     }
   });
 })();
+
+
