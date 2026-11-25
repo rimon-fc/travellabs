@@ -31,3 +31,11 @@
   .hero-media .a-approve { top: 58px; right: 12px; bottom: auto; max-width: calc(100% - 24px); padding: 9px 10px; font-size: 11px; gap: 8px; }
   .hero-media .a-approve .btn { font-size: 10px; height: 36px; padding: 0 12px; }
 }
+
+/* Marker underline, matching the editorial statement below the hero. */
+.hero-copy .hero-highlight {
+  background: linear-gradient(transparent 62%, var(--lime) 62%, var(--lime) 92%, transparent 92%);
+  padding: 0 .08em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
