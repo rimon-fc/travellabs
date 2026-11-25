@@ -14,7 +14,7 @@
     "We focus exclusively on untapped opportunities, from the traveller experience to the systems behind it."
   ],
   [
-    "Across FCTG",
+    "Unbundled",
     "refresh",
     "We work vertically within individual FCTG brands and businesses, and horizontally across the group through shared teams, systems and capabilities."
   ],
@@ -132,5 +132,6 @@
     }
   });
 })();
+
 
 
