@@ -4,27 +4,27 @@
 (() => {
   const BELIEFS = [
   [
-    "The hardest problems",
+    "We are impact players.",
     "check",
-    "We take on the hardest problems in travel."
+    "We are impact players."
   ],
   [
-    "Untapped opportunities",
+    "Let your work speak for itself.",
     "search",
-    "We focus exclusively on untapped opportunities, from the traveller experience to the systems behind it."
+    "Let your work speak for itself."
   ],
   [
-    "Unbundled",
+    "Follow your curiosity deeply.",
     "refresh",
-    "We work vertically within individual FCTG brands and businesses, and horizontally across the group through shared teams, systems and capabilities."
+    "Follow your curiosity deeply."
   ],
   [
-    "Open contributions",
+    "Bring your vision to life.",
     "book",
-    "We welcome open-source contributions from developers, researchers and travel experts."
+    "Bring your vision to life."
   ]
 ];
-  const GREETINGS = ['Packed light. Brought curiosity.', 'Mostly ideas. One emergency biscuit.', 'That question? Definitely coming with us.', 'A small case of big curiosity.'];
+  const GREETINGS = BELIEFS.map(([text]) => text);
 
   // Ink outline, blue case, lime straps and a hard offset shadow, like the mcpx sketches.
   const TRUNK = `<svg viewBox="0 0 220 210" aria-hidden="true">
@@ -70,7 +70,7 @@
       chips.forEach((c, i) => {
         if (flat()) { c.style.cssText = ''; return; }
         const a = angle + i * 2 * Math.PI / chips.length - .4, depth = (Math.sin(a) + 1) / 2;
-        c.style.left = (W * .5 + Math.cos(a) * Math.max(60, W / 2 - 92)) + 'px';
+        c.style.left = (W * .5 + Math.cos(a) * Math.max(0, W / 2 - c.offsetWidth / 2 - 12)) + 'px';
         c.style.top = (H * .5 + Math.sin(a) * Math.max(50, H / 2 - 58)) + 'px';
         c.style.transform = `translate(-50%,-50%) scale(${.8 + depth * .2})`;
         c.style.zIndex = depth > .45 ? '7' : '3';
