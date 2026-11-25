@@ -36,3 +36,16 @@
 
 .hero-copy .hero-description { grid-area: description; margin: 0; font: 400 15px/1.65 var(--mono); color: var(--ink-2); }
 @media (max-width: 600px) { .hero-copy .hero-description { font-size: 14px; } }
+
+/* Editorial statement followed by the text-led Why travel section. */
+.reason-statement .ed { margin: 24px 0 0; }
+.reason-statement .ed b { -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.sec.mission-editorial { padding-top: 24px; }
+.reason-columns { display: grid; grid-template-columns: minmax(0,1.1fr) minmax(0,1fr); gap: 56px; align-items: start; margin-top: 24px; }
+.reason-columns .h2 { margin: 0; }
+.reason-detail { display: grid; gap: 24px; min-width: 0; }
+.reason-detail .lead { margin: 0; }
+@media (max-width: 900px) {
+  .reason-columns { grid-template-columns: minmax(0,1fr); gap: 28px; }
+  .reason-statement.sec.tight { padding-top: 48px; padding-bottom: 48px; }
+}
