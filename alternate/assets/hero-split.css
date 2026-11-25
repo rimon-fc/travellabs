@@ -38,8 +38,7 @@
 @media (max-width: 600px) { .hero-copy .hero-description { font-size: 14px; } }
 
 /* Editorial statement followed by the text-led Why travel section. */
-.reason-statement .ed { margin: 24px 0 0; }
-.reason-statement .ed b { -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.reason-statement.sec.tight { padding-bottom: 0; }
 .sec.mission-editorial { padding-top: 24px; }
 .reason-columns { display: grid; grid-template-columns: minmax(0,1.1fr) minmax(0,1fr); gap: 56px; align-items: start; margin-top: 24px; }
 .reason-columns .h2 { margin: 0; }
@@ -47,5 +46,8 @@
 .reason-detail .lead { margin: 0; }
 @media (max-width: 900px) {
   .reason-columns { grid-template-columns: minmax(0,1fr); gap: 28px; }
-  .reason-statement.sec.tight { padding-top: 48px; padding-bottom: 48px; }
+  .reason-statement.sec.tight { padding-top: 48px; padding-bottom: 0; }
 }
+
+.mission-editorial .reason-art { position: relative; height: clamp(320px,32vw,420px); overflow: hidden; margin-top: 40px; }
+@media (max-width: 600px) { .mission-editorial .reason-art { height: 300px; margin-top: 28px; } }
