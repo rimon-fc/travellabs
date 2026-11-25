@@ -11,7 +11,7 @@
   [
     "Let your work speak for itself.",
     "search",
-    "Let your work speak for itself."
+    "Put friction in the right places."
   ],
   [
     "Follow your curiosity deeply.",
@@ -24,7 +24,7 @@
     "Bring your vision to life."
   ]
 ];
-  const GREETINGS = BELIEFS.map(([text]) => text);
+  const GREETINGS = BELIEFS.map(([, , speech]) => speech);
 
   // Ink outline, blue case, lime straps and a hard offset shadow, like the mcpx sketches.
   const TRUNK = `<svg viewBox="0 0 220 210" aria-hidden="true">
