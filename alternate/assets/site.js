@@ -49,7 +49,8 @@
   const NX = "";
   const NAV = [[NX + "research.html", "Research Projects", "spark", "Frameworks, Leisure AI and what’s next"], [NX + "papers.html", "Papers", "book", "Ideas, made inspectable"], [NX + "about.html", "About us", "team", "Curious minds. Shared purpose."], [NX + "manifesto.html", "Manifesto", "stack", "The principles that guide us"]];
   const page = document.body.dataset.page || "";
-  const LOGO = `<a class="logo tl-logo" href="index.html" aria-label="TravelLabs home"><img src="assets/img/travellabs.png" alt="TravelLabs" width="301" height="66"></a>`;
+  const identityStyle=document.createElement('style');identityStyle.textContent=`.tl-animated-logo{display:block;height:26px;width:auto;max-width:none;overflow:visible}.f-brand .tl-animated-logo{height:30px}.f-logos .tl-animated-logo{height:34px}.tl-logo-spin{transform-origin:24px 24px;animation:tl-identity-turn 28s linear infinite}@keyframes tl-identity-turn{to{transform:rotate(360deg)}}@media(prefers-reduced-motion:reduce){.tl-logo-spin{animation:none}}`;document.head.append(identityStyle);
+  const LOGO = `<a class="logo tl-logo" href="index.html" aria-label="TravelLabs home"><svg class="tl-animated-logo" viewBox="0 0 301 66" role="img" aria-label="TravelLabs" xmlns="http://www.w3.org/2000/svg"><g transform="translate(0 0) scale(1.375)"><g class="tl-logo-spin" fill="#292d2d"><path d="M21 3h9l-5 15h-4Z" transform="rotate(0 24 24)"/><path d="M21 3h9l-5 15h-4Z" transform="rotate(45 24 24)"/><path d="M21 3h9l-5 15h-4Z" transform="rotate(90 24 24)"/><path d="M21 3h9l-5 15h-4Z" transform="rotate(135 24 24)"/><path d="M21 3h9l-5 15h-4Z" transform="rotate(180 24 24)"/><path d="M21 3h9l-5 15h-4Z" transform="rotate(225 24 24)"/><path d="M21 3h9l-5 15h-4Z" transform="rotate(270 24 24)"/><path d="M21 3h9l-5 15h-4Z" transform="rotate(315 24 24)"/></g><rect x="20" y="20" width="8" height="8" fill="#3034f2"/></g><svg x="82" y="0" width="219" height="66" viewBox="82 0 219 66" overflow="hidden"><image href="assets/img/travellabs.png" x="0" y="0" width="301" height="66"/></svg></svg></a>`;
   const header = `
     <header class="site-h" id="siteH">
       <div class="endorse"><div class="wrap"><span class="e-txt">TravelLabs is the R&amp;D division of</span><img class="e-fctg" src="assets/img/fctg.png" alt="Flight Centre Travel Group" width="324" height="52"><span class="e-tag">An AI Lab for the world of Travel</span></div></div>
@@ -66,14 +67,14 @@
     <footer class="site-f"><div class="wrap">
       <div class="f-group">
         <p><b>TravelLabs is the research and development division of Flight Centre Travel Group.</b> An AI Lab for the world of Travel.</p>
-        <div class="f-logos"><img src="assets/img/fctg.png" alt="Flight Centre Travel Group" width="324" height="52"><i class="e-sep" aria-hidden="true"></i><img src="assets/img/travellabs.png" alt="TravelLabs" width="301" height="66"></div>
+        <div class="f-logos"><img src="assets/img/fctg.png" alt="Flight Centre Travel Group" width="324" height="52"><i class="e-sep" aria-hidden="true"></i><svg class="tl-animated-logo" viewBox="0 0 301 66" role="img" aria-label="TravelLabs" xmlns="http://www.w3.org/2000/svg"><g transform="translate(0 0) scale(1.375)"><g class="tl-logo-spin" fill="#292d2d"><path d="M21 3h9l-5 15h-4Z" transform="rotate(0 24 24)"/><path d="M21 3h9l-5 15h-4Z" transform="rotate(45 24 24)"/><path d="M21 3h9l-5 15h-4Z" transform="rotate(90 24 24)"/><path d="M21 3h9l-5 15h-4Z" transform="rotate(135 24 24)"/><path d="M21 3h9l-5 15h-4Z" transform="rotate(180 24 24)"/><path d="M21 3h9l-5 15h-4Z" transform="rotate(225 24 24)"/><path d="M21 3h9l-5 15h-4Z" transform="rotate(270 24 24)"/><path d="M21 3h9l-5 15h-4Z" transform="rotate(315 24 24)"/></g><rect x="20" y="20" width="8" height="8" fill="#3034f2"/></g><svg x="82" y="0" width="219" height="66" viewBox="82 0 219 66" overflow="hidden"><image href="assets/img/travellabs.png" x="0" y="0" width="301" height="66"/></svg></svg></div>
       </div>
       <div class="f-top">
         <div class="f-brand">${LOGO}<p>An AI Lab. Solving the hardest problems in travel with frontier AI.</p><a class="link" href="${NX}contact.html">Start a conversation →</a></div>
         <div><h6>Research Projects</h6><ul><li><a href="${NX}research.html#frameworks">Frameworks</a></li><li><a href="${NX}research.html#built">Leisure AI</a></li><li><a href="${NX}research.html#next">What’s next</a></li></ul></div>
         <div><h6>Papers</h6><ul><li><a href="${NX}paper-atfgraph.html">ATFGraph</a></li><li><a href="${NX}paper-keel.html">Keel</a></li><li><a href="${NX}paper-atp.html">ATP</a></li><li><a href="${NX}papers.html">All papers</a></li></ul></div>
         <div><h6>About us</h6><ul><li><a href="${NX}about.html">About us</a></li><li><a href="${NX}manifesto.html">Manifesto</a></li><li><a href="${NX}careers.html">Careers</a></li></ul></div>
-        <div><h6>Get in touch</h6><ul><li><a href="${NX}contact.html">Contact</a></li><li><a href="#top">Back to top</a></li></ul></div>
+        <div><h6>Get in touch</h6><ul><li><a href="${NX}contact.html">Contact</a></li><li><a href="#top">Back to top</a></li></ul><h6 style="margin-top:28px">Legal</h6><ul><li><a href="terms-of-use.html">Terms of Use</a></li><li><a href="privacy-policy.html">Privacy Policy</a></li></ul></div>
       </div>
       <div class="f-bot"><span>© 2026 Flight Centre Travel Group. TravelLabs, an AI Lab for the world of Travel.</span><nav><a href="#top">Back to top</a></nav></div>
     </div></footer>`;
@@ -679,4 +680,3 @@
     if (!REDUCE) setInterval(() => { const r = $$('.dep-r', grid); if (!r.length) return; const el = r[Math.floor(Math.random() * Math.min(r.length, 12))]; el.classList.remove('flip'); void el.offsetWidth; el.classList.add('flip'); }, 1400);
   };
 })();
-

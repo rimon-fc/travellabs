@@ -185,7 +185,7 @@
     const CH = ' ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.·+-/✓';
     const mkLine = (parent, len) => { const d = document.createElement('div'); d.className = 'fline'; for (let i = 0; i < len; i++) { const s = document.createElement('span'); s.className = 'fl'; s.textContent = ' '; d.appendChild(s); } parent.appendChild(d); return [...d.children]; };
     const HL = 24, C1 = 13, C2 = 24, C3 = 13;
-    const headLines = [mkLine(head, HL), mkLine(head, HL), mkLine(head, HL)];
+    const headLines = [mkLine(head, HL), mkLine(head, HL)];
     const rowCells = Array.from({ length: 5 }, () => { const r = document.createElement('div'); r.className = 'b-row'; rowsEl.appendChild(r); return { el: r, c: [mkLine(r, C1), mkLine(r, C2), mkLine(r, C3)] }; });
     const timers = new Set();
     const later = (fn, ms) => { const t = setTimeout(() => { timers.delete(t); fn(); }, ms); timers.add(t); };
@@ -199,12 +199,14 @@
         for (let k = 0; k <= steps; k++) later(() => { cell.textContent = k === steps ? s[i] : CH[Math.floor(Math.random() * CH.length)]; cell.classList.remove('flip'); void cell.offsetWidth; cell.classList.add('flip'); }, delay + i * 28 + k * 55);
       });
     };
-    const PAGES = [
-      { head: ['SOLVING THE HARDEST', 'PROBLEMS IN TRAVEL', 'WITH FRONTIER AI.'], cols: ['Problem', 'In travel', 'Status'],
+    const BOARD_DETAILS = [
+      { head: ['THE FUTURE OF TRAVEL', 'IS AUTONOMOUS.', ''], cols: ['Problem', 'In travel', 'Status'],
         rows: [['PRICES', 'CHANGE BY THE MINUTE', 'CHECKED ✓'], ['ONE TRIP', 'MANY BUSINESSES', 'COORDINATED'], ['REAL MONEY', 'IS AT STAKE', 'WITHIN LIMITS'], ['APPROVAL', 'ARRIVES HOURS LATER', 'SAVED · WAITS'], ['AFTER BOOKING', 'PLANS CHANGE', 'WATCHING']] },
-      { head: ['BIG QUESTIONS.', 'REAL JOURNEYS.', 'FOR THE WORLD OF TRAVEL.'], cols: ['Framework', 'What it does', 'Status'],
+      { head: ['THE FUTURE OF TRAVEL', 'IS SELF-HEALING.', ''], cols: ['Framework', 'What it does', 'Status'],
         rows: [['ATFGRAPH', 'RUNS THE WORK OVER TIME', 'DURABLE'], ['KEEL', 'CHECKS SUPPLIER CALLS', 'GOVERNED'], ['ATP', 'BOOKING + PAYMENTS', 'CONSENT ✓'], ['EMITTERS', 'KEEP WATCHING THE TRIP', 'WATCHING'], ['A PERSON', 'APPROVES THE PROPOSAL', 'IN CONTROL']] }
     ];
+    const FUTURE_MESSAGES = ['IS AUTONOMOUS.', 'IS SELF-HEALING.', 'IS ALWAYS INTELLIGENT.', 'IS HYPER-PERSONALISED.', 'IS AGENT-DRIVEN.', 'IS INTERCONNECTED.'];
+    const PAGES = FUTURE_MESSAGES.map((message,index) => ({...BOARD_DETAILS[index % BOARD_DETAILS.length], head: ['THE FUTURE OF TRAVEL', message]}));
     let page = 0, vis = false, held = false, cycle = 0, started = false;
     const show = (p) => {
       timers.forEach(clearTimeout); timers.clear();
@@ -220,10 +222,10 @@
     };
     const tick = () => { const d = new Date(); clock.textContent = 'Local time ' + String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0'); };
     tick(); setInterval(tick, 15000);
-    const run = () => { clearInterval(cycle); if (REDUCE) return; cycle = setInterval(() => { if (vis && !held) { page = (page + 1) % PAGES.length; show(page); } }, 13000); };
+    const run = () => { clearInterval(cycle); if (REDUCE) return; cycle = setInterval(() => { if (vis && !held && !document.hidden) { page = (page + 1) % PAGES.length; show(page); } }, 13000); };
     rowsEl.addEventListener('pointerenter', () => { held = true; }); rowsEl.addEventListener('pointerleave', () => { held = false; });
     onVisible(hero, (v) => { vis = v; if (v && !started) { started = true; show(0); run(); } });
-    replay.b = () => { page = 0; headLines.flat().forEach((c) => { c.textContent = ' '; }); rowCells.forEach((r) => r.c.flat().forEach((c) => { c.textContent = ' '; })); show(0); run(); };
+    replay.b = () => { headLines.flat().forEach((c) => { c.textContent = ' '; }); rowCells.forEach((r) => r.c.flat().forEach((c) => { c.textContent = ' '; })); show(page); run(); };
   })();
 
   /* ------------------------------------------------------------------ C */

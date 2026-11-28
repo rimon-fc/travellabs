@@ -1,7 +1,7 @@
 /* Six original travel studies in the site's hand-drawn postcard style. */
 (() => {
   'use strict';
-  const C={ink:'#2b2a2e',paper:'#fbf7ee',blue:'#5b7be0',coral:'#ef7a62',yellow:'#f5c451',green:'#69a883',pink:'#f3a9c6',lilac:'#b9a8ea',ultra:'#2a3bff',rule:'#cec8bb'};
+  const C={ink:'#2b2a2e',paper:'#ffffff',blue:'#5b7be0',coral:'#ef7a62',yellow:'#f5c451',green:'#69a883',pink:'#f3a9c6',lilac:'#b9a8ea',ultra:'#2a3bff',rule:'#cec8bb'};
   const KEYS=['uncertainty','complexity','fragmentation','interdependence','personalisation','commercial-risk'];
   const STILL={'uncertainty':4.5,'complexity':11,'fragmentation':5,'interdependence':12.5,'personalisation':10,'commercial-risk':4};
   const esc=s=>String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;');
@@ -135,7 +135,7 @@
       text('Every decision matters.',300,389,28,C.ink,'middle');
     }
     const defs=['blue','green','lilac'].map(name=>`<pattern id="why-${key}-${name}" width="8" height="8" patternUnits="userSpaceOnUse"><path d="M-2 2L2-2M0 8L8 0M6 10L10 6" stroke="${C[name]}" stroke-width="2" fill="none"/></pattern>`).join('');
-    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" aria-hidden="true" focusable="false"><defs>${defs}</defs><rect width="600" height="400" fill="${C.paper}"/>${out}</svg>`;
+    return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" aria-hidden="true" focusable="false"><defs>${defs}</defs><rect width="600" height="400" fill="none"/>${out}</svg>`;
   }
   if(typeof module!=='undefined'&&module.exports)module.exports={renderWhyScene,KEYS,STILL};
   if(typeof document==='undefined')return;

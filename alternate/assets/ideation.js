@@ -3,6 +3,8 @@
   const REDUCE = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const onVisible = (el, cb) => new IntersectionObserver(([e]) => cb(e.isIntersecting), { threshold: .15 }).observe(el);
   const replay = {};
+  // The hero carousel restarts each prototype when its slide comes into view.
+  window.HERO_REPLAY = replay;
   document.querySelectorAll('[data-replay]').forEach((b) => b.addEventListener('click', () => replay[b.dataset.replay]?.()));
 
   /* ------------------------------------------------------------------ A */
@@ -147,14 +149,15 @@
       if (state === 'paint') {
         agents.forEach((a) => {
           if (a.done) return;
-          const dx = a.tx - a.x, dy = a.ty - a.y, d = Math.hypot(dx, dy), sp = .34 * dt;
+          const dx = a.tx - a.x, dy = a.ty - a.y, d = Math.hypot(dx, dy), sp = .62 * dt;
           if (d < sp) { a.x = a.tx; a.y = a.ty; pick(a); } else { a.x += dx / d * sp; a.y += dy / d * sp; }
-          dab(a.x, a.y, 9, CS * 1.05);
+          dab(a.x, a.y, 14, CS * 1.3);
           a.trail.push([a.x, a.y]); if (a.trail.length > 26) a.trail.shift();
         });
-        if (agents.every((a) => a.done)) { paintAll(); finish(); autoT = now; }
+        // The last scattered cells get a quick final wash, so the story never stalls.
+        if (agents.every((a) => a.done) || done / total > .94 || now - tState > 8500) { paintAll(); finish(); autoT = now; }
       } else if (state === 'wait') {
-        if (now - autoT > 6000) approve();
+        if (now - autoT > 2500) approve();
       } else if (state === 'after') {
         if (plane && plane.t < 1) plane.t = Math.min(1, plane.t + dt / 3200);
         const w = agents.find((a) => a.name === 'fare.watch'); w.x = W * (.55 + .2 * Math.sin(now / 1400)); w.y = H * (.68 + .05 * Math.cos(now / 1100)); w.trail.push([w.x, w.y]); if (w.trail.length > 40) w.trail.shift();
@@ -182,7 +185,7 @@
     const CH = ' ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.·+-/✓';
     const mkLine = (parent, len) => { const d = document.createElement('div'); d.className = 'fline'; for (let i = 0; i < len; i++) { const s = document.createElement('span'); s.className = 'fl'; s.textContent = ' '; d.appendChild(s); } parent.appendChild(d); return [...d.children]; };
     const HL = 24, C1 = 13, C2 = 24, C3 = 13;
-    const headLines = [mkLine(head, HL), mkLine(head, HL), mkLine(head, HL)];
+    const headLines = [mkLine(head, HL), mkLine(head, HL)];
     const rowCells = Array.from({ length: 5 }, () => { const r = document.createElement('div'); r.className = 'b-row'; rowsEl.appendChild(r); return { el: r, c: [mkLine(r, C1), mkLine(r, C2), mkLine(r, C3)] }; });
     const timers = new Set();
     const later = (fn, ms) => { const t = setTimeout(() => { timers.delete(t); fn(); }, ms); timers.add(t); };
@@ -196,12 +199,14 @@
         for (let k = 0; k <= steps; k++) later(() => { cell.textContent = k === steps ? s[i] : CH[Math.floor(Math.random() * CH.length)]; cell.classList.remove('flip'); void cell.offsetWidth; cell.classList.add('flip'); }, delay + i * 28 + k * 55);
       });
     };
-    const PAGES = [
-      { head: ['SOLVING THE HARDEST', 'PROBLEMS IN TRAVEL', 'WITH FRONTIER AI.'], cols: ['Problem', 'In travel', 'Status'],
+    const BOARD_DETAILS = [
+      { head: ['THE FUTURE OF TRAVEL', 'IS AUTONOMOUS.', ''], cols: ['Problem', 'In travel', 'Status'],
         rows: [['PRICES', 'CHANGE BY THE MINUTE', 'CHECKED ✓'], ['ONE TRIP', 'MANY BUSINESSES', 'COORDINATED'], ['REAL MONEY', 'IS AT STAKE', 'WITHIN LIMITS'], ['APPROVAL', 'ARRIVES HOURS LATER', 'SAVED · WAITS'], ['AFTER BOOKING', 'PLANS CHANGE', 'WATCHING']] },
-      { head: ['BIG QUESTIONS.', 'REAL JOURNEYS.', 'FOR THE WORLD OF TRAVEL.'], cols: ['Framework', 'What it does', 'Status'],
+      { head: ['THE FUTURE OF TRAVEL', 'IS SELF-HEALING.', ''], cols: ['Framework', 'What it does', 'Status'],
         rows: [['ATFGRAPH', 'RUNS THE WORK OVER TIME', 'DURABLE'], ['KEEL', 'CHECKS SUPPLIER CALLS', 'GOVERNED'], ['ATP', 'BOOKING + PAYMENTS', 'CONSENT ✓'], ['EMITTERS', 'KEEP WATCHING THE TRIP', 'WATCHING'], ['A PERSON', 'APPROVES THE PROPOSAL', 'IN CONTROL']] }
     ];
+    const FUTURE_MESSAGES = ['IS AUTONOMOUS.', 'IS SELF-HEALING.', 'IS ALWAYS INTELLIGENT.', 'IS HYPER-PERSONALISED.', 'IS AGENT-DRIVEN.', 'IS INTERCONNECTED.'];
+    const PAGES = FUTURE_MESSAGES.map((message,index) => ({...BOARD_DETAILS[index % BOARD_DETAILS.length], head: ['THE FUTURE OF TRAVEL', message]}));
     let page = 0, vis = false, held = false, cycle = 0, started = false;
     const show = (p) => {
       timers.forEach(clearTimeout); timers.clear();
@@ -217,10 +222,10 @@
     };
     const tick = () => { const d = new Date(); clock.textContent = 'Local time ' + String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0'); };
     tick(); setInterval(tick, 15000);
-    const run = () => { clearInterval(cycle); if (REDUCE) return; cycle = setInterval(() => { if (vis && !held) { page = (page + 1) % PAGES.length; show(page); } }, 13000); };
+    const run = () => { clearInterval(cycle); if (REDUCE) return; cycle = setInterval(() => { if (vis && !held && !document.hidden) { page = (page + 1) % PAGES.length; show(page); } }, 13000); };
     rowsEl.addEventListener('pointerenter', () => { held = true; }); rowsEl.addEventListener('pointerleave', () => { held = false; });
     onVisible(hero, (v) => { vis = v; if (v && !started) { started = true; show(0); run(); } });
-    replay.b = () => { page = 0; headLines.flat().forEach((c) => { c.textContent = ' '; }); rowCells.forEach((r) => r.c.flat().forEach((c) => { c.textContent = ' '; })); show(0); run(); };
+    replay.b = () => { headLines.flat().forEach((c) => { c.textContent = ' '; }); rowCells.forEach((r) => r.c.flat().forEach((c) => { c.textContent = ' '; })); show(page); run(); };
   })();
 
   /* ------------------------------------------------------------------ C */
@@ -229,15 +234,15 @@
     const cv = document.getElementById('cCanvas'), ctx = cv.getContext('2d');
     const stepEl = document.getElementById('cStep'), capEl = document.getElementById('cCap'), dots = [...document.querySelectorAll('#cDots i')];
     const BRIEF = ['“Ten nights, an ocean-view suite,', 'a short cruise and private tours.”'];
-    const HEAD = ['Solving the hardest', 'problems in travel', 'with frontier AI.'];
+    const HEAD = ['Big questions.', 'Real journeys.'];
     const NODES = ['FLIGHTS', 'HOTELS', 'RAIL', 'CRUISES', 'EXPERIENCES', 'PAYMENTS'];
     const STEPS = [
-      ['01', 'One brief', 'brief', '“Ten nights, an ocean-view suite, a short cruise and private tours.”'],
+      ['01', 'One brief', 'brief', 'A traveller describes the trip in plain words. Their preferences and constraints stay with the job.'],
       ['02', 'Many businesses · one durable job', 'net', 'ATFGraph coordinates supplier tasks in parallel. Durable state keeps the brief, progress and results together.'],
       ['03', 'Checked, then approved', 'gate', 'Every supplier call goes through Keel. A person approves the proposal before ATP books.'],
-      ['04', 'Solving the hardest problems', 'head', 'Emitters keep watching the trip after booking. The work continues.']
+      ['04', 'The work continues', 'head', 'Emitters keep watching the trip after booking. The work continues.']
     ];
-    const T = [0, 5.2, 11.6, 16.4, 23.5];
+    const T = [0, 3.6, 8.2, 11.8, 17];
     let W = 0, H = 0, dpr = 1, parts = [], briefPts = [], headPts = [], nodes = [], hub = null, vis = false, raf = 0, t0 = 0, phase = -1, mouse = { x: -999, y: -999 };
     const sample = (lines, maxW, maxH, cy) => {
       const oc = document.createElement('canvas'); oc.width = Math.ceil(W); oc.height = Math.ceil(H);
@@ -289,7 +294,7 @@
         if (q.role === 4) {
           q.s = (q.s + .006 + (i % 7) * .0004) % 2; const n = nodes[q.node];
           const out = q.s < 1, s = out ? q.s : 2 - q.s; [q.tx, q.ty] = bez(hub, n, s);
-          if (gateOn) { const d = Math.hypot(q.tx - hub.x, q.ty - hub.y); if (out && d > gateR) q.c = 2; if (!out && d < gateR * .9) q.c = 2; if (tp > 1.4) n.ok = true; } else q.c = 1;
+          if (gateOn) { const d = Math.hypot(q.tx - hub.x, q.ty - hub.y); if (out && d > gateR) q.c = 2; if (!out && d < gateR * .9) q.c = 2; if (tp > 1) n.ok = true; } else q.c = 1;
         } else if (q.role === 3 && gateOn && nodes[q.node].ok) q.c = 2;
         else if (q.role === 2) q.c = gateOn ? 2 : 1;
         else if (q.role === 5) { q.s += .004; const rr = Math.min(W, H) * .44 + (i % 30) * 2; q.tx = W / 2 + Math.cos(q.s + i) * rr; q.ty = H / 2 + Math.sin(q.s + i) * rr * .5; q.c = i % 9 === 0 ? 2 : 1; }
@@ -307,7 +312,7 @@
         ctx.fillStyle = `rgba(215,255,60,${a})`; ctx.fillText('ATFGRAPH', hub.x, hub.y + 4);
         if (gateOn) {
           ctx.fillStyle = 'rgba(215,255,60,.9)'; ctx.fillText('KEEL · CHECKED TOOLS', hub.x, hub.y - gateR - 10);
-          if (tp > 2.4) { const pa = Math.min(1, (tp - 2.4) / .5), bw = 210, bx = hub.x - bw / 2, by = H * .08; ctx.fillStyle = `rgba(215,255,60,${pa})`; ctx.fillRect(bx, by, bw, 30); ctx.fillStyle = `rgba(12,14,19,${pa})`; ctx.font = '500 12px "Geist Mono", monospace'; ctx.fillText('A PERSON APPROVES ✓', hub.x, by + 19); }
+          if (tp > 1.8) { const pa = Math.min(1, (tp - 1.8) / .5), bw = 210, bx = hub.x - bw / 2, by = H * .08; ctx.fillStyle = `rgba(215,255,60,${pa})`; ctx.fillRect(bx, by, bw, 30); ctx.fillStyle = `rgba(12,14,19,${pa})`; ctx.font = '500 12px "Geist Mono", monospace'; ctx.fillText('A PERSON APPROVES ✓', hub.x, by + 19); }
         }
         ctx.textAlign = 'left';
       }

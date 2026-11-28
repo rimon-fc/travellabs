@@ -120,3 +120,49 @@
 /* Let wide visuals scroll inside their window instead of stretching the page */
 .imp-main > * { min-width: 0; }
 @media (max-width: 980px) { .imp-main { grid-template-columns: minmax(0, 1fr); } }
+
+/* Compact production strip: title, tabs and controls share one desktop row. */
+@media(min-width:1001px){
+ .imp{display:grid;grid-template-columns:minmax(200px,.7fr) minmax(0,1.8fr) auto}
+ .imp-h{display:contents}
+ .imp-h>.kick{grid-column:1;grid-row:1;align-self:stretch;display:flex;align-items:center;gap:8px;margin:0;padding:12px 18px;border-bottom:1px solid var(--line-2);font-size:11px}
+ .imp-h>.imp-pause{grid-column:3;grid-row:1;align-self:center;justify-self:end;margin:8px 12px;font-size:10px;min-height:0;padding:7px 9px}
+ .imp-tabs{grid-column:2;grid-row:1;border-bottom:1px solid var(--line-2)}
+ .imp-tabs button{padding:13px 10px;font-size:10.5px;letter-spacing:.02em;white-space:nowrap}
+ .imp-tabs button b{display:inline;margin:0 7px 0 0;font-size:9px}
+ .imp-p,.imp-note{grid-column:1/-1}
+ .imp-main{grid-template-columns:.9fr 1.25fr;gap:24px}
+ .imp-lead{grid-template-columns:auto minmax(0,1fr);column-gap:22px;row-gap:9px;align-items:center}
+ .imp-n{grid-column:1;grid-row:1/4;font-size:clamp(42px,4.4vw,64px);align-self:center}
+ .imp-lead h3,.imp-lead p,.imp-lead small{grid-column:2}
+ .imp-lead h3{font-size:16px;line-height:1.3}
+ .imp-lead p{font-size:12px;line-height:1.5}
+ .imp-lead small{font-size:9px;line-height:1.4}
+}
+.imp-p{padding:16px 20px 12px;gap:14px}
+.imp-bar{padding:8px 10px;font-size:10px}
+.imp-win{box-shadow:3px 3px 0 var(--lime)}
+.imp-grid{padding:10px 10px 6px;gap:6px;grid-template-columns:128px repeat(10,minmax(12px,1fr))}
+.imp-grid i{width:9px;height:9px;aspect-ratio:1;justify-self:center}
+.imp-grid .lb{font-size:10px}
+.imp-grid .hd{font-size:9px}
+.imp-legend{padding:7px 10px 9px;font-size:9px;gap:7px 14px}
+.imp-legend i{width:7px;height:7px}
+.imp-stats{padding-top:10px;gap:14px 24px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.imp-stats div{max-width:none;display:flex;align-items:center;gap:12px}
+.imp-stats b{font-size:27px;white-space:nowrap}
+.imp-stats span{font-size:10px;letter-spacing:.03em}
+.imp-note{padding:8px 20px;font-size:10px}
+.imp-time{padding:10px 12px;gap:5px}
+.imp-track i{height:12px}
+.imp-ruler{padding-top:4px;margin-top:2px}
+.imp-time p{font-size:10px}
+.imp-growth>div{padding:10px 12px;gap:5px}
+.imp-growth strong{font-size:22px}
+.imp-gb{height:60px;margin-top:3px}
+.imp-flow{height:150px}
+.imp-rates{padding:12px;gap:10px}
+.imp-rates>div{font-size:12px}
+.imp-rates i{height:10px}
+@media(max-width:1000px){.imp-main{grid-template-columns:.8fr 1.2fr;gap:20px}.imp-n{font-size:48px}.imp-lead{gap:9px}.imp-lead h3{font-size:20px}.imp-lead p{font-size:13px}}
+@media(max-width:640px){.imp-main{grid-template-columns:1fr;gap:16px}.imp-stats{gap:12px}.imp-stats div{display:grid;gap:7px}.imp-stats b{font-size:23px}.imp-stats span{font-size:9px}.imp-p{padding:16px 14px}.imp-note{padding:10px 14px}.imp-gb{height:60px}}

@@ -45,3 +45,9 @@
 }
 @media(prefers-reduced-motion:reduce) { .obj-tab,.obj-more-link { transition:none; } .objectives-enhanced .obj-panel:not([hidden]) .obj-copy { animation:none; } }
 @media print { .obj-tabs,.obj-pause { display:none !important; } .obj-explorer { display:block; } .objectives-enhanced .obj-panel[hidden],.objectives-enhanced .obj-panel { display:block !important; margin-bottom:32px; break-inside:avoid; } .obj-schematic { min-width:0; } .obj-art { box-shadow:none; } }
+/* The research link uses the same compact footprint as an objective tab. */
+.obj-more-link{min-height:88px;padding:23px 22px;gap:4px;align-content:center}
+.obj-more-link h3{font:500 18px/1.35 var(--sans);margin:0}
+.obj-more-link .paper-link{font:500 14px/1.5 var(--mono)}
+@media(max-width:900px){.obj-more-link{padding:18px 16px}.obj-more-link h3{font-size:16px}.obj-more-link .paper-link{font-size:12px}}
+@media(max-width:700px){.obj-more-link{min-height:64px;padding:16px 20px}}
