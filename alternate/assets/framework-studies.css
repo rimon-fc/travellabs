@@ -1,19 +1,8 @@
-#frameworks .framework-studies{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:auto;gap:24px;align-items:stretch}
-#frameworks .framework-studies .bt-a{grid-row:auto;background:var(--paper);color:var(--ink);box-shadow:none;border-color:var(--line-2);display:block}
-#frameworks .framework-studies .bt-a p{color:var(--ink-2)}
-#frameworks .framework-studies .bt-c{grid-column:1/-1}
-#frameworks .framework-identity{display:flex;align-items:center;gap:14px}
-.framework-identity .brand-identity{width:42px;height:42px;flex:none;color:var(--ink)}
+/* Framework identities retained with the original demonstration panels. */
+.framework-identity{display:flex;align-items:center;gap:14px}
+.framework-identity .brand-identity{display:block;width:42px;height:42px;flex:none;color:inherit}
 .framework-identity .graph-trace{animation:framework-logo-trace 5s linear infinite}
 .framework-identity .keel-spark{animation:framework-logo-spark 4s ease-in-out infinite}
-.framework-art{margin:26px 0 22px;overflow:auto;background:#fff;border:1px solid var(--ink);box-shadow:5px 5px 0 var(--ultra);padding:14px}
-.framework-diagram{display:block;width:100%;height:auto;min-width:610px}
-.framework-art:focus-visible{outline:3px solid var(--ultra);outline-offset:5px}
-.framework-controls{display:flex;justify-content:flex-end;margin:-10px 0 20px}
-.framework-controls button{font:400 13px/1.4 var(--mono);padding:10px 14px;background:transparent;border:1px solid var(--line-2);cursor:pointer}
-.framework-controls button:hover{background:var(--lime)}
-.framework-controls button[hidden]{display:none}
 @keyframes framework-logo-trace{to{stroke-dashoffset:-112}}
 @keyframes framework-logo-spark{50%{transform:translateY(5px)}}
-@media(max-width:1000px){#frameworks .framework-studies{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.framework-identity *{animation:none!important}}
