@@ -1,0 +1,55 @@
+/* Shared responsive refinements. Keep wide technical material in its own frame. */
+main :is(.wrap,.phero-c,.faq-g,.manuscript,.layout,.ct,.ct-side,.form,.fw-copy,.rd-stage){min-width:0}
+main :is(.split,.fw-h,.fw-split,.vcc,.pot,.cards3,.caps6,.ct,.mag article,.rd-tabs,.obj-explorer)>*{min-width:0}
+main :is(.led-wrap,.table-wrap,.tbl,.equation-block,.equation-math,.eqn,pre){max-width:100%;overflow-x:auto}
+main :is(.manuscript,.faq-g,.ct-list,.form-privacy,.form-consent,.team-role){overflow-wrap:anywhere}
+main .form :is(input,select,textarea){min-width:0;max-width:100%}
+.mnav[hidden]{display:none!important}
+@media(max-width:1100px){
+ .mnav{top:var(--mobile-nav-top,87px);bottom:0;padding-bottom:calc(24px + env(safe-area-inset-bottom,0px));overscroll-behavior:contain}
+ body.open{overflow:hidden}
+ .site-h .burger{width:44px;height:44px;flex:none}
+}
+@media(max-width:760px){
+ .site-f .f-logos{max-width:100%;flex-wrap:wrap;gap:14px}
+ .site-f .f-logos>img:first-child{max-width:45%;height:auto}
+ .site-f .f-logos .tl-animated-logo{max-width:45%;height:auto}
+ .site-f .f-logos .e-sep{display:none}
+ .site-f .f-top{gap:24px 16px;grid-template-columns:repeat(2,minmax(0,1fr))}
+ .site-f .f-bot{line-height:1.6}
+ .site-f .f-top>*{min-width:0;overflow-wrap:anywhere}
+ .paper-meta span{line-height:1.5;overflow-wrap:anywhere}
+ .paper-actions :is(a,button){min-height:44px;height:auto;white-space:normal;line-height:1.4}
+ .figure-bar,.dialog-tools{flex-wrap:wrap;gap:8px}
+ .figure-bar button,.flow-controls button,.scenario-buttons button,.cite-this button{min-height:44px;line-height:1.4}
+ .toc summary{min-height:44px;padding-block:12px}
+ .manuscript :is(.table-wrap,.tbl,.equation-block,pre){min-width:0}
+ .rd-panel .ambient-research{grid-template-columns:1fr}
+ .rd-panel .project-controls,.rd-panel .project-steps{flex-wrap:wrap}
+ .rd-panel .project-controls button,.ambient-pause,.project-steps button,.obj-pause{min-height:44px}
+}
+@media(max-width:600px){
+ .site-h .endorse .wrap{height:auto;min-height:30px;flex-wrap:wrap;padding-block:7px;gap:5px 10px;line-height:1.4}
+ .site-h .endorse .e-txt{font-size:9px}
+ .site-h .endorse .e-fctg{height:14px;width:auto;flex:none}
+ .site-h .endorse .e-tag{display:none}
+ main .btn{max-width:100%;min-height:44px;height:auto;padding-block:12px;white-space:normal;line-height:1.4}
+ main :is(.kick,.stp,.tagp){line-height:1.5;max-width:100%;overflow-wrap:anywhere}
+ .form :is(input,select,textarea),.dep-s input{font-size:16px}
+ .dep-s{min-width:0;width:100%;flex-basis:100%;max-width:none;height:44px}
+ .dep-f button{min-height:44px;line-height:1.4}
+ .papers-board .dep-cols{display:none}
+ .papers-board .dep-r{grid-template-columns:32px minmax(0,1fr);gap:10px;padding:16px 14px}
+ .papers-board .dep-r a.s{grid-column:2;justify-self:start;white-space:normal;line-height:1.5;min-height:44px;display:flex;align-items:center}
+ .papers-faq .faq-nav{display:grid;grid-template-columns:minmax(0,1fr)}
+ .papers-faq .faq-nav a{min-height:44px}
+ .papers-faq .faq-g h2{font-size:26px;line-height:1.2}
+ .papers-tab .v{white-space:normal}
+ .team-editorial .team-linkedin{width:44px;height:44px}
+ .vcc-h.fw-gap + .vcc .vcc-f{grid-template-columns:1fr}
+ .rd-panel{padding:16px}
+ .rd-panel .ambient-stage{padding:20px 12px;min-height:0}
+ .hero-media .hc-ctl button{min-height:44px}
+ .hero-media .hc-rail [role=tab]{min-height:52px;overflow-wrap:anywhere}
+ .pr code{white-space:pre-wrap;overflow-wrap:anywhere}
+}

@@ -1,0 +1,119 @@
+/* TravelLabs additions on top of the mcpx look */
+.tl-logo img { display: block; height: 26px; width: auto; }
+.f-brand .tl-logo img { height: 30px; }
+.endorse .e-tag { margin-left: auto; }
+
+/* Hero ticket rows are labelled differently */
+.hx-ticket .ln span:first-child { color: var(--muted); }
+
+/* Mission: painted box beside the copy */
+.mission .art-box canvas { width: 100%; height: 100%; display: block; }
+.mission .art-box { box-shadow: 8px 8px 0 var(--lime); border: 1.5px solid var(--ink); }
+.mission .after { font: 400 14px/1.7 var(--mono); color: var(--ink-2); margin: 0; max-width: 54ch; }
+
+/* Objectives: five cards plus a link cell */
+.caps6 .obj-sub { list-style: none; margin: 4px 0 0; padding: 0; display: grid; gap: 8px; }
+.caps6 .obj-sub li { font: 400 12.5px/1.55 var(--mono); color: var(--muted); padding-left: 14px; position: relative; }
+.caps6 .obj-sub li::before { content: "→"; position: absolute; left: 0; color: var(--ultra); }
+.caps6 .obj-more { display: grid; align-content: end; gap: 10px; background: var(--ultra); color: #fff; text-decoration: none; }
+.caps6 .obj-more .stp { color: #fff; border-color: rgba(255,255,255,.5); background: transparent; }
+.caps6 .obj-more h3 { color: #fff; }
+.caps6 .obj-more p { color: rgba(255,255,255,.82); }
+
+/* Trip demo: seven steps instead of four */
+.bk-rail.seven { grid-template-columns: repeat(7, 1fr); }
+.bk-rail.seven li { padding: 12px 12px; font-size: 11.5px; }
+.bk-step { border-top: 1px dashed var(--line-2); padding-top: 14px; display: grid; gap: 6px; }
+.bk-step b { font: 500 17px/1.3 var(--sans); letter-spacing: -.01em; }
+.bk-step span { font: 400 12.5px/1.6 var(--mono); color: var(--muted); }
+.bk-pick { display: flex; flex-wrap: wrap; gap: 8px; }
+.bk-pick button { font: 500 11px/1 var(--mono); letter-spacing: .05em; text-transform: uppercase; padding: 8px 10px; border: 1px solid var(--line-2); background: var(--paper); color: var(--ink-2); cursor: pointer; }
+.bk-pick button[aria-pressed="true"] { background: var(--ink); color: #fff; border-color: var(--ink); }
+.demo-note { font: 400 12px/1.5 var(--mono); color: var(--muted); margin: 18px 0 0; }
+.bk-row strong.inc { font-size: 13px; color: var(--muted); font-weight: 500; }
+
+/* Frameworks bento: Keel checked-tools panel and ATP steps */
+.kchk { display: grid; grid-template-columns: 1fr auto 1fr; gap: 14px; align-items: center; margin-top: 6px; }
+.kchk ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.kchk li { font: 500 12px/1 var(--mono); padding: 10px 12px; border: 1px solid var(--line-2); background: var(--paper); }
+.kchk .gate { width: 64px; height: 64px; border: 1.5px solid var(--ink); background: var(--lime); display: grid; place-items: center; box-shadow: 4px 4px 0 var(--ink); }
+.kchk .gate .px { width: 28px; height: 28px; }
+.kchk .ok { font: 500 12px/1.3 var(--mono); padding: 14px 12px; border: 1.5px solid var(--ink); background: var(--paper); text-align: center; }
+.atp-steps { list-style: none; margin: 6px 0 0; padding: 0; display: grid; gap: 0; counter-reset: s; border: 1px solid var(--line-2); }
+.atp-steps li { counter-increment: s; display: flex; gap: 10px; align-items: baseline; padding: 10px 12px; border-top: 1px solid var(--line-2); font: 400 12.5px/1.45 var(--mono); color: var(--ink-2); transition: background .3s, color .3s; }
+.atp-steps li:first-child { border-top: 0; }
+.atp-steps li::before { content: "0" counter(s); font-size: 10.5px; color: var(--muted); }
+.atp-steps li.on { background: var(--ultra); color: #fff; }
+.atp-steps li.on::before { color: #fff; }
+.bt .bt-link { font: 500 12px/1 var(--mono); color: var(--ultra); text-decoration: none; letter-spacing: .03em; margin-top: auto; }
+.bt .bt-link:hover { text-decoration: underline; }
+
+/* Inside TravelLabs: three painted doors */
+.chs.three { grid-template-columns: repeat(3, 1fr); }
+.chs a { color: inherit; text-decoration: none; display: contents; }
+.chs figure { transition: transform .3s, box-shadow .3s; }
+.chs figure:hover { transform: translateY(-4px); box-shadow: 6px 6px 0 var(--ink); }
+.chs .go { font: 500 11px/1 var(--mono); color: var(--ultra); letter-spacing: .05em; margin-top: 6px; }
+
+/* About: value chips */
+.vals { display: flex; flex-wrap: wrap; gap: 8px; }
+.vals span { font: 500 11.5px/1 var(--mono); padding: 9px 11px; border: 1px solid var(--ink); background: var(--paper); }
+.vals span:nth-child(3n+1) { background: var(--lime); }
+.trunk { font: 400 12.5px/1.5 var(--mono); color: var(--muted); }
+.trunk a { color: var(--ultra); }
+
+/* Manifesto postcards use the stamp for the number */
+.pc .hand { font-size: 24px; }
+
+/* Hiring strip */
+.hire { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 22px; border: 1.5px solid var(--ink); background: var(--paper); box-shadow: 8px 8px 0 var(--ultra); padding: 28px 32px; }
+.hire p { font: 400 clamp(22px, 2.4vw, 30px)/1.25 var(--sans); letter-spacing: -.02em; margin: 0; max-width: 30ch; }
+.hire p b { font-weight: 500; background: linear-gradient(transparent 62%, var(--lime) 62%, var(--lime) 92%, transparent 92%); }
+
+/* Papers */
+.caps6 .paper-link { font: 500 12px/1 var(--mono); color: var(--ultra); text-decoration: none; }
+.caps6 .paper-link:hover { text-decoration: underline; }
+.papers-note { font: 400 12.5px/1.5 var(--mono); color: var(--muted); }
+.papers-note b { color: var(--ink); font-weight: 500; }
+
+@media (max-width: 980px) {
+  .chs.three { grid-template-columns: 1fr 1fr; }
+  .kchk { grid-template-columns: 1fr; justify-items: start; }
+}
+@media (max-width: 640px) {
+  .chs.three { grid-template-columns: 1fr; }
+  .bk-rail.seven li { font-size: 0; padding: 10px 4px; text-align: center; }
+  .bk-rail.seven li b { font-size: 10.5px; margin: 0; }
+  .endorse .e-tag { display: none; }
+  .hire { padding: 22px; }
+}
+
+/* Blue link cells keep their colour on hover (the grid's lime hover made the white text vanish) */
+.caps6 > .obj-more { background: var(--ultra); }
+.caps6 > .obj-more:hover { background: var(--ultra-ink); }
+
+/* Objectives: every card the same height, and the blue card laid out like the others */
+.caps6.eq { grid-auto-rows: 1fr; }
+.caps6.eq > .obj-more { align-content: start; }
+
+/* Slimmer top strip and nav, site-wide */
+.endorse .wrap { height: 30px; gap: 10px; font-size: 9.5px; }
+.endorse .e-fctg { height: 14px; }
+.endorse .e-tl { height: 15px; }
+.site-h .nav-row { height: 56px; }
+.tl-logo img { height: 24px; }
+
+/* Phones: comfortable tap targets for text links and footer links */
+@media (max-width: 640px) {
+  .site-f a, .paper-link, .bt-link, .link, .trunk a, .go { display: inline-block; padding: 8px 0; }
+  .site-f li { margin: 0; }
+}
+
+/* Phones: menu buttons stacked full width; race-lane captions wrap cleanly */
+.mnav .btns { display: grid; grid-template-columns: 1fr; gap: 10px; }
+.mnav .btns .btn { width: 100%; justify-content: center; height: 46px; }
+@media (max-width: 640px) {
+  .race em { display: block; line-height: 1.45; white-space: normal; }
+  .race > div { gap: 8px; }
+  .race span { line-height: 1.35; }
+}

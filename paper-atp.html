@@ -1,3 +1,706 @@
 <!DOCTYPE html>
 
-<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/><title>ATP: Consent and recovery for agentic travel — TravelLabs</title><meta content="#f5f5ef" name="theme-color"/><link href="assets/journal-mark.svg" rel="icon" type="image/svg+xml"/><link href="assets/site.css?v=7a6f722681" rel="stylesheet"/><link href="assets/papers.css?v=789eabc1ef" rel="stylesheet"/><script defer="" src="assets/journal.js?v=81e0158586"></script><script defer="" src="assets/research.js?v=3c92e1c438"></script><link href="assets/journal.css?v=5cc4c102e8" rel="stylesheet"/><link href="assets/pages.css?v=cf0883d61b" rel="stylesheet"/></head><body class="paper-page" id="top"><a class="skip" href="#main">Skip to content</a><header class="site-header"><div class="header"><div class="brand-lockup"><a aria-label="TravelLabs home" class="brand" href="index.html"><img alt="" height="36" src="assets/journal-mark.svg" width="32"/><span>travel<span class="brand-labs">labs</span></span></a><span aria-label="Part of FCTG Group" class="brand-affiliation"><span>Part of</span><img alt="Flight Centre Travel Group" height="19" src="assets/fctg.png" width="116"/></span></div><button aria-controls="navigation" aria-expanded="false" class="menu-toggle" type="button">Menu <span aria-hidden="true">+</span></button><nav aria-label="Main navigation" id="navigation"><a href="research.html">Research</a><a aria-current="true" href="papers.html">Papers</a><a href="about.html">About us</a><a href="careers.html">Careers</a><a href="manifesto.html">Manifesto</a><a class="nav-contact" href="contact.html">Get in touch</a></nav></div></header><main class="paper-main wrap" id="main"><div class="research-masthead"><a class="text-link" href="papers.html">Back to Research</a><span>16 NOVEMBER 2026 / RESEARCH PAPER</span><button aria-pressed="false" class="motion-toggle" type="button"><span aria-hidden="true">Ⅱ</span> Pause motion</button></div><header class="research-hero"><span class="eyebrow">CONSENT &amp; COMMERCE</span><h1>ATP: Consent and recovery for agentic travel</h1><p class="research-deck">A shared account of what was approved, what was booked and what still needs attention.</p><div class="research-byline"><span>TravelLabs Research</span><span>11 MIN READ</span><span>DRAFT PROTOCOL / ALPHA IMPLEMENTATION</span></div><p class="publication-plan">Planned submissions to <strong>NeurIPS</strong> and <strong>ICML</strong>.</p></header><div class="research-layout"><aside class="research-toc"><div><span class="eyebrow">IN THIS PAPER</span><a href="#abstract">Abstract</a><a href="#question">1. Travel has more than one moment of commitment</a><a href="#design">2. Permission must survive the journey</a><a href="#formal-model">3. Consent, state and recovery</a><a href="#case">4. Case study: two parts confirm, the third fails</a><a href="#payment">5. Agentic Payment for Travel</a><a href="#evidence">6. What the supplied evidence supports</a><a href="#evaluation">7. A protocol needs failure trials</a><a href="#limits">8. From an alpha to a shared standard</a><span class="toc-note">Figures are illustrations.<br/>Source review, not a benchmark.</span></div></aside><article class="research-body"><section class="paper-abstract" id="abstract"><span class="eyebrow">ABSTRACT</span><p>A trip can span several businesses, each with different rules for holds, confirmation, payment and cancellation. The Agentic Travel Protocol (ATP) proposes a common way to describe those actions and the permission behind them. This paper examines the draft v0.3 implementation supplied with keel. It connects scoped traveller consent, declared capabilities, trip-level coordination and Agentic Payment for Travel using a virtual credit card (VCC). It also studies partial failure: confirmed parts may need to be cancelled, and cancellation may itself fail. We argue that a useful protocol must preserve unresolved obligations as clearly as successful bookings. The code provides concrete mechanisms and failure-test definitions, but this review establishes neither universal interoperability nor a guarantee that every outside action can be reversed.</p><div class="research-takeaway"><span>THE CENTRAL IDEA</span><strong>A failed trip is not finished until each booking and payment has a known outcome—or a visible owner for what remains unresolved.</strong></div></section><figure aria-label="A trip commitment and its recovery" class="research-trace" data-trace="atp"><div class="trace-heading"><span>FIGURE 01 / ATP</span><span>ILLUSTRATIVE SCENARIO</span></div><div aria-label="Choose an illustrative scenario" class="trace-choices" role="group"><button aria-pressed="true" data-scenario="0" type="button">Complete trip</button><button aria-pressed="false" data-scenario="1" type="button">Part fails</button><button aria-pressed="false" data-scenario="2" type="button">Recovery fails</button></div><div class="trace-grid"><button aria-pressed="true" class="trace-node" data-node="0" type="button"><span class="node-number">01</span><strong>Permission</strong><span class="node-status">Waiting</span></button><button aria-pressed="false" class="trace-node" data-node="1" type="button"><span class="node-number">02</span><strong>Holds</strong><span class="node-status">Waiting</span></button><button aria-pressed="false" class="trace-node" data-node="2" type="button"><span class="node-number">03</span><strong>Confirm parts</strong><span class="node-status">Waiting</span></button><button aria-pressed="false" class="trace-node" data-node="3" type="button"><span class="node-number">04</span><strong>Payment</strong><span class="node-status">Waiting</span></button><button aria-pressed="false" class="trace-node" data-node="4" type="button"><span class="node-number">05</span><strong>Recovery</strong><span class="node-status">Waiting</span></button><button aria-pressed="false" class="trace-node" data-node="5" type="button"><span class="node-number">06</span><strong>Trip record</strong><span class="node-status">Waiting</span></button></div><div class="trace-inspector"><div><span class="eyebrow">INSPECT THE STEP</span><h3 data-trace-title="">Permission</h3><p data-trace-detail="">The sequence plays when it enters view. Choose any step to inspect it.</p></div><div class="trace-receipt"><span>RECORDED OUTCOME</span><strong data-trace-record="">Ready to start</strong><small>Illustration · not a live system record</small></div></div><div class="trace-controls"><span data-trace-progress="">01 / 06</span><button aria-pressed="false" data-trace-play="" type="button">Pause figure Ⅱ</button><span>Autoplays on scroll · select a step to inspect</span></div><figcaption><strong>Figure 1.</strong> The same trip takes three possible paths. In the final case, a top-level cancelled state does not erase the booking that still needs attention. The evidence must remain visible at the level of each trip part.</figcaption><noscript><p>Read the six labelled steps above and the case study below. The animation is optional.</p></noscript></figure><section class="research-section" id="question"><h2>1. Travel has more than one moment of commitment</h2><p>Searching does not reserve a seat. A hold may expire. A confirmation may create a cancellation obligation. A payment may succeed while the reply is lost. An agent needs these distinctions before it can act responsibly on someone’s behalf.</p><p>The earlier ATF report identifies a travel-specific extension to agentic commerce as an opportunity. The supplied keel snapshot contains a concrete ATP extension, explicitly labelled alpha and tied to a draft protocol version. This paper studies that implementation as a basis for discussion, not as an adopted global standard.</p><aside class="margin-note"><span>IN ONE SENTENCE</span>ATP gives the agent, the traveller and the connected business a shared vocabulary for permission and commitment.</aside></section><section class="research-section" id="design"><h2>2. Permission must survive the journey</h2><p>ATP’s traveller consent model carries limited authority. The documented checks cover a valid signature, an expiry, the permitted operation and a maximum trip value. Commitment uses a single-use consent gate. Permission to search does not automatically become permission to hold, commit or cancel.</p><p>Those limits answer “may this agent act?” They do not, by themselves, prove that a changed room or itinerary still matches what the traveller approved. Offer details and terms must remain tied to the decision. Material changes require the application to recheck the purchase and, when necessary, ask again.</p><p>Capability declarations matter just as much. A business may support searching but not holds or automatic confirmation. The snapshot distinguishes a coordinator’s own reservation record from a source-confirmed reservation. A record inside the agent’s system must never be presented as proof that outside inventory is secured.</p></section><section class="research-section" id="formal-model"><h2>3. Consent, state and recovery</h2><p class="model-scope"><strong>Model scope.</strong> The equations below are definitions and proposed invariants introduced in this paper to formalise the documented behaviour. They are not quoted from the source report, proofs of the implementation, or measured results.</p><p>For a trip with several parts, a single status is a summary of a larger state. The model below keeps reservation states, payment state and consent separate. This follows the alpha extension’s explicit reservation and payment records.</p><figure class="equation-block" id="eq-A1"><figcaption><span>Definition</span><strong>The trip is a state vector</strong><a aria-label="Equation A1" href="#eq-A1">(A1)</a></figcaption><div class="equation-math"><span class="katex"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>X</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mo fence="true" maxsize="1.2em" minsize="1.2em" stretchy="true">(</mo><msub><mi>s</mi><mn>1</mn></msub><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo separator="true">,</mo><mo>…</mo><mo separator="true">,</mo><msub><mi>s</mi><mi>n</mi></msub><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo separator="true">,</mo><mi>p</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo separator="true">,</mo><mi>m</mi><mo fence="true" maxsize="1.2em" minsize="1.2em" stretchy="true">)</mo></mrow><annotation encoding="application/x-tex">X(t)=\bigl(s_1(t),\ldots,s_n(t),p(t),m\bigr)</annotation></semantics></math></span></div><p class="equation-reading">A trip contains the state of every reservation, its payment record and its authority to act.</p></figure><dl class="notation"><div><dt><var>s</var><sub>i</sub>(<var>t</var>)</dt><dd>Reservation state for part i at time t.</dd></div><div><dt><var>p</var>(<var>t</var>), <var>m</var></dt><dd>The collection of payment outcomes and the consent record.</dd></div></dl><figure class="equation-block" id="eq-A2"><figcaption><span>Model of documented checks</span><strong>A simplified commit permission check</strong><a aria-label="Equation A2" href="#eq-A2">(A2)</a></figcaption><div class="equation-math"><span class="katex"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable columnalign="right left" columnspacing="0em" rowspacing="0.25em"><mtr><mtd><mstyle displaystyle="true" scriptlevel="0"><mrow><mi mathvariant="normal">Permit</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>a</mi><mo separator="true">,</mo><mi>m</mi><mo separator="true">,</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mrow></mrow></mrow></mstyle></mtd><mtd><mstyle displaystyle="true" scriptlevel="0"><mrow><mrow></mrow><mi mathvariant="normal">SigOK</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>m</mi><mo stretchy="false">)</mo></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle displaystyle="true" scriptlevel="0"><mrow></mrow></mstyle></mtd><mtd><mstyle displaystyle="true" scriptlevel="0"><mrow><mrow></mrow><mo>∧</mo><mi mathvariant="normal">op</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo><mo>∈</mo><msub><mi>S</mi><mi>m</mi></msub></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle displaystyle="true" scriptlevel="0"><mrow></mrow></mstyle></mtd><mtd><mstyle displaystyle="true" scriptlevel="0"><mrow><mrow></mrow><mo>∧</mo><mi>t</mi><mo>&lt;</mo><msub><mi>t</mi><mi>m</mi></msub><mo>∧</mo><mi>v</mi><mo stretchy="false">(</mo><mi>a</mi><mo stretchy="false">)</mo><mo>≤</mo><msub><mi>B</mi><mi>m</mi></msub></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle displaystyle="true" scriptlevel="0"><mrow></mrow></mstyle></mtd><mtd><mstyle displaystyle="true" scriptlevel="0"><mrow><mrow></mrow><mo>∧</mo><mi mathvariant="normal">Unused</mi><mo>⁡</mo><mo stretchy="false">(</mo><msub><mi>j</mi><mi>m</mi></msub><mo stretchy="false">)</mo></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}\operatorname{Permit}(a,m,t)={}&amp;\operatorname{SigOK}(m)\\&amp;\land\operatorname{op}(a)\in S_m\\&amp;\land t&lt;t_m\land v(a)\le B_m\\&amp;\land\operatorname{Unused}(j_m)\end{aligned}</annotation></semantics></math></span></div><p class="equation-reading">The signature, operation scope, expiry, amount bound and unused commit identity all have to pass.</p></figure><dl class="notation"><div><dt><var>S</var><sub>m</sub>, <var>t</var><sub>m</sub></dt><dd>Operations allowed by the consent record and its expiry.</dd></div><div><dt><var>v</var>(<var>a</var>), <var>B</var><sub>m</sub></dt><dd>The proposed total and consent limit, in the same currency and minor units.</dd></div><div><dt><var>j</var><sub>m</sub></dt><dd>The commit identity checked for previous use.</dd></div></dl><p>This compact model omits additional identity checks such as issuer and audience from the displayed equation, not from the intended validation. The application must also establish that the itinerary and terms match the approved proposal. Signed claims do not establish that match by themselves.</p><figure class="equation-block" id="eq-A3"><figcaption><span>Recovery rule</span><strong>Compensate the confirmed prefix</strong><a aria-label="Equation A3" href="#eq-A3">(A3)</a></figcaption><div class="equation-math"><span class="katex"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable columnalign="right left" columnspacing="0em" rowspacing="0.25em"><mtr><mtd><mstyle displaystyle="true" scriptlevel="0"><mrow><mi mathvariant="normal">Recover</mi><mo>⁡</mo><mo stretchy="false">(</mo><msub><mi>c</mi><mn>1</mn></msub><mo separator="true">,</mo><mo>…</mo><mo separator="true">,</mo><msub><mi>c</mi><mi>k</mi></msub><mo stretchy="false">)</mo><mo>=</mo><mrow></mrow></mrow></mstyle></mtd><mtd><mstyle displaystyle="true" scriptlevel="0"><mrow></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle displaystyle="true" scriptlevel="0"><mrow><mo fence="true" maxsize="1.2em" minsize="1.2em" stretchy="true">(</mo><mi mathvariant="normal">cancel</mi><mo>⁡</mo><mo stretchy="false">(</mo><msub><mi>c</mi><mi>k</mi></msub><mo stretchy="false">)</mo><mo separator="true">,</mo><mo>…</mo><mo separator="true">,</mo><mi mathvariant="normal">cancel</mi><mo>⁡</mo><mo stretchy="false">(</mo><msub><mi>c</mi><mn>1</mn></msub><mo stretchy="false">)</mo><mo fence="true" maxsize="1.2em" minsize="1.2em" stretchy="true">)</mo></mrow></mstyle></mtd><mtd><mstyle displaystyle="true" scriptlevel="0"><mrow></mrow></mstyle></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{aligned}\operatorname{Recover}(c_1,\ldots,c_k)={}&amp;\\\bigl(\operatorname{cancel}(c_k),\ldots,\operatorname{cancel}(c_1)\bigr)&amp;\end{aligned}</annotation></semantics></math></span></div><p class="equation-reading">If k parts confirmed before failure, attempt their compensating actions in reverse order. Every attempt still needs its own observed outcome.</p></figure><p>This is a compensation sequence, not a mathematical inverse. Cancelling a booking may have conditions, penalties or an unavailable endpoint. The saga literature supplies the recovery pattern; the supplied implementation makes the remaining failure state visible on each part.</p><figure class="equation-block" id="eq-A4"><figcaption><span>Definition</span><strong>Keep unresolved obligations in the record</strong><a aria-label="Equation A4" href="#eq-A4">(A4)</a></figcaption><div class="equation-math"><span class="katex"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>U</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mo stretchy="false">{</mo><mi>i</mi><mo>∣</mo><msub><mi>o</mi><mi>i</mi></msub><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>∈</mo><mo stretchy="false">{</mo><mtext>active</mtext><mo separator="true">,</mo><mtext>unknown</mtext><mo stretchy="false">}</mo><mo stretchy="false">}</mo></mrow><annotation encoding="application/x-tex">U(t)=\{i\mid o_i(t)\in\{\text{active},\text{unknown}\}\}</annotation></semantics></math></span></div><p class="equation-reading">U contains every trip part whose obligation is still active or whose outcome is unknown. An attempted cancellation does not remove a part from this set.</p></figure><dl class="notation"><div><dt><var>o</var><sub>i</sub>(<var>t</var>)</dt><dd>The externally supported obligation state of part i: released, active or unknown.</dd></div><div><dt><var>U</var>(<var>t</var>)</dt><dd>The set of parts that still require action or investigation.</dd></div></dl><figure class="equation-block" id="eq-A5"><figcaption><span>Implementation boundary</span><strong>A summary is not proof of recovery</strong><a aria-label="Equation A5" href="#eq-A5">(A5)</a></figcaption><div class="equation-math"><span class="katex"><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi mathvariant="normal">Cancelled</mi><mo>⁡</mo><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo><mtext>  </mtext><mo>⇏</mo><mtext>  </mtext><mi>U</mi><mo stretchy="false">(</mo><mi>t</mi><mo stretchy="false">)</mo><mo>=</mo><mi mathvariant="normal">∅</mi></mrow><annotation encoding="application/x-tex">\operatorname{Cancelled}(X)\;\not\Rightarrow\;U(t)=\varnothing</annotation></semantics></math></span></div><p class="equation-reading">A cancelled transaction does not imply that every individual obligation has been released.</p></figure><p>A5 captures the cancellation-failure case visible in the reviewed coordinator. A customer-facing outcome should include U and the payment record from A1. A named owner can take responsibility for an unresolved obligation, but that handoff does not make the obligation disappear.</p></section><section class="research-section" id="case"><h2>4. Case study: two parts confirm, the third fails</h2><div class="case-study"><span class="eyebrow">ILLUSTRATIVE CASE</span><h3>The trip fails. Some of its obligations remain.</h3><p>Imagine a flight, a stay and an activity. The first two confirm; the activity cannot. The coordinator begins recovery by cancelling the confirmed parts in reverse order. If both cancellations succeed, the record can show what was released and what payment follow-up is required.</p><p>Now let the stay cancellation fail as well. The reviewed code continues recovering the other confirmed part and records the failed cancellation on the stay. It can mark the trip transaction cancelled while that leg remains unresolved. A customer-facing summary must surface that remaining obligation. “Trip cancelled” alone is insufficient.</p></div><p>This recovery pattern is often called a <em>saga</em>: a sequence of actions with follow-up actions intended to undo their effects where possible. It is not a single indivisible transaction across every connected business. The supplied failure tests specifically include cancellation failures.</p><p>The record should answer four questions: Which parts actually confirmed? Which were successfully released? What happened to payment? Who is responsible for the remaining issue? That is the operational meaning of a clear outcome.</p></section><section class="research-section" id="payment"><h2>5. Agentic Payment for Travel</h2><p>The payment layer records instructions alongside reservations. A virtual credit card (VCC) can constrain the payment’s amount, validity and use. The documented payment record links booking and card references so the outcome can be reconciled. A VCC is a controlled payment instrument; it does not establish whether the room, dates or cancellation terms are correct.</p><p>Payment and reservation state must be followed together. A confirmed booking does not prove settlement, and an attempted payment is not proof that funds moved. The reviewed implementation distinguishes payment states and uses guarded responses when a configured payment connection is unavailable. Completing a real transaction still requires working providers and their actual outcomes.</p><p>After booking, the same discipline applies to changes and price-drop rebooking. Secure and verify the replacement before releasing the original where the product and cancellation terms permit it. A price lock requires explicit coverage and a party responsible for it; a timer or saved quote is not sufficient proof of protection. These are requirements for products built on the protocol, not universal guarantees made by this alpha.</p></section><section class="research-section" id="evidence"><h2>6. What the supplied evidence supports</h2><div class="evidence-table"><table><thead><tr><th scope="col">Mechanism</th><th scope="col">Evidence reviewed</th><th scope="col">What remains to establish</th></tr></thead><tbody><tr><td>Scoped consent and single-use commit.</td><td>Token and reservation documentation; corresponding test definitions.</td><td>Behaviour with the intended identity system and real retry conditions.</td></tr><tr><td>Reverse-order recovery.</td><td>Coordinator implementation and failure-injection tests.</td><td>Provider-specific cancellation, delayed acknowledgements and recovery time.</td></tr><tr><td>Explicit unresolved cancellations.</td><td>The coordinator records failed recovery on the individual trip part.</td><td>That every customer and operations interface surfaces the remaining obligation.</td></tr><tr><td>Booking-linked payment records.</td><td>Payment guide and payment test definitions.</td><td>Real authorisation, settlement and reconciliation with configured providers.</td></tr></tbody></table></div><p>We inspected these sources; we did not run their suites or conduct live booking or payment trials. Descriptions of tests are evidence of intended coverage, not new experimental results.</p></section><section class="research-section" id="evaluation"><h2>7. A protocol needs failure trials</h2><p>For each trip with several parts, inject a failure at every confirmation position. Then inject failures into recovery itself. Delay replies, repeat requests, expire holds and change terms after approval. Include cases where a remote action succeeds but its acknowledgement is lost.</p><p>Report unresolved obligations, duplicate external actions, time to a known outcome and cases needing human intervention. Count a case as resolved only when the individual booking and payment outcomes justify that conclusion. A terminal status inside the coordinator is not enough.</p><p>The protocol also needs independent implementations to test the meaning of each capability and state. Interoperability cannot be established by having one implementation agree with itself.</p></section><section class="research-section" id="limits"><h2>8. From an alpha to a shared standard</h2><p>The opportunity is to define the missing travel-specific open standard: one account of consent, capabilities, booking state and payment outcomes that agents and travel businesses can share. That could position FCTG to help shape how AI agents book and transact travel globally. It remains an ambition requiring wider participation, governance and evidence.</p><p>Open questions include expired authority during a long recovery, inconsistent provider replies, disputed payments and liability for unresolved actions. A standard should make those conditions explicit. It should not hide them behind a promise that every trip always succeeds or is fully undone.</p></section><div class="paper-end"><span class="eyebrow">CONTINUE READING</span><a href="paper-keel.html">keel: From supplier documents to checked actions ↗</a><a href="paper-atfgraph.html">atfgraph: Durable execution for agents from any framework ↗</a><a href="paper-payments.html">Agentic Payment for Travel: Authority, spending and reconciliation ↗</a><a href="papers.html">← All research</a></div></article></div></main><footer class="footer journal-wrap"><div class="brand-lockup"><a aria-label="TravelLabs home" class="brand" href="index.html"><img alt="" height="32" src="assets/journal-mark.svg" width="28"/><span>travel<span class="brand-labs">labs</span></span></a><span aria-label="Part of FCTG Group" class="brand-affiliation"><span>Part of</span><img alt="Flight Centre Travel Group" height="19" src="assets/fctg.png" width="116"/></span></div><p>An AI Lab for the world of Travel</p><a href="contact.html">Get in touch</a><a href="#top">Back to top</a></footer></body></html>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="Coordinating a trip across independent suppliers without losing authority or obligations." name="description"/><title>ATP: the Agentic Travel Protocol — Framework Docs (working) | TravelLabs</title><link href="assets/academic/papers.css?v=60b9206fa5" rel="stylesheet"/><script defer="" src="assets/academic/papers.js?v=3a4764f1ae"></script><link href="assets/academic/keel-platform.css?v=d095a4ce76" rel="stylesheet"/><link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet"><link rel="stylesheet" href="assets/chrome.css"><link rel="stylesheet" href="assets/paper-mcpx.css"><link rel="stylesheet" href="assets/responsive.css?v=0922fc7151">
+</head><body class="full-platform-paper" id="top" data-page="papers"><div data-header></div><a class="skip" href="#paper">Skip to documentation</a><div aria-hidden="true" class="reading-progress"></div><header class="paper-head"><span class="kicker">TravelLabs / Framework Docs (working) / 03 / Consent, transactions and recovery</span><h1 data-accent="teal">ATP: the <span class="heading-accent">Agentic Travel Protocol</span></h1><p class="dek">Consent, compensating transactions and payment coordination across travel suppliers.</p><p class="authors">Rimon Rony<span>Global Leisure AI-LAB · TravelLabs Research</span></p><div class="paper-meta"><span>EXPANDED 24 NOVEMBER 2026</span><span>FRAMEWORK DOCS (WORKING)</span><span>6 RESEARCH FIGURES</span></div><div class="paper-actions"><a href="research-source/paper-atp.pdf">Typeset PDF ↗</a><a href="#fig-1">Visual overview ↓</a><button data-print="" type="button">Print docs</button></div></header><div class="layout"><aside aria-label="Paper contents" class="toc"><details open=""><summary>In this paper</summary><ol><li><a href="#abstract">Abstract</a></li><li><a href="#overview">Overview</a></li><li><a href="#atp-section-1">1. The booking saga as compensable
+transactions</a></li><li><a href="#atp-section-2">2. Reference implementation and protocol
+posture</a></li><li><a href="#atp-section-3">3. Payments are part of the booking contract</a></li><li><a href="#atp-tools">4. Configuration and the five wire operations</a></li><li><a href="#atp-authority">5. TravellerToken, consent and payment
+mandates</a></li><li><a href="#atp-suppliers">6. Supplier bindings and capability honesty</a></li><li><a href="#atp-recovery">7. Reservation states, partial failure and
+recovery</a></li><li><a href="#atp-instructions">8. PaymentInstruction: the per-leg record</a></li><li><a href="#atp-capture">9. Consumer capture and the replay boundary</a></li><li><a href="#atp-supplier-payments">10. Supplier routing and virtual-card
+controls</a></li><li><a href="#atp-margin">11. Margin as policy context</a></li><li><a href="#atp-audit">12. PII handling, audit and reconciliation</a></li><li><a href="#atp-errors">13. Error contracts</a></li><li><a href="#atp-evaluation">14. Evaluation scope and remaining
+obligations</a></li></ol></details><div class="series"><span class="eyebrow">Papers &amp; Framework Docs</span><a href="paper-atfgraph.html">01 / ATFGRAPH</a><a href="paper-keel.html">02 / KEEL</a><a href="paper-atp.html" aria-current="page">03 / ATP</a><a href="paper-payments.html">04 / PAYMENTS</a><a href="paper-system-1.html">05 / WAYPOINT SYSTEM 1</a></div></aside><main class="manuscript" id="paper"><section class="paper-abstract" id="abstract"><h2>Abstract</h2><p>ATP addresses travel work that spans changing inventory, independent suppliers, scoped authority and two payment rails. This paper develops the implementation contract for draft v0.3: five wire operations, a compensating booking saga, TravellerToken and consent gates, supplier conformance and capability declarations, per-leg payment instructions, margin policy and reconciliation. It expands the original implementation-report chapter using the supplied ATP and payments documentation, with selected code inspection to distinguish documented intent from configuration-dependent behavior. No new empirical results are claimed.</p></section><section class="research-section" id="overview"><h2>Overview</h2>
+<p>Travel booking is a coordination problem over independently changing
+inventory, prices, approval, supplier commitments and money. A useful
+protocol must preserve those distinctions after the conversation ends.
+ATP, the Agentic Travel Protocol extension for Keel, addresses this
+problem through explicit operation contracts, reservation states, a
+compensating transaction coordinator and linked payment
+instructions.</p>
+<p>ATP is <strong>alpha</strong>, targeting <strong>draft specification
+v0.3</strong>. Its operation names, fields and errors may change. The
+manifest pins <code>atp.version: "0.3"</code>; <code>keel seams</code>
+reports the capabilities present in a particular build. A protocol
+declaration, an executable supplier binding and a confirmed external
+booking are three different things.</p>
+<p>This paper expands the original implementation-report chapter with
+the supplied ATP and payments documentation. Selected implementation
+paths were read to resolve the meaning of consent, capture ordering and
+recovery. No live supplier calls, payment transactions or new benchmark
+runs were performed for this revision. Documentation-level contracts are
+distinguished from guarantees that require provider behavior or
+deployment-specific verification.</p>
+</section><section class="research-section" id="atp-section-1"><h2>1. The booking saga as compensable
+transactions</h2>
+<p>A multi-supplier journey cannot generally be committed as one shared
+ACID transaction. ATP uses a <code>TripTransaction</code> saga:
+reservations are held, legs are confirmed in order, and a failure
+initiates compensating cancellations in reverse order. The coordinator
+is an explicit coroutine with a <code>try/except</code> unwind rather
+than a flow graph whose early exception could skip cleanup.</p>
+<p>The safety objective is that consent precedes commitment on every
+successful path. If
+<math data-tex="c" display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math>
+denotes the relevant consent event, the intended condition is:</p>
+<p><math data-tex="
+\forall\pi\in\operatorname{Paths}(\mathrm{search}\rightarrow\mathrm{commit}),\quad c\in\pi.
+" display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>∀</mo><mi>π</mi><mo>∈</mo><mrow><mi mathvariant="normal">Paths</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mrow><mi mathvariant="normal">s</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">h</mi></mrow><mo>→</mo><mrow><mi mathvariant="normal">c</mi><mi mathvariant="normal">o</mi><mi mathvariant="normal">m</mi><mi mathvariant="normal">m</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">t</mi></mrow><mo form="postfix" stretchy="false">)</mo><mo>,</mo><mspace width="1.0em"></mspace><mi>c</mi><mo>∈</mo><mi>π</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\forall\pi\in\operatorname{Paths}(\mathrm{search}\rightarrow\mathrm{commit}),\quad c\in\pi.
+</annotation></semantics></math></p>
+<p>This is an authorization objective, not a claim that every deployment
+establishes an authenticated human decision. The implementation has a
+configurable token validator and a separate consent-construct gate. The
+origin and validity of the consent signal remain part of the deployment
+contract, discussed in Section 5.</p>
+<figure class="technical-figure flow-figure" id="fig-1"><div class="figure-bar"><span>FIGURE 01 / FLOW STUDY</span><div class="flow-controls"><button aria-label="Pause animation for figure 1" aria-pressed="false" data-pause-flow="" type="button">Pause motion</button><button aria-label="Enlarge figure 1" data-enlarge="assets/academic/flows/atp-source-01.svg?v=2b4dec0f86" type="button">Enlarge ↗</button></div></div><img alt="atp source 01. A booking spans separate supplier and payment obligations. Consent gates commitment; expiry or failure can require independent compensating operations. A coordinator-owned record must not be mistaken for supplier confirmation." data-animated-src="assets/academic/flows/atp-source-01.svg?v=2b4dec0f86" data-print-image="assets/academic/flows/atp-source-01.png" data-still-src="assets/academic/flows/atp-source-01-still.svg?v=2b4dec0f86" height="420" loading="lazy" src="assets/academic/flows/atp-source-01.svg?v=2b4dec0f86" width="800"/><figcaption><strong>Figure 1.</strong> A booking spans separate supplier and payment obligations. Consent gates commitment; expiry or failure can require independent compensating operations. A coordinator-owned record must not be mistaken for supplier confirmation.</figcaption></figure>
+<p>The distinction between a supplier confirmation and the transaction’s
+terminal status matters for payment ordering. In the inspected
+<code>_run_commit</code> path, supplier legs are confirmed first. If
+those calls succeed, <code>_capture_on_commit</code> runs before the
+<strong>transaction</strong> is marked <code>CONFIRMED</code>. Thus
+“before the final confirm” in the documentation means before the final
+transaction-state transition, not before every supplier confirmation. A
+payment failure compensates the already-confirmed legs.</p>
+<figure class="technical-figure flow-figure" id="fig-2"><div class="figure-bar"><span>FIGURE 02 / FLOW STUDY</span><div class="flow-controls"><button aria-label="Pause animation for figure 2" aria-pressed="false" data-pause-flow="" type="button">Pause motion</button><button aria-label="Enlarge figure 2" data-enlarge="assets/academic/flows/atp-source-02.svg?v=393b0d8998" type="button">Enlarge ↗</button></div></div><img alt="atp source 02. Illustrative coordination among the traveller, policy boundary, suppliers, payments and audit. Supplier legs confirm before configured consumer capture; the transaction is marked confirmed afterwards. Payment and supplier outcomes require independent evidence; this sequence does not establish exactly-once execution." data-animated-src="assets/academic/flows/atp-source-02.svg?v=393b0d8998" data-print-image="assets/academic/flows/atp-source-02.png" data-still-src="assets/academic/flows/atp-source-02-still.svg?v=393b0d8998" height="420" loading="lazy" src="assets/academic/flows/atp-source-02.svg?v=393b0d8998" width="800"/><figcaption><strong>Figure 2.</strong> Illustrative coordination among the traveller, policy boundary, suppliers, payments and audit. Supplier legs confirm before configured consumer capture; the transaction is marked confirmed afterwards. Payment and supplier outcomes require independent evidence; this sequence does not establish exactly-once execution.</figcaption></figure>
+<p>When a tasks engine is attached, the coordinator can submit commit as
+a pollable task. Task durability does not, by itself, establish
+restart-safe reconstruction of every supplier obligation: transaction
+state, effect identity and external outcomes must all be preserved.
+Cancellation is another external operation, potentially with fees,
+delays or failure. A terminal transaction status is therefore not
+sufficient evidence that every obligation has disappeared.</p>
+</section><section class="research-section" id="atp-section-2"><h2>2. Reference implementation and protocol
+posture</h2>
+<p>The original report identifies <code>travel-commerce</code> as the
+supplied ATP reference implementation, combining supplier bindings, a
+booking workflow and business policy. It describes Co-consult as a
+consultation agent whose adoption of ATP as a live booking reference
+remains future work. Those roles are retained here without treating
+planned integration as deployed capability.</p>
+<p>ATP is a standard in formation. Supplier capability declarations,
+operation-level errors and inspectable state make integration
+expectations explicit. Distribution and post-booking mechanisms are
+adjacent concerns: the supplied documentation states that UCP
+declarations derive from the same supplier mappings. Neither a discovery
+listing nor an advertised tier proves that an endpoint can complete a
+purchase. Detailed distribution behavior belongs to the separate
+distribution specification, beyond the two documents adapted here.</p>
+</section><section class="research-section" id="atp-section-3"><h2>3. Payments are part of the booking contract</h2>
+<p>Booking creates two distinct financial obligations. On the
+<strong>consumer rail</strong>, the traveller pays the agent or
+merchant. On the <strong>supplier rail</strong>, payment is routed to
+the supplier through a virtual card, BSP settlement or direct transfer,
+according to the leg’s distribution channel. The two rails share
+reservation identity but require separate evidence.</p>
+<p>One <code>PaymentInstruction</code> records each reservation leg.
+Capture, supplier payment, margin and reconciliation are represented
+explicitly rather than compressed into a single “paid” flag. A card’s
+ceiling is based on supplier cost, while the traveller-facing gross
+amount determines the consumer side. Margin is published as policy
+context so that a configured floor can reject an economically invalid
+commit.</p>
+<p>Configuration groups <code>consumer</code>, <code>supplier</code> and
+<code>margin</code> under <code>atp.payment</code>. The documented
+consumer provider choices are <code>acp</code>, <code>visa_tap</code>
+and <code>internal</code>; the supplier choices are
+<code>virtual_card</code>, <code>visa_tap_b2b</code> and
+<code>mpp</code>. Endpoint configuration, implemented behavior and the
+reported seam state must be checked separately from those labels.
+Sections 9–11 describe capture timing, issuer settings and margin-policy
+wiring.</p>
+<p>The implementation replays a previously stored capture result for the
+same payment intent. That mechanism is narrower than an unconditional
+exactly-once charge guarantee: the inspected path reads local state,
+performs the provider call and then stores the result. Concurrency, a
+lost reply or a crash between the external effect and local persistence
+require a provider-side idempotency and reconciliation contract. Section
+9 states this boundary explicitly.</p>
+</section><section class="research-section" id="atp-tools"><h2>4. Configuration and the five wire operations</h2>
+<p>ATP ships as <code>keel.ext.atp</code>. Installing
+<code>keel[atp]</code> is the supported opt-in and adds no extra
+dependencies in the supplied documentation. Registration remains off
+unless <code>atp.enabled</code> is true. A minimal manifest fragment
+is:</p>
+<pre class="yaml"><code>atp:
+  enabled: true
+  version: "0.3"</code></pre>
+<p>Five ATP meta-tools are registered. Logical names use a colon; the
+documented FastMCP wire surface uses an underscore instead. Supplier
+operations (<code>search</code>, <code>quote</code>, <code>hold</code>,
+<code>commit</code>, <code>cancel</code>) are a separate layer from
+these coordinator tools.</p>
+<div class="table-wrap"><table>
+<colgroup>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+</colgroup>
+<thead>
+<tr>
+<th>Wire tool</th>
+<th>Scope</th>
+<th>Contract</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>atp_SearchOffers</code></td>
+<td>None</td>
+<td>Token-free inventory search and normalization into ATP offers.</td>
+</tr>
+<tr>
+<td><code>atp_CreateTripTransaction</code></td>
+<td><code>hold</code></td>
+<td>Create an <code>OPEN</code> multi-supplier transaction.</td>
+</tr>
+<tr>
+<td><code>atp_CreateReservation</code></td>
+<td><code>hold</code></td>
+<td>Add a held flight, hotel or activity leg; return an MCP reservation
+resource.</td>
+</tr>
+<tr>
+<td><code>atp_CommitTripTransaction</code></td>
+<td><code>commit</code></td>
+<td>Run the consent-gated confirmation saga, compensating after partial
+failure.</td>
+</tr>
+<tr>
+<td><code>atp_CancelReservation</code></td>
+<td><code>cancel</code></td>
+<td>Request a compensating cancellation for one leg.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The reservation resource has media type
+<code>application/atp-reservation+json</code>. Although the wire-tool
+summary in the documentation says “atomically confirm all legs,” the
+documented mechanism is a saga with compensation. It does not provide a
+distributed atomic commit across independent suppliers.</p>
+</section><section class="research-section" id="atp-authority"><h2>5. TravellerToken, consent and payment
+mandates</h2>
+<p>With verification configured, a <code>TravellerToken</code> is a
+signed JWT granting scoped authority. The validator checks signature,
+expiry, issuer and audience against configured JWKS or a public key;
+bounds the token lifetime; verifies the required operation scope; checks
+the commit amount; and prevents reuse of commit authority. Token
+lifetime is measured as <code>exp - iat</code>, with
+<code>max_ttl</code> clamped to a maximum of 86,400 seconds.</p>
+<div class="table-wrap"><table>
+<colgroup>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+</colgroup>
+<thead>
+<tr>
+<th>Boundary</th>
+<th>Documented check</th>
+<th>Failure or qualification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Authenticity</td>
+<td>Signature, <code>exp</code>, issuer and audience</td>
+<td>Verification material must actually be configured.</td>
+</tr>
+<tr>
+<td>Lifetime</td>
+<td><code>exp - iat &lt;= max_ttl</code>, at most 24 hours</td>
+<td>A fresh invocation does not extend token validity.</td>
+</tr>
+<tr>
+<td>Scope</td>
+<td>Required scope belongs to <code>atp.scope</code></td>
+<td><code>ATP_TOKEN_INSUFFICIENT_SCOPE</code>.</td>
+</tr>
+<tr>
+<td>Value</td>
+<td>Commit total does not exceed <code>atp.max_trip_value</code></td>
+<td><code>ATP_TOKEN_AMOUNT_EXCEEDED</code>.</td>
+</tr>
+<tr>
+<td>Replay</td>
+<td>Record commit use by <code>jti</code> or a token digest</td>
+<td>Reuse is refused with <code>ATP_CONSENT_REQUIRED</code>.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The documentation describes a durable SQLite spent-token registry.
+The inspected checkout additionally selects a shared key-value
+commit-token store for a Postgres-family state backend, while consulting
+an existing legacy SQLite registry. The storage choice is version- and
+configuration-dependent; it should not be described as universally
+SQLite-backed.</p>
+<pre class="yaml"><code>atp:
+  traveller_token:
+    issuer: https://idp.example.com
+    jwks_uri: https://idp.example.com/.well-known/jwks.json
+    max_ttl: 86400</code></pre>
+<p>Environment fallbacks are <code>ATP_TOKEN_ISSUER</code>,
+<code>ATP_JWKS_URI</code> or <code>JWKS_URI</code>,
+<code>ATP_TOKEN_PUBLIC_KEY</code> and <code>ATP_TOKEN_AUDIENCE</code>.
+<strong>Without verification material, the documented offline posture
+leaves the token gate open.</strong> The inspected harness returns no
+validator when neither JWKS nor public-key material is available, and
+also returns no validator if validator construction raises. Merely
+naming an issuer is not evidence that cryptographic verification is
+active. The consent prerequisite remains a separate mechanism.</p>
+<figure class="technical-figure flow-figure" id="fig-3"><div class="figure-bar"><span>FIGURE 03 / FLOW STUDY</span><div class="flow-controls"><button aria-label="Pause animation for figure 3" aria-pressed="false" data-pause-flow="" type="button">Pause motion</button><button aria-label="Enlarge figure 3" data-enlarge="assets/academic/flows/atp-authority.svg?v=2c7337c14e" type="button">Enlarge ↗</button></div></div><img alt="atp authority. Token validation, the consent construct and optional payment-mandate policy are distinct checks. Unconfigured cryptographic verification is an explicitly documented offline posture. The presence of a consent field alone does not authenticate a human." data-animated-src="assets/academic/flows/atp-authority.svg?v=2c7337c14e" data-print-image="assets/academic/flows/atp-authority.png" data-still-src="assets/academic/flows/atp-authority-still.svg?v=2c7337c14e" height="418" loading="lazy" src="assets/academic/flows/atp-authority.svg?v=2c7337c14e" width="800"/><figcaption><strong>Figure 3.</strong> Token validation, the consent construct and optional payment-mandate policy are distinct checks. Unconfigured cryptographic verification is an explicitly documented offline posture. The presence of a consent field alone does not authenticate a human.</figcaption></figure>
+<p>Commit is gated by a <code>consent</code> construct whose default
+schema requires an <code>approvedBy</code> field. The gate accepts
+either an explicit signal under <code>consent</code>,
+<code>consent_signal</code>, <code>consentToken</code> or
+<code>consent_token</code>, or session state satisfying the consent
+construct. For example,
+<code>state_set("consent", {"approvedBy": "jane"})</code> supplies the
+documented state shape. A manifest-defined construct overrides the
+default schema. The <code>atp_consent_gate</code> validator interceptor
+repeats the gate before saga execution.</p>
+<p>In the inspected code, the explicit-argument check tests whether one
+of those signals is truthy. A field named <code>approvedBy</code> or a
+truthy argument does not independently authenticate a person. A
+deployment claiming human authorization must bind these inputs to a
+trusted approval process and the reviewed itinerary. The paper therefore
+does not equate presence of a consent signal with proof of informed
+consent.</p>
+<p>An unmet construct produces <code>KEEL_PREREQUISITES_UNMET</code>,
+with stage <code>commit</code>, code <code>-32107</code> and
+<code>missing_prerequisites</code> identifying <code>consent</code>. The
+caller satisfies the named construct and retries. An optional
+<code>ap2_mandate</code> JWT claim supplies payment scope and amount
+constraints. Once published as session policy facts, these constraints
+are implicit deny rules before ATP booking tools; a present, non-object
+claim is rejected with <code>ATP_CONSENT_REQUIRED</code>.</p>
+</section><section class="research-section" id="atp-suppliers"><h2>6. Supplier bindings and capability honesty</h2>
+<p>Each entry in <code>atp.suppliers</code> binds a logical supplier to
+a <code>servers:</code> entry through a validated foreign key. Its
+<code>ops</code> map translates logical operations into actual upstream
+tool names. Binding defaults are merged underneath call arguments;
+explicitly supplied values take precedence. The default normalizer
+attaches supplier identity and retains the raw response under
+<code>source</code>, rather than manufacturing unavailable inventory
+details.</p>
+<pre class="yaml"><code>atp:
+  suppliers:
+    ean:
+      server: hotels
+      conformance_tier: L1
+      ops:
+        search: ean_hotel_search
+        quote: ean_room_availability
+      defaults:
+        currency: AUD</code></pre>
+<p>This fragment assumes a separately configured <code>hotels</code>
+server. Bound operations use <code>MCPSupplierAdapter</code> and
+<code>gateway.call_tool</code> with the wire name
+<code>{server}__{tool}</code>, through the gateway’s normal interceptor
+path. Servers lacking a binding retain the raw dispatch fallback
+described by the documentation.</p>
+<div class="table-wrap"><table>
+<colgroup>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+</colgroup>
+<thead>
+<tr>
+<th>Logical operation</th>
+<th>Minimum declared tier</th>
+<th>What the declaration does not prove</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>search</code>, <code>quote</code></td>
+<td>L1: Search</td>
+<td>Current inventory or a supplier hold.</td>
+</tr>
+<tr>
+<td><code>hold</code>, <code>cancel</code></td>
+<td>L2: Hold</td>
+<td>A mapped and reachable supplier endpoint for every operation.</td>
+</tr>
+<tr>
+<td><code>commit</code></td>
+<td>L3: Atomic commit</td>
+<td>Atomic commitment across all suppliers in the itinerary.</td>
+</tr>
+</tbody>
+</table></div>
+<figure class="technical-figure flow-figure" id="fig-4"><div class="figure-bar"><span>FIGURE 04 / FLOW STUDY</span><div class="flow-controls"><button aria-label="Pause animation for figure 4" aria-pressed="false" data-pause-flow="" type="button">Pause motion</button><button aria-label="Enlarge figure 4" data-enlarge="assets/academic/flows/atp-capabilities.svg?v=61fc3a149a" type="button">Enlarge ↗</button></div></div><img alt="atp capabilities. Minimum supplier tiers are distinct from actual tool mappings. An absent booking operation may be coordinator-owned below the required tier; its record explicitly reports supplierConfirmed: false. A sufficient tier does not fill a missing mapping." data-animated-src="assets/academic/flows/atp-capabilities.svg?v=61fc3a149a" data-print-image="assets/academic/flows/atp-capabilities.png" data-still-src="assets/academic/flows/atp-capabilities-still.svg?v=61fc3a149a" height="410" loading="lazy" src="assets/academic/flows/atp-capabilities.svg?v=61fc3a149a" width="800"/><figcaption><strong>Figure 4.</strong> Minimum supplier tiers are distinct from actual tool mappings. An absent booking operation may be coordinator-owned below the required tier; its record explicitly reports supplierConfirmed: false. A sufficient tier does not fill a missing mapping.</figcaption></figure>
+<p>An unmapped operation returns an <code>ATP_OP_NOT_SUPPORTED</code>
+envelope with supplier, operation, tier, seam and a specific mapping
+instruction; its JSON-RPC transport code is <code>-32601</code>. For
+supported coordinator-owned handling of an unmapped booking operation
+below the required supplier tier, the result is an internal record
+marked <code>coordinatorOwned: true</code> and
+<code>supplierConfirmed: false</code>, with the unsupported-operation
+detail preserved. A configuration gap at a sufficient tier remains a
+refusal. <code>harness.supplier_capabilities()</code> exposes
+<code>mapped</code>, <code>tool</code>, <code>min_tier</code> and
+<code>coordinator_owned</code> per operation.</p>
+<p>This distinction is commercially significant. “HELD” in a coordinator
+record must not be presented as supplier-held inventory without supplier
+evidence. An integration must inspect the capability and confirmation
+fields, not infer success from a booking-shaped object.</p>
+</section><section class="research-section" id="atp-recovery"><h2>7. Reservation states, partial failure and
+recovery</h2>
+<p>A reservation leg progresses through <code>SEARCHING</code>,
+<code>HELD</code>, <code>CONFIRMED</code> and potentially
+<code>COMPLETED</code>. A held leg can expire; cancellation and
+compensation use <code>COMPENSATING</code> and <code>CANCELLED</code>.
+Illegal transitions are rejected. An elapsed hold TTL raises
+<code>ATP_HOLD_EXPIRED</code> and requires a renewed reservation rather
+than reuse of the expired promise.</p>
+<p>At transaction level the main path is
+<code>OPEN → COMMITTING → CONFIRMED</code>. Failure moves through
+<code>COMPENSATING</code> to <code>CANCELLED</code>. The coordinator
+visits confirmed legs in reverse order, attempting every compensating
+cancellation even if another cancellation fails. A failed compensation
+retains per-leg error detail and may leave that leg
+<code>COMPENSATING</code>; it does not vanish when the parent
+transaction becomes <code>CANCELLED</code>.</p>
+<figure class="technical-figure flow-figure" id="fig-5"><div class="figure-bar"><span>FIGURE 05 / FLOW STUDY</span><div class="flow-controls"><button aria-label="Pause animation for figure 5" aria-pressed="false" data-pause-flow="" type="button">Pause motion</button><button aria-label="Enlarge figure 5" data-enlarge="assets/academic/flows/atp-recovery.svg?v=c8f8371035" type="button">Enlarge ↗</button></div></div><img alt="atp recovery. Illustrative three-leg failure: the third confirmation fails; the hotel cancellation also fails; the flight cancellation succeeds. Reverse-order unwind continues. The transaction can be cancelled while the hotel obligation remains unresolved." data-animated-src="assets/academic/flows/atp-recovery.svg?v=c8f8371035" data-print-image="assets/academic/flows/atp-recovery.png" data-still-src="assets/academic/flows/atp-recovery-still.svg?v=c8f8371035" height="418" loading="lazy" src="assets/academic/flows/atp-recovery.svg?v=c8f8371035" width="800"/><figcaption><strong>Figure 5.</strong> Illustrative three-leg failure: the third confirmation fails; the hotel cancellation also fails; the flight cancellation succeeds. Reverse-order unwind continues. The transaction can be cancelled while the hotel obligation remains unresolved.</figcaption></figure>
+<p><code>ATP_COMMIT_PARTIAL_FAILURE</code> carries the full transaction
+in its error data, including leg statuses. If capture fails,
+<code>captureFailedAt</code> and <code>captureError</code> are recorded
+and the same compensation path is used. An operator can therefore
+distinguish a failed confirmation, a completed compensation and an
+unresolved compensation. Operational closure requires accounting for the
+remaining supplier and financial obligations, not simply observing the
+parent terminal state.</p>
+</section><section class="research-section" id="atp-instructions"><h2>8. PaymentInstruction: the per-leg record</h2>
+<p>The shared StateStore persists each instruction under
+<code>atp:payment:instruction:&lt;id&gt;</code>. It ties a
+<code>paymentInstructionId</code> to a <code>reservationId</code> and
+<code>tripTransactionId</code>, with separate consumer, supplier,
+margin, reconciliation and audit blocks.</p>
+<div class="table-wrap"><table>
+<colgroup>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+</colgroup>
+<thead>
+<tr>
+<th>Block</th>
+<th>Principal fields</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>consumer_payment</code></td>
+<td>Provider, intent, amount/currency, status, capture time</td>
+<td>Collection from the traveller.</td>
+</tr>
+<tr>
+<td><code>supplier_payment</code></td>
+<td>Merchant of record, method, card, settlement</td>
+<td>Payment to the supplier and expected settlement details.</td>
+</tr>
+<tr>
+<td><code>margin</code></td>
+<td>Gross, cost, net, percentage</td>
+<td>Commercial facts used by policy.</td>
+</tr>
+<tr>
+<td><code>reconciliation</code></td>
+<td>PNR, booking reference, card reference, consultant, branch</td>
+<td>Correlation between booking and financial records.</td>
+</tr>
+<tr>
+<td><code>audit</code></td>
+<td>Transition history</td>
+<td>Previous state, next state, time and reason.</td>
+</tr>
+</tbody>
+</table></div>
+<p>The documented lifecycle is
+<code>DRAFT → ISSUED → CAPTURED → SETTLED → RECONCILED</code>, with
+failure transitions to <code>FAILED</code>. Each transition updates
+<code>audit.transitions</code> and attempts an <code>atp_payment</code>
+audit append. The inspected builder starts card-backed instructions as
+<code>ISSUED</code> and other instructions as <code>DRAFT</code>;
+applications should not assume all channel types begin in the same
+state.</p>
+<figure class="technical-figure flow-figure" id="fig-6"><div class="figure-bar"><span>FIGURE 06 / FLOW STUDY</span><div class="flow-controls"><button aria-label="Pause animation for figure 6" aria-pressed="false" data-pause-flow="" type="button">Pause motion</button><button aria-label="Enlarge figure 6" data-enlarge="assets/academic/flows/atp-payment-records.svg?v=63baf03741" type="button">Enlarge ↗</button></div></div><img alt="atp payment records. Each reservation leg has an instruction joining consumer collection, supplier payment, margin and reconciliation identifiers. The example gross AUD 750 and cost AUD 600 imply net AUD 150 and margin 20%; these are documentation examples, not measured results." data-animated-src="assets/academic/flows/atp-payment-records.svg?v=63baf03741" data-print-image="assets/academic/flows/atp-payment-records.png" data-still-src="assets/academic/flows/atp-payment-records-still.svg?v=63baf03741" height="432" loading="lazy" src="assets/academic/flows/atp-payment-records.svg?v=63baf03741" width="800"/><figcaption><strong>Figure 6.</strong> Each reservation leg has an instruction joining consumer collection, supplier payment, margin and reconciliation identifiers. The example gross AUD 750 and cost AUD 600 imply net AUD 150 and margin 20%; these are documentation examples, not measured results.</figcaption></figure>
+<p>The documentation’s example has gross AUD 750, supplier cost AUD 600,
+net AUD 150 and margin 20%. These are illustrative amounts, not measured
+commercial performance. The virtual-card ceiling is AUD 600 in that
+example. Booking, payment-instruction and payment-intent identifiers
+serve different purposes and should not be collapsed into a single
+identifier.</p>
+</section><section class="research-section" id="atp-capture"><h2>9. Consumer capture and the replay boundary</h2>
+<p><code>atp.payment.consumer</code> selects the consumer rail. ACP
+capture posts to <code>acp_checkout_url</code> with the intent, amount
+and itinerary as a structured product. The product schema defaults to
+<code>atp.itinerary</code>. With no checkout endpoint, the engine
+returns <code>KEEL_PAYMENT_NOT_CONFIGURED</code>, identifying seam
+<code>atp.payment.consumer</code> and guard
+<code>acp_checkout_url</code>.</p>
+<p>The <code>internal</code> provider records capture on the agent’s
+internal ledger without calling an external processor; that ledger event
+is not independent proof of money moving at a bank. The
+<code>visa_tap</code> option is declared but contract-only in this
+checkout and returns <code>KEEL_CONTRACT_ONLY</code>. These capability
+states are implementation-specific, not statements about the
+availability of an external payment standard generally.</p>
+<p>The documented <code>capture_on</code> values are <code>commit</code>
+and <code>hold</code>, with <code>commit</code> the default. The commit
+hook acts only when the payment engine is attached and the setting is
+<code>commit</code>. A missing engine retains the pre-payment saga
+behavior. The inspected commit hook skips capture for a different value;
+the configuration enum alone does not prove that a working hold-time
+hook is installed.</p>
+<p>Payment-intent identity is selected from an explicit
+<code>payment_intent_id</code>, the transaction’s payment token, or
+derived <code>intent_&lt;txn_id&gt;</code>. A stored result at
+<code>atp:payment:capture:&lt;intent&gt;</code> is returned with
+<code>replayed: true</code>. The intended replay property is:</p>
+<p><math data-tex="
+\operatorname{stored}(k)\Rightarrow
+\operatorname{retry}(k)=\operatorname{recordedResult}(k).
+" display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">stored</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo><mo>⇒</mo><mrow><mi mathvariant="normal">retry</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo><mo>=</mo><mrow><mi mathvariant="normal">recordedResult</mi><mo>⁡</mo></mrow><mo form="prefix" stretchy="false">(</mo><mi>k</mi><mo form="postfix" stretchy="false">)</mo><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\operatorname{stored}(k)\Rightarrow
+\operatorname{retry}(k)=\operatorname{recordedResult}(k).
+</annotation></semantics></math></p>
+<p>That implication is conditional on persistence. The
+read–provider-call–write sequence inspected here does not itself supply
+an atomic claim over concurrent callers or close the crash window
+following a successful provider call. Stronger exactly-once charging
+requires evidence about provider idempotency, atomic ownership, recovery
+and reconciliation. The previous paper’s unconditional “captures are
+exactly-once” statement is therefore replaced by this narrower
+contract.</p>
+</section><section class="research-section" id="atp-supplier-payments"><h2>10. Supplier routing and virtual-card
+controls</h2>
+<p>The reservation’s <code>channel</code>, <code>segment.channel</code>
+or <code>supplier.channel</code> selects merchant-of-record routing.
+Unknown channels default to <code>SUPPLIER_DIRECT</code> in the
+documented implementation.</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>Channel</th>
+<th>Merchant of record</th>
+<th>Method</th>
+<th>Settlement mechanism</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>AIRLINE_DIRECT</code></td>
+<td>Airline</td>
+<td><code>bsp</code></td>
+<td>BSP calendar.</td>
+</tr>
+<tr>
+<td><code>OTA</code></td>
+<td>Agent</td>
+<td><code>virtual_card</code></td>
+<td>Supplier charges the issued card.</td>
+</tr>
+<tr>
+<td><code>SUPPLIER_DIRECT</code></td>
+<td>Supplier</td>
+<td><code>direct</code></td>
+<td>Direct transfer.</td>
+</tr>
+</tbody>
+</table></div>
+<p>Settlement metadata lives under
+<code>supplier_payment.settlement</code>, with <code>mechanism</code>,
+<code>expected_at</code> and <code>reference</code>. Selecting a method
+describes the instruction’s routing; it is not evidence that the
+corresponding settlement has occurred.</p>
+<p>For OTA legs, card issuance posts to
+<code>atp.payment.supplier.virtual_card.issuer</code>. The requested
+amount ceiling is <code>pricing.cost</code>, falling back to
+<code>pricing.total</code> when cost is absent. Validity defaults to 21
+days and <code>single_use</code> defaults to true; the flag is forwarded
+to the issuer. The returned reference is copied into both the
+supplier-payment and reconciliation blocks. Issuer-side enforcement of
+these requested controls remains part of the integration contract.</p>
+<p>With no issuer, an OTA instruction returns the guarded
+<code>KEEL_PAYMENT_NOT_CONFIGURED</code> envelope instead of
+constructing a card-less instruction. Transport failures and non-2xx
+responses raise <code>PaymentError</code>.
+<code>register_mpp_intent</code> is explicitly contract-only in this
+checkout: it returns <code>KEEL_CONTRACT_ONLY</code> and audits the
+attempted use. A configured provider name is not equivalent to an
+implemented rail.</p>
+</section><section class="research-section" id="atp-margin"><h2>11. Margin as policy context</h2>
+<p><code>compute_margin</code> calculates gross less supplier cost and
+stores <code>margin_pct</code> and <code>total_amount</code> under the
+policy-context provider name <code>margin_calculator</code>. For
+positive gross
+<math data-tex="g" display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>g</mi><annotation encoding="application/x-tex">g</annotation></semantics></math>
+and supplier cost
+<math data-tex="s" display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math>:</p>
+<p><math data-tex="
+\mathrm{net}=g-s,\qquad
+\mathrm{margin\_pct}=100\frac{g-s}{g}.
+" display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">n</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">t</mi></mrow><mo>=</mo><mi>g</mi><mo>−</mo><mi>s</mi><mo>,</mo><mspace width="2.0em"></mspace><mrow><mi mathvariant="normal">m</mi><mi mathvariant="normal">a</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">g</mi><mi mathvariant="normal">i</mi><mi mathvariant="normal">n</mi><mi mathvariant="normal">_</mi><mi mathvariant="normal">p</mi><mi mathvariant="normal">c</mi><mi mathvariant="normal">t</mi></mrow><mo>=</mo><mn>100</mn><mfrac><mrow><mi>g</mi><mo>−</mo><mi>s</mi></mrow><mi>g</mi></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">
+\mathrm{net}=g-s,\qquad
+\mathrm{margin\_pct}=100\frac{g-s}{g}.
+</annotation></semantics></math></p>
+<p>The inspected function returns a zero percentage when gross is zero.
+A margin-floor configuration is not sufficient in isolation: the
+manifest must wire the context provider and the relevant deny rule. The
+documented arrangement is:</p>
+<pre class="yaml"><code>atp:
+  payment:
+    margin:
+      floor_pct: 5.0
+      audit: true
+policies:
+  engine: yaml_rules
+  context_providers: [margin_calculator]
+  rules:
+    - id: margin_floor
+      "on": [atp_CommitTripTransaction]
+      when: facts.margin_pct &lt; rules.min_margin_pct
+      action: deny
+      error_code: POLICY_MARGIN_FLOOR</code></pre>
+<p>The supplied documentation describes this deny rule as failing closed
+when the margin cannot be verified. <code>margin.calculator_flow</code>
+may name an overriding computation, and <code>margin.audit</code>
+defaults to true. These are policy integration requirements: missing
+context, the installed rule set and the actual commit path must be
+covered by evaluation before treating the margin floor as an enforced
+guarantee.</p>
+</section><section class="research-section" id="atp-audit"><h2>12. PII handling, audit and reconciliation</h2>
+<p>The <code>atp_pii_redactor</code> mutator interceptor removes
+configured PII paths; the documented examples are
+<code>passengerDetails.passportNumber</code> and
+<code>travellerToken</code>. Redaction scope is configured, so it should
+not be described as removing every possible passenger identifier from
+every downstream record.</p>
+<p>With <code>audit_all_transitions: true</code>, the documented booking
+path emits an immutable observability <code>ExecutionRecord</code> of
+kind <code>atp_transition</code> and appends to the hash-chained audit
+sink. The configured <code>observability.audit_sink</code> is used where
+available; otherwise the default sink honors <code>KEEL_AUDIT_DB</code>.
+Payment transitions use <code>atp_payment</code> and also maintain the
+instruction’s own transition history.</p>
+<p><code>emit_reconciliation_event</code> emits an observability record
+when that engine is attached, appends an <code>atp_reconciliation</code>
+record containing PNR, booking reference, virtual-card reference,
+consultant ID and branch code, and transitions the instruction to
+<code>RECONCILED</code>. This connects the records needed for
+back-office matching. Calling the method is not, by itself, a proof that
+independent processor and supplier evidence agrees: the inspected
+function emits the supplied correlation fields and updates status.</p>
+<p>Hash chaining supports verification of the retained sequence. It does
+not establish completeness when an append fails or independently prevent
+deletion of an unanchored history. The inspected payment audit helper
+catches append failures so that they do not break the payment operation.
+Consequently, audit availability, trusted retention and external
+evidence remain operational requirements; the paper does not claim that
+every payment operation is transactionally coupled to an audit
+append.</p>
+</section><section class="research-section" id="atp-errors"><h2>13. Error contracts</h2>
+<p>The ATP error namespace distinguishes changed inventory, missing
+authority and unresolved execution. Callers should use the structured
+code and payload rather than interpret a generic booking-shaped response
+as success.</p>
+<div class="table-wrap"><table>
+<colgroup>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+</colgroup>
+<thead>
+<tr>
+<th>Code</th>
+<th>Symbol</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-32100</td>
+<td><code>ATP_INVENTORY_GONE</code></td>
+<td>Inventory disappeared after search.</td>
+</tr>
+<tr>
+<td>-32101</td>
+<td><code>ATP_HOLD_EXPIRED</code></td>
+<td>Hold TTL elapsed.</td>
+</tr>
+<tr>
+<td>-32102</td>
+<td><code>ATP_PRICE_CHANGED</code></td>
+<td>Price changed after pricing.</td>
+</tr>
+<tr>
+<td>-32103</td>
+<td><code>ATP_TOKEN_INSUFFICIENT_SCOPE</code></td>
+<td>Required token scope is absent.</td>
+</tr>
+<tr>
+<td>-32104</td>
+<td><code>ATP_TOKEN_AMOUNT_EXCEEDED</code></td>
+<td>Trip total exceeds the granted ceiling.</td>
+</tr>
+<tr>
+<td>-32105</td>
+<td><code>ATP_COMMIT_PARTIAL_FAILURE</code></td>
+<td>Partial confirmation triggered compensation; inspect transaction
+data.</td>
+</tr>
+<tr>
+<td>-32106</td>
+<td><code>ATP_SUPPLIER_UNAVAILABLE</code></td>
+<td>Supplier timeout or unreachable endpoint.</td>
+</tr>
+<tr>
+<td>-32107</td>
+<td><code>ATP_CONSENT_REQUIRED</code></td>
+<td>Missing consent, invalid mandate shape or refused commit-token
+reuse, depending on the gate.</td>
+</tr>
+<tr>
+<td>-32108</td>
+<td><code>ATP_LOYALTY_INVALID</code></td>
+<td>Supplier rejected a loyalty identifier.</td>
+</tr>
+<tr>
+<td>-32109</td>
+<td><code>ATP_DOCUMENT_NOT_READY</code></td>
+<td>Confirmation exists but the document is not ready.</td>
+</tr>
+</tbody>
+</table></div>
+<p>These differ from adapter-level <code>ATP_OP_NOT_SUPPORTED</code>
+(<code>-32601</code>), <code>KEEL_PAYMENT_NOT_CONFIGURED</code>, and
+<code>KEEL_CONTRACT_ONLY</code>. An unavailable capability is not a
+confirmed booking or captured payment and should remain visible to the
+caller.</p>
+</section><section class="research-section" id="atp-evaluation"><h2>14. Evaluation scope and remaining
+obligations</h2>
+<p>The supplied documentation describes a chaos harness that injects
+failure at each leg-confirm and compensation position, including
+compensation failure. Its asserted properties are terminal parent
+transaction state, reverse-order compensation, legal reservation
+transitions, an explanatory audit record for unresolved confirmed or
+compensating legs, and successful audit-chain verification. These are
+descriptions of the supplied tests; this revision did not execute them
+or infer production reliability from their existence.</p>
+<p>The guarded live-supplier test is enabled with
+<code>KEEL_LIVE_SUPPLIERS=1</code>. It connects L1 flight and hotel MCP
+endpoints, normally ports 8011 and 8010, and checks normalization into
+ATP offers. Without the flag it skips. Search normalization coverage is
+distinct from live hold, commit, payment capture, cancellation and
+restart recovery.</p>
+<p>The central research objective remains solving the hardest
+operational problems in travel: preserving authority when terms change,
+coordinating partial commitments, recovering from ambiguous outcomes and
+reconciling two financial rails. A useful evaluation must cross those
+boundaries. Future integration evidence should exercise duplicate
+requests, expiry, missing verification material, compensation failure,
+lost payment replies, unavailable audit storage and independently
+verified settlement. Those are proposed validation obligations, not
+results claimed by this paper.</p>
+</section></main></div><div data-footer></div><dialog aria-label="Expanded research figure" class="figure-dialog"><div class="dialog-tools"><span>RESEARCH / EXPANDED FIGURE</span><button data-close-figure="" type="button">Close ×</button></div><img alt=""/><p></p></dialog><script src="assets/site.js?v=6cc6f74067"></script></body></html>

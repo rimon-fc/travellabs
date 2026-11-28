@@ -1,0 +1,8 @@
+/* Framework identities retained with the original demonstration panels. */
+.framework-identity{display:flex;align-items:center;gap:14px}
+.framework-identity .brand-identity{display:block;width:42px;height:42px;flex:none;color:inherit}
+.framework-identity .graph-trace{animation:framework-logo-trace 5s linear infinite}
+.framework-identity .keel-spark{animation:framework-logo-spark 4s ease-in-out infinite}
+@keyframes framework-logo-trace{to{stroke-dashoffset:-112}}
+@keyframes framework-logo-spark{50%{transform:translateY(5px)}}
+@media(prefers-reduced-motion:reduce){.framework-identity *{animation:none!important}}

@@ -1,0 +1,65 @@
+/* Trunk and his orbit of beliefs, in the mcpx style */
+.trunk-stage { position: relative; height: 460px; background: #fbf7ee; border: 1.5px solid var(--ink); box-shadow: 8px 8px 0 var(--lime); overflow: hidden;
+  background-image: radial-gradient(circle, var(--line-2) 1px, transparent 1.2px); background-size: 22px 22px; }
+.trunk-stage.compact { height: 360px; }
+.tk-line { position: absolute; left: 10%; right: 10%; top: 20%; bottom: 20%; border: 1.5px dashed var(--line-2); border-radius: 50%; }
+.tk-spark { position: absolute; font-size: 20px; color: var(--ultra); animation: tk-twinkle 3.2s ease-in-out infinite; }
+.tk-spark.s1 { left: 12%; top: 12%; }
+.tk-spark.s2 { right: 14%; bottom: 14%; color: var(--ink); animation-delay: -1.6s; }
+@keyframes tk-twinkle { 0%, 100% { opacity: .35; transform: scale(.85); } 50% { opacity: 1; transform: scale(1.1) rotate(15deg); } }
+
+.tk-center { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -46%); z-index: 5; display: grid; justify-items: center; gap: 10px; }
+.tk-hello { display: grid; justify-items: center; gap: 6px; cursor: pointer; }
+.tk-hello svg { width: 150px; height: auto; transform-origin: 50% 90%; animation: tk-bob 3.6s ease-in-out infinite; }
+.trunk-stage.compact .tk-hello svg { width: 118px; }
+.tk-label { font: 500 11px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--ultra); background: var(--paper); border: 1px solid var(--ultra); padding: 5px 7px; }
+.tk-hello:hover .tk-label, .tk-hello:focus-visible .tk-label { background: var(--ultra); color: #fff; }
+.tk-eyes { transform-origin: 110px 94px; animation: tk-blink 5s infinite; }
+@keyframes tk-bob { 0%, 100% { transform: translateY(0) rotate(0); } 50% { transform: translateY(-5px) rotate(-1.5deg); } }
+@keyframes tk-blink { 0%, 92%, 100% { transform: scaleY(1); } 95% { transform: scaleY(.1); } }
+.tk-center.is-hello .tk-hello svg { animation: tk-wiggle .9s ease-in-out 2; }
+@keyframes tk-wiggle { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(-6deg) translateY(-6px); } 75% { transform: rotate(5deg) translateY(-3px); } }
+
+/* Speech bubble borrows the hero ticket card */
+.tk-speech { position: relative; max-width: 250px; background: var(--paper); border: 1.5px solid var(--ink); box-shadow: 4px 4px 0 var(--ink); padding: 9px 12px; font: 400 12px/1.4 var(--mono); color: var(--ink); text-align: center; }
+.tk-speech::after { content: ""; position: absolute; left: 50%; bottom: -8px; width: 12px; height: 12px; background: var(--paper); border-right: 1.5px solid var(--ink); border-bottom: 1.5px solid var(--ink); transform: translateX(-50%) rotate(45deg); }
+.tk-center.is-hello .tk-speech { animation: tk-pop .35s cubic-bezier(.2, .9, .3, 1.3); }
+@keyframes tk-pop { from { transform: scale(.85); opacity: .3; } to { transform: none; opacity: 1; } }
+
+/* Belief chips orbit in 3D-ish depth */
+.tk-chip { position: absolute; display: inline-flex; align-items: center; gap: 8px; padding: 7px 10px 7px 7px; background: var(--paper); border: 1.5px solid var(--ink); box-shadow: 3px 3px 0 var(--ink); font: 500 11.5px/1 var(--mono); letter-spacing: .03em; color: var(--ink); white-space: nowrap; transition: background .25s, box-shadow .25s; }
+.tk-chip .px { width: 22px; height: 22px; padding: 3px; border: 1px solid var(--line-2); background: var(--bg); }
+.tk-chip.on { background: var(--lime); box-shadow: 4px 4px 0 var(--ultra); }
+.tk-chip:hover { background: var(--lime); }
+.tk-hint { position: absolute; left: 0; right: 0; bottom: 12px; margin: 0; text-align: center; font: 400 11px/1.3 var(--mono); color: var(--muted); }
+
+/* Narrow screens: Trunk in the middle, beliefs as a tidy grid below */
+.trunk-stage.is-flat { height: auto; padding: 20px 16px 44px; display: grid; gap: 22px; justify-items: center; }
+.trunk-stage.is-flat .tk-line { display: none; }
+.trunk-stage.is-flat .tk-center { position: static; transform: none; }
+.trunk-stage.is-flat .tk-chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.trunk-stage.is-flat .tk-chip { position: static; transform: none !important; opacity: 1 !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  .tk-hello svg, .tk-eyes, .tk-spark, .tk-center.is-hello .tk-hello svg, .tk-center.is-hello .tk-speech { animation: none; }
+}
+
+/* Roomier orbit; the "Meet Trunk" label only shows on narrow screens (the text beside it already says it) */
+.trunk-stage { height: 500px; }
+.trunk-stage.compact { height: 420px; }
+.trunk-stage:not(.is-flat) .tk-label { display: none; }
+.tk-line { left: 8%; right: 8%; top: 13%; bottom: 13%; }
+
+/* Hello reaction: a jump, a wave of the case and a burst of sparkles */
+.tk-center::before, .tk-center::after { content: "✦"; position: absolute; top: 46%; font-size: 22px; color: var(--ultra); opacity: 0; pointer-events: none; }
+.tk-center::before { left: 8%; }
+.tk-center::after { right: 8%; content: "✧"; color: var(--ink); }
+.tk-center.is-wave .tk-hello svg { animation: tk-jump 1.4s cubic-bezier(.3, 1.4, .5, 1) both; }
+.tk-center.is-wave::before { animation: tk-burst-l 1.2s ease-out both; }
+.tk-center.is-wave::after { animation: tk-burst-r 1.2s ease-out .1s both; }
+.tk-center.is-wave .tk-speech { animation: tk-pop .35s cubic-bezier(.2, .9, .3, 1.3); background: var(--lime); }
+.tk-center.is-wave .tk-speech::after { background: var(--lime); }
+@keyframes tk-jump { 0% { transform: none; } 18% { transform: translateY(-26px) rotate(-8deg); } 34% { transform: translateY(0) rotate(0) scale(1.04, .94); } 48% { transform: rotate(9deg); } 62% { transform: rotate(-7deg); } 76% { transform: rotate(5deg); } 100% { transform: none; } }
+@keyframes tk-burst-l { 0% { opacity: 0; transform: translate(0, 0) scale(.4); } 30% { opacity: 1; } 100% { opacity: 0; transform: translate(-40px, -70px) scale(1.3) rotate(-40deg); } }
+@keyframes tk-burst-r { 0% { opacity: 0; transform: translate(0, 0) scale(.4); } 30% { opacity: 1; } 100% { opacity: 0; transform: translate(40px, -64px) scale(1.3) rotate(40deg); } }
+@media (prefers-reduced-motion: reduce) { .tk-center.is-wave .tk-hello svg, .tk-center.is-wave::before, .tk-center.is-wave::after { animation: none; } }

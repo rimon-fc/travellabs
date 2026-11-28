@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TravelLabs | Hero carousel prototype</title>
+<link rel="icon" href="assets/img/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/site.css?v=body-mono">
+<link rel="stylesheet" href="assets/tl.css">
+<link rel="stylesheet" href="assets/hero-scenes.css">
+<link rel="stylesheet" href="assets/carousel.css">
+<link rel="stylesheet" href="assets/responsive.css?v=0922fc7151">
+</head>
+<body data-page="home" id="top">
+<div data-header></div>
+<main>
+
+<section class="hx hc">
+  <div class="wrap">
+    <div class="hx-top" data-in>
+      <div style="display:grid;gap:18px"><span class="badge"><i>X</i>An AI Lab · For the world of travel</span><h1 class="h1">Solving the hardest problems <br class="hc-br">in travel with frontier AI.</h1></div>
+      <div style="display:grid;gap:22px;align-content:end"><div class="btns"><a class="btn pri" href="research.html">Explore the research <span class="arr">→</span></a><a class="btn" href="papers.html">Read the papers</a></div></div>
+    </div>
+
+    <div class="hc-frame" id="hc" aria-roledescription="carousel" aria-label="Four ways to see TravelLabs at work">
+      <div class="hc-track" id="hcTrack" tabindex="0">
+
+        <!-- 01 · the painted coast, with the ticket cycling through richer cards -->
+        <section class="hc-slide" aria-roledescription="slide" aria-label="1 of 4 · Painted live">
+          <div class="hc-coast">
+            <canvas class="art" data-art="coast" aria-hidden="true"></canvas>
+            <div class="hc-cards" id="hcCards" aria-live="polite">
+              <div class="hc-card hx-ticket-card on" data-card="ticket"><b><span id="hcT">ATFGraph</span><span>illustrative</span></b><div class="ln"><span>role</span><span id="hc1">Coordinates durable work</span></div><div class="ln"><span>step</span><span id="hc2">Plan</span></div><div class="ln ok"><span>then</span><span id="hc3">saves the job while it waits</span></div></div>
+              <div class="hc-card hc-dest" data-card="dest">
+                <div class="d-art"><div class="d-scene" id="dScene"></div><span class="d-code" id="dCode">JTR · Greece</span><span class="d-name" id="dName">Santorini</span></div>
+                <ul class="d-rows" id="dRows"></ul>
+                <div class="d-foot"><span>3 suppliers via keel<br>sample prices, AUD</span><span class="d-btn">Plan trip →</span></div>
+              </div>
+              <div class="hc-card hc-run" data-card="run">
+                <div class="r-head"><b>trip-desk.plan</b><span id="rcId">run · eee8</span></div>
+                <ol class="r-steps" id="rcSteps"></ol>
+                <div class="r-foot"><span class="live"><i></i><span id="rcState">running</span></span><span id="rcCount">0 / 7</span></div>
+              </div>
+            </div>
+            <div class="hx-cap hc-cap"><span>Plate 01 · For the world of travel · painted live in your browser</span><span>Big questions. Real journeys.</span></div>
+          </div>
+        </section>
+
+        <!-- 02 · painted by agents -->
+        <section class="hc-slide" aria-roledescription="slide" aria-label="2 of 4 · Painted by agents">
+          <div class="a-frame" id="aFrame">
+            <canvas id="aCanvas" aria-label="Agents paint a coastal travel scene inside a pencil sketch, then wait for approval" role="img"></canvas>
+            <span class="a-cap">Plate 02 · painted by agents · drag to help</span>
+            <div class="a-ticket" aria-live="polite"><b><span>One brief · a durable job</span><span id="aPct">0%</span></b><div id="aJobs"></div><div class="bar"><i id="aBar"></i></div></div>
+            <div class="a-approve" id="aApprove"><span>Proposal ready.<br>A person approves.</span><button class="btn pri" type="button" id="aBtn">Approve ✓</button></div>
+          </div>
+        </section>
+
+        <!-- 03 · the departures board -->
+        <section class="hc-slide" aria-roledescription="slide" aria-label="3 of 4 · The departures board">
+          <div class="b-hero" id="bHero" aria-label="A split-flap departures board spelling the TravelLabs headline and the problems it solves" role="img">
+            <div class="b-meta"><span>TravelLabs · an AI lab for travel</span><span id="bClock">--:--</span></div>
+            <div class="flaps b-head" id="bHead"></div>
+            <div class="b-rows">
+              <div class="b-cols"><span id="bC1">Problem</span><span id="bC2">In travel</span><span id="bC3">Status</span></div>
+              <div id="bRows"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 04 · one brief, every moving part -->
+        <section class="hc-slide" aria-roledescription="slide" aria-label="4 of 4 · One brief, every moving part">
+          <div class="c-hero" id="cHero">
+            <canvas id="cCanvas" aria-label="A traveller's brief made of particles becomes a network of suppliers, is checked and approved, and settles into the headline" role="img"></canvas>
+            <div class="c-chrome">
+              <div class="c-step"><span id="cStep"><b>01</b> · One brief</span><span class="c-dots" id="cDots"><i class="on"></i><i></i><i></i><i></i></span></div>
+              <div></div>
+              <div class="c-bottom"><p id="cCap">A traveller describes the trip in plain words. Their preferences and constraints stay with the job.</p></div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div class="hc-rail" role="tablist" aria-label="Hero scenes">
+      <button type="button" role="tab" aria-selected="true"><b>01</b>Painted live<i></i></button>
+      <button type="button" role="tab" aria-selected="false" tabindex="-1"><b>02</b>Painted by agents<i></i></button>
+      <button type="button" role="tab" aria-selected="false" tabindex="-1"><b>03</b>Departures board<i></i></button>
+      <button type="button" role="tab" aria-selected="false" tabindex="-1"><b>04</b>One brief, every part<i></i></button>
+      <span class="hc-ctl"><button type="button" class="hc-arrow" data-dir="-1" aria-label="Previous scene">←</button><button type="button" class="hc-arrow" data-dir="1" aria-label="Next scene">→</button><button type="button" class="hc-pause" aria-pressed="false">Pause</button></span>
+    </div>
+    <p class="hc-note">Prototype · each scene plays, then slides to the next. Swipe or scroll sideways to move between them. Prices and runs are illustrative samples.</p>
+  </div>
+</section>
+
+</main>
+<script src="assets/site.js?v=6cc6f74067"></script>
+<script src="assets/ideation.js"></script>
+<script src="assets/carousel.js"></script>
+</body>
+</html>
