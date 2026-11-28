@@ -34,17 +34,16 @@
 }
 
 
-/* Match the payment section: separate heading and illustration/detail grids. */
-.reason-heading { display: grid; grid-template-columns: minmax(0,1.3fr) minmax(0,1fr); gap: 56px; align-items: end; margin-bottom: 40px; }
-.reason-title { display: grid; gap: 16px; }
-.reason-heading .h2, .reason-heading .lead { margin: 0; }
-.reason-body { display: grid; grid-template-columns: minmax(0,1.05fr) minmax(0,1fr); gap: 56px; align-items: start; }
-.reason-detail { display: grid; gap: 20px; align-content: start; padding-top: 6px; }
-.reason-detail .arrows { margin: 0; }
-.mission-editorial .reason-art { position: relative; height: 100%; min-height: 360px; overflow: hidden; margin: 0; }
-@media (max-width: 900px) {
-  .reason-heading, .reason-body { grid-template-columns: minmax(0,1fr); gap: 24px; }
-  .mission-editorial .reason-art { height: 320px; min-height: 0; }
-}
-
-.reason-highlight { background: linear-gradient(transparent 62%, var(--lime) 62%, var(--lime) 92%, transparent 92%); padding: 0 .08em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+/* Why travel: six MCPX cards with the original painting below. */
+.reason-heading { display:grid; grid-template-columns:minmax(0,1.3fr) minmax(0,1fr); gap:56px; align-items:end; margin-bottom:40px; }
+.reason-title { display:grid; gap:16px; }
+.reason-title .reason-context { margin-bottom:12px; }
+.reason-title .reason-label { color:var(--ultra); }
+.reason-heading .h2,.reason-heading .lead { margin:0; }
+.reason-grid h3 { font-size:21px; line-height:1.25; }
+.reason-grid p { font-size:16px; line-height:1.6; }
+.reason-grid .stp { font-size:12px; }
+.mission-editorial .reason-art { position:relative; height:clamp(280px,29vw,400px); min-height:0; overflow:hidden; margin:40px 0 0; }
+@media(max-width:900px) { .reason-heading { grid-template-columns:minmax(0,1fr); gap:24px; } }
+@media(max-width:600px) { .mission-editorial .reason-art { height:280px; } }
+.reason-highlight { background:linear-gradient(transparent 62%,var(--lime) 62%,var(--lime) 92%,transparent 92%); padding:0 .08em; -webkit-box-decoration-break:clone; box-decoration-break:clone; }
