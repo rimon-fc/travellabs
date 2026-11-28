@@ -20,7 +20,7 @@
 .obj-copy { display:grid; gap:16px; }
 .obj-copy .stp { justify-self:start; font:500 12px/1 var(--mono); letter-spacing:.08em; color:var(--ultra); border:1px solid #c9cffc; background:var(--ultra-2); padding:6px 8px; }
 .obj-copy h3 { font-size:clamp(25px,2.5vw,34px); line-height:1.15; }
-.obj-copy p { color:var(--ink-2); font-size:16px; line-height:1.65; }
+.obj-copy p { color:var(--ink-2); font:400 15px/1.7 var(--mono); }
 .obj-art { margin:28px 0 8px; border:1.5px solid var(--ink); background:var(--paper); box-shadow:6px 6px 0 var(--ultra); overflow:auto; }
 .obj-schematic { width:100%; height:auto; min-width:600px; }
 .objectives-enhanced .obj-panel:not([hidden]) .obj-copy { animation:obj-appear .25s ease-out; }
