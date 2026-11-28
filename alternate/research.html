@@ -11,10 +11,11 @@
 <link rel="stylesheet" href="assets/site.css?v=body-mono">
 <link rel="stylesheet" href="assets/tl.css">
 <link rel="stylesheet" href="assets/impact.css?v=compact">
-<link rel="stylesheet" href="assets/research.css?v=all-panels-stable">
+<link rel="stylesheet" href="assets/research.css?v=page-scroll">
 <link rel="stylesheet" href="assets/ambient.css?v=manual-steps">
 <link rel="stylesheet" href="assets/project-sketch.css">
 <link rel="stylesheet" href="assets/research-tabs.css?v=nine-directions">
+<link rel="stylesheet" href="assets/product-previews.css?v=next-mcpx">
 </head>
 <body data-page="research" id="top">
 <div data-header></div>
@@ -32,7 +33,7 @@
 
 <section class="sec" id="built">
   <div class="wrap">
-    <div class="sec-h" data-in><span class="kick">/ Leisure AI · What we’ve built</span><h2 class="h2">For the work behind every journey.</h2><p class="lead">Help for consultants, travellers and the teams behind them.</p></div>
+    <div class="sec-h" data-in><span class="kick">/ Leisure AI · What we’ve built</span><h2 class="h2">Projects we have built, delivered and put to work, making a real impact.</h2><p class="lead">Help for consultants, travellers and the teams behind them.</p></div>
     <div class="imp" data-in data-imp aria-label="Leisure AI performance">
       <div class="imp-h"><span class="kick"><b>/</b> Agents in production</span><button class="btn imp-pause" type="button" aria-pressed="false">Pause animation</button></div>
       <div class="imp-tabs" role="tablist" aria-label="Leisure AI impact">
@@ -112,130 +113,35 @@
       <p class="imp-note">Reported Co-consult results, not live analytics. Activity and flows are illustrative. Exact reporting dates were not supplied.</p>
     </div>
 
-    <div class="lx" data-in>
-      <div class="lx-tabs" role="tablist" aria-label="Leisure AI products">
-        <button type="button" role="tab" id="lx-t0" aria-controls="lx-p0" aria-selected="true"><span class="tg">Consultant workspace</span><b>Co-consult</b></button>
-        <button type="button" role="tab" id="lx-t1" aria-controls="lx-p1" aria-selected="false" tabindex="-1"><span class="tg">After booking</span><b>AIBQ</b></button>
-        <button type="button" role="tab" id="lx-t2" aria-controls="lx-p2" aria-selected="false" tabindex="-1"><span class="tg">Enquiry to proposal</span><b>IQR</b></button>
-        <button type="button" role="tab" id="lx-t3" aria-controls="lx-p3" aria-selected="false" tabindex="-1"><span class="tg">Travel discovery</span><b>ChatGPT App</b></button>
-        <button type="button" role="tab" id="lx-t4" aria-controls="lx-p4" aria-selected="false" tabindex="-1"><span class="tg">Engineering support</span><b>Conductor</b></button>
-        <button type="button" role="tab" id="lx-t5" aria-controls="lx-p5" aria-selected="false" tabindex="-1"><span class="tg">Travel servicing</span><b>CTRLPLANE</b></button>
-        <button type="button" role="tab" id="lx-t6" aria-controls="lx-p6" aria-selected="false" tabindex="-1"><span class="tg">Travel decision model</span><b>Waypoint</b></button>
-      </div>
-
-      <section class="lx-p cc" id="lx-p0" role="tabpanel" aria-labelledby="lx-t0" tabindex="0">
-        <div class="lx-head"><div><span class="kick">Co-consult / <b>From request to review</b></span><h3 class="lx-h">Brief becomes the trip.</h3></div><div><span class="tg">Product</span><p class="lead">Flights, hotels, activities and advice in one conversation. Help consultants turn a travel brief into a complete proposal.</p></div></div>
-        <div class="cc-pick"><span class="kick">example trips</span><div class="bk-pick" id="ccPick"></div></div>
-        <ol class="bk-rail six" id="ccRail"><li><b>01</b>You ask</li><li><b>02</b>AI understands</li><li><b>03</b>Agents search</li><li><b>04</b>Best value picked</li><li><b>05</b>A person approves</li><li><b>06</b>Booked together</li></ol>
-        <div class="bk-step cc-say"><b id="ccSay"></b></div>
-        <div class="cc-body">
-          <pre class="call" id="ccCall"></pre>
-          <div class="cc-side">
-            <div class="mstats" id="ccStats"></div>
-            <div class="merge" id="ccMerge"></div>
-          </div>
-        </div>
-        <div class="src4" id="ccAgents"></div>
-        <p class="fine">Illustrative workflow · sample trips and prices · approval is simulated here. Real spending waits for a person.</p>
-      </section>
-
-      <section class="lx-p" id="lx-p1" role="tabpanel" aria-labelledby="lx-t1" tabindex="0" hidden>
-        <div class="lx-two">
-          <div class="sk-panel"><canvas class="art" data-art="sk-app" aria-hidden="true"></canvas></div>
-          <div class="lx-stack">
-            <span class="kick">AIBQ / <b>A little reassurance</b></span>
-            <div class="trip-c"><span class="kick">Your upcoming journey</span><b>Brisbane — Singapore</b><p>Booking information, in one place.</p></div>
-            <div class="chat"><p class="me">Where can I find my baggage allowance?</p><p>Let’s check the baggage details in your booking.</p></div>
-            <div class="lx-note"><span>Changes go to a consultant.</span><span class="tagp">Illustrative workflow</span></div>
-            <span class="tg">Product</span><p class="lead">Answers about an existing trip, inside the Leisure app. Itinerary and baggage questions get help; booking changes go to a person.</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="lx-p ph2" id="lx-p2" role="tabpanel" aria-labelledby="lx-t2" tabindex="0" hidden>
-        <div class="ph2-art"><canvas class="art" data-art="hotel" data-style="gouache" aria-hidden="true"></canvas><div class="hx-cap"><span>IQR / From enquiry to possibility</span><span>The enquiry</span></div></div>
-        <div class="wrap">
-          <div class="phero-c">
-            <span class="kick">IQR / <b>From enquiry to possibility</b></span>
-            <h3 class="lx-h">Your holiday, considered.</h3>
-            <span class="tg">Product</span>
-            <p class="lead">Read a holiday enquiry, match available offers and prepare a branded proposal for a consultant to follow up.</p>
-          </div>
-          <div class="lx-stack">
-            <pre class="call"><span class="c">// The enquiry</span>
-<span class="s">“Somewhere warm. A family holiday.
- Room to slow down.”</span>
-
-<span class="k">←</span> A few good possibilities.
-<span class="k">←</span> Prepared for your consultant</pre>
-            <p class="fine">Illustrative workflow</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="lx-p" id="lx-p3" role="tabpanel" aria-labelledby="lx-t3" tabindex="0" hidden>
-        <div class="lx-two">
-          <div class="sk-panel"><canvas class="art" data-art="sk-chat" aria-hidden="true"></canvas></div>
-          <div class="lx-stack">
-            <span class="kick">ChatGPT / <b>Illustrative conversation</b></span>
-            <div class="chat"><p class="me">A week away. Somewhere with good food, a little exploring and time to slow down.</p><p><i>✳</i> Let’s find the kind of trip you have in mind. Here are a few directions we can explore together.</p></div>
-            <div class="app-c">
-              <div class="vcc-bar"><span>TravelLabs MCP app · travel ideation</span><span class="dot">In this conversation</span></div>
-              <div class="app-b">
-                <h4>Where could a week take you?</h4><p class="sub">A starting point. We’ll shape the details together.</p>
-                <div class="q4 three" id="ideas">
-                  <button type="button" aria-pressed="true"><h3>Bali</h3><p>Slow mornings, coast and local food.</p><span>Shape this idea ↗</span></button>
-                  <button type="button" aria-pressed="false"><h3>Kyoto</h3><p>Small streets, gardens and good food.</p><span>Shape this idea ↗</span></button>
-                  <button type="button" aria-pressed="false"><h3>Hoi An</h3><p>Old-town walks and time by the sea.</p><span>Shape this idea ↗</span></button>
-                </div>
-              </div>
-            </div>
-            <div class="chat"><p id="ideaReply"><i>✳</i> For Bali, would you rather stay by the coast or split your time with somewhere quieter inland?</p></div>
-            <div class="ask-bar"><span>Keep exploring in the conversation…</span><b>↑</b></div>
-            <span class="tg">Product</span><p class="lead">Explore travel ideas inside ChatGPT through a TravelLabs MCP app. Compare directions, refine preferences and shape the trip within the conversation.</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="lx-p" id="lx-p4" role="tabpanel" aria-labelledby="lx-t4" tabindex="0" hidden>
-        <div class="lx-head"><div><span class="kick">Conductor / <b>Engineering workspace</b></span><h3 class="lx-h">From issue to evidence.</h3></div><div><span class="tg">Human review</span><p class="lead">Investigate bugs, reproduce them in a sandbox and draft fixes. Engineers review the evidence and approve what ships.</p></div></div>
-        <div class="src4 three" id="cdSteps">
-          <div><span class="tg">01 · Investigate</span><h3>Reproduce the reported issue</h3><p>Sandbox</p></div>
-          <div><span class="tg">02 · Prepare</span><h3>Draft a fix and check it</h3><p>Evidence attached</p></div>
-          <div><span class="tg">03 · Review</span><h3>Engineer reviews the change</h3><p>Human approval</p></div>
-        </div>
-        <pre class="call cd-call" id="cdCall"></pre>
-        <p class="fine">Illustrative workflow</p>
-      </section>
-
-      <section class="lx-p" id="lx-p5" role="tabpanel" aria-labelledby="lx-t5" tabindex="0" hidden>
-        <div class="lx-head"><div><span class="kick">CTRLPLANE / <b>Servicing desk</b></span><h3 class="lx-h">Keep the loose ends together.</h3></div><div><span class="tg">Product</span><p class="lead">Specialist agents prepare cancellations, refunds and supplier follow-ups. A person approves decisions that spend money.</p></div></div>
-        <div class="q4" id="cpRows">
-          <div><i class="px" data-px="mail"></i><h3>Supplier follow-up</h3><p>Response prepared</p><em class="st ok">Ready</em></div>
-          <div><i class="px" data-px="x"></i><h3>Cancellation request</h3><p>Terms checked</p><em class="st">Review</em></div>
-          <div><i class="px" data-px="card"></i><h3>Refund decision</h3><p>Money needs permission</p><em class="st no">Approval</em></div>
-          <div class="me"><i class="px" data-px="team"></i><h3>A person makes the important call.</h3><p>Illustrative workflow</p></div>
-        </div>
-      </section>
-
-      <section class="lx-p ph2" id="lx-p6" role="tabpanel" aria-labelledby="lx-t6" tabindex="0" hidden>
-        <div class="ph2-art"><canvas class="art" data-art="road" aria-hidden="true"></canvas><div class="hx-cap"><span>Waypoint / Decisions, with confidence</span><span>Model · v0.1.1</span></div></div>
-        <div class="wrap">
-          <div class="phero-c">
-            <span class="kick">Waypoint / <b>Decisions, with confidence</b></span>
-            <h3 class="lx-h">Choose well. Know when to ask.</h3>
-            <span class="tg">Model · v0.1.1</span>
-            <p class="lead">Rank travel options, compare the shortlist and report confidence. Uncertain choices go to a language model or consultant.</p>
-          </div>
-          <div class="lx-stack">
-            <ol class="wp-rank" id="wpRank"><li><span>Fits the brief</span><em>First</em></li><li><span>A different trade-off</span><em>Next</em></li><li><span>Needs a closer look</span><em>Review</em></li></ol>
-            <div class="merge"><span>Enough confidence?</span><i>→</i><b>Recommend</b></div>
-            <div class="merge wp-ask"><span>Still uncertain?</span><i>→</i><b>Ask for help</b></div>
-            <p class="fine">Illustrative workflow</p>
-          </div>
-        </div>
-      </section>
-    </div>
+<div class="product-explorer" id="built-products"><div aria-label="Leisure AI products" aria-orientation="vertical" class="product-tabs" role="tablist"><button aria-controls="product-panel-0" aria-selected="true" class="product-tab" id="product-tab-0" role="tab" tabindex="0" type="button"><span>Co-consult</span><small>Consultant workspace</small><span aria-hidden="true" class="tab-sign">+</span></button><button aria-controls="product-panel-1" aria-selected="false" class="product-tab" id="product-tab-1" role="tab" tabindex="-1" type="button"><span>AIBQ</span><small>After booking</small><span aria-hidden="true" class="tab-sign">+</span></button><button aria-controls="product-panel-2" aria-selected="false" class="product-tab" id="product-tab-2" role="tab" tabindex="-1" type="button"><span>IQR</span><small>Enquiry to proposal</small><span aria-hidden="true" class="tab-sign">+</span></button><button aria-controls="product-panel-chatgpt" aria-selected="false" class="product-tab" id="product-tab-chatgpt" role="tab" tabindex="-1" type="button"><span>ChatGPT App</span><small>Travel discovery</small><span aria-hidden="true" class="tab-sign">+</span></button><button aria-controls="product-panel-3" aria-selected="false" class="product-tab" id="product-tab-3" role="tab" tabindex="-1" type="button"><span>Conductor</span><small>Engineering support</small><span aria-hidden="true" class="tab-sign">+</span></button><button aria-controls="product-panel-4" aria-selected="false" class="product-tab" id="product-tab-4" role="tab" tabindex="-1" type="button"><span>CTRLPLANE</span><small>Travel servicing</small><span aria-hidden="true" class="tab-sign">+</span></button><button aria-controls="product-panel-5" aria-selected="false" class="product-tab" id="product-tab-5" role="tab" tabindex="-1" type="button"><span>Waypoint</span><small>Travel decision model</small><span aria-hidden="true" class="tab-sign">+</span></button></div><div class="product-toolbar"><span class="kick">/ Product previews</span><button aria-pressed="false" data-product-pause="" type="button">Pause previews</button></div><div class="product-panels"><section aria-labelledby="product-tab-0" class="product-panel" id="product-panel-0" role="tabpanel" tabindex="0"><div class="product-stage brief-trip-stage"><div class="brief-trip-heading"><h3>Brief becomes the trip.</h3><span>CO-CONSULT / FROM REQUEST TO REVIEW</span></div><div class="brief-trip"><div class="st4" id="st4">
+<ol class="st4-rail" id="r4"><li><b>01</b>You ask</li><li><b>02</b>AI understands</li><li><b>03</b>Agents search</li><li><b>04</b>Best value picked</li><li><b>05</b>A person approves</li><li><b>06</b>Booked together</li></ol>
+<p class="st4-say"><span id="say4"></span></p>
+<div class="st4-body" id="b4">
+<div class="col" id="cA"><div class="col-h"><i></i>You ask</div><div class="who4" id="who4"></div><div class="bub"><span id="txt4"></span><span class="cur"></span></div><div class="facts-h">What the AI understood</div><div class="facts" id="facts4"></div></div>
+<div class="col" id="cB"><div class="col-h"><i></i>Agents at work, all at once</div><div id="ags4"></div></div>
+<div class="col" id="cC"><div class="col-h"><i></i>Your trip</div><div class="trip" id="trip4"><div class="empty4">Your trip appears here as agents pick each part.</div></div>
+<div class="tot"><div class="tot-l"><span>Total</span><b id="tot4">$0</b></div><div class="meter"><i id="met4"></i></div><div class="meter-l"><span>$0</span><span id="bud4"></span></div></div>
+<div class="save4" id="sav4"></div>
+<div><div class="facts-h">Checks</div><ul class="chk" id="chk4"></ul></div>
+<div class="stamp4" id="stamp4">BOOKED TOGETHER<small>every part paid in one go</small></div></div>
+</div>
+<div class="appr" id="appr4"><div class="appr-c"><div class="who4" id="apw4"></div><p id="apt4"></p><ul id="apl4"></ul><div class="appr-b"><span class="no">Ask a question</span><span class="yes" id="apy4">Approve</span></div></div></div>
+<div class="pass4" id="pass4"></div>
+<div class="trips4" id="tr4"><span>example trips</span></div>
+</div></div><p class="brief-trip-note">Illustrative workflow · sample trips and prices · approval is simulated here. Real spending waits for a person.</p></div><div class="product-explanation"><span class="status">Product</span><p>Flights, hotels, activities and advice in one conversation. Help consultants turn a travel brief into a complete proposal.</p></div></section><section aria-labelledby="product-tab-1" class="product-panel" hidden="" id="product-panel-1" role="tabpanel" tabindex="0"><div class="product-stage miles-preview" data-phase="0" data-story-preview="aibq">
+<div class="miles-heading"><span class="demo-overline">AIBQ / Meet Miles</span><h4>A little reassurance.<br/>Right there in your trip.</h4></div>
+<div aria-label="Illustrative travel app screens" class="miles-phones" role="region" tabindex="0">
+<article class="miles-phone miles-home"><div class="phone-status"><span>9:41</span><span aria-hidden="true">▰ ▰ ●</span></div><header><strong>Ciao, Paul.</strong><span>Flight Centre</span></header><div class="phone-content"><div class="miles-shortcuts"><span>✈<small>Flights</small></span><span>▤<small>Stays</small></span><span>☀<small>Holidays</small></span></div><h5>Your trip</h5><div class="miles-mini-trip"><div class="miles-landscape"></div><strong>A little time in Greece<small>Your upcoming journey</small></strong></div><button class="miles-ask" data-story-step="2" type="button"><span class="miles-avatar">M<span>✦</span></span><span><b>Meet Miles</b><small>Questions about your trip?</small></span><em>Ask Miles ›</em></button><h5>Somewhere to look forward to</h5><div class="miles-home-scenery miles-landscape"></div><p>Your booking details, close at hand.</p></div><footer><b>⌂<small>Home</small></b><span>◇<small>Deals</small></span><span>▥<small>Trips</small></span><span>○<small>Account</small></span></footer></article>
+<article class="miles-phone miles-trips"><div class="phone-status"><span>9:41</span><span aria-hidden="true">▰ ▰ ●</span></div><header><strong>Trips</strong><span>Ready when you are</span></header><div class="phone-content"><h5>Booked trips</h5><div class="miles-trip-photo miles-landscape"><button data-story-step="2" type="button">✦ Ask Miles</button></div><h5>Trip to Greece</h5><p>Flights, stays and booking details.</p><div class="miles-trip-info"><span>BNE → ATH</span><strong>Your journey, together</strong><small>Find the details for each part of your trip.</small></div><div class="miles-trip-help"><span class="miles-avatar">M<span>✦</span></span><p>Hi, I’m Miles.<br/>Ask me about your trip.</p></div></div><footer><span>⌂<small>Home</small></span><span>◇<small>Deals</small></span><b>▥<small>Trips</small></b><span>○<small>Account</small></span></footer></article>
+<article class="miles-phone miles-chat"><div class="phone-status"><span>9:41</span><span aria-hidden="true">▰ ▰ ●</span></div><header><span class="miles-avatar">M<span>✦</span></span><strong><small>AI assistant</small>Miles</strong><span aria-hidden="true">↻</span></header><div class="miles-context">Trip to Greece · your booking</div><div class="phone-content"><div class="miles-bubble">Hi, I’m Miles. I can help with your booking details, baggage and travel questions.</div><div class="miles-bubble miles-user" data-miles-question="">What is my baggage allowance?</div><div aria-hidden="true" class="miles-typing"><i></i><i></i><i></i></div><div class="miles-bubble miles-reply" data-miles-answer="">Let’s check the flights in your booking.</div><div class="miles-routes" data-miles-routes=""><span>BNE → ATH</span><span>FCO → ATH</span><span>ATH → BNE</span></div><p class="miles-boundary" data-miles-boundary="">Booking changes and refunds go to a consultant.</p></div><div aria-hidden="true" class="miles-composer">Ask about your trip<span>↑</span></div></article>
+</div><div class="miles-demo-footer"><span data-story-status="">Find Miles alongside your upcoming trip.</span><small>Illustrative app preview · no live booking data</small></div></div><div class="product-explanation"><span class="status">Product</span><p>Answers about an existing trip, inside the Leisure app. Itinerary and baggage questions get help; booking changes go to a person.</p></div></section><section aria-labelledby="product-tab-2" class="product-panel" hidden="" id="product-panel-2" role="tabpanel" tabindex="0"><div class="product-stage stage-2"><div class="demo-iqr"><div class="demo-overline">IQR / From enquiry to possibility</div><div class="enquiry-note"><small>THE ENQUIRY</small><p>“Somewhere warm. A family holiday. Room to slow down.”</p></div><div class="proposal-sheet"><span>YOUR HOLIDAY, CONSIDERED.</span><div class="proposal-scenery"></div><h4>A few good possibilities.</h4><div class="proposal-lines"><i></i><i></i><i></i></div><small>Prepared for your consultant</small></div></div><span class="illustrative">Illustrative workflow</span></div><div class="product-explanation"><span class="status">Product</span><p>Read a holiday enquiry, match available offers and prepare a branded proposal for a consultant to follow up.</p></div></section><section aria-labelledby="product-tab-chatgpt" class="product-panel" hidden="" id="product-panel-chatgpt" role="tabpanel" tabindex="0"><div class="product-stage stage-chatgpt mcp-results-preview"><div class="mcp-results-header"><strong>ChatGPT <span>× Flight Centre</span></strong><div aria-label="ChatGPT example searches" role="tablist"><button aria-controls="mcp-holidays-panel" aria-selected="true" data-mcp-scene="0" id="mcp-holidays-tab" role="tab" type="button">Holidays</button><button aria-controls="mcp-flights-panel" aria-selected="false" data-mcp-scene="1" id="mcp-flights-tab" role="tab" tabindex="-1" type="button">Flights</button></div></div>
+<div class="mcp-results-chat"><div class="mcp-result-question"><span aria-hidden="true" class="mcp-fc-icon">F</span><strong>FlightCentreMCP</strong><span data-mcp-question="">Find me Fiji holiday package deals.</span></div>
+<div class="mcp-worked"><span aria-hidden="true" class="mcp-working-pixels"><i></i><i></i><i></i></span><span data-mcp-worked="">Finding holiday options</span></div>
+<div class="mcp-result-brand"><span aria-hidden="true" class="mcp-fc-icon">F</span>FlightCentreMCP</div>
+<section aria-labelledby="mcp-holidays-tab" data-mcp-panel="0" id="mcp-holidays-panel" role="tabpanel"><div class="mcp-result-summary"><strong>Holiday deals</strong><span>Fiji · flights included</span></div><div aria-label="Sample Fiji holiday package cards" class="mcp-result-cards" role="region" tabindex="0"><article class="mcp-deal-card"><div aria-label="Travel imagery from the supplied Fiji holiday example" class="mcp-holiday-photo photo-0" role="img"></div><div class="mcp-deal-body"><h5>DoubleTree Resort by Hilton Hotel Fiji, Sonaisali Island</h5><p>Coral Coast, Fiji · 7 nights</p><span class="mcp-bonus">Up to A$1,700 bonus value</span><div class="mcp-deal-price"><small>from · per person</small><strong>A$2,299</strong></div><button data-mcp-result="holiday-0" type="button">View inclusions <span aria-hidden="true">›</span></button></div></article><article class="mcp-deal-card"><div aria-label="Travel imagery from the supplied Fiji holiday example" class="mcp-holiday-photo photo-1" role="img"></div><div class="mcp-deal-body"><h5>The Naviti Resort</h5><p>Coral Coast, Fiji · 7 nights</p><span class="mcp-bonus">Up to A$2,000 bonus value</span><div class="mcp-deal-price"><small>from · per person</small><strong>A$2,499</strong></div><button data-mcp-result="holiday-1" type="button">View inclusions <span aria-hidden="true">›</span></button></div></article><article class="mcp-deal-card"><div aria-label="Travel imagery from the supplied Fiji holiday example" class="mcp-holiday-photo photo-2" role="img"></div><div class="mcp-deal-body"><h5>South Pacific Escape</h5><p>New Caledonia, Vanuatu &amp; Fiji</p><span class="mcp-bonus">Cruise + flights</span><div class="mcp-deal-price"><small>from · per person</small><strong>A$4,990</strong></div><button data-mcp-result="holiday-2" type="button">View inclusions <span aria-hidden="true">›</span></button></div></article></div></section>
+<section aria-labelledby="mcp-flights-tab" data-mcp-panel="1" hidden="" id="mcp-flights-panel" role="tabpanel"><div class="mcp-result-summary"><strong>Return flight options</strong><span>Melbourne → Tokyo · 12–26 Aug</span></div><div aria-label="Sample Melbourne to Tokyo return flight cards" class="mcp-result-cards" role="region" tabindex="0"><article class="mcp-deal-card mcp-flight-card"><div class="mcp-fare-top"><div><span>Economy</span><span>Cheapest</span></div><div><strong>A$1,551.62</strong><small>total</small></div></div><div class="mcp-flight-leg"><div><span>SQ</span>Singapore Airlines<small>12 AUG</small></div><div class="mcp-flight-route"><div><strong>05:55</strong><small>Melbourne</small></div><span>──→<small>1 stop · Singapore</small></span><div><strong>07:05⁺¹</strong><small>Tokyo</small></div></div></div><div class="mcp-flight-leg"><div><span>SQ</span>Singapore Airlines<small>26 AUG</small></div><div class="mcp-flight-route"><div><strong>19:00</strong><small>Tokyo</small></div><span>──→<small>1 stop · Singapore</small></span><div><strong>11:00⁺¹</strong><small>Melbourne</small></div></div></div><div class="mcp-flight-bottom"><span>Checked bag · 25 kg</span><button data-mcp-result="flight-0" type="button">View details <span aria-hidden="true">›</span></button></div></article><article class="mcp-deal-card mcp-flight-card"><div class="mcp-fare-top"><div><span>Economy</span><span>Fastest</span></div><div><strong>A$1,627.68</strong><small>total</small></div></div><div class="mcp-flight-leg"><div><span>TG</span>Thai Airways<small>12 AUG</small></div><div class="mcp-flight-route"><div><strong>13:30</strong><small>Melbourne</small></div><span>──→<small>1 stop · Bangkok</small></span><div><strong>06:55⁺¹</strong><small>Tokyo</small></div></div></div><div class="mcp-flight-leg"><div><span>TG</span>Thai Airways<small>26 AUG</small></div><div class="mcp-flight-route"><div><strong>10:30</strong><small>Tokyo</small></div><span>──→<small>1 stop · Bangkok</small></span><div><strong>07:30⁺¹</strong><small>Melbourne</small></div></div></div><div class="mcp-flight-bottom"><span>Checked bag · 23 kg</span><button data-mcp-result="flight-1" type="button">View details <span aria-hidden="true">›</span></button></div></article><article class="mcp-deal-card mcp-flight-card"><div class="mcp-fare-top"><div><span>Economy</span><span>Alternative</span></div><div><strong>A$1,644.85</strong><small>total</small></div></div><div class="mcp-flight-leg"><div><span>MH</span>Malaysia Airlines<small>12 AUG</small></div><div class="mcp-flight-route"><div><strong>MEL</strong><small>Melbourne</small></div><span>──→<small>1 stop · Kuala Lumpur</small></span><div><strong>NRT</strong><small>Tokyo</small></div></div></div><div class="mcp-flight-leg"><div><span>MH</span>Malaysia Airlines<small>26 AUG</small></div><div class="mcp-flight-route"><div><strong>NRT</strong><small>Tokyo</small></div><span>──→<small>1 stop · Kuala Lumpur</small></span><div><strong>MEL</strong><small>Melbourne</small></div></div></div><div class="mcp-flight-bottom"><span>Checked bag · 25 kg</span><button data-mcp-result="flight-2" type="button">View details <span aria-hidden="true">›</span></button></div></article></div></section>
+<div class="mcp-result-answer"><span aria-hidden="true">✳</span><p data-mcp-answer="">Compare the stays, inclusions and price in the conversation. Open a card to explore the example.</p></div><div class="mcp-example-note">Illustrative app preview. Names and prices are from the supplied examples, not current availability or live offers.</div>
+<div aria-hidden="true" class="mcp-demo-composer"><span>Ask about the options…</span><span>↑</span></div></div></div><div class="product-explanation"><span class="status">Product</span><p>Explore holiday packages and compare flight options inside the conversation, with the details close at hand.</p></div></section><section aria-labelledby="product-tab-3" class="product-panel" hidden="" id="product-panel-3" role="tabpanel" tabindex="0"><div class="product-stage stage-3"><div class="demo-console"><div class="demo-overline">Conductor / Engineering workspace</div><h4>From issue to evidence.</h4><div class="mini-board"><div><span>Investigate</span><article>Reproduce the reported issue<small>Sandbox</small></article></div><div><span>Prepare</span><article>Draft a fix and check it<small>Evidence attached</small></article></div><div><span>Review</span><article>Engineer reviews the change<small>Human approval</small></article></div></div><div class="console-log"><span>› Reproduction captured</span><span>› Checks collected</span><span>› Ready for human review<span class="cursor">_</span></span></div></div><span class="illustrative">Illustrative workflow</span></div><div class="product-explanation"><span class="status">Human review</span><p>Investigate bugs, reproduce them in a sandbox and draft fixes. Engineers review the evidence and approve what ships.</p></div></section><section aria-labelledby="product-tab-4" class="product-panel" hidden="" id="product-panel-4" role="tabpanel" tabindex="0"><div class="product-stage stage-4"><div class="demo-operations"><div class="demo-overline">CTRLPLANE / Servicing desk</div><h4>Keep the loose ends together.</h4><div class="operation-row"><span class="op-icon">↔</span><div>Supplier follow-up<small>Response prepared</small></div><span>Ready</span></div><div class="operation-row"><span class="op-icon">↶</span><div>Cancellation request<small>Terms checked</small></div><span>Review</span></div><div class="operation-row"><span class="op-icon">£</span><div>Refund decision<small>Money needs permission</small></div><span>Approval</span></div><div class="approval-note">A person makes the important call.</div></div><span class="illustrative">Illustrative workflow</span></div><div class="product-explanation"><span class="status">Product</span><p>Specialist agents prepare cancellations, refunds and supplier follow-ups. A person approves decisions that spend money.</p></div></section><section aria-labelledby="product-tab-5" class="product-panel" hidden="" id="product-panel-5" role="tabpanel" tabindex="0"><div class="product-stage stage-5"><div class="demo-waypoint"><div class="demo-overline">Waypoint / Decisions, with confidence</div><h4>Choose well. Know when to ask.</h4><div class="rank-row"><span>Fits the brief</span><i style="--rank:86%"></i><small>First</small></div><div class="rank-row"><span>A different trade-off</span><i style="--rank:64%"></i><small>Next</small></div><div class="rank-row"><span>Needs a closer look</span><i style="--rank:39%"></i><small>Review</small></div><div class="decision-branch"><span>Enough confidence?<b>Recommend</b></span><span>Still uncertain?<b>Ask for help</b></span></div></div><span class="illustrative">Illustrative workflow</span></div><div class="product-explanation"><span class="status">Model · v0.1.1</span><p>Rank travel options, compare the shortlist and report confidence. Uncertain choices go to a language model or consultant.</p></div></section></div></div>
     <div class="lx-foot" data-in><p class="fine">Availability varies by product and team.</p><a class="link" href="contact.html?topic=Leisure%20AI%20walkthrough">Request a walkthrough ↗</a></div>
   </div>
 </section>
@@ -568,141 +474,6 @@
   const race = $('#race');
   seen(race, () => race.classList.add('go'), .4);
 
-  /* Leisure AI tabs */
-  const tabs = $$('.lx-tabs [role=tab]');
-  const show = (k, focus) => {
-    tabs.forEach((t, j) => { const on = j === k; t.setAttribute('aria-selected', String(on)); t.tabIndex = on ? 0 : -1; $('#' + t.getAttribute('aria-controls')).hidden = !on; });
-    if (focus) tabs[k].focus();
-  };
-  tabs.forEach((t, j) => {
-    t.addEventListener('click', () => show(j));
-    t.addEventListener('keydown', (e) => {
-      const d = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key];
-      if (d) { e.preventDefault(); show((j + d + tabs.length) % tabs.length, true); }
-      else if (e.key === 'Home') { e.preventDefault(); show(0, true); }
-      else if (e.key === 'End') { e.preventDefault(); show(tabs.length - 1, true); }
-    });
-  });
-
-  /* Co-consult: one brief becomes the trip. Sample trips and prices from the old research page. */
-  const TRIPS = [
-    { who: 'Emma', sub: 'family of four', brief: 'Bali for the four of us in the July school holidays. A villa with a pool, a car, and something fun for the kids. Around $9,000.',
-      facts: [['From', 'Brisbane'], ['To', 'Bali'], ['When', 'July school holidays'], ['Who', '2 adults, 2 kids'], ['Stay', 'villa with a pool'], ['Budget', 'about $9,000']],
-      agents: [
-        { n: 'Flights', scan: '38 airlines', why: 'Direct, bags in. The cheapest fare had a 9-hour stop.', item: ['Flights', 'BNE → DPS · 4 seats together', 3120] },
-        { n: 'Stays', scan: '214 villas', why: 'Private pool, rated 4.8, free cancellation.', item: ['Villa', 'Seminyak · 7 nights · private pool', 3410] },
-        { n: 'Car hire', scan: '9 rental desks', why: 'Child seats included. The cheapest charged $25 a day for them.', item: ['Car hire', '7-seater · 8 days · 2 child seats', 420] },
-        { n: 'Activities', scan: '120 things to do', why: 'The two most popular with families, both free to cancel.', item: ['Activities', 'Waterbom park + Ubud day trip', 560] }
-      ],
-      checks: ['Inside the $9,000 budget', 'Dates match the school holidays', 'Passports valid for 6+ months', 'Free cancellation on the villa', 'Child seats in the car'],
-      saved: 640, savedL: 'less than booking each part on its own', ap: ['Jess', 'travel consultant'] },
-    { who: 'Kenji', sub: 'watching every dollar', brief: 'Cheapest sensible way to Tokyo for a week in late March. Somewhere near a train line. Under $2,500 all in.',
-      facts: [['From', 'Sydney'], ['To', 'Tokyo'], ['When', 'late March · 7 nights'], ['Who', '1 adult'], ['Must have', 'near a train line'], ['Budget', 'under $2,500']],
-      agents: [
-        { n: 'Flights', scan: '41 airlines', why: 'Direct. With a bag added it is still $280 under the next direct fare.', item: ['Flights', 'SYD → NRT · 1 seat + 1 bag', 798] },
-        { n: 'Stays', scan: '1,630 hotels', why: 'Private room, 3 minutes from the station.', item: ['Hotel', 'Ueno · 7 nights · 3 min to station', 686] },
-        { n: 'Rail', scan: '12 pass types', why: 'He stays in Tokyo, so the big JR pass would be wasted money.', item: ['Rail', 'Tokyo subway pass · 72h × 2', 64] },
-        { n: 'Activities', scan: '300 things to do', why: 'His two most-wanted, both free to cancel.', item: ['Activities', 'Mt Fuji day tour + teamLab', 161] }
-      ],
-      checks: ['Under the $2,500 budget', 'Bag included in the fare', 'Hotel close to a train line', 'Free cancellation on activities', 'Fare watch stays on after booking'],
-      saved: 412, savedL: 'less than the first prices found', ap: ['Jess', 'travel consultant'] },
-    { who: 'Daniel', sub: 'business trip', brief: 'London from Sydney, Tuesday to Thursday, for a client meeting in Canary Wharf. Keep it inside our travel policy.',
-      facts: [['From', 'Sydney'], ['To', 'London'], ['When', 'Tue to Thu'], ['Who', '1 traveller'], ['Why', 'client meeting'], ['Rule', 'company travel policy']],
-      agents: [
-        { n: 'Flights', scan: '26 airlines', why: 'Policy allows business over 8 hours. This is the lowest business fare.', item: ['Flights', 'SYD → LHR · business · return', 7940] },
-        { n: 'Stays', scan: '480 hotels', why: 'Company rate, a 4-minute walk to the client.', item: ['Hotel', 'Canary Wharf · 2 nights · company rate', 624] },
-        { n: 'Transfers', scan: '6 options', why: 'Policy prefers rail when it is the quicker option.', item: ['Transfers', 'Heathrow Express + Elizabeth line', 64] },
-        { n: 'Extras', scan: '40 restaurants', why: 'Client dinner for six near the hotel, inside the meal limit.', item: ['Client dinner', 'Thursday · 6 people', 420] }
-      ],
-      checks: ['Inside the company travel policy', 'Business class allowed over 8 hours', 'Hotel at the negotiated rate', 'Dinner under the per-head limit', 'Traveller tracked for duty of care'],
-      saved: 1180, savedL: 'under the usual fares for these dates', ap: ['Ana', 'travel manager'] }
-  ];
-  const SAY = [
-    (t) => `${t.who} types what ${t.who === 'Emma' ? 'her family' : 'he'} wants, in plain words.`,
-    () => 'The AI picks out the facts that matter.',
-    (t) => `${t.agents.length} agents search at the same time, each on one part of the trip.`,
-    () => 'Each agent keeps the best value that fits, not just the cheapest. Every pick is checked.',
-    (t) => `${t.ap[0]}, a ${t.ap[1]}, looks it over and approves. Nothing is charged before this.`,
-    () => 'The approved trip is recorded together. Each booking result is checked.'
-  ];
-  const ccRail = $$('#ccRail li'), ccCall = $('#ccCall'), ccAg = $('#ccAgents'), ccMerge = $('#ccMerge'), ccPick = $('#ccPick');
-  ccPick.innerHTML = TRIPS.map((t, i) => `<button type="button" aria-pressed="${i === 0}">${t.who} · ${t.sub}</button>`).join('');
-  let ctok = 0, cpick = 0;
-  const cwait = (ms, my) => new Promise((res, rej) => setTimeout(() => (my === ctok ? res() : rej('stop')), REDUCE ? 0 : ms));
-  const cstep = (k, t) => { ccRail.forEach((li, i) => { li.classList.toggle('on', i === k); li.classList.toggle('done', i < k); }); $('#ccSay').textContent = SAY[k](t); };
-  const pad = (s) => (s + '          ').slice(0, 10);
-  // Fill the panel before the demo starts, so the page height doesn't jump later.
-  const skeleton = (t) => {
-    $('#ccStats').innerHTML = `<div><b>${t.agents.length}</b><span>Agents at work, all at once</span></div><div><b>${t.checks.length}</b><span>Checks</span></div><div><b>${aud(t.saved)}</b><span>${t.savedL}</span></div>`;
-    ccMerge.innerHTML = '';
-    ccAg.innerHTML = t.agents.map((a, i) => `<div><span class="tg">0${i + 1} · ${a.n}</span><h3>—</h3><p>searching ${a.scan}…</p></div>`).join('');
-  };
-  skeleton(TRIPS[0]);
-  async function cplay(t, my) {
-    $$('button', ccPick).forEach((b, i) => b.setAttribute('aria-pressed', String(TRIPS[i] === t)));
-    const total = t.agents.reduce((s, a) => s + a.item[2], 0);
-    skeleton(t);
-    const cells = $$(':scope > div', ccAg);
-    const head = `<span class="c">// You ask · ${t.who} · ${t.sub}</span>\n`;
-    cstep(0, t);
-    for (let i = 1; i <= t.brief.length; i += 2) { ccCall.innerHTML = head + '<span class="s">“' + t.brief.slice(0, i) + '</span>'; await cwait(18, my); }
-    const brief = head + '<span class="s">“' + t.brief + '”</span>\n\n<span class="c">// What the AI understood</span>\n';
-    ccCall.innerHTML = brief; await cwait(500, my);
-    cstep(1, t);
-    let facts = '';
-    for (const [a, b] of t.facts) { facts += `<span class="k">${pad(a)}</span>${b}\n`; ccCall.innerHTML = brief + facts; await cwait(260, my); }
-    await cwait(700, my);
-    cstep(2, t);
-    cells.forEach((c) => c.classList.add('scan'));
-    await cwait(2200, my);
-    cstep(3, t);
-    let sum = 0;
-    for (let i = 0; i < cells.length; i++) {
-      const d = t.agents[i], c = cells[i];
-      c.classList.remove('scan'); c.classList.add('me');
-      c.querySelector('h3').textContent = aud(d.item[2]); c.querySelector('p').textContent = d.why;
-      sum += d.item[2];
-      const sp = document.createElement('span'); sp.textContent = d.item[0]; ccMerge.appendChild(sp);
-      await cwait(900, my);
-    }
-    ccCall.innerHTML = brief + facts + '\n<span class="c">// Checks</span>\n' + t.checks.map((c) => `<span class="k">✓</span> ${c}`).join('\n');
-    await cwait(1200, my);
-    cstep(4, t);
-    ccMerge.insertAdjacentHTML('beforeend', `<i>→</i><b>${t.who}'s trip: ${t.agents.length} parts, ${aud(total)} total.</b>`);
-    await cwait(2000, my);
-    ccMerge.querySelector('b').textContent = `Approved by ${t.ap[0]} ✓`;
-    await cwait(1200, my);
-    cstep(5, t);
-    ccMerge.querySelector('b').textContent = 'BOOKED TOGETHER every part paid in one go';
-    ccRail.forEach((li) => { li.classList.remove('on'); li.classList.add('done'); });
-    $('#ccSay').textContent = `Booked. ${t.who} gets one record for the whole trip.`;
-    await cwait(4200, my);
-  }
-  async function crun() { const my = ++ctok; let i = cpick; try { while (my === ctok) { await cplay(TRIPS[i++ % TRIPS.length], my); if (REDUCE) break; } } catch (e) { if (e !== 'stop') throw e; } }
-  $$('button', ccPick).forEach((b, i) => b.addEventListener('click', () => { cpick = i; crun(); }));
-  let cs = false;
-  seen($('#ccRail'), () => { if (!cs) { cs = true; crun(); } }, .2);
-
-  /* ChatGPT App: the three ideas take turns */
-  const ideas = $$('#ideas button'), reply = $('#ideaReply');
-  const REPLIES = ['For Bali, would you rather stay by the coast or split your time with somewhere quieter inland?', 'For Kyoto, shall we build the week around food and neighbourhood walks, with a quieter day in the gardens?', 'For Hoi An, how would you split your time between the old town and the coast?'];
-  let ii = 0, iT = 0;
-  const idea = (k) => { ii = k; ideas.forEach((b, j) => b.setAttribute('aria-pressed', String(j === k))); reply.innerHTML = '<i>✳</i> ' + REPLIES[k]; };
-  ideas.forEach((b, j) => b.addEventListener('click', () => { clearInterval(iT); idea(j); }));
-  if (!REDUCE) iT = setInterval(() => idea((ii + 1) % ideas.length), 6000);
-
-  /* Conductor: issue to evidence */
-  const cd = $$('#cdSteps > div'), cdCall = $('#cdCall');
-  const CD = ['› Reproduction captured', '› Checks collected', '› Ready for human review _'];
-  let ci = 0;
-  const cdTick = () => { const k = ci % cd.length; cd.forEach((d, j) => d.classList.toggle('me', j === k)); cdCall.textContent = CD.slice(0, k + 1).join('\n'); ci++; };
-  cdTick(); if (!REDUCE) setInterval(cdTick, 1800);
-
-  /* Waypoint: walk down the shortlist */
-  const wp = $$('#wpRank li');
-  let wi = 0;
-  const wpTick = () => { wp.forEach((li, j) => li.classList.toggle('on', j === wi % wp.length)); wi++; };
-  wpTick(); if (!REDUCE) setInterval(wpTick, 1600);
 })();
 </script>
 <script src="assets/impact.js"></script>
@@ -737,6 +508,10 @@
 </script>
 <script src="assets/ambient.js"></script>
 <script src="assets/project-sketch.js"></script>
+<script src="assets/product-previews.js?v=next-mcpx"></script>
+<script src="assets/product-co-consult.js?v=next-mcpx"></script>
+<script src="assets/product-miles.js?v=next-mcpx"></script>
+<script src="assets/product-chatgpt.js?v=next-mcpx"></script>
 </body>
 </html>
 

@@ -239,8 +239,3 @@
 }
 
 /* Keep the Co-consult demonstration stable while trips and steps change. */
-.lx{--product-panel-height:clamp(780px,86vh,1000px)}
-.lx>.lx-p{height:var(--product-panel-height);min-height:0;overflow-y:auto;overscroll-behavior-y:contain;scrollbar-gutter:stable;align-content:start}
-#lx-p0.cc .call{height:430px;min-height:0;overflow:auto;scrollbar-gutter:stable;overscroll-behavior:contain}
-#lx-p0.cc .cc-say{height:60px;min-height:0;overflow-y:auto}
-@media(max-width:600px){.lx{--product-panel-height:820px}#lx-p0.cc .call{height:380px}#lx-p0.cc .cc-say{height:82px}}
