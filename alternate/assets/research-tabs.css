@@ -1,0 +1,38 @@
+/* Nine research directions, using the Next vertical selector in the MCPX palette. */
+.rd-tabs{display:grid;grid-template-columns:minmax(250px,.85fr) minmax(0,2fr);gap:36px;align-items:start;margin-top:42px}
+.rd-list{display:grid;gap:10px}
+.rd-list button{display:grid;grid-template-columns:26px minmax(0,1fr);gap:12px;align-items:center;min-height:76px;padding:18px 20px;text-align:left;border:1px solid var(--line-2);background:var(--paper);color:var(--ink);font:500 18px/1.3 var(--sans);transition:background .2s}
+.rd-list button:hover{background:var(--lime-2)}
+.rd-list button[aria-selected=true]{background:var(--ultra);border-color:var(--ink);color:#fff;box-shadow:4px 4px 0 var(--ink)}
+.rd-number{font:500 12px/1.4 var(--mono);color:var(--ultra)}
+.rd-list button[aria-selected=true] .rd-number{color:var(--lime)}
+.rd-list button[aria-selected=true]{border-left:4px solid var(--lime);padding-left:17px}
+.rd-list button:focus-visible,.rd-panel:focus-visible{outline:2px solid var(--ultra);outline-offset:4px}
+.rd-stage{min-width:0}
+.rd-panel{min-width:0;padding:28px;border:1.5px solid var(--ink);background:var(--paper);box-shadow:7px 7px 0 var(--ultra)}
+.rd-panel[hidden]{display:none!important}
+.rd-panel #ambient-ai{padding:0!important;border:0}
+.rd-panel #ambient-ai>.wrap{padding:0;max-width:none}
+.rd-panel .ambient-intro{grid-template-columns:1fr;gap:20px;margin-bottom:24px}
+.rd-panel .ambient-intro .h2{font-size:36px;max-width:none}
+.rd-panel .ambient-intro .lead{font-size:15px}
+.rd-panel .ambient-stage{grid-template-columns:minmax(0,.85fr) 54px minmax(0,1.3fr);gap:14px;padding:28px 16px;min-height:390px}
+.rd-panel .ambient-agent svg{width:50px;height:50px}
+.rd-panel .ambient-agent::before,.rd-panel .ambient-agent::after{width:14px;top:25px}
+.rd-panel .ambient-memory{padding:18px 12px}
+.rd-panel .ambient-name{font-size:30px}
+.rd-panel .ambient-panel{padding:16px}
+.rd-panel .ambient-research{grid-template-columns:1fr}
+.rd-panel .ambient-research div{padding:8px}
+.rd-panel .pc{display:flex;flex-direction:column;gap:18px;padding:0;border:0;box-shadow:none;background:transparent;transform:none!important}
+.rd-panel .pc>.hand{order:-2;font:500 36px/1.1 var(--sans);letter-spacing:-.025em;color:var(--ink);margin:0}
+.rd-panel .project-heading{order:-1;font:400 16px/1.6 var(--mono);margin:0}
+.rd-panel .pc:not(.project-card)>p:not(.hand){order:-1;font:400 16px/1.65 var(--mono);margin:0}
+.rd-panel .pc-art{height:360px;aspect-ratio:auto;margin:0;flex:none;border:1px solid var(--line-2)}
+.rd-panel .project-stage-copy{min-height:5em;font-size:15px;margin:0}
+.rd-panel .project-controls,.rd-panel .project-steps,.rd-panel .project-final,.rd-panel .project-impact,.rd-panel .project-card details{margin-left:0;margin-right:0}
+.rd-panel .project-impact,.rd-panel .project-card details{font-size:14px}
+.rd-panel .project-final{font:500 20px/1.4 var(--sans)}
+@media(max-width:1100px){.rd-tabs{grid-template-columns:250px minmax(0,1fr);gap:24px}.rd-list button{font-size:16px;padding:16px 14px}.rd-list button[aria-selected=true]{padding-left:11px}.rd-panel{padding:22px}.rd-panel .ambient-stage{grid-template-columns:1fr}.rd-panel .ambient-agent{display:flex;align-items:center;justify-content:center;gap:16px}.rd-panel .ambient-agent::before,.rd-panel .ambient-agent::after{display:none}.rd-panel .ambient-memory{transform:none}.rd-panel .ambient-research{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:760px){.rd-tabs{grid-template-columns:1fr;gap:24px}.rd-list{gap:6px}.rd-list button{min-height:56px;font-size:16px}.rd-panel{padding:20px}.rd-panel .pc>.hand,.rd-panel .ambient-intro .h2{font-size:30px}.rd-panel .pc-art{height:280px}}
+@media print{.rd-list{display:none}.rd-tabs{display:block}.rd-panel,.rd-panel[hidden]{display:block!important;margin-bottom:24px;box-shadow:none}}
