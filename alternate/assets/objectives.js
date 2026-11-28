@@ -36,7 +36,12 @@
   const layout = document.createElement('div');
   layout.className = 'obj-explorer';
   list.before(layout);
-  layout.append(nav, list);
+  const sidebar = document.createElement('div');
+  sidebar.className = 'obj-sidebar';
+  sidebar.append(nav);
+  const moreLink = section.querySelector('.obj-more-link');
+  if (moreLink) sidebar.append(moreLink);
+  layout.append(sidebar, list);
   section.classList.add('objectives-enhanced');
   function syncMotion() {
     figures.forEach((svg, index) => {
